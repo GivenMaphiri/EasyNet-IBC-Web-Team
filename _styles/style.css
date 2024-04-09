@@ -1,0 +1,24 @@
+header {
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  top: 0;
+  left: 0;
+  right: 0;
+  align-items: center;
+  padding: 15px 10px;
+  margin-bottom: 50px;
+  height: 55px;
+  z-index: 99;
+  background-color: rgb(255, 255, 255);
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-bottom-color: rgb(5, 5, 5);
+}
+
+#middle {
+  flex: 1;
+  align-items: center;
+  margin-right: 100px;
+  margin-left: 100px;
+}
