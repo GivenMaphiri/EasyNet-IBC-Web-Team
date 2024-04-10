@@ -98,3 +98,65 @@ header {
 #nav_text.active {
   border-bottom: 2px solid rgb(20, 149, 255);
 }
+
+#home_paragraph {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: left;
+  align-items: flex-start;
+}
+#home_box {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+#lines {
+  margin: 0;
+  width: 400px;
+}
+
+#homeboxes {
+  display: flex;
+  width: 670px;
+  flex-direction: row;
+  justify-content: space-around;
+  padding: 20px;
+}
+
+#prodbox1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  border-style: solid;
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+#boxbutton {
+  cursor: pointer;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #00bfff;
+  width: 200px;
+  height: 33px;
+  transition: all 0.2s ease-in;
+}
+
+#boxbutton:hover {
+  background-color: #1cb504;
+}
