@@ -109,13 +109,14 @@ header {
   align-items: flex-start;
 }
 #home_box {
+  margin: auto;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: max-content;
   margin-left: 100px;
   margin-right: 100px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #lines {
@@ -125,10 +126,9 @@ header {
 
 #homeboxes {
   display: flex;
-  width: 670px;
   flex-direction: row;
-  justify-content: space-around;
-  padding: 20px;
+  justify-content: center;
+  margin-right: 20px;
 }
 
 #prodbox1 {
@@ -140,7 +140,7 @@ header {
   height: 315px;
   border-style: solid;
   padding: 10px;
-  margin: 0;
+  margin-right: 20px;
   border-radius: 10px;
   border-width: 1px;
 }
