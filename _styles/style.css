@@ -109,10 +109,8 @@ header {
   align-items: flex-start;
 }
 #home_box {
-  margin: auto;
   display: flex;
-  flex-direction: row;
-  width: max-content;
+  flex-direction: column;
   margin-left: 100px;
   margin-right: 100px;
   justify-content: center;
@@ -127,8 +125,7 @@ header {
 #homeboxes {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin-right: 20px;
+  justify-content: space-around;
 }
 
 #prodbox1 {
@@ -140,7 +137,6 @@ header {
   height: 315px;
   border-style: solid;
   padding: 10px;
-  margin-right: 20px;
   border-radius: 10px;
   border-width: 1px;
 }
