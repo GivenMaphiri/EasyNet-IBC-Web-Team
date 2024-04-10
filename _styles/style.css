@@ -68,10 +68,10 @@ footer {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  border-top-width: 2px;
+  border-top-width: 1px;
   border-top-style: solid;
   border-top-color: rgb(29, 181, 5);
-  height: 300px;
+  height: 230px;
 }
 
 #left {
@@ -182,13 +182,23 @@ footer {
 
 #home_heading {
   margin: 0;
-  padding-bottom: 10px;
+  padding-bottom: 0px;
+}
+
+#paragraph_link {
+  text-decoration: none;
+  color: rgb(20, 149, 255);
+  transition: all 0.2s ease-in;
+}
+#paragraph_link:hover {
+  color: rgb(29, 181, 5);
 }
 
 #nav_content_foot {
   list-style: none;
   text-align: left;
-  margin-left: 0;
+  width: 120px;
+  margin: 0;
 }
 
 #nav_text_foot {
@@ -199,11 +209,15 @@ footer {
   transition: all 0.2s ease-out;
 }
 
+#nav_text_foot:hover {
+  border-bottom: 2px solid rgb(20, 149, 255);
+}
+
 #nav_link_foot {
   display: flex;
   flex-direction: column;
   justify-content: left;
-  padding-top: 0px;
+  padding-top: 5px;
   padding-bottom: 10px;
   padding-left: 5px;
   padding-right: 10px;
@@ -211,6 +225,15 @@ footer {
 
 #foot_line {
   height: 1px;
-  background-color: rgb(20, 149, 255);
+  background-color: rgb(0, 0, 0);
   border-style: none;
+  margin: 0;
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+#footer_text {
+  margin: 0;
+  padding-left: 40px;
+  padding-top: 10px;
 }
