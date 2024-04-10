@@ -157,3 +157,13 @@ header {
 #boxbutton:hover {
   background-color: #1cb504;
 }
+
+#loginlinks {
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s ease-in;
+}
+
+#loginlinks:hover {
+  border-bottom: 2px solid rgb(20, 149, 255);
+}
