@@ -30,11 +30,12 @@
   text-decoration: none;
   font-size: 14px;
   text-transform: uppercase;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease-out;
 }
 
 #middle nav ul li a:hover {
-  color: #1cb504;
+  /*color: #1cb504;*/
+  border-bottom: 2px solid rgb(20, 149, 255);
 }
 
 #middle nav ul li .current {
@@ -92,4 +93,8 @@ header {
   padding-bottom: 0px;
   padding-left: 10px;
   padding-right: 10px;
+}
+
+#nav_text.active {
+  border-bottom: 2px solid rgb(20, 149, 255);
 }
