@@ -1,3 +1,55 @@
+/* universal css styling rules for all pages. */
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+:root{
+    --Poppins: 'Poppins';
+    --dark: #353336;
+}
+*{
+    /*margin: 0px;*/
+    /*box-sizing: border-box;*/
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    /* outline for testing purposes */
+    /*outline: red dashed 1px;*/
+}
+
+/* ----------------------------------------------------------------------------------*/
+/* navigation css*/
+
+#middle nav ul{
+  float: right;
+  
+}
+
+#middle nav ul li{
+  display:inline-block;
+  list-style: none;
+ 
+}
+
+#middle nav ul li a{
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 0px 32px;
+}
+
+#middle nav ul li a:hover{
+  color: #1CB504;
+}
+
+#middle nav ul li .current{
+  color: #00BFFF;
+  
+  
+}
+
+/* ----------------------------*/
+
+
+
 header {
   position: fixed;
   display: flex;
@@ -14,6 +66,7 @@ header {
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(5, 5, 5);
+  padding-bottom: 15px;
 }
 
 #middle {
