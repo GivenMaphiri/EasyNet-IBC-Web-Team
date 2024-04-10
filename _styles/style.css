@@ -148,6 +148,7 @@ header {
   border-radius: 15px;
   color: white;
   background-color: #00bfff;
+  margin-bottom: 5px;
   width: 200px;
   height: 33px;
   transition: all 0.2s ease-in;
