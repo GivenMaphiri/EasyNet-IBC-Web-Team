@@ -47,6 +47,53 @@ root {
   visibility: visible;
 }
 
+
+/*--------------------------------------*/
+/*mega-menu css*/
+.dropdown {
+  position: absolute; 
+  width: 60%;
+  top:85px;
+  background: white;
+  left: 25%;
+  padding: 0px 20px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdown .dropdown-content {
+ background: white;
+ padding: 20px 25px;
+ display: flex;
+ width: 100%;
+ text-align: start;
+}
+
+.dropdown .dropdown-content  .row {
+  width: 200%;
+  line-height: 30px;
+}
+
+.dropdown-content .row h4{
+ font-size: 30px;
+ font-weight: 500%;
+}
+
+.dropdown-content .row .mega-link {
+  margin-left: -40px;
+  border-left: 1px solid rgb(20, 149, 255);
+}
+
+.row .mega-link li{
+  padding: 0 10px;
+} 
+
+.row .mega-link li a{
+  padding: 0 20px;
+  display: block;
+}
+
 /* ----------------------------*/
 #background_home h1,
 #background_about h1,
@@ -453,52 +500,6 @@ footer {
   border-bottom-color: black;
 }
 
-/*--------------------------------------*/
-/*mega-menu css*/
-.dropdown {
-  position: absolute; 
-  width: 60%;
-  top:85px;
-  background: white;
-  left: 25%;
-  padding: 0px 20px;
-  transition: all 0.3s ease;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.dropdown .dropdown-content {
- background: white;
- padding: 20px 25px;
- display: flex;
- width: 100%;
- text-align: start;
-}
-
-.dropdown .dropdown-content  .row {
-  width: 200%;
-  line-height: 30px;
-}
-
-.dropdown-content .row h4{
- font-size: 30px;
- font-weight: 500%;
-}
-
-.dropdown-content .row .mega-link {
-  margin-left: -40px;
-  border-left: 1px solid rgb(20, 149, 255);
-}
-
-.row .mega-link li{
-  padding: 0 10px;
-} 
-
-.row .mega-link li a{
-  padding: 0 20px;
-  display: block;
-}
-/*--------------*/
 #product_mainpage {
   display: flex;
   flex-direction: row;
