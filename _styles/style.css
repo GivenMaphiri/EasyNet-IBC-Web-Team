@@ -251,6 +251,20 @@ footer {
   width: 250px;
 }
 
+#right-item a{
+  text-decoration: none;
+  color:black;
+  font-size: 17px;
+  display: inline-block;
+  margin-left: 30px;  
+  transition: color, 0.3s ease; 
+ }
+ 
+ #right-item a:hover {
+   color: rgb(20, 149, 255);
+ }
+ 
+
 #nav_content {
   list-style: none;
   text-align: center;
