@@ -257,10 +257,9 @@ footer {
 #home_box {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 20%;
+  margin-right: 20%;
   justify-content: center;
-  align-items: center;
 }
 
 #lines {
@@ -270,12 +269,12 @@ footer {
 
 #home_box_head {
   padding-top: 20px;
+  text-align: center;
 }
 
 #homeboxes {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  column-gap: 40px;
   row-gap: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
@@ -284,7 +283,7 @@ footer {
 #prodbox1 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-self: center;
   align-items: center;
   width: 250px;
   height: 315px;
@@ -383,6 +382,53 @@ footer {
 #product_head {
   display: flex;
   flex-direction: row;
-  justify-content: safe;
+  justify-content: space-between;
   align-items: center;
+  padding-top: 15px;
+}
+
+#searchbar {
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
+  height: 25px;
+  width: 300px;
+  padding-left: 5px;
+  transition: all 0.2s ease-in;
+}
+
+#searchbar:hover {
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#searchbar:focus {
+  outline: none;
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#searchbutton {
+  cursor: pointer;
+  margin: 0;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
+  transition: all 0.2s ease-in;
+}
+
+#searchbutton:hover {
+  color: rgb(20, 149, 255);
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#search_bar {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
