@@ -19,10 +19,6 @@ root {
 /* ----------------------------------------------------------------------------------*/
 /* navigation css*/
 
-#middle nav ul {
-  /*float: right;*/
-}
-
 #middle nav ul li {
   list-style: none;
 }
@@ -44,12 +40,12 @@ root {
   color: #00bfff;
 }
 
-ul li ul.dropdown li{
+ul li ul.dropdown li {
   position: relative;
   display: inline-block;
 }
 
-ul li ul.dropdown{
+ul li ul.dropdown {
   display: none;
   min-width: 160px;
   background: white;
@@ -57,24 +53,32 @@ ul li ul.dropdown{
   z-index: 999;
 }
 
-ul li:hover ul.dropdown{
+ul li:hover ul.dropdown {
   display: block;
-
 }
 
-
-
 /* ----------------------------*/
-#background_home h1 {
+#background_home h1,
+#background_about h1,
+#background_products h1,
+#background_partners h1,
+#background_contact h1 {
   font-family: "Cabin", sans-serif;
-  margin: 0;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 60px;
   font-style: italic;
+  /*transform: translateY(-100%);*/
   z-index: -1;
-  transform: translateY(-100%);
   /*opacity: 0;*/
   transition: all 0.5s;
+}
+
+#background_home h2,
+#background_about h2,
+#background_products h2,
+#background_partners h2,
+#background_contact h2 {
+  z-index: -1;
 }
 
 header {
@@ -109,8 +113,8 @@ footer {
 
 #background_home {
   background-color: rgb(49, 49, 250);
-  background-image: url("../_images/_background/homepage2.jpg");
-  background-position: center;
+  background-image: url("../_images/_background/homepage1.jpg");
+  background-position: top;
   background-size: cover;
   border-color: rgb(138, 137, 137);
   border-style: solid;
@@ -119,6 +123,74 @@ footer {
   border-right-width: 0;
   padding-top: 250px;
   padding-bottom: 250px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_about {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/aboutus1.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_products {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/products1.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_partners {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/clients1.jpg");
+  background-position: top;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_contact {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/contactus2.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
   color: white;
   text-align: center;
   text-shadow: 1px 1px 1px black;
@@ -175,15 +247,15 @@ footer {
 
 #home_para {
   margin-top: 0;
+  padding-bottom: 15px;
 }
 
 #home_box {
   display: flex;
   flex-direction: column;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin-left: 20%;
+  margin-right: 20%;
   justify-content: center;
-  align-items: center;
 }
 
 #lines {
@@ -193,12 +265,13 @@ footer {
 
 #home_box_head {
   padding-top: 20px;
+  text-align: center;
 }
 
 #homeboxes {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 40px;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
 }
@@ -206,7 +279,7 @@ footer {
 #prodbox1 {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-self: center;
   align-items: center;
   width: 250px;
   height: 315px;
@@ -302,4 +375,90 @@ footer {
   padding-top: 10px;
 }
 
+#product_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+}
 
+#searchbar {
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
+  height: 25px;
+  width: 300px;
+  padding-left: 5px;
+  transition: all 0.2s ease-in;
+}
+
+#searchbar:hover {
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#searchbar:focus {
+  outline: none;
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#searchbutton {
+  cursor: pointer;
+  margin: 0;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
+  transition: all 0.2s ease-in;
+}
+
+#searchbutton:hover {
+  color: rgb(20, 149, 255);
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#search_bar {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#prod_back_main {
+  padding-top: 95px;
+  padding-left: 5%;
+}
+
+#prod_back {
+  text-decoration: none;
+  color: rgb(20, 149, 255);
+  transition: all 0.2s ease-in;
+}
+
+#prod_back:hover {
+  color: rgb(29, 181, 5);
+}
+
+#all_products_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
+}
