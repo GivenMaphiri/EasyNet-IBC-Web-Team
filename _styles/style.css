@@ -40,21 +40,11 @@ root {
   color: #00bfff;
 }
 
-ul li ul.dropdown li {
-  position: relative;
-  display: inline-block;
-}
-
-ul li ul.dropdown {
-  display: none;
-  min-width: 160px;
-  background: white;
-  position: absolute;
-  z-index: 999;
-}
-
-ul li:hover ul.dropdown {
-  display: block;
+#middle li:hover .dropdown{
+  transition: all 0.3s ease;
+  top: 70px;
+  opacity: 1;
+  visibility: visible;
 }
 
 /* ----------------------------*/
@@ -462,3 +452,50 @@ footer {
   background-color: white;
   border-bottom-color: black;
 }
+
+/*--------------------------------------*/
+/*mega-menu css*/
+.dropdown {
+  position: absolute; 
+  width: 60%;
+  top:85px;
+  background: white;
+  left: 25%;
+  padding: 0px 20px;
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dropdown .dropdown-content {
+ background: white;
+ padding: 20px 25px;
+ display: flex;
+ width: 100%;
+ text-align: start;
+}
+
+.dropdown .dropdown-content  .row {
+  width: 200%;
+  line-height: 30px;
+}
+
+.dropdown-content .row h4{
+ font-size: 30px;
+ font-weight: 500%;
+}
+
+.dropdown-content .row .mega-link {
+  margin-left: -40px;
+  border-left: 1px solid rgb(20, 149, 255);
+}
+
+.row .mega-link li{
+  padding: 0 10px;
+} 
+
+.row .mega-link li a{
+  padding: 0 20px;
+  display: block;
+}
+/*--------------*/
