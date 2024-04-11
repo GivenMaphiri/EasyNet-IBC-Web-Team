@@ -44,6 +44,26 @@ root {
   color: #00bfff;
 }
 
+ul li ul.dropdown li{
+  position: relative;
+  display: inline-block;
+}
+
+ul li ul.dropdown{
+  display: none;
+  min-width: 160px;
+  background: white;
+  position: absolute;
+  z-index: 999;
+}
+
+ul li:hover ul.dropdown{
+  display: block;
+
+}
+
+
+
 /* ----------------------------*/
 #background_home h1,
 #background_about h1,
@@ -360,3 +380,5 @@ footer {
   padding-left: 40px;
   padding-top: 10px;
 }
+
+
