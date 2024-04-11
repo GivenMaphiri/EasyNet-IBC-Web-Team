@@ -44,12 +44,12 @@ root {
   color: #00bfff;
 }
 
-ul li ul.dropdown li{
+ul li ul.dropdown li {
   position: relative;
   display: inline-block;
 }
 
-ul li ul.dropdown{
+ul li ul.dropdown {
   display: none;
   min-width: 160px;
   background: white;
@@ -57,12 +57,9 @@ ul li ul.dropdown{
   z-index: 999;
 }
 
-ul li:hover ul.dropdown{
+ul li:hover ul.dropdown {
   display: block;
-
 }
-
-
 
 /* ----------------------------*/
 #background_home h1,
@@ -120,8 +117,8 @@ footer {
 
 #background_home {
   background-color: rgb(49, 49, 250);
-  background-image: url("../_images/_background/homepage2.jpg");
-  background-position: center;
+  background-image: url("../_images/_background/homepage1.jpg");
+  background-position: top;
   background-size: cover;
   border-color: rgb(138, 137, 137);
   border-style: solid;
@@ -254,6 +251,7 @@ footer {
 
 #home_para {
   margin-top: 0;
+  padding-bottom: 15px;
 }
 
 #home_box {
@@ -276,8 +274,9 @@ footer {
 
 #homeboxes {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   column-gap: 40px;
+  row-gap: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
 }
@@ -381,4 +380,9 @@ footer {
   padding-top: 10px;
 }
 
-
+#product_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: safe;
+  align-items: center;
+}
