@@ -19,10 +19,6 @@ root {
 /* ----------------------------------------------------------------------------------*/
 /* navigation css*/
 
-#middle nav ul {
-  /*float: right;*/
-}
-
 #middle nav ul li {
   list-style: none;
 }
@@ -431,4 +427,38 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+#prod_back_main {
+  padding-top: 95px;
+  padding-left: 5%;
+}
+
+#prod_back {
+  text-decoration: none;
+  color: rgb(20, 149, 255);
+  transition: all 0.2s ease-in;
+}
+
+#prod_back:hover {
+  color: rgb(29, 181, 5);
+}
+
+#all_products_head {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 3%;
+  margin-right: 3%;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
 }
