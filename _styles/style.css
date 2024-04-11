@@ -45,16 +45,27 @@ root {
 }
 
 /* ----------------------------*/
-#background_home h1 {
+#background_home h1,
+#background_about h1,
+#background_products h1,
+#background_partners h1,
+#background_contact h1 {
   font-family: "Cabin", sans-serif;
-  margin: 0;
   font-weight: 700;
-  font-size: 50px;
+  font-size: 60px;
   font-style: italic;
+  /*transform: translateY(-100%);*/
   z-index: -1;
-  transform: translateY(-100%);
   /*opacity: 0;*/
   transition: all 0.5s;
+}
+
+#background_home h2,
+#background_about h2,
+#background_products h2,
+#background_partners h2,
+#background_contact h2 {
+  z-index: -1;
 }
 
 header {
@@ -99,6 +110,74 @@ footer {
   border-right-width: 0;
   padding-top: 250px;
   padding-bottom: 250px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_about {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/aboutus1.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_products {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/products1.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_partners {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/clients1.jpg");
+  background-position: top;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_contact {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/contactus2.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
   color: white;
   text-align: center;
   text-shadow: 1px 1px 1px black;
