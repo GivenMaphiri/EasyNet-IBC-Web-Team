@@ -119,6 +119,14 @@ footer {
   justify-content: left;
   align-items: flex-start;
 }
+#home_heading {
+  margin-bottom: 0;
+}
+
+#home_para {
+  margin-top: 0;
+}
+
 #home_box {
   display: flex;
   flex-direction: column;
