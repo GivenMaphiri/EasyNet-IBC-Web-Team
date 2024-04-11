@@ -45,15 +45,17 @@ root {
 }
 
 ul li ul.dropdown li{
-  display: block;
+  position: relative;
+  display: inline-block;
 }
 
 ul li ul.dropdown{
-  width: 50%;
+  display: none;
+  min-width: 160px;
   background: white;
   position: absolute;
-  z-index: 999;
-  display: none;
+  z-index: 1;
+  text-align: center;
 }
 
 ul li:hover ul.dropdown{
