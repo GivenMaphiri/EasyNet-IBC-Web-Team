@@ -1,12 +1,13 @@
 /* universal css styling rules for all pages. */
 
 @import url("https://fonts.googleapis.com/css?family=Poppins");
-
-:root {
+@import url("https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400..700;1,400..700&display=swap");
+root {
   --Poppins: "Poppins";
   --dark: #353336;
 }
 * {
+  margin: 0;
   margin-left: 0;
   margin-right: 0;
   /*box-sizing: border-box;*/
@@ -44,6 +45,17 @@
 }
 
 /* ----------------------------*/
+#background_home h1 {
+  font-family: "Cabin", sans-serif;
+  margin: 0;
+  font-weight: 700;
+  font-size: 50px;
+  font-style: italic;
+  z-index: -1;
+  transform: translateY(-100%);
+  /*opacity: 0;*/
+  transition: all 0.5s;
+}
 
 header {
   position: fixed;
@@ -72,6 +84,24 @@ footer {
   border-top-style: solid;
   border-top-color: rgb(29, 181, 5);
   height: 230px;
+  margin-top: 20px;
+}
+
+#background_home {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/homepage2.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 250px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
 }
 
 #left {
@@ -141,10 +171,15 @@ footer {
   width: 400px;
 }
 
+#home_box_head {
+  padding-top: 20px;
+}
+
 #homeboxes {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   column-gap: 40px;
+  padding-top: 20px;
   padding-bottom: 10px;
 }
 
@@ -171,6 +206,7 @@ footer {
   margin-bottom: 5px;
   width: 200px;
   height: 33px;
+  margin-top: 10px;
   transition: all 0.2s ease-in;
 }
 
