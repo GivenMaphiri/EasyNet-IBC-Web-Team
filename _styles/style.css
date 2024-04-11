@@ -54,8 +54,8 @@ ul li ul.dropdown{
   min-width: 160px;
   background: white;
   position: absolute;
-  z-index: 1;
-  text-align: center;
+  z-index: 999;
+  text-align: left;
 }
 
 ul li:hover ul.dropdown{
