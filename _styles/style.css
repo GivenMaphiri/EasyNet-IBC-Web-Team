@@ -435,6 +435,10 @@ footer {
   padding-top: 10px;
 }
 
+footer {
+  background-color: #D9D9D9;
+}
+
 #product_head {
   display: flex;
   flex-direction: row;
