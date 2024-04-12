@@ -13,7 +13,7 @@ root {
   /*box-sizing: border-box;*/
   font-family: "Poppins", "Helvetica Neue", sans-serif;
   /* outline for testing purposes */
-  /*outline: red dashed 1px;*/
+  outline: red dashed 1px;
 }
 
 /* ----------------------------------------------------------------------------------*/
@@ -570,4 +570,80 @@ footer {
   row-gap: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+
+/* ------------ Checkout page-----------*/
+
+.checkout_heading {
+  margin-top: 100px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  text-align: right;
+  display: flex;
+  
+}
+
+#Logo_name1 {
+  
+  color: rgb(20, 149, 255);
+}
+
+#Logo_name2 {
+  
+  color: rgb(29, 181, 5);
+}
+
+#checkout_lines {
+  margin-left: 25px;
+  width: 1300px;
+}
+
+
+.checkout h2 {
+  padding-top: 15px;
+  text-align: center;
+}
+
+.checkout h1{
+  font-size: 3rem;
+}
+
+#checkout_boxes {
+  display: grid;
+  grid-template-columns: 300px 300px;
+  row-gap: 10px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  
+}
+
+#checkbox1 {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+#rem_button {
+  cursor: pointer;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #00bfff;
+  margin-bottom: 5px;
+  width: 200px;
+  height: 33px;
+  margin-top: 10px;
+  transition: all 0.2s ease-in;
+}
+
+#rem_button:hover {
+  background-color: rgb(138, 137, 137);
 }
