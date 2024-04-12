@@ -13,7 +13,7 @@ root {
   /*box-sizing: border-box;*/
   font-family: "Poppins", "Helvetica Neue", sans-serif;
   /* outline for testing purposes */
-  outline: red dashed 1px;
+  /*outline: red dashed 1px;*/
 }
 a {
   text-decoration: none;
