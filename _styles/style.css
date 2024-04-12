@@ -678,3 +678,8 @@ footer {
 #rem_button:hover {
   background-color: rgb(138, 137, 137);
 }
+
+.checkout_button {
+
+  padding-left: 30px;
+}
