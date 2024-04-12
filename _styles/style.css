@@ -262,7 +262,8 @@ footer {
   transition: color, 0.3s ease;
 }
 
-#icons {
+#icons_bag,
+#icons_heart {
   border-bottom-style: solid;
   border-bottom-color: rgb(255, 255, 255);
   margin-right: 15px;
@@ -270,7 +271,8 @@ footer {
   transition: all 0.2s ease-in;
 }
 
-#icons:hover {
+#icons_bag:hover,
+#icons_heart:hover {
   border-bottom-color: rgb(20, 149, 255);
 }
 
@@ -292,7 +294,7 @@ footer {
   border-bottom: 2px solid rgb(20, 149, 255);
 }
 
-#right-item.active {
+#icons_bag.active {
   border-bottom: 2px solid rgb(20, 149, 255);
 }
 
