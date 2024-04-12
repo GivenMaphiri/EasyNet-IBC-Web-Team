@@ -40,7 +40,7 @@ root {
   color: #00bfff;
 }
 
-#middle li:hover .dropdown{
+#middle li:hover .dropdown {
   transition: all 0.3s ease;
   top: 70px;
   opacity: 1;
@@ -50,9 +50,9 @@ root {
 /*--------------------------------------*/
 /*mega-menu css*/
 .dropdown {
-  position: absolute; 
+  position: absolute;
   width: 60%;
-  top:85px;
+  top: 85px;
   background: white;
   left: 25%;
   padding: 0px 20px;
@@ -62,21 +62,21 @@ root {
 }
 
 .dropdown .dropdown-content {
- background: white;
- padding: 20px 25px;
- display: flex;
- width: 100%;
- text-align: start;
+  background: white;
+  padding: 20px 25px;
+  display: flex;
+  width: 100%;
+  text-align: start;
 }
 
-.dropdown .dropdown-content  .row {
+.dropdown .dropdown-content .row {
   width: 200%;
   line-height: 30px;
 }
 
-.dropdown-content .row h4{
- font-size: 30px;
- font-weight: 500%;
+.dropdown-content .row h4 {
+  font-size: 30px;
+  font-weight: 500%;
 }
 
 .dropdown-content .row .mega-link {
@@ -84,11 +84,11 @@ root {
   border-left: 1px solid rgb(20, 149, 255);
 }
 
-.row .mega-link li{
+.row .mega-link li {
   padding: 0 10px;
-} 
+}
 
-.row .mega-link li a{
+.row .mega-link li a {
   padding: 0 20px;
   display: block;
 }
@@ -250,19 +250,19 @@ footer {
   width: 250px;
 }
 
-#right-item a{
+#right-item a {
   text-decoration: none;
-  color:black;
+  color: black;
   font-size: 17px;
   display: inline-block;
-  margin-left: 30px;  
-  transition: color, 0.3s ease; 
- }
- 
- #right-item a:hover {
-   color: rgb(20, 149, 255);
- }
- 
+  margin-left: 30px;
+  transition: color, 0.3s ease;
+}
+
+#right-item a:hover {
+  color: rgb(20, 149, 255);
+}
+
 #nav_content {
   list-style: none;
   text-align: center;
@@ -523,18 +523,16 @@ footer {
 #prod_left {
   display: flex;
   width: 200px;
+  padding-top: 20px;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 #prod_left ul li {
   list-style: none;
 }
 #prod_left ul {
-  position: fixed;
-  top: 200px;
-  left: 60px;
-  right: 0;
 }
 
 #prod_right {
