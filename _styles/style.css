@@ -292,6 +292,10 @@ footer {
   border-bottom: 2px solid rgb(20, 149, 255);
 }
 
+#right-item.active {
+  border-bottom: 2px solid rgb(20, 149, 255);
+}
+
 #home_paragraph {
   display: flex;
   flex-direction: column;
@@ -436,7 +440,7 @@ footer {
 }
 
 footer {
-  background-color: #D9D9D9;
+  background-color: #d9d9d9;
 }
 
 #product_head {
@@ -547,8 +551,6 @@ footer {
 #prod_left ul li {
   list-style: none;
 }
-#prod_left ul {
-}
 
 #prod_right {
   display: flex;
@@ -560,7 +562,7 @@ footer {
   border-right-style: none;
   border-bottom-style: none;
   border-left-color: black;
-  padding-left: 30px;
+  padding-left: 70px;
 }
 
 #prod_display {
