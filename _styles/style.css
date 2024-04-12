@@ -15,7 +15,10 @@ root {
   /* outline for testing purposes */
   /*outline: red dashed 1px;*/
 }
-
+a {
+  text-decoration: none;
+  color: black;
+}
 /* ----------------------------------------------------------------------------------*/
 /* navigation css*/
 
@@ -353,6 +356,30 @@ footer {
   padding: 10px;
   border-radius: 10px;
   border-width: 1px;
+}
+
+#prodbox2 {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  transition: all 0.2s ease-in;
+}
+
+#prodbox2 p b {
+  text-align: left;
+}
+
+#prodbox2:hover {
+  cursor: pointer;
+  border-color: rgb(20, 149, 255);
+  box-shadow: 0px 0px 5px gray;
 }
 
 #boxbutton {
