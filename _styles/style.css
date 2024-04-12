@@ -250,17 +250,28 @@ footer {
   width: 250px;
 }
 
-#right-item a {
-  text-decoration: none;
+#right-item {
   color: black;
   font-size: 17px;
-  display: inline-block;
-  margin-left: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  padding-right: 10px;
   transition: color, 0.3s ease;
 }
 
-#right-item a:hover {
-  color: rgb(20, 149, 255);
+#icons {
+  border-bottom-style: solid;
+  border-bottom-color: rgb(255, 255, 255);
+  margin-right: 15px;
+  padding-bottom: 2px;
+  transition: all 0.2s ease-in;
+}
+
+#icons:hover {
+  border-bottom-color: rgb(20, 149, 255);
 }
 
 #nav_content {
