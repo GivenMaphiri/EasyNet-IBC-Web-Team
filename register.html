@@ -48,7 +48,31 @@
         </p>
       </div>
     </header>
-    <h1>This is the register/sign up page</h1>
+
+    <main>
+      <div class="signup-container">
+        <h1>Sign Up</h1>
+        <div style="display: flex; justify-content: space-between;">
+            <h2 style="text-align: left;">Personal Info</h2>
+            <h2 style="text-align: right;">Sign Up</h2>
+        </div>
+        <form action="signup.php" method="post"> <!-- Replace "signup.php" with your backend script -->
+          
+            <!-- Personal Info -->
+            <input type="text" name="full_name" placeholder="Full Name" required>
+            <input type="text" name="surname" placeholder="Surname" required>
+            <input type="text" name="phone_number" placeholder="Phone Number" required>
+
+            <!-- Sign Up -->
+            <input type="email" name="email" placeholder="Email Address" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+    </main>
+
     <footer>
       <nav>
         <ul id="nav_content_foot">
