@@ -611,16 +611,13 @@ footer {
   padding-left: 30px;
   text-align: right;
   display: flex;
-  
 }
 
 #Logo_name1 {
-  
   color: rgb(20, 149, 255);
 }
 
 #Logo_name2 {
-  
   color: rgb(29, 181, 5);
 }
 
@@ -629,13 +626,12 @@ footer {
   width: 1300px;
 }
 
-
 .checkout h2 {
   padding-top: 15px;
   text-align: center;
 }
 
-.checkout h1{
+.checkout h1 {
   font-size: 3rem;
 }
 
@@ -645,7 +641,6 @@ footer {
   row-gap: 10px;
   padding-top: 20px;
   padding-bottom: 10px;
-  
 }
 
 #checkbox1 {
@@ -680,6 +675,14 @@ footer {
 }
 
 .checkout_button {
-
   padding-left: 30px;
+}
+
+#prod_line {
+  margin-top: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
+  background-color: black;
+  height: 1px;
+  border-style: none;
 }
