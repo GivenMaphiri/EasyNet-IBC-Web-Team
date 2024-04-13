@@ -690,14 +690,19 @@ footer {
 
 #prod_info_section {
   display: flex;
-  margin-left: 6%;
-  margin-right: 6%;
-  justify-content: flex-start;
+  margin-left: 20px;
+  margin-right: 20px;
+  justify-content: space-around;
   align-items: flex-start;
-  flex-wrap: wrap;
-  height: 100vh;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
+  height: 60vh;
   padding-top: 10px;
-  gap: 150px;
+  gap: 100px;
 }
 
 #prod_info {
@@ -718,6 +723,13 @@ footer {
 
 #prod_code {
   color: rgb(162, 162, 162);
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
+  padding-bottom: 5px;
 }
 
 #prod_img {
@@ -751,4 +763,54 @@ footer {
   color: rgb(20, 149, 255);
   border-color: rgb(20, 149, 255);
   box-shadow: 0px 0px 3px gray;
+}
+
+#add_more {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-bottom: 15px;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  border-bottom-width: 1px;
+}
+
+#prodbox3 {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 250px;
+  height: 275px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  transition: all 0.2s ease-in;
+}
+
+#prodbox3 p b {
+  text-align: left;
+}
+
+#prodbox3:hover {
+  cursor: pointer;
+  border-color: rgb(20, 149, 255);
+  box-shadow: 0px 0px 5px gray;
+}
+
+#prod_display2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 20px;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }
