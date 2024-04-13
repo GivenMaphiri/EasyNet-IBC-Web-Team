@@ -398,6 +398,7 @@ footer {
 
 #boxbutton:hover {
   background-color: rgb(29, 181, 5);
+  box-shadow: 0px 0px 3px gray;
 }
 
 #loginlinks {
@@ -685,4 +686,69 @@ footer {
   background-color: black;
   height: 1px;
   border-style: none;
+}
+
+#prod_info_section {
+  display: flex;
+  margin-left: 6%;
+  margin-right: 6%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100vh;
+  padding-top: 10px;
+  gap: 150px;
+}
+
+#prod_info {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+}
+#info_top {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+#prod_name {
+  width: 350px;
+  text-wrap: wrap;
+}
+
+#prod_code {
+  color: rgb(162, 162, 162);
+}
+
+#prod_img {
+  padding-top: 100px;
+}
+
+#prod_price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+#addfavourite {
+  cursor: pointer;
+  font-size: 15px;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: black;
+  color: rgb(0, 0, 0);
+  background-color: #ffffff;
+  width: 200px;
+  height: 33px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+  transition: all 0.2s ease-in;
+}
+
+#addfavourite:hover {
+  color: rgb(20, 149, 255);
+  border-color: rgb(20, 149, 255);
+  box-shadow: 0px 0px 3px gray;
 }
