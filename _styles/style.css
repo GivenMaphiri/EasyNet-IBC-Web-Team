@@ -968,3 +968,85 @@ footer {
 #partners:hover {
   width: 165px;
 }
+
+#register_heading {
+  margin-top: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  padding-bottom: 5px;
+  border-bottom-width: 1px;
+}
+
+#signup_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  gap: 300px;
+}
+
+#signup_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+}
+
+#signup_right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 5px;
+}
+
+.signup_box {
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: black;
+  height: 25px;
+  width: 400px;
+  padding-left: 5px;
+  transition: all 0.2s ease-in;
+}
+
+.signup_box:hover {
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+.signup_box:focus {
+  outline: none;
+  border-bottom-color: rgb(20, 149, 255);
+}
+
+#signup_button {
+  cursor: pointer;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #00bfff;
+  margin-bottom: 5px;
+  width: 200px;
+  height: 33px;
+  margin-top: 10px;
+  transition: all 0.2s ease-in;
+}
+
+#signup_button:hover {
+  background-color: rgb(29, 181, 5);
+  box-shadow: 0px 0px 3px gray;
+}

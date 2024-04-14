@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyNet IBC | Sign Up</title>
-    <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="_images/_logos/easynet_icon.png"
+    />
     <link href="_styles/style.css" rel="stylesheet" />
   </head>
 
@@ -60,50 +64,62 @@
 
     <main>
       <h1 id="register_heading">Sign Up</h1>
-      <h2 id="register_heading_2">Personal Info</h2>
-      <h2 id="register_heading_2">Sign Up</h2>
-      <div class="signup-container">
-        <form action="signup.php" method="post">
-          <!-- Replace "signup.php" with your backend script -->
 
-          <!-- Personal Info -->
-          <input
-            type="text"
-            name="full_name"
-            placeholder="Full Name"
-            required
-          />
-          <input type="text" name="surname" placeholder="Surname" required />
-          <input
-            type="text"
-            name="phone_number"
-            placeholder="Phone Number"
-            required
-          />
+      <form action="signup.php" method="post">
+        <!-- Personal Info -->
+        <div id="signup_container">
+          <div id="signup_left">
+            <input
+              type="text"
+              name="first_name"
+              placeholder="First Name"
+              class="signup_box"
+              required
+            />
+            <input
+              type="text"
+              name="surname"
+              class="signup_box"
+              placeholder="Surname"
+              required
+            />
+            <input
+              type="text"
+              name="phone_number"
+              placeholder="Phone Number"
+              class="signup_box"
+              required
+            />
+          </div>
 
           <!-- Sign Up -->
-          <input
-            type="email"
-            name="email"
-            placeholder="Email Address"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
-          />
-          <input
-            type="password"
-            name="confirm_password"
-            placeholder="Confirm Password"
-            required
-          />
+          <div id="signup_right">
+            <input
+              type="email"
+              name="email"
+              placeholder="Email Address"
+              class="signup_box"
+              required
+            />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              class="signup_box"
+              required
+            />
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Confirm Password"
+              class="signup_box"
+              required
+            />
 
-          <button type="submit">Sign Up</button>
-        </form>
-      </div>
+            <button type="submit" id="signup_button">Sign Up</button>
+          </div>
+        </div>
+      </form>
     </main>
 
     <footer>
