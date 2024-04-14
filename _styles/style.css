@@ -233,7 +233,6 @@ footer {
   color: white;
   text-align: center;
   text-shadow: 1px 1px 1px black;
-  
 }
 
 #left {
@@ -840,9 +839,7 @@ footer {
   gap: 10px;
 }
 
-
 /*---------- Contact Page -------------------*/
-
 
 #contact_body {
   display: flex;
@@ -852,14 +849,11 @@ footer {
   margin-right: 100px;
   justify-content: left;
   align-items: flex-start;
-
 }
-
 
 #contact_headings {
   margin-bottom: 0;
   padding-top: 45px;
-  
 }
 
 #contact_paragraph {
@@ -877,4 +871,31 @@ footer {
   margin-top: 50px;
 }
 
+#about_paragraph {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 70px;
+  margin-right: 70px;
+  gap: 30px;
+}
 
+#about_description {
+  padding-top: 20px;
+}
+
+#market_list {
+  list-style: none;
+}
+
+#about_headings {
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-bottom-color: black;
+  padding-bottom: 5px;
+  border-bottom-width: 1px;
+}
