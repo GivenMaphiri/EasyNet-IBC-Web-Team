@@ -4,7 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>EasyNet IBC | Sign Up</title>
-    <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="_images/_logos/easynet_icon.png"
+    />
     <link href="_styles/style.css" rel="stylesheet" />
   </head>
 
@@ -59,26 +63,28 @@
     </header>
 
     <main>
-      <h1 id="login_headings">Login</h1>
-      <hr id="lines" />
-      <h2 id="login_headings">Login Info</h2>
-      <div class="login-container">
-        <form action="login.php" method="post">
-          <!-- Replace "login.php" with your backend script -->
-          <input type="text" name="email" placeholder="Email" required />
-          <br />
-          <br />
+      <h1 id="login_heading">Login</h1>
+
+      <form action="login.php" method="post">
+        <!-- Replace "login.php" with your backend script -->
+        <div id="login_container">
+          <input
+            type="text"
+            name="email"
+            placeholder="Email"
+            class="signup_box"
+            required
+          />
           <input
             type="password"
             name="password"
             placeholder="Password"
+            class="signup_box"
             required
           />
-          <br />
-          <br />
-          <button type="submit">Login</button>
-        </form>
-      </div>
+          <button type="submit" id="login_button">Login</button>
+        </div>
+      </form>
     </main>
 
     <footer>
