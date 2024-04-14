@@ -233,6 +233,7 @@ footer {
   color: white;
   text-align: center;
   text-shadow: 1px 1px 1px black;
+  
 }
 
 #left {
@@ -838,3 +839,42 @@ footer {
   align-items: center;
   gap: 10px;
 }
+
+
+/*---------- Contact Page -------------------*/
+
+
+#contact_body {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-left: 100px;
+  margin-right: 100px;
+  justify-content: left;
+  align-items: flex-start;
+
+}
+
+
+#contact_headings {
+  margin-bottom: 0;
+  padding-top: 45px;
+  
+}
+
+#contact_paragraph {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+#contact_map {
+  display: block;
+  margin: auto;
+  border-radius: 11px;
+}
+
+#contact_footer {
+  margin-top: 50px;
+}
+
+
