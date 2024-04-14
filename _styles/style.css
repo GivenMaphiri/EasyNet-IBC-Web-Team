@@ -814,3 +814,27 @@ footer {
   padding-top: 20px;
   padding-bottom: 10px;
 }
+
+#heart_button {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 33px;
+  width: 33px;
+  border-style: solid;
+  background-color: white;
+  border-radius: 100%;
+  transition: all 0.2s ease-in;
+}
+
+#heart_button:hover {
+  border-color: rgb(20, 149, 255);
+}
+
+#add_heart_buttons {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
