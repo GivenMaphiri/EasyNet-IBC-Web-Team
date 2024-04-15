@@ -888,7 +888,6 @@ footer {
     border-radius: 24px;
     margin-bottom: 35px;
     margin-top: 35px;
-    justify-content: center;
 }
 
 #contact_body {
@@ -909,11 +908,20 @@ footer {
 }
 
 #about_description {
-  padding-top: 20px;
+  padding-top: 45px;
+  text-align: justify;
+  font-size: large;
+}
+
+#info_paragraph {
+  padding-bottom: 45px;
+  padding-top: 15px;
+  text-align: inherit;
 }
 
 #market_list {
   list-style: none;
+  text-align: center;
 }
 
 #about_headings {
