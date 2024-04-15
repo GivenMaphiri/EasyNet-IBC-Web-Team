@@ -301,6 +301,8 @@ footer {
   border-bottom: 2px solid rgb(20, 149, 255);
 }
 
+/*-----------Home Page -----------------------------------*/
+
 #home_paragraph {
   display: flex;
   flex-direction: column;
@@ -312,11 +314,12 @@ footer {
 }
 #home_heading {
   margin-bottom: 0;
+  
 }
 
 #home_para {
   margin-top: 0;
-  padding-bottom: 15px;
+  padding-bottom: 45px;
 }
 
 #home_box {
