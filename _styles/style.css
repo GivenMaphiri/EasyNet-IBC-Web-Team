@@ -847,29 +847,55 @@ footer {
   width: max-content;
   margin-left: 100px;
   margin-right: 100px;
-  justify-content: left;
+  justify-content: center;
   align-items: flex-start;
+  
+
 }
 
 #contact_headings {
   margin-bottom: 0;
   padding-top: 45px;
+  
 }
 
 #contact_paragraph {
   padding-top: 30px;
   padding-bottom: 20px;
+  text-align: center;
 }
 
 #contact_map {
   display: block;
   margin: auto;
   border-radius: 11px;
+  margin-bottom: 5rem;
+  width: 600px;
 }
 
 #contact_footer {
   margin-top: 50px;
 }
+
+
+
+.contact_info {
+  
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 24px;
+    margin-bottom: 35px;
+    margin-top: 35px;
+    justify-content: center;
+}
+
+#contact_body {
+  align-self: center;
+}
+
+/*---about page -------------------------------*/
 
 #about_paragraph {
   display: flex;
@@ -1095,3 +1121,4 @@ footer {
   background-color: rgb(29, 181, 5);
   box-shadow: 0px 0px 3px gray;
 }
+
