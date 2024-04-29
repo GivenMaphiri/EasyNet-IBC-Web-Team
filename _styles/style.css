@@ -314,7 +314,6 @@ footer {
 }
 #home_heading {
   margin-bottom: 0;
-  
 }
 
 #home_para {
@@ -852,14 +851,11 @@ footer {
   margin-right: 100px;
   justify-content: center;
   align-items: flex-start;
-  
-
 }
 
 #contact_headings {
   margin-bottom: 0;
   padding-top: 45px;
-  
 }
 
 #contact_paragraph {
@@ -880,17 +876,14 @@ footer {
   margin-top: 50px;
 }
 
-
-
 .contact_info {
-  
-    width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 2px solid black;
-    border-radius: 24px;
-    margin-bottom: 35px;
-    margin-top: 35px;
+  width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 2px solid black;
+  border-radius: 24px;
+  margin-bottom: 35px;
+  margin-top: 35px;
 }
 
 #contact_body {
@@ -1133,3 +1126,62 @@ footer {
   box-shadow: 0px 0px 3px gray;
 }
 
+#checkbutton {
+  font-size: 15px;
+  cursor: pointer;
+  display: none;
+}
+
+#check {
+  display: none;
+}
+
+@media (max-width: 1250px) {
+  #middle nav ul li a {
+    font-size: 12px;
+  }
+
+  #loginlinks {
+    font-size: 14px;
+  }
+
+  #icons_heart {
+    width: 25px;
+  }
+
+  #icons_bag {
+    width: 25px;
+  }
+}
+
+@media (max-width: 1080px) {
+  #checkbutton {
+    display: block;
+  }
+  .dropdown {
+    display: none;
+  }
+
+  #middle nav ul {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background: #ffffff;
+    box-shadow: 0px 0px 3px gray;
+    top: 85px;
+    text-align: left;
+  }
+
+  #middle nav ul li {
+    display: block;
+    padding-top: 25px;
+  }
+
+  #middle nav ul li a {
+    font-size: 20px;
+  }
+
+  #check:checked ~ #middle nav ul {
+    display: block;
+  }
+}
