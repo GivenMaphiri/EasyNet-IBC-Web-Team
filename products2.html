@@ -11,6 +11,10 @@
     />
     <link href="_styles/font-awesome.css" rel="stylesheet" />
     <link href="_styles/style.css" rel="stylesheet" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header>
@@ -23,7 +27,7 @@
             title="EasyNet Homepage"
         /></a>
       </div>
-
+      <input type="checkbox" id="check" />
       <div id="middle">
         <nav>
           <ul id="nav_content">
@@ -105,14 +109,18 @@
           <a href="register.html" id="loginlinks">Sign Up</a> /
           <a href="login.html" id="loginlinks">Log In</a>
         </p>
-      </div>
-      <div id="right-item">
-        <a href="#"
-          ><img id="icons_heart" src="_images/_icons/heart.png" width="30px"
-        /></a>
-        <a href="checkout.html"
-          ><img id="icons_bag" src="_images/_icons/bag.png" width="30px"
-        /></a>
+        <div id="right-item">
+          <a href="#"
+            ><img id="icons_heart" src="_images/_icons/heart.png" width="30px"
+          /></a>
+          <a href="checkout.html"
+            ><img id="icons_bag" src="_images/_icons/bag.png" width="30px"
+          /></a>
+        </div>
+        <label for="check" class="menu">
+          <i class="bx bx-menu" id="menu_icon"></i>
+          <i class="bx bx-x" id="close_icon"></i>
+        </label>
       </div>
     </header>
     <main>

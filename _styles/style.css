@@ -1126,8 +1126,9 @@ footer {
   box-shadow: 0px 0px 3px gray;
 }
 
-#checkbutton {
-  font-size: 15px;
+.menu {
+  font-size: 2.8rem;
+  color: black;
   cursor: pointer;
   display: none;
 }
@@ -1154,34 +1155,77 @@ footer {
   }
 }
 
-@media (max-width: 1080px) {
-  #checkbutton {
-    display: block;
-  }
-  .dropdown {
-    display: none;
-  }
-
-  #middle nav ul {
-    position: fixed;
-    width: 100%;
-    height: 100vh;
-    background: #ffffff;
-    box-shadow: 0px 0px 3px gray;
-    top: 85px;
-    text-align: left;
-  }
-
+@media (max-width: 1050px) {
   #middle nav ul li {
     display: block;
-    padding-top: 25px;
+    padding-top: 15px;
+    transform: translateY(-50px);
+    transition: all 0.3s ease;
   }
 
   #middle nav ul li a {
     font-size: 20px;
   }
 
-  #check:checked ~ #middle nav ul {
+  .dropdown {
+    display: none;
+  }
+
+  #loginlinks {
+    font-size: 12px;
+  }
+
+  #icons_heart {
+    width: 24px;
+  }
+
+  #icons_bag {
+    width: 24px;
+  }
+
+  .menu {
+    display: inline-flex;
+  }
+
+  .menu #close_icon {
+    display: none;
+  }
+
+  #middle {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin: 0;
+    width: 100%;
+    height: 0;
+    background-color: white;
+    overflow: hidden;
+    border-top-style: solid;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom-style: solid;
+    border-bottom-color: black;
+    border-top-color: black;
+    border-bottom-width: 0.5px;
+    border-top-width: 0.5px;
+    transition: all 0.3s ease;
+  }
+
+  #check:checked ~ #middle {
+    height: 17.7rem;
+  }
+  #check:checked ~ .menu #menu_icon {
+    display: none;
+  }
+
+  #check:checked ~ .menu #close_icon {
     display: block;
+  }
+  #check:checked ~ #middle nav ul li {
+    transform: translateY(0);
+  }
+
+  header {
+    justify-content: space-between;
   }
 }
