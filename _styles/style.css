@@ -6,6 +6,14 @@ root {
   --Poppins: "Poppins";
   --dark: #353336;
 }
+
+/* Animations */
+@keyframes slideLeft {
+  from{
+    transform: translateX(300%);
+  }
+}
+
 * {
   margin: 0;
   margin-left: 0;
@@ -345,6 +353,7 @@ footer {
   row-gap: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
+  animation: slideLeft 2s;
 }
 
 #prodbox1 {
