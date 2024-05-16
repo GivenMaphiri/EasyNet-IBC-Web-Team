@@ -329,6 +329,18 @@ footer {
   justify-content: center;
 }
 
+#fadecontainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#element{
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
 #lines {
   margin: 0;
   width: 400px;
