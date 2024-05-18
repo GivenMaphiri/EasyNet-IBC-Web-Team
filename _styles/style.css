@@ -140,7 +140,7 @@ header {
   margin-bottom: 50px;
   height: 55px;
   z-index: 99;
-  background-color:  	#f9f9f9;
+  background-color: rgb(255, 255, 255);
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(5, 5, 5);
@@ -613,6 +613,13 @@ footer {
   row-gap: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
+}
+
+/* ------------ Favourite page-----------*/
+
+.favourite_heading{
+  padding: 20px;
+  margin-top: 200px;
 }
 
 /* ------------ Checkout page-----------*/
