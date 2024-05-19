@@ -9,9 +9,11 @@ root {
 
 /* Animations */
 @keyframes slideLeft {
-  from{
-    transform: translateX(300%);
-  }
+  from{transform: translateX(300%);}
+}
+
+@keyframes slideUp {
+  from{transform: translateY(300%);}
 }
 
 * {
@@ -118,6 +120,8 @@ a {
   z-index: -1;
   /*opacity: 0;*/
   transition: all 0.5s;
+  animation-name: slideUp;
+  animation-duration: 0.3s;
 }
 
 #background_home h2,
@@ -126,6 +130,8 @@ a {
 #background_partners h2,
 #background_contact h2 {
   z-index: -1;
+  animation-name: slideUp;
+  animation-duration: 0.3s;
 }
 
 header {
