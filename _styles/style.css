@@ -9,9 +9,11 @@ root {
 
 /* Animations */
 @keyframes slideLeft {
-  from{
-    transform: translateX(300%);
-  }
+  from{transform: translateX(300%);}
+}
+
+@keyframes slideUp {
+  from{transform: translateY(300%);}
 }
 
 * {
@@ -118,6 +120,8 @@ a {
   z-index: -1;
   /*opacity: 0;*/
   transition: all 0.5s;
+  animation-name: slideUp;
+  animation-duration: 0.3s;
 }
 
 #background_home h2,
@@ -126,6 +130,8 @@ a {
 #background_partners h2,
 #background_contact h2 {
   z-index: -1;
+  animation-name: slideUp;
+  animation-duration: 0.3s;
 }
 
 header {
@@ -140,7 +146,7 @@ header {
   margin-bottom: 50px;
   height: 55px;
   z-index: 99;
-  background-color:  	#f9f9f9;
+  background-color: rgb(255, 255, 255);
   border-bottom-width: 1px;
   border-bottom-style: solid;
   border-bottom-color: rgb(5, 5, 5);
@@ -626,6 +632,8 @@ footer {
   padding-top: 20px;
   padding-bottom: 10px;
 }
+
+/* ------------ Favourite page-----------*/
 
 /* ------------ Checkout page-----------*/
 
