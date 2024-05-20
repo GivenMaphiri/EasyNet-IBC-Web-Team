@@ -9,11 +9,15 @@ root {
 
 /* Animations */
 @keyframes slideLeft {
-  from{transform: translateX(300%);}
+  from {
+    transform: translateX(300%);
+  }
 }
 
 @keyframes slideUp {
-  from{transform: translateY(300%);}
+  from {
+    transform: translateY(300%);
+  }
 }
 
 * {
@@ -181,7 +185,7 @@ footer {
   text-shadow: 1px 1px 1px black;
 }
 
-#background_home button{
+#background_home button {
   display: inline-block;
   align-items: start;
   justify-content: center;
@@ -367,7 +371,7 @@ footer {
 
 #homeboxes {
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
   animation: slideLeft 2s;
@@ -597,6 +601,10 @@ footer {
 
 #prod_left ul li {
   list-style: none;
+}
+#prod_left ul {
+  display: flex;
+  flex-direction: row;
 }
 
 #prod_left {
