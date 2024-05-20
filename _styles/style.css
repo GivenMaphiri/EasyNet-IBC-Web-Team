@@ -175,6 +175,19 @@ footer {
   text-shadow: 1px 1px 1px black;
 }
 
+#background_home button{
+  display: inline-block;
+  align-items: start;
+  justify-content: center;
+  background-color: transparent;
+  border-color: #d9d9d9;
+  color: white;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 20px;
+}
+
 #background_about {
   background-color: rgb(49, 49, 250);
   background-image: url("../_images/_background/aboutus1.jpg");
@@ -331,7 +344,6 @@ footer {
 
 #home_box {
   display: flex;
-  flex-direction: column;
   margin-left: 20%;
   margin-right: 20%;
   justify-content: center;
@@ -348,12 +360,12 @@ footer {
 }
 
 #homeboxes {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  row-gap: 20px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  flex-wrap: wrap;
   animation: slideLeft 2s;
+  padding: 25px 50px;
 }
 
 #prodbox1 {
@@ -364,7 +376,7 @@ footer {
   width: 250px;
   height: 315px;
   border-style: solid;
-  padding: 10px;
+  padding: 25px 15px;
   border-radius: 10px;
   border-width: 1px;
 }
