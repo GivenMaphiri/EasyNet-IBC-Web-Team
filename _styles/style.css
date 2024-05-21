@@ -903,9 +903,6 @@ footer {
 #contact_body {
   display: grid;
   grid-template-columns: 1fr 1fr;
- /* display: flex;
-  flex-direction: column;
-  width: max-content;*/
   margin-left: 100px;
   margin-right: 100px;
   justify-content: center;
@@ -947,6 +944,39 @@ footer {
 
 #contact_body {
   align-self: center;
+}
+
+.contact_form {
+  margin: 300px;
+  margin-top: 30px;
+  padding: 40px;
+  background: #ccc;
+  border-radius: 15px;
+}
+
+.contact_form h1{
+  text-align: center;
+}
+
+#contactForm label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+#contactForm input, textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin-bottom: 1rem;
+}
+
+#contactForm button {
+  background-color: #00bfff;
+  color: #fff;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /*---about page -------------------------------*/
