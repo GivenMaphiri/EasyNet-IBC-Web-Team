@@ -191,11 +191,19 @@ footer {
   justify-content: center;
   background-color: transparent;
   border-color: #d9d9d9;
+  border-radius: 10px;
+  border-style: solid;
+  width: 200px;
   color: white;
   background-repeat: no-repeat;
   cursor: pointer;
   font-weight: 900;
   font-size: 20px;
+  transition: all 0.2s ease-in;
+}
+
+#background_home button:hover {
+  border-color: rgb(20, 149, 255);
 }
 
 #background_about {
@@ -370,12 +378,13 @@ footer {
 }
 
 #homeboxes {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  animation: slideLeft 2s;
-  padding: 25px 50px;
+  display: grid;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 #prodbox1 {
@@ -555,6 +564,7 @@ footer {
   margin: 0;
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin: 15px;
 }
 
@@ -592,16 +602,10 @@ footer {
   border-bottom-color: black;
 }
 
-#product_mainpage {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-}
-
 #prod_left ul li {
   list-style: none;
 }
+
 #prod_left ul {
   display: flex;
   flex-direction: row;
@@ -611,24 +615,14 @@ footer {
   padding-top: 5px;
 }
 
-#prod_right {
-  display: flex;
-  width: 1fr;
-  flex-direction: column;
-  justify-content: center;
-  border-top-style: none;
-  border-right-style: none;
-  border-bottom-style: none;
-  padding: 25px 25px;
-}
-
 #prod_display {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  column-gap: 30px;
-  row-gap: 20px;
-  padding-top: 5px;
-  padding-bottom: 10px;
+  max-width: 1150px;
+  gap: 1rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 /* ------------ Favourite page-----------*/
@@ -1180,6 +1174,10 @@ footer {
   #icons_bag {
     width: 25px;
   }
+
+  #prod_left ul li {
+    font-size: 14px;
+  }
 }
 
 @media (max-width: 1050px) {
@@ -1254,5 +1252,9 @@ footer {
 
   header {
     justify-content: space-between;
+  }
+
+  #prod_left ul li {
+    font-size: 11px;
   }
 }
