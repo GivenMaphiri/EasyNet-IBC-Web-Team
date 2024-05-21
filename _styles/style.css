@@ -8,12 +8,6 @@ root {
 }
 
 /* Animations */
-@keyframes slideLeft {
-  from {
-    transform: translateX(300%);
-  }
-}
-
 @keyframes slideUp {
   from {
     transform: translateY(300%);
