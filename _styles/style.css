@@ -660,8 +660,8 @@ footer {
 }
 
 #checkout_lines {
-  margin-left: 25px;
-  width: 1300px;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .checkout h2 {
@@ -677,6 +677,8 @@ footer {
   display: grid;
   grid-template-columns: 300px 300px;
   row-gap: 10px;
+  margin-left: 3%;
+  margin-right: 3%;
   padding-top: 20px;
   padding-bottom: 10px;
 }
@@ -709,11 +711,15 @@ footer {
 }
 
 #rem_button:hover {
-  background-color: rgb(138, 137, 137);
+  background-color: rgb(227, 46, 46);
 }
 
 .checkout_button {
-  padding-left: 30px;
+  padding-left: 3%;
+}
+
+#total_price {
+  padding-left: 3%;
 }
 
 #prod_line {
