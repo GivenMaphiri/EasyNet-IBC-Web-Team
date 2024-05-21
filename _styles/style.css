@@ -633,8 +633,6 @@ footer {
   padding-bottom: 20px;
 }
 
-/* ------------ Favourite page-----------*/
-
 /* ------------ Checkout page-----------*/
 
 .checkout_heading {
@@ -774,6 +772,8 @@ footer {
   align-items: center;
   margin-top: 50px;
 }
+
+/* ------------ Favourite page-----------*/
 
 #addfavourite {
   cursor: pointer;
