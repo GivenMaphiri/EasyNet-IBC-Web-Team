@@ -424,6 +424,20 @@ footer {
   box-shadow: 0px 0px 5px gray;
 }
 
+#prodbox4 {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 250px;
+  height: 355px;
+  border-style: solid;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 1px;
+  transition: all 0.2s ease-in;
+}
+
 #boxbutton {
   cursor: pointer;
   font-size: 15px;
@@ -860,6 +874,27 @@ footer {
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
+}
+
+#remove_fav_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#remove_fav {
+  background-color: white;
+  border-style: solid;
+  border-radius: 15px;
+  width: 200px;
+  height: 33px;
+}
+
+#fav_boxes {
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 20px;
 }
 
 /*---------- Contact Page -------------------*/
