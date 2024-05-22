@@ -394,7 +394,7 @@ footer {
   border-width: 1px;
 }
 
-#prodbox1 img{
+#prodbox1 img {
   object-fit: cover;
   height: 200px;
   object-position: center;
@@ -511,24 +511,24 @@ footer {
 }
 
 /*-------------------Body feature section-----------------------------*/
-#features{
+#features {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-#feature_box{
+#feature_box {
   text-align: center;
   padding-top: 1px;
 }
 
-#feature_box p{
+#feature_box p {
   text-align: center;
   padding: 1px 1px;
 }
 
-#fea-container{
+#fea-container {
   cursor: pointer;
-  position:relative;
+  position: relative;
   justify-content: center;
   width: 250px;
   height: 370px;
@@ -539,48 +539,47 @@ footer {
   transition: all 0.3s ease-in;
 }
 
-#fea-container:hover{
+#fea-container:hover {
   box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.06);
 }
 
-#fea{
-  position:relative;
+#fea {
+  position: relative;
   margin-left: auto;
   margin-right: auto;
 }
 
-#fea img{
-object-fit: cover;
-height: 175px;
-object-position: center center;
-top:0;
+#fea img {
+  object-fit: cover;
+  height: 175px;
+  object-position: center center;
+  top: 0;
 }
 
-#fea-container h6{
+#fea-container h6 {
   font-size: 15px;
   color: grey;
   font-weight: 100;
 }
 
-#fea-container h4{
+#fea-container h4 {
   font-size: 20px;
-  font-weight:lighter;
+  font-weight: lighter;
 }
 
-#fea-container h5{
+#fea-container h5 {
   font-size: 18px;
-  font-weight:bold;
-  color: rgb(15, 149, 15)
+  font-weight: bold;
+  color: rgb(15, 149, 15);
 }
 
-#star{
+#star {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-content: baseline;
   width: 50%;
   padding: 5px 5px;
   transition: all 0.2s ease-in;
-
 }
 
 #boxbutton-home {
@@ -593,7 +592,7 @@ top:0;
   height: 33px;
   padding: 5px 5px;
   transition: all 0.2s ease-in;
-  position:absolute;
+  position: absolute;
   bottom: 0;
   margin-left: 25px;
 }
@@ -607,7 +606,7 @@ top:0;
 
 /*-----------banner-------------*/
 
-#deals_banner{
+#deals_banner {
   padding: 20px 0;
   margin: 40px 0;
   display: flex;
@@ -618,16 +617,16 @@ top:0;
   background-image: url("../_images/banner5.jpg");
   object-fit: cover;
   height: 40vh;
-  background-size:cover;
+  background-size: cover;
   background-position: center;
-  font-weight:bolder; 
+  font-weight: bolder;
   font-size: 30px;
 }
-#deals_banner span{
+#deals_banner span {
   color: red;
 }
 
-#deals_banner button{
+#deals_banner button {
   display: inline-block;
   align-items: start;
   justify-content: center;
@@ -644,19 +643,19 @@ top:0;
   transition: all 0.2s ease-in;
 }
 
-#deals_banner button:hover{
+#deals_banner button:hover {
   background-color: rgb(20, 149, 255);
 }
 
-#bottom_banners{
+#bottom_banners {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 20px;
   font-size: small;
-  }
+}
 
-#bottom_banners .info_banner1{
-  margin-left:10px;
+#bottom_banners .info_banner1 {
+  margin-left: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -665,11 +664,11 @@ top:0;
   background-image: url("../_images/banner4.jpg");
   min-width: 200px;
   height: 60vh;
-  background-size:fit;
+  background-size: fit;
   background-position: center;
 }
 
-#bottom_banners .info_banner2{
+#bottom_banners .info_banner2 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -678,11 +677,11 @@ top:0;
   background-image: url("../_images/banner5.jpg");
   min-width: 200px;
   height: 60vh;
-  background-size:fit;
+  background-size: fit;
   background-position: center;
 }
 
-#bottom_banners .info_banner3{
+#bottom_banners .info_banner3 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -691,11 +690,11 @@ top:0;
   background-image: url("../_images/banner4.jpg");
   min-width: 200px;
   height: 60vh;
-  background-size:fit;
+  background-size: fit;
   background-position: center;
 }
 
-#bottom_banners .info_banner4{
+#bottom_banners .info_banner4 {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -704,7 +703,7 @@ top:0;
   background-image: url("../_images/banner2.png");
   min-width: 200px;
   height: 60vh;
-  background-size:fit;
+  background-size: fit;
   background-position: center;
 }
 
@@ -1172,7 +1171,8 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-#contactForm input, textarea {
+#contactForm input,
+textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -1207,7 +1207,8 @@ footer {
     margin-right: 20px;
   }
 
-  .contact_info, .contact_form {
+  .contact_info,
+  .contact_form {
     width: 100%;
     margin: 0 auto;
     margin-top: 50px;
@@ -1215,7 +1216,8 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .contact_info, .contact_form {
+  .contact_info,
+  .contact_form {
     padding: 20px;
   }
 
@@ -1229,7 +1231,8 @@ footer {
 }
 
 @media (max-width: 576px) {
-  .contact_info, .contact_form {
+  .contact_info,
+  .contact_form {
     padding: 15px;
   }
 
@@ -1246,7 +1249,8 @@ footer {
     height: 200px;
   }
 
-  #contactForm input, textarea {
+  #contactForm input,
+  textarea {
     padding: 0.25rem;
   }
 
@@ -1254,7 +1258,6 @@ footer {
     padding: 0.5rem 1rem;
   }
 }
-
 
 /*---about page -------------------------------*/
 
@@ -1336,13 +1339,13 @@ footer {
 
 #client_body_bottom {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 20px;
   gap: 150px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #client_head {
@@ -1353,16 +1356,15 @@ footer {
   margin-top: 20px;
 }
 
-
 .slick-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   color: black;
 }
-
 
 /*--------------------Start of Carousel 2 css -------------------------------------*/
 #client_body_bottom {
@@ -1373,7 +1375,7 @@ footer {
   margin-top: 20px;
   gap: 150px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
 }
 
 #client_head {
@@ -1386,17 +1388,15 @@ footer {
 
 #client_imgs {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
+  justify-content: flex-end;
+  align-items: flex-end;
   margin-top: 20px;
-  width: 100%;
-  margin: 20px;
 }
 
 #client_imgs img {
   display: inline-block; /* Changed from block to inline-block for horizontal layout */
-  margin: 0 100px; /* Adjusted margin for spacing between images */
+
+  margin: 0 50px; /* Adjusted margin for spacing between images */
 }
 
 .slick-slide {
@@ -1405,7 +1405,8 @@ footer {
   align-items: center;
 }
 
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   color: black;
 }
 
@@ -1413,7 +1414,8 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /*--------------------End of Carousel 2 css -------------------------------------*/
@@ -1437,7 +1439,8 @@ footer {
   display: block;
   margin: 0 auto;
 }
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   color: black;
 }
 
