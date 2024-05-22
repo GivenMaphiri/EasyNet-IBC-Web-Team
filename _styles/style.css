@@ -1106,6 +1106,7 @@ footer {
 /*---------- Contact Page -------------------*/
 
 
+/* General styles */
 #contact_body {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1148,10 +1149,6 @@ footer {
   margin-top: 170px;
 }
 
-#contact_body {
-  align-self: center;
-}
-
 .contact_form {
   margin: 300px;
   margin-top: 30px;
@@ -1160,7 +1157,7 @@ footer {
   border-radius: 15px;
 }
 
-.contact_form h1{
+.contact_form h1 {
   text-align: center;
 }
 
@@ -1184,6 +1181,74 @@ footer {
   border-radius: 4px;
   cursor: pointer;
 }
+
+/* Responsive styles */
+@media (max-width: 1200px) {
+  #contact_body {
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  #contact_map {
+    width: 100%;
+  }
+}
+
+@media (max-width: 992px) {
+  #contact_body {
+    grid-template-columns: 1fr;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .contact_info, .contact_form {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact_info, .contact_form {
+    padding: 20px;
+  }
+
+  .contact_form {
+    margin: 0 10px;
+  }
+
+  #contact_map {
+    height: 300px;
+  }
+}
+
+@media (max-width: 576px) {
+  .contact_info, .contact_form {
+    padding: 15px;
+  }
+
+  #contact_headings {
+    padding-top: 20px;
+  }
+
+  #contact_paragraph {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  #contact_map {
+    height: 200px;
+  }
+
+  #contactForm input, textarea {
+    padding: 0.25rem;
+  }
+
+  #contactForm button {
+    padding: 0.5rem 1rem;
+  }
+}
+
 
 /*---about page -------------------------------*/
 
