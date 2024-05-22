@@ -1360,11 +1360,11 @@ footer {
 
 #client_imgs {
   width: 80%;
-  margin: 0 auto;
+  margin: 20px;
 }
 #client_imgs img {
   display: block;
-  margin: 0 auto;
+  margin: 20px;
 }
 .slick-slide {
   display: flex;
