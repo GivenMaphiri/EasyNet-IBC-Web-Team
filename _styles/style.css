@@ -1346,10 +1346,11 @@ footer {
 }
 
 #client_imgs {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  column-gap: 50px;
+  display: flex;
+  justify-content: center;
   align-items: center;
+  gap: 40px;
+  margin-top: 20px;
 }
 
 #client_head {
