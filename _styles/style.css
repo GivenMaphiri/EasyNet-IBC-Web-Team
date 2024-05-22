@@ -1336,11 +1336,13 @@ footer {
 
 #client_body_bottom {
   display: flex;
-  justify-content: center;
-  margin-left: 100px;
-  margin-right: 100px;
+  flex-direction: row;
+  margin-left: 50px;
+  margin-right: 50px;
   margin-top: 20px;
-  gap: 100px;
+  gap: 150px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 #client_imgs {
@@ -1379,7 +1381,7 @@ footer {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  margin: 50px;
 }
 
 #partners {
