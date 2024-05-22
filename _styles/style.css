@@ -394,6 +394,12 @@ footer {
   border-width: 1px;
 }
 
+#prodbox1 img{
+  object-fit: cover;
+  height: 200px;
+  object-position: center;
+}
+
 #prodbox2 {
   display: flex;
   flex-direction: column;
@@ -564,6 +570,7 @@ top:0;
 #fea-container h5{
   font-size: 18px;
   font-weight:bold;
+  color: rgb(15, 149, 15)
 }
 
 #star{
@@ -573,7 +580,7 @@ top:0;
   width: 50%;
   padding: 5px 5px;
   transition: all 0.2s ease-in;
- 
+
 }
 
 #boxbutton-home {
@@ -581,7 +588,7 @@ top:0;
   font-size: 15px;
   border-style: none;
   color: white;
-  background-color: #00bfff;
+  background-color: #0f7f02;
   width: 200px;
   height: 33px;
   padding: 5px 5px;
