@@ -518,7 +518,7 @@ footer {
 
 #feature_box{
   text-align: center;
-  padding-top: 5%;
+  padding-top: 1px;
 }
 
 #feature_box p{
@@ -604,6 +604,49 @@ top:0;
 }
 
 /*------------------------*/
+
+/*-----------banner-------------*/
+
+#deals_banner{
+  padding: 20px 0;
+  margin: 40px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-image: url("../_images/banner5.jpg");
+  object-fit: cover;
+  height: 40vh;
+  background-size:cover;
+  background-position: center;
+  font-weight:bolder; 
+  font-size: 30px;
+}
+#deals_banner span{
+  color: red;
+}
+
+#deals_banner button{
+  display: inline-block;
+  align-items: start;
+  justify-content: center;
+  background-color: solid;
+  border-color: #d9d9d9;
+  border-radius: 10px;
+  border-style: solid;
+  width: 200px;
+  color: black;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  font-weight: 900;
+  font-size: 20px;
+  transition: all 0.2s ease-in;
+}
+
+#deals_banner button:hover{
+  background-color: rgb(20, 149, 255);
+}
 
 #foot_line {
   height: 1px;
