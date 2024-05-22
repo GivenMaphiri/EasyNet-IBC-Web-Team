@@ -1374,7 +1374,8 @@ textarea {
   justify-content: center;
   align-items: center;
 }
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
   color: black;
 }
 .carousel-item {
@@ -1421,6 +1422,7 @@ textarea {
   border-bottom-color: black;
   padding-bottom: 5px;
   border-bottom-width: 1px;
+  font-size: 3rem;
 }
 
 #signup_container {
@@ -1503,6 +1505,7 @@ textarea {
   border-bottom-color: black;
   padding-bottom: 5px;
   border-bottom-width: 1px;
+  font-size: 3rem;
 }
 
 #login_container {
