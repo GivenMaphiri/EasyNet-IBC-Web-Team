@@ -1105,15 +1105,15 @@ footer {
 
 /*---------- Contact Page -------------------*/
 
-
 /* General styles */
 #contact_body {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-left: 100px;
-  margin-right: 100px;
+  margin: 0 auto;
+  max-width: 1200px;
   justify-content: center;
   align-items: flex-start;
+  gap: 20px; /* Add some space between the columns */
 }
 
 #contact_headings {
@@ -1132,7 +1132,8 @@ footer {
   margin: auto;
   border-radius: 11px;
   margin-bottom: 5rem;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
 }
 
 #contact_footer {
@@ -1140,17 +1141,22 @@ footer {
 }
 
 .contact_info {
-  width: 400px;
+  width: 100%;
+  max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   border: 2px solid black;
   border-radius: 24px;
   margin-bottom: 35px;
-  margin-top: 170px;
+  margin-top: 30px;
+  /* Ensure the vertical alignment with Physical Address */
+  align-self: start;
 }
 
 .contact_form {
-  margin: 300px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
   margin-top: 30px;
   padding: 40px;
   border: 2px solid black;
@@ -1185,8 +1191,8 @@ footer {
 /* Responsive styles */
 @media (max-width: 1200px) {
   #contact_body {
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   #contact_map {
@@ -1214,7 +1220,7 @@ footer {
   }
 
   .contact_form {
-    margin: 0 10px;
+    margin: 0 auto;
   }
 
   #contact_map {
