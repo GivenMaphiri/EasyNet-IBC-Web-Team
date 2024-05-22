@@ -1349,14 +1349,6 @@ footer {
   align-items: flex-start;
 }
 
-#client_imgs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin-top: 20px;
-}
-
 #client_head {
   display: flex;
   flex-direction: column;
@@ -1366,26 +1358,34 @@ footer {
 }
 
 #client_imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
   width: 100%;
   margin: 20px;
 }
+
 #client_imgs img {
-  display: block;
-  margin: 0 auto;
+  display: inline-block; /* Changed from block to inline-block for horizontal layout */
+  margin: 0 10px; /* Adjusted margin for spacing between images */
 }
+
 .slick-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .slick-prev:before, .slick-next:before {
   color: black;
 }
+
 .carousel-item {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
   margin: 50px;
 }
 
