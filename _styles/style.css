@@ -1299,6 +1299,8 @@ textarea {
   border-bottom-width: 1px;
 }
 
+/*---Client page ----------------------------------------------*/
+
 #client_list {
   list-style: none;
   padding: 0;
