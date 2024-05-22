@@ -1118,11 +1118,11 @@ footer {
 
 #contact_headings {
   margin-bottom: 0;
-  padding-top: 20px; /* Reduced padding */
+  padding-top: 45px;
 }
 
 #contact_paragraph {
-  padding-top: 20px; /* Reduced padding */
+  padding-top: 30px;
   padding-bottom: 20px;
   text-align: center;
 }
@@ -1147,7 +1147,10 @@ footer {
   padding: 20px;
   border: 2px solid black;
   border-radius: 24px;
-  height: auto; /* Adjust height automatically */
+  margin-bottom: 35px;
+  margin-top: 30px;
+  /* Ensure the vertical alignment with Physical Address */
+  align-self: start;
 }
 
 .contact_form {
@@ -1252,13 +1255,6 @@ footer {
   }
 }
 
-/* Align contact_info with the map */
-.contact_info {
-  margin-top: 0; /* Reset top margin */
-  align-self: center; /* Align vertically to center */
-}
-
-
 
 /*---about page -------------------------------*/
 
@@ -1357,37 +1353,42 @@ footer {
   margin-top: 20px;
 }
 
-#client_imgs {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 40px;
-  margin-top: 20px;
-  width: 100%;
-  margin: 20px;
-}
-
-#client_imgs img {
-  display: inline-block; /* Changed from block to inline-block for horizontal layout */
-  margin: 0 10px; /* Adjusted margin for spacing between images */
-}
 
 .slick-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .slick-prev:before, .slick-next:before {
   color: black;
 }
 
-.carousel-item {
-  display: flex;
+
+/*--------------------Start of Carousel 2 css -------------------------------------*/
+.carousel {
+  overflow: hidden;
+  margin: 10px;
+}
+
+#partner_imgs1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   justify-content: center;
   align-items: center;
-  margin: 50px;
+  gap: 10px;
+  overflow: hidden;
 }
+
+#partner_imgs1 {
+  width: 80%;
+  margin: 0 auto;
+  object-fit: cover;
+}
+#partner_imgs1 img {
+  display: block;
+  margin: 0 auto;
+}
+/*--------------------End of Carousel 2 css -------------------------------------*/
 
 #partners {
   transition: all 0.2s ease-in;
