@@ -1396,7 +1396,7 @@ footer {
 
 #client_imgs img {
   display: inline-block; /* Changed from block to inline-block for horizontal layout */
-  margin: 0 10px; /* Adjusted margin for spacing between images */
+  margin: 0 100px; /* Adjusted margin for spacing between images */
 }
 
 .slick-slide {
