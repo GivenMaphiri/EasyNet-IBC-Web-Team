@@ -1118,11 +1118,11 @@ footer {
 
 #contact_headings {
   margin-bottom: 0;
-  padding-top: 45px;
+  padding-top: 20px; /* Reduced padding */
 }
 
 #contact_paragraph {
-  padding-top: 30px;
+  padding-top: 20px; /* Reduced padding */
   padding-bottom: 20px;
   text-align: center;
 }
@@ -1147,10 +1147,7 @@ footer {
   padding: 20px;
   border: 2px solid black;
   border-radius: 24px;
-  margin-bottom: 35px;
-  margin-top: 30px;
-  /* Ensure the vertical alignment with Physical Address */
-  align-self: start;
+  height: auto; /* Adjust height automatically */
 }
 
 .contact_form {
@@ -1254,6 +1251,13 @@ footer {
     padding: 0.5rem 1rem;
   }
 }
+
+/* Align contact_info with the map */
+.contact_info {
+  margin-top: 0; /* Reset top margin */
+  align-self: center; /* Align vertically to center */
+}
+
 
 
 /*---about page -------------------------------*/
