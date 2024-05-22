@@ -1365,29 +1365,57 @@ footer {
 
 
 /*--------------------Start of Carousel 2 css -------------------------------------*/
-.carousel {
-  overflow: hidden;
-  margin: 10px;
+#client_body_bottom {
+  display: flex;
+  flex-direction: row;
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 20px;
+  gap: 150px;
+  justify-content: center;
+  align-items: flex-start;
 }
 
-#partner_imgs1 {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+#client_head {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  overflow: hidden;
+  margin-top: 20px;
 }
 
-#partner_imgs1 {
-  width: 80%;
-  margin: 0 auto;
-  object-fit: cover;
+#client_imgs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 20px;
+  width: 100%;
+  margin: 20px;
 }
-#partner_imgs1 img {
-  display: block;
-  margin: 0 auto;
+
+#client_imgs img {
+  display: inline-block; /* Changed from block to inline-block for horizontal layout */
+  margin: 0 10px; /* Adjusted margin for spacing between images */
 }
+
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slick-prev:before, .slick-next:before {
+  color: black;
+}
+
+.carousel-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 50px;
+}
+
 /*--------------------End of Carousel 2 css -------------------------------------*/
 
 #partners {
