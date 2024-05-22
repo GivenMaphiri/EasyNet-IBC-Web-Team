@@ -394,7 +394,7 @@ footer {
   border-width: 1px;
 }
 
-#prodbox1 img {
+#prodbox1 img{
   object-fit: cover;
   height: 200px;
   object-position: center;
@@ -511,24 +511,24 @@ footer {
 }
 
 /*-------------------Body feature section-----------------------------*/
-#features {
+#features{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
 }
 
-#feature_box {
+#feature_box{
   text-align: center;
   padding-top: 1px;
 }
 
-#feature_box p {
+#feature_box p{
   text-align: center;
   padding: 1px 1px;
 }
 
-#fea-container {
+#fea-container{
   cursor: pointer;
-  position: relative;
+  position:relative;
   justify-content: center;
   width: 250px;
   height: 370px;
@@ -539,47 +539,48 @@ footer {
   transition: all 0.3s ease-in;
 }
 
-#fea-container:hover {
+#fea-container:hover{
   box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.06);
 }
 
-#fea {
-  position: relative;
+#fea{
+  position:relative;
   margin-left: auto;
   margin-right: auto;
 }
 
-#fea img {
-  object-fit: cover;
-  height: 175px;
-  object-position: center center;
-  top: 0;
+#fea img{
+object-fit: cover;
+height: 175px;
+object-position: center center;
+top:0;
 }
 
-#fea-container h6 {
+#fea-container h6{
   font-size: 15px;
   color: grey;
   font-weight: 100;
 }
 
-#fea-container h4 {
+#fea-container h4{
   font-size: 20px;
-  font-weight: lighter;
+  font-weight:lighter;
 }
 
-#fea-container h5 {
+#fea-container h5{
   font-size: 18px;
-  font-weight: bold;
-  color: rgb(15, 149, 15);
+  font-weight:bold;
+  color: rgb(15, 149, 15)
 }
 
-#star {
+#star{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   justify-content: baseline;
   width: 50%;
   padding: 5px 5px;
   transition: all 0.2s ease-in;
+
 }
 
 #boxbutton-home {
@@ -592,7 +593,7 @@ footer {
   height: 33px;
   padding: 5px 5px;
   transition: all 0.2s ease-in;
-  position: absolute;
+  position:absolute;
   bottom: 0;
   margin-left: 25px;
 }
@@ -606,7 +607,7 @@ footer {
 
 /*-----------banner-------------*/
 
-#deals_banner {
+#deals_banner{
   padding: 20px 0;
   margin: 40px 0;
   display: flex;
@@ -617,16 +618,16 @@ footer {
   background-image: url("../_images/banner5.jpg");
   object-fit: cover;
   height: 40vh;
-  background-size: cover;
+  background-size:cover;
   background-position: center;
-  font-weight: bolder;
+  font-weight:bolder; 
   font-size: 30px;
 }
-#deals_banner span {
+#deals_banner span{
   color: red;
 }
 
-#deals_banner button {
+#deals_banner button{
   display: inline-block;
   align-items: start;
   justify-content: center;
@@ -643,19 +644,19 @@ footer {
   transition: all 0.2s ease-in;
 }
 
-#deals_banner button:hover {
+#deals_banner button:hover{
   background-color: rgb(20, 149, 255);
 }
 
-#bottom_banners {
+#bottom_banners{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin: 20px;
   font-size: small;
-}
+  }
 
-#bottom_banners .info_banner1 {
-  margin-left: 10px;
+#bottom_banners .info_banner1{
+  margin-left:10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -664,11 +665,11 @@ footer {
   background-image: url("../_images/banner4.jpg");
   min-width: 200px;
   height: 60vh;
-  background-size: fit;
+  background-size:fit;
   background-position: center;
 }
 
-#bottom_banners .info_banner2 {
+#bottom_banners .info_banner2{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -677,11 +678,11 @@ footer {
   background-image: url("../_images/banner5.jpg");
   min-width: 200px;
   height: 60vh;
-  background-size: fit;
+  background-size:fit;
   background-position: center;
 }
 
-#bottom_banners .info_banner3 {
+#bottom_banners .info_banner3{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -690,11 +691,11 @@ footer {
   background-image: url("../_images/banner4.jpg");
   min-width: 200px;
   height: 60vh;
-  background-size: fit;
+  background-size:fit;
   background-position: center;
 }
 
-#bottom_banners .info_banner4 {
+#bottom_banners .info_banner4{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -703,7 +704,7 @@ footer {
   background-image: url("../_images/banner2.png");
   min-width: 200px;
   height: 60vh;
-  background-size: fit;
+  background-size:fit;
   background-position: center;
 }
 
@@ -1171,8 +1172,7 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-#contactForm input,
-textarea {
+#contactForm input, textarea {
   width: 100%;
   padding: 0.5rem;
   border: 1px solid #ccc;
@@ -1207,8 +1207,7 @@ textarea {
     margin-right: 20px;
   }
 
-  .contact_info,
-  .contact_form {
+  .contact_info, .contact_form {
     width: 100%;
     margin: 0 auto;
     margin-top: 50px;
@@ -1216,8 +1215,7 @@ textarea {
 }
 
 @media (max-width: 768px) {
-  .contact_info,
-  .contact_form {
+  .contact_info, .contact_form {
     padding: 20px;
   }
 
@@ -1231,8 +1229,7 @@ textarea {
 }
 
 @media (max-width: 576px) {
-  .contact_info,
-  .contact_form {
+  .contact_info, .contact_form {
     padding: 15px;
   }
 
@@ -1249,8 +1246,7 @@ textarea {
     height: 200px;
   }
 
-  #contactForm input,
-  textarea {
+  #contactForm input, textarea {
     padding: 0.25rem;
   }
 
@@ -1258,6 +1254,7 @@ textarea {
     padding: 0.5rem 1rem;
   }
 }
+
 
 /*---about page -------------------------------*/
 
@@ -1299,8 +1296,6 @@ textarea {
   border-bottom-width: 1px;
 }
 
-/*---Client page ----------------------------------------------*/
-
 #client_list {
   list-style: none;
   padding: 0;
@@ -1341,11 +1336,11 @@ textarea {
 
 #client_body_bottom {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   margin-left: 100px;
   margin-right: 100px;
   margin-top: 20px;
-  gap: 200px;
+  gap: 100px;
 }
 
 #client_imgs {
@@ -1364,27 +1359,27 @@ textarea {
 }
 
 #client_imgs {
-  width: 80%;
+  width: 100%;
   margin: 20px;
 }
 #client_imgs img {
   display: block;
-  margin: 20px;
+  margin: 0 auto;
 }
 .slick-slide {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.slick-prev:before,
-.slick-next:before {
+.slick-prev:before, .slick-next:before {
   color: black;
 }
 .carousel-item {
   display: flex;
-  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 #partners {
@@ -1406,8 +1401,7 @@ textarea {
   display: block;
   margin: 0 auto;
 }
-.slick-prev:before,
-.slick-next:before {
+.slick-prev:before, .slick-next:before {
   color: black;
 }
 
@@ -1424,7 +1418,6 @@ textarea {
   border-bottom-color: black;
   padding-bottom: 5px;
   border-bottom-width: 1px;
-  font-size: 3rem;
 }
 
 #signup_container {
@@ -1507,7 +1500,6 @@ textarea {
   border-bottom-color: black;
   padding-bottom: 5px;
   border-bottom-width: 1px;
-  font-size: 3rem;
 }
 
 #login_container {
@@ -1570,10 +1562,6 @@ textarea {
 
   #prod_left ul li {
     font-size: 14px;
-  }
-
-  #signup_container {
-    gap: 100px;
   }
 }
 
@@ -1653,38 +1641,5 @@ textarea {
 
   #prod_left ul li {
     font-size: 11px;
-  }
-}
-
-@media (max-width: 970px) {
-  .signup_box {
-    width: 300px;
-    padding-left: 5px;
-    transition: all 0.2s ease-in;
-  }
-}
-
-@media (max-width: 840px) {
-  #signup_container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-left: 50px;
-    margin-right: 50px;
-    margin-top: 20px;
-    gap: 25px;
-  }
-
-  .signup_box {
-    width: 400px;
-    padding-left: 5px;
-    transition: all 0.2s ease-in;
-  }
-  #register_heading {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
   }
 }
