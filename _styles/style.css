@@ -1358,6 +1358,29 @@ footer {
   margin-top: 20px;
 }
 
+#client_imgs {
+  width: 80%;
+  margin: 0 auto;
+}
+#client_imgs img {
+  display: block;
+  margin: 0 auto;
+}
+.slick-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.slick-prev:before, .slick-next:before {
+  color: black;
+}
+.carousel-item {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
 #partners {
   transition: all 0.2s ease-in;
 }
