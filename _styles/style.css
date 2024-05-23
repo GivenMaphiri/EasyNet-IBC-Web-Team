@@ -1570,18 +1570,14 @@ textarea {
   gap: 5px;
 }
 
-<<<<<<< Updated upstream
 #signup_left h4 {
   color: white;
-=======
-<<<<<<< HEAD
+}
 #signup_left h4{
   color:white;
-=======
+}
 #signup_left h4 {
   color: white;
->>>>>>> d82815c5f1ecd287253d16854d5faaff39b58b52
->>>>>>> Stashed changes
   text-align: end;
   text-indent: 10%;
   font-weight: 100;
@@ -1657,16 +1653,12 @@ textarea {
   position: absolute;
 }
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 .login2{
   height:137%;
-=======
->>>>>>> Stashed changes
+}
+
 .login2 {
   height: 100%;
->>>>>>> d82815c5f1ecd287253d16854d5faaff39b58b52
   width: 100%;
   background-image: url("../_images/background3.jpg");
   background-size: cover;
