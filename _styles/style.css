@@ -959,7 +959,13 @@ footer {
   border-bottom-width: 1px;
   height: 60vh;
   padding-top: 10px;
-  gap: 100px;
+}
+
+#prod_info_bottom {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 150px;
 }
 
 #prod_info {
@@ -1067,11 +1073,12 @@ footer {
 
 #prod_display2 {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 20px;
-  row-gap: 20px;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  max-width: 1150px;
+  gap: 1rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding-top: 30px;
+  padding-bottom: 20px;
 }
 
 #heart_button {
@@ -1222,8 +1229,8 @@ textarea {
     margin-left: 20px;
     margin-right: 20px;
   }
-/*.contact_form, */
-  .contact_info{
+  /*.contact_form, */
+  .contact_info {
     width: 100%;
     margin: 0 auto;
     margin-top: 50px;
@@ -1266,7 +1273,6 @@ textarea {
     padding: 15px;
     margin-top: 30px;
   }
-
 
   #contact_headings {
     padding-top: 20px;
@@ -1483,7 +1489,7 @@ textarea {
   display: flex;
   justify-content: center;
   text-align: center;
-  color:white;
+  color: white;
   font-size: 50px;
   font-weight: 200;
 }
@@ -1503,16 +1509,16 @@ textarea {
   gap: 5px;
 }
 
-#signup_left h4{
-  color:white;
-    text-align: end;
+#signup_left h4 {
+  color: white;
+  text-align: end;
   text-indent: 10%;
   font-weight: 100;
   margin-bottom: -10px;
 }
 
-#signup_right h4{
-  color:white;
+#signup_right h4 {
+  color: white;
   text-align: end;
   text-indent: 10%;
   font-weight: 100;
@@ -1529,7 +1535,7 @@ textarea {
 .signup_box {
   border-style: none;
   color: black;
-  background-color:rgb(230, 230, 230);
+  background-color: rgb(230, 230, 230);
   height: 55px;
   width: 300px;
   justify-content: center;
@@ -1552,7 +1558,7 @@ textarea {
 }
 
 .signup_button {
-  position:relative;
+  position: relative;
   left: 150px;
   cursor: pointer;
   font-size: 15px;
@@ -1565,7 +1571,6 @@ textarea {
   width: 175px;
   height: 50px;
   transition: all 0.2s ease-in;
-  
 }
 
 #signup_button:hover {
@@ -1573,29 +1578,29 @@ textarea {
   box-shadow: 0px 0px 3px gray;
 }
 
-.login{
+.login {
   height: 100%;
   width: 100%;
   background-image: url("../_images/background1.jpg");
   background-size: cover;
-  position:absolute;
+  position: absolute;
 }
 
-.login2{
+.login2 {
   height: 100%;
   width: 100%;
   background-image: url("../_images/background3.jpg");
   background-size: cover;
-  position:absolute;
+  position: absolute;
 }
 
-.form-box{
+.form-box {
   width: 300px;
   height: 400px;
   position: relative;
   align-items: center;
   justify-content: center;
-  display:flex;
+  display: flex;
   margin: 6% auto;
 }
 
@@ -1604,7 +1609,7 @@ textarea {
   padding-bottom: 5px;
   justify-content: center;
   text-align: center;
-  color:white;
+  color: white;
   font-size: 50px;
   font-weight: 200;
 }
@@ -1613,7 +1618,7 @@ textarea {
   width: 400px;
   display: flex;
   flex-direction: column;
-  transition: .5s ease-in-out;
+  transition: 0.5s ease-in-out;
   background-size: cover;
   border-color: #ccc;
   border-width: 3px;
@@ -1625,7 +1630,7 @@ textarea {
   text-align: center;
 }
 
-#input-box{
+#input-box {
   font-size: 15px;
   background-color: #c7d4dd;
   color: black;
@@ -1636,7 +1641,6 @@ textarea {
   outline: none;
   text-align: center;
 }
-
 
 #login_button {
   cursor: pointer;
@@ -1657,7 +1661,7 @@ textarea {
   box-shadow: 0px 0px 3px gray;
 }
 
-#one label{
+#one label {
   margin-top: 10px;
   padding: 5px 5px;
   color: white;
@@ -1695,6 +1699,20 @@ textarea {
 
   #prod_left ul li {
     font-size: 14px;
+  }
+
+  #prod_info_bottom {
+    gap: 100px;
+  }
+}
+
+@media (max-width: 1100px) {
+  #prod_info_section {
+    gap: 20px;
+  }
+
+  #prod_info_bottom {
+    gap: 60px;
   }
 }
 
@@ -1774,5 +1792,25 @@ textarea {
 
   #prod_left ul li {
     font-size: 11px;
+  }
+
+  #prod_info_bottom {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 950px) {
+  #prod_info_section {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  #prod_info_bottom {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 30px;
   }
 }
