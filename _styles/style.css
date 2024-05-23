@@ -1143,6 +1143,7 @@ footer {
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
+  margin-top: 150px;
   padding: 20px;
   border: 2px solid black;
   border-radius: 24px;
@@ -1150,9 +1151,10 @@ footer {
 }
 
 .contact_form {
-  width: 100%;
-  max-width: 400px;
-  margin: 0 auto;
+  /*width: 100%;*/
+  /*max-width: 400px;*/
+  /*margin: 0 auto;*/
+  margin: 300px;
   margin-top: 30px;
   padding: 40px;
   border: 2px solid black;
@@ -1203,23 +1205,37 @@ textarea {
     margin-left: 20px;
     margin-right: 20px;
   }
-
-  .contact_info,
-  .contact_form {
+/*.contact_form, */
+  .contact_info{
     width: 100%;
     margin: 0 auto;
     margin-top: 50px;
   }
+
+  .contact_form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 40px;
+  }
+
+  #contact_map {
+    margin-bottom: 30px;
+  }
 }
 
 @media (max-width: 768px) {
-  .contact_info,
-  .contact_form {
+  .contact_info {
     padding: 20px;
   }
 
   .contact_form {
     margin: 0 auto;
+  }
+
+  .contact_form {
+    margin: 0 auto;
+    padding: 20px;
   }
 
   #contact_map {
@@ -1231,7 +1247,9 @@ textarea {
   .contact_info,
   .contact_form {
     padding: 15px;
+    margin-top: 30px;
   }
+
 
   #contact_headings {
     padding-top: 20px;
