@@ -1065,6 +1065,10 @@ footer {
   text-align: left;
 }
 
+#prodbox3 img {
+  width: 150px;
+}
+
 #prodbox3:hover {
   cursor: pointer;
   border-color: rgb(20, 149, 255);
@@ -1812,5 +1816,23 @@ textarea {
     align-items: center;
     margin-bottom: 30px;
     gap: 30px;
+  }
+
+  #prodbox3 {
+    width: 175px;
+    height: 255px;
+  }
+
+  #prodbox3 #boxbutton {
+    width: 150px;
+  }
+
+  #prodbox3 img {
+    width: 100px;
+  }
+
+  #prod_display2 {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0;
   }
 }
