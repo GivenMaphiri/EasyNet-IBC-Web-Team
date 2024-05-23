@@ -455,6 +455,26 @@ footer {
   transition: all 0.2s ease-in;
 }
 
+#prodbox5 {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  border-style: transparent;
+  padding: 25px 15px;
+  box-shadow: 5px 5px 15px grey;
+  transition: all 0.3s ease-in;
+}
+
+#prodbox5 img {
+  object-fit: cover;
+  height: 200px;
+  object-position: center;
+}
+
+
 #boxbutton {
   cursor: pointer;
   font-size: 15px;
@@ -530,7 +550,8 @@ footer {
 /*-------------------Body feature section-----------------------------*/
 #features {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+
 }
 
 #feature_box {
@@ -552,12 +573,22 @@ footer {
   border-style: transparent;
   padding: 25px 30px;
   margin: 20px 30px;
-  box-shadow: 20px 20px 30px grey;
+  box-shadow: 5px 5px 15px grey;
   transition: all 0.3s ease-in;
 }
 
+@media (max-width: 700px){
+  #features{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  }
+  
+
 #fea-container:hover {
-  box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.06);
+  box-shadow: 20px 20px 20px rgb(0, 0, 0, 0.06);
 }
 
 #fea {
@@ -666,7 +697,7 @@ footer {
 
 #bottom_banners {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   margin: 20px;
   font-size: small;
 }
@@ -1524,6 +1555,7 @@ textarea {
 }
 
 #signup_container {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1538,8 +1570,18 @@ textarea {
   gap: 5px;
 }
 
+<<<<<<< Updated upstream
 #signup_left h4 {
   color: white;
+=======
+<<<<<<< HEAD
+#signup_left h4{
+  color:white;
+=======
+#signup_left h4 {
+  color: white;
+>>>>>>> d82815c5f1ecd287253d16854d5faaff39b58b52
+>>>>>>> Stashed changes
   text-align: end;
   text-indent: 10%;
   font-weight: 100;
@@ -1615,8 +1657,16 @@ textarea {
   position: absolute;
 }
 
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+.login2{
+  height:137%;
+=======
+>>>>>>> Stashed changes
 .login2 {
   height: 100%;
+>>>>>>> d82815c5f1ecd287253d16854d5faaff39b58b52
   width: 100%;
   background-image: url("../_images/background3.jpg");
   background-size: cover;
@@ -1632,6 +1682,22 @@ textarea {
   display: flex;
   margin: 6% auto;
 }
+
+@media(max-width:700px){
+  .login2
+  #signup_container{
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     align-items: flex-start;
+     margin-top: 250px;
+     top: 0px;
+     right:0px;
+     height:100vh;
+     width:300px
+   }
+ }
 
 #login_heading {
   display: flex;
