@@ -297,6 +297,23 @@ footer {
   padding-right: 10px;
   transition: color, 0.3s ease;
 }
+.icon_cart {
+  position: relative;
+}
+.icon_cart span {
+  background-color: rgb(20, 149, 255);
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 30px;
+  height: 30px;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
 
 #icons_bag,
 #icons_heart {
