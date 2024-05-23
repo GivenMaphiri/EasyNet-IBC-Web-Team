@@ -122,58 +122,34 @@
         </label>
       </div>
     </header>
-
-    <main>
-      <h1 id="login_heading">Login</h1>
-
-      <form action="login.php" method="post">
+    
+    <main class="login">
+      /*--------Login box---------*/
+      <form action="login.php" method="post" class="form-box">
+       
         <!-- Replace "login.php" with your backend script -->
         <div id="login_container">
-          <input
-            type="text"
-            name="email"
-            placeholder="Email"
-            class="signup_box"
-            required
-          />
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            class="signup_box"
-            required
-          />
-          <button type="submit" id="login_button">Login</button>
+          <h1 id="login_heading">Login</h1>
+          <div >
+            <input id="input-box" type="text" name="email" placeholder="Email" class="signup_box" required/>
+          </div>
+
+          <div >
+            <input id="input-box"type="password" name="password" placeholder="Password" class="signup_box" required/>
+          </div>
+
+        <div id="two-col">
+          <div id="one">
+            <input type="checkbox" id="register-check">
+            <label for="register-check"> Remember Me</label>
+          </div>
+          <div id="two">
+            <button type="submit" id="login_button">Login</button>
+          </div>
+        </div>
+
         </div>
       </form>
-    </main>
-
-    
+    </main>    
   </body>
-
-  <footer>
-    <nav>
-      <ul id="nav_content_foot">
-        <li id="nav_link_foot">
-          <a href="index.html" id="nav_text_foot">Home</a>
-        </li>
-        <li id="nav_link_foot">
-          <a href="about.html" id="nav_text_foot">About Us</a>
-        </li>
-        <li id="nav_link_foot">
-          <a href="products.html" id="nav_text_foot">Products</a>
-        </li>
-        <li id="nav_link_foot">
-          <a href="client.html" id="nav_text_foot">Clients</a>
-        </li>
-        <li id="nav_link_foot">
-          <a href="contact.html" id="nav_text_foot">Contact Us</a>
-        </li>
-      </ul>
-    </nav>
-    <hr id="foot_line" />
-    <p id="footer_text">
-      Copyright &copy; 2024 EasyNet In Business Communications
-    </p>
-  </footer>
 </html>
