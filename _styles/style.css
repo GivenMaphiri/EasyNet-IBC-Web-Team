@@ -887,7 +887,7 @@ footer {
   font-size: 3rem;
 }
 
-#checkout_boxes {
+.checkout_boxes {
   display: grid;
   grid-template-columns: 300px 300px;
   row-gap: 10px;
@@ -897,7 +897,7 @@ footer {
   padding-bottom: 10px;
 }
 
-#checkbox1 {
+.checkbox1 {
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -918,7 +918,7 @@ footer {
   color: white;
   background-color: #00bfff;
   margin-bottom: 5px;
-  width: 200px;
+  width: 180px;
   height: 33px;
   margin-top: 10px;
   transition: all 0.2s ease-in;
@@ -1128,6 +1128,31 @@ footer {
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 20px;
+}
+
+#check_quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart_quantity {
+  width: 35px;
+  height: 28px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+
+.cart_quantity:hover {
+  border-color: rgb(20, 149, 255);
+}
+
+.cart_quantity:focus {
+  border-color: rgb(20, 149, 255);
 }
 
 /*---------- Contact Page -------------------*/
