@@ -925,6 +925,7 @@ footer {
 
 #prod_left {
   padding-top: 5px;
+  display: none;
 }
 
 .prod_display {
