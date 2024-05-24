@@ -92,7 +92,7 @@ a {
 
 .dropdown-content .row .mega-link {
   margin-left: -40px;
-  border-left: 1px solid rgb(20, 149, 255);
+  border-left: 1px;
 }
 
 .row .mega-link li {
