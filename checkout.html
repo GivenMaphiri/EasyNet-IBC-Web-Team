@@ -12,6 +12,7 @@
     <link href="_styles/style.css" rel="stylesheet" />
     <link href="_styles/font-awesome.css" rel="stylesheet" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="_javascript/products.js" async></script>
   </head>
 
   <body>
@@ -138,9 +139,9 @@
       </div>
 
 
-      <div id="checkout_boxes">
+      <div class="checkout_boxes">
 
-        <div id="checkbox1">
+        <div class="checkbox1">
           <a href="prodinfo.html"
                 ><img src="_images/_products/hardprod.jpg" width="200px"
               /></a>
@@ -150,23 +151,35 @@
                   Storage Laptop
                 </p></a
               >
-              <p><b>R 19,999</b></p>
-          <a href="products2.html"><button id="rem_button">Remove from Cart</button></a>
+              <p class="prod_prices"><b>R19999.99</b></p>
+              <div id="check_quantity">
+                <input class="cart_quantity" type="number" value="1">
+                <button class="btn_danger" id="rem_button">Remove from Cart</button>
+              </div>
         </div>
-  
-        <div id="checkbox1">
-          <img src="_images/_products/hardprod.jpg" width="250px" />
-          <h3>Item 2</h3>
-          
-          <button id="rem_button">remove</button>
+
+        <div class="checkbox1">
+          <a href="prodinfo.html"
+                ><img src="_images/_products/hardprod.jpg" width="200px"
+              /></a>
+              <a href="prodinfo.html"
+                ><p>
+                  HP PavilioN 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
+                  Storage Laptop
+                </p></a
+              >
+              <p class="prod_prices"><b>R19999.99</b></p>
+              <div id="check_quantity">
+                <input class="cart_quantity" type="number" value="1">
+                <button class="btn_danger" id="rem_button">Remove from Cart</button></div>
         </div>
+        
       </div>
 
       <div id="total_price">
         <h1>Total Price:</h1>
+        <h1 class="cart_total_price">R19999.00</h1>
       </div>
-
-
       <div class="checkout_button">
         <button id="rem_button">Checkout</button>
       </div>

@@ -455,6 +455,26 @@ footer {
   transition: all 0.2s ease-in;
 }
 
+#prodbox5 {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  border-style: transparent;
+  padding: 25px 15px;
+  box-shadow: 5px 5px 15px grey;
+  transition: all 0.3s ease-in;
+}
+
+#prodbox5 img {
+  object-fit: cover;
+  height: 200px;
+  object-position: center;
+}
+
+
 #boxbutton {
   cursor: pointer;
   font-size: 15px;
@@ -530,7 +550,8 @@ footer {
 /*-------------------Body feature section-----------------------------*/
 #features {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+
 }
 
 #feature_box {
@@ -552,12 +573,22 @@ footer {
   border-style: transparent;
   padding: 25px 30px;
   margin: 20px 30px;
-  box-shadow: 20px 20px 30px grey;
+  box-shadow: 5px 5px 15px grey;
   transition: all 0.3s ease-in;
 }
 
+@media (max-width: 700px){
+  #features{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  }
+  
+
 #fea-container:hover {
-  box-shadow: 20px 20px 30px rgb(0, 0, 0, 0.06);
+  box-shadow: 20px 20px 20px rgb(0, 0, 0, 0.06);
 }
 
 #fea {
@@ -666,7 +697,7 @@ footer {
 
 #bottom_banners {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
   margin: 20px;
   font-size: small;
 }
@@ -887,7 +918,7 @@ footer {
   font-size: 3rem;
 }
 
-#checkout_boxes {
+.checkout_boxes {
   display: grid;
   grid-template-columns: 300px 300px;
   row-gap: 10px;
@@ -897,7 +928,7 @@ footer {
   padding-bottom: 10px;
 }
 
-#checkbox1 {
+.checkbox1 {
   display: flex;
   flex-direction: column;
   justify-self: center;
@@ -918,7 +949,7 @@ footer {
   color: white;
   background-color: #00bfff;
   margin-bottom: 5px;
-  width: 200px;
+  width: 180px;
   height: 33px;
   margin-top: 10px;
   transition: all 0.2s ease-in;
@@ -1128,6 +1159,31 @@ footer {
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 20px;
+}
+
+#check_quantity {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart_quantity {
+  width: 35px;
+  height: 28px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  text-align: center;
+  transition: all 0.2s ease-in;
+}
+
+.cart_quantity:hover {
+  border-color: rgb(20, 149, 255);
+}
+
+.cart_quantity:focus {
+  border-color: rgb(20, 149, 255);
 }
 
 /*---------- Contact Page -------------------*/
@@ -1499,6 +1555,7 @@ textarea {
 }
 
 #signup_container {
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -1513,6 +1570,12 @@ textarea {
   gap: 5px;
 }
 
+#signup_left h4 {
+  color: white;
+}
+#signup_left h4{
+  color:white;
+}
 #signup_left h4 {
   color: white;
   text-align: end;
@@ -1590,6 +1653,10 @@ textarea {
   position: absolute;
 }
 
+.login2{
+  height:137%;
+}
+
 .login2 {
   height: 100%;
   width: 100%;
@@ -1607,6 +1674,22 @@ textarea {
   display: flex;
   margin: 6% auto;
 }
+
+@media(max-width:700px){
+  .login2
+  #signup_container{
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     justify-content: flex-start;
+     align-items: flex-start;
+     margin-top: 250px;
+     top: 0px;
+     right:0px;
+     height:100vh;
+     width:300px
+   }
+ }
 
 #login_heading {
   display: flex;
