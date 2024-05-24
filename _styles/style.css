@@ -1482,9 +1482,10 @@ textarea {
 }
 
 #client_imgs {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-top: 20px;
 }
 
