@@ -498,7 +498,6 @@ footer p{
   object-position: center;
 }
 
-
 #boxbutton {
   cursor: pointer;
   font-size: 15px;
@@ -575,7 +574,6 @@ footer p{
 #features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-
 }
 
 #feature_box {
@@ -601,15 +599,14 @@ footer p{
   transition: all 0.3s ease-in;
 }
 
-@media (max-width: 700px){
-  #features{
+@media (max-width: 700px) {
+  #features {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  }
-  
+}
 
 #fea-container:hover {
   box-shadow: 20px 20px 20px rgb(0, 0, 0, 0.06);
@@ -900,7 +897,7 @@ footer {
   padding-top: 5px;
 }
 
-#prod_display {
+.prod_display {
   display: grid;
   max-width: 1150px;
   gap: 1rem;
@@ -950,6 +947,7 @@ footer {
   margin-right: 3%;
   padding-top: 20px;
   padding-bottom: 10px;
+  min-height: 50vh;
 }
 
 .checkbox1 {
@@ -981,6 +979,23 @@ footer {
 
 #rem_button:hover {
   background-color: rgb(227, 46, 46);
+}
+
+#checkout_button {
+  cursor: pointer;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #00bfff;
+  margin-bottom: 5px;
+  width: 180px;
+  height: 33px;
+  margin-top: 10px;
+  transition: all 0.2s ease-in;
+}
+#checkout_button:hover {
+  background-color: rgb(29, 181, 5);
 }
 
 .checkout_button {
@@ -1172,17 +1187,25 @@ footer {
 }
 
 #remove_fav {
+  cursor: pointer;
   background-color: white;
   border-style: solid;
   border-radius: 15px;
   width: 200px;
   height: 33px;
+  transition: all 0.2s ease-in;
+}
+
+#remove_fav:hover {
+  border-color: rgb(227, 46, 46);
+  color: rgb(227, 46, 46);
 }
 
 #fav_boxes {
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 20px;
+  min-height: 50vh;
 }
 
 #check_quantity {
@@ -1509,9 +1532,10 @@ textarea {
 }
 
 #client_imgs {
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   margin-top: 20px;
 }
 
@@ -1597,8 +1621,8 @@ textarea {
 #signup_left h4 {
   color: white;
 }
-#signup_left h4{
-  color:white;
+#signup_left h4 {
+  color: white;
 }
 #signup_left h4 {
   color: white;
@@ -1677,8 +1701,8 @@ textarea {
   position: absolute;
 }
 
-.login2{
-  height:137%;
+.login2 {
+  height: 137%;
 }
 
 .login2 {
@@ -1699,21 +1723,20 @@ textarea {
   margin: 6% auto;
 }
 
-@media(max-width:700px){
-  .login2
-  #signup_container{
-     position: relative;
-     display: flex;
-     flex-direction: column;
-     justify-content: flex-start;
-     align-items: flex-start;
-     margin-top: 250px;
-     top: 0px;
-     right:0px;
-     height:100vh;
-     width:300px
-   }
- }
+@media (max-width: 700px) {
+  .login2 #signup_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 250px;
+    top: 0px;
+    right: 0px;
+    height: 100vh;
+    width: 300px;
+  }
+}
 
 #login_heading {
   display: flex;
