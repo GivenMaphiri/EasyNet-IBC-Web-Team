@@ -474,7 +474,6 @@ footer {
   object-position: center;
 }
 
-
 #boxbutton {
   cursor: pointer;
   font-size: 15px;
@@ -551,7 +550,6 @@ footer {
 #features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-
 }
 
 #feature_box {
@@ -577,15 +575,14 @@ footer {
   transition: all 0.3s ease-in;
 }
 
-@media (max-width: 700px){
-  #features{
+@media (max-width: 700px) {
+  #features {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
-  }
-  
+}
 
 #fea-container:hover {
   box-shadow: 20px 20px 20px rgb(0, 0, 0, 0.06);
@@ -876,7 +873,7 @@ footer {
   padding-top: 5px;
 }
 
-#prod_display {
+.prod_display {
   display: grid;
   max-width: 1150px;
   gap: 1rem;
@@ -1573,8 +1570,8 @@ textarea {
 #signup_left h4 {
   color: white;
 }
-#signup_left h4{
-  color:white;
+#signup_left h4 {
+  color: white;
 }
 #signup_left h4 {
   color: white;
@@ -1653,8 +1650,8 @@ textarea {
   position: absolute;
 }
 
-.login2{
-  height:137%;
+.login2 {
+  height: 137%;
 }
 
 .login2 {
@@ -1675,21 +1672,20 @@ textarea {
   margin: 6% auto;
 }
 
-@media(max-width:700px){
-  .login2
-  #signup_container{
-     position: relative;
-     display: flex;
-     flex-direction: column;
-     justify-content: flex-start;
-     align-items: flex-start;
-     margin-top: 250px;
-     top: 0px;
-     right:0px;
-     height:100vh;
-     width:300px
-   }
- }
+@media (max-width: 700px) {
+  .login2 #signup_container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 250px;
+    top: 0px;
+    right: 0px;
+    height: 100vh;
+    width: 300px;
+  }
+}
 
 #login_heading {
   display: flex;
