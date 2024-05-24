@@ -511,14 +511,14 @@ footer p{
 }
 
 /*--------Social media styling--------*/
-.social-media-icons{
+.social-media-icons {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   margin-top: 10px;
-
 }
+
 .social-media-icons a {
   margin: 0 20px; /* Adjust spacing between icons */
   display: flex;
@@ -527,14 +527,16 @@ footer p{
   width: 100px;
 }
 
-
 .social-media-icons img {
+  width: 50px; /* Increase icon size */
+  height: 50px; /* Increase icon size */
   transition: transform 0.3s; /* Add transition effect */
 }
 
 .social-media-icons img:hover {
   transform: scale(1.2); /* Scale icon on hover */
 }
+/*---------End-----------*/
 
 
 #loginlinks {
