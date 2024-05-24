@@ -156,7 +156,7 @@ header {
 footer {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   border-top-width: 1px;
   border-top-style: solid;
   height: auto;
@@ -524,6 +524,7 @@ footer p{
   display: flex;
   text-align: center;
   align-items: center;
+  width: 100px;
 }
 
 
