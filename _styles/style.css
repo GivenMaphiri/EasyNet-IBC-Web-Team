@@ -161,13 +161,6 @@ footer {
   margin-top: 20px;
 }
 
-footer .col{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  margin-top: 20px;
-}
 
 footer #logo{
   margin-bottom: 30px;
@@ -584,7 +577,7 @@ footer p{
 
 #nav_link_foot {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: left;
   padding-top: 5px;
   padding-bottom: 10px;
