@@ -153,14 +153,38 @@ header {
 
 footer {
   display: flex;
-  flex-direction: column;
-  justify-content: left;
+  flex-wrap: wrap;
+  justify-content: space-between;
   border-top-width: 1px;
   border-top-style: solid;
-  border-top-color: rgb(29, 181, 5);
-  height: 230px;
+  height: auto;
   margin-top: 20px;
 }
+
+footer .col{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+footer #logo{
+  margin-bottom: 30px;
+}
+
+footer h4{
+  padding-bottom: 30px;
+  font-size:15px;
+}
+
+footer p{
+  font-size:15px;
+  margin: 0 0 8px 0;
+
+}
+
+
 
 #background_home {
   background-color: rgb(49, 49, 250);
