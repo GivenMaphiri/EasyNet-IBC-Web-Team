@@ -97,6 +97,8 @@ a {
 
 .row .mega-link li {
   padding: 0 10px;
+  color:#5d5e5e;
+  font-weight: lighter;
 }
 
 .row .mega-link li a {
