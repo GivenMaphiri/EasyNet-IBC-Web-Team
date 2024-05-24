@@ -510,11 +510,12 @@ footer p{
   box-shadow: 0px 0px 3px gray;
 }
 
-/*--------About Us styling--------*/
+/*--------Social media styling--------*/
 .social-media-icons{
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   margin-top: 10px;
 
 }
@@ -522,6 +523,7 @@ footer p{
   margin: 0 20px; /* Adjust spacing between icons */
   display: flex;
   text-align: center;
+  align-items: center;
 }
 
 
