@@ -184,8 +184,6 @@ footer p{
 
 }
 
-
-
 #background_home {
   background-color: rgb(49, 49, 250);
   background-image: url("../_images/_background/homepage1.jpg");
@@ -1706,7 +1704,7 @@ textarea {
 }
 
 .login2 {
-  height: 100%;
+  height: 137%;
   width: 100%;
   background-image: url("../_images/background3.jpg");
   background-size: cover;
