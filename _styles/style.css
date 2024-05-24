@@ -923,6 +923,7 @@ footer {
   margin-right: 3%;
   padding-top: 20px;
   padding-bottom: 10px;
+  min-height: 50vh;
 }
 
 .checkbox1 {
@@ -954,6 +955,23 @@ footer {
 
 #rem_button:hover {
   background-color: rgb(227, 46, 46);
+}
+
+#checkout_button {
+  cursor: pointer;
+  font-size: 15px;
+  border-style: none;
+  border-radius: 15px;
+  color: white;
+  background-color: #00bfff;
+  margin-bottom: 5px;
+  width: 180px;
+  height: 33px;
+  margin-top: 10px;
+  transition: all 0.2s ease-in;
+}
+#checkout_button:hover {
+  background-color: rgb(29, 181, 5);
 }
 
 .checkout_button {
@@ -1145,17 +1163,25 @@ footer {
 }
 
 #remove_fav {
+  cursor: pointer;
   background-color: white;
   border-style: solid;
   border-radius: 15px;
   width: 200px;
   height: 33px;
+  transition: all 0.2s ease-in;
+}
+
+#remove_fav:hover {
+  border-color: rgb(227, 46, 46);
+  color: rgb(227, 46, 46);
 }
 
 #fav_boxes {
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 20px;
+  min-height: 50vh;
 }
 
 #check_quantity {
