@@ -621,6 +621,21 @@ footer p{
   transition: all 0.3s ease-in;
 }
 
+#fea-container span {
+  cursor: pointer;
+  padding: 5px;
+  background-color: red;
+  border-color: red;
+  color: white;
+  text-align:left;
+}
+
+#fea-container h7 {
+  cursor: pointer;
+  color: grey;
+  text-decoration:line-through;
+}
+
 @media (max-width: 700px) {
   #features {
     display: flex;
