@@ -1284,6 +1284,24 @@ footer {
   gap: 20px; /* Add some space between the columns */
 }
 
+/* Email styling */
+#contact_list li a {
+  text-decoration: none;
+  color: blue;
+  transition: color 0.3s, text-decoration 0.3s;
+}
+
+#contact_list li a:hover {
+  color: rgb(0, 0, 76);
+  text-decoration: underline;
+}
+
+#contact_list li a:active {
+  color: red;
+}
+
+/*----------------*/
+
 #contact_headings {
   margin-bottom: 0;
   padding-top: 20px; /* Reduced padding */
