@@ -1552,15 +1552,51 @@ textarea {
   padding: 0;
 }
 
+/* CSS Styling for the Partners table */
+
 #partner_info {
   display: flex;
-  flex-direction: row;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 20px;
-  gap: 150px;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  margin: 20px 50px;
+}
+
+#partner_table {
+  width: 80%;
+  border-collapse: separate;
+  border-spacing: 0;
+  text-align: center;
+  color: #333;
+  margin: 0 auto;
+}
+
+#partner_table th,
+#partner_table td {
+  padding: 10px 15px;
+}
+
+#partner_table th {
+  border-bottom: 2px solid #333;
+  text-align: center;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #5f9ea0; /* Light blue-green colour */
+}
+
+#partner_table td {
+  background-color: #e0f7fa; /* Very light blue */
+}
+
+#partner_table tr:nth-child(even) td {
+  background-color: #ccff90; /* Very light green */
+}
+
+#partner_table td {
+  border-right: 2px solid #333; /* Solid vertical line down the middle */
+}
+
+#partner_table td:last-child {
+  border-right: none; /* Remove border on the last column */
 }
 
 #partner_imgs {
@@ -1585,24 +1621,68 @@ textarea {
   margin-bottom: 10px;
 }
 
-#client_body_bottom {
-  display: flex;
-  flex-direction: column;
-  margin-left: 50px;
-  margin-right: 50px;
-  margin-top: 20px;
-  gap: 150px;
-  justify-content: center;
-  align-items: center;
-}
+/* CSS Styling for the Client table */
 
 #client_head {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+#client_name_heading {
+  font-size: 20px; /* Adjust the font size */
+  text-decoration: none;
+  border-bottom: 2px solid black; /* Add a solid black line */
+}
+
+.single-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.table-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin: 20px 0;
 }
+
+table {
+  border-collapse: collapse;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+th,
+td {
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #ddd;
+  
+}
+
+#client_body_bottom td {
+  border-right: 2px solid #333; /* Solid vertical line down the middle */
+  
+}
+
+#client_body_bottom td:last-child {
+  border-right: none; /* Remove border on the last column */
+}
+
+th {
+  background-color: #5f9ea0; /* Light blue-green colour */
+  color: white;
+}
+
+td {
+  background-color: #e0f7fa; /* Very light blue */
+}
+
+#client_body_bottom tr:nth-child(even) td {
+  background-color: #ccff90; /* Very light green */
+}
+
 
 .slick-slide {
   display: flex;
