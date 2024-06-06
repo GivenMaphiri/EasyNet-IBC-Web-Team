@@ -1584,11 +1584,11 @@ textarea {
 }
 
 #partner_table td {
-  background-color: #e0f7fa; /* Very light blue */
+  background-color: #b3bdbe; /* Light grey */
 }
 
 #partner_table tr:nth-child(even) td {
-  background-color: #ccff90; /* Very light green */
+  background-color: #ffffff; /* White */
 }
 
 #partner_table td {
@@ -1676,11 +1676,11 @@ th {
 }
 
 td {
-  background-color: #e0f7fa; /* Very light blue */
+  background-color: #b3bdbe; /* Light grey */
 }
 
 #client_body_bottom tr:nth-child(even) td {
-  background-color: #ccff90; /* Very light green */
+  background-color: #ffffff; /* White */
 }
 
 
