@@ -422,9 +422,10 @@ footer p{
   align-items: center;
   width: 250px;
   height: 315px;
-  border-style: solid;
+  border-style: transparent;
   padding: 25px 15px;
-  border-radius: 10px;
+  box-shadow: 5px 5px 15px grey;
+  border-radius: 5px;
   border-width: 1px;
 }
 
@@ -441,10 +442,11 @@ footer p{
   align-items: center;
   width: 250px;
   height: 315px;
-  border-style: solid;
+  border-style: transparent;
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 5px;
   border-width: 1px;
+  box-shadow: 5px 5px 15px grey;
   transition: all 0.2s ease-in;
 }
 
