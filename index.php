@@ -22,17 +22,17 @@
       <nav>
         <ul id="nav_content">
           <li id="nav_link">
-            <a href="index.html" id="nav_text" class="active">Home</a>
+            <a href="index.php" id="nav_text" class="active">Home</a>
           </li>
           <li id="nav_link">
-            <a href="about.html" id="nav_text">About Us</a>
+            <a href="about.php" id="nav_text">About Us</a>
           </li>
           <li id="nav_link">
             <a href="products.html" id="nav_text">Products</a>
             <div class="dropdown">
               <div class="dropdown-content">
                 <div class="row">
-                  <h4><a href="products2.html">Hardware</a></h4>
+                  <h4><a href="products2.php">Hardware</a></h4>
                   <ul class="mega-link">
                     <li>Servers</li>
                     <li>Desktops</li>
@@ -43,7 +43,7 @@
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.html">Software</a></h4>
+                  <h4><a href="products2.php">Software</a></h4>
                   <ul class="mega-link">
                     <li>Microsoft</li>
                     <li>Symantec</li>
@@ -52,7 +52,7 @@
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.html">Accessories</a></h4>
+                  <h4><a href="products2.php">Accessories</a></h4>
                   <ul class="mega-link">
                     <li>Printer Cartridge</li>
                     <li>Headsets</li>
@@ -60,7 +60,7 @@
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.html">Combos</a></h4>
+                  <h4><a href="products2.php">Combos</a></h4>
                   <ul class="mega-link">
                     <li>Gaming</li>
                     <li>Keyboard and Mouse</li>
@@ -68,7 +68,7 @@
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.html">All</a></h4>
+                  <h4><a href="products2.php">All</a></h4>
                   <ul class="mega-link">
                     <li>Asus</li>
                     <li>Acer</li>
@@ -84,10 +84,10 @@
               </div>
           </li>
           <li id="nav_link">
-            <a href="client.html" id="nav_text">Partners and Clients</a>
+            <a href="client.php" id="nav_text">Partners and Clients</a>
           </li>
           <li id="nav_link">
-            <a href="contact.html" id="nav_text">Contact Us</a>
+            <a href="contact.php" id="nav_text">Contact Us</a>
           </li>
         </ul>
       </nav>
@@ -95,12 +95,12 @@
 
     <div id="right">
       <p>
-        <a href="register.html" id="loginlinks">Sign Up</a> /
-        <a href="login.html" id="loginlinks">Log In</a>
+        <a href="register.php" id="loginlinks">Sign Up</a> /
+        <a href="login.php" id="loginlinks">Log In</a>
       </p>
       <div id="right-item">
-        <a href="favourites.html"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
-        <a href="checkout.html"><img id="icons_bag" src="_images/_icons/bag.png" width="30px" /></a>
+        <a href="favourites.php"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
+        <a href="checkout.php"><img id="icons_bag" src="_images/_icons/bag.png" width="30px" /></a>
       </div>
 
       <label for="check" class="menu">
@@ -120,7 +120,7 @@
       <h2>In Business Communications</h2>
       <h3>Providing IT solutions in an easy way</h2><br>
         <h2>Shop our wide range of gadgets and equipment</h2><br>
-        <a href="products.html"><button>Shop now </button> </a>
+        <a href="products.php"><button>Shop now </button> </a>
     </div>
 
     <div id="feature_box">
@@ -205,7 +205,7 @@
           <img src="_images/_icons/full-filled-rating.png" width="15px">
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -327,20 +327,20 @@
         <h2>Find Out More About Us</h2>
         <p>Find out more about what we do and how we can assist you.
           </br>
-          <a href="about.html" id="paragraph_link">About Us ></a>
+          <a href="about.php" id="paragraph_link">About Us ></a>
         </p>
       </div>
 
       <div class="info_banner2">
         <h2>Products and Services</h2>
         <p>Check out our various IT products and services.</p></br>
-        <a href="products.html" id="paragraph_link">Products and Services ></a>
+        <a href="products.php" id="paragraph_link">Products and Services ></a>
       </div>
 
       <div class="info_banner3">
         <h2>Our Partners and Clients</h2>
         <p>Check out our Partners and Clients that we currently work with.</br>
-          <a href="client.html" id="paragraph_link">Partners and Clients ></a>
+          <a href="client.php" id="paragraph_link">Partners and Clients ></a>
         </p>
       </div>
 
@@ -348,7 +348,7 @@
         <h2>Talk to Us</h2>
         <p>Find out how you can contact us.
           </br>
-          <a href="contact.html" id="paragraph_link">Contact Us ></a>
+          <a href="contact.php" id="paragraph_link">Contact Us ></a>
         </p>
       </div>
     </section>
