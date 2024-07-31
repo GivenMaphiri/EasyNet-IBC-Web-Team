@@ -15,7 +15,7 @@
 <body>
   <header>
     <div id="left">
-      <a href="index.html"><img src="_images/_logos/easynet.png" id="logo" width="120px" title="EasyNet Homepage" /></a>
+      <a href="index.php"><img src="_images/_logos/easynet.png" id="logo" width="120px" title="EasyNet Homepage" /></a>
     </div>
     <input type="checkbox" id="check">
     <div id="middle">
@@ -28,7 +28,7 @@
             <a href="about.php" id="nav_text">About Us</a>
           </li>
           <li id="nav_link">
-            <a href="products.html" id="nav_text">Products</a>
+            <a href="products.php" id="nav_text">Products</a>
             <div class="dropdown">
               <div class="dropdown-content">
                 <div class="row">
@@ -145,7 +145,7 @@
           <img src="_images/_icons/full-filled-rating.png" width="15px">
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -165,7 +165,7 @@
           <img src="_images/_icons/full-filled-rating.png" width="15px">
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -185,7 +185,7 @@
           <img src="_images/_icons/full-filled-rating.png" width="15px">
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -236,7 +236,7 @@
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
           <img src="_images/_icons/empty-rating.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -254,7 +254,7 @@
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
           <img src="_images/_icons/empty-rating.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -272,7 +272,7 @@
           <img src="_images/_icons/full-filled-rating.png" width="15px">
           <img src="_images/_icons/full-filled-rating.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
 
@@ -290,7 +290,7 @@
           <img src="_images/_icons/full-filled-rating.png" width="15px">
           <img src="_images/_icons/half-filled-rating-star.png" width="15px">
         </div>
-        <a href="products2.html">
+        <a href="products2.php">
           <button id="boxbutton-home">Add to Cart</button></a>
       </div>
     </section>
@@ -302,22 +302,22 @@
       <div id="prodbox5">
         <img src="_images/hardware.png" width="250px" />
         <h3>Hardware</h3>
-        <a href="products2.html"><button id="boxbutton">Shop Hardware</button></a>
+        <a href="products2.php"><button id="boxbutton">Shop Hardware</button></a>
       </div>
       <div id="prodbox5">
         <img src="_images/adobe.jpg" width="250px" />
         <h3>Software</h3>
-        <a href="products2.html"><button id="boxbutton">Shop Software</button></a>
+        <a href="products2.php"><button id="boxbutton">Shop Software</button></a>
       </div>
       <div id="prodbox5">
         <img src="_images/consumables.webp" width="250px" />
         <h3>Accessories</h3>
-        <a href="products2.html"><button id="boxbutton">Shop Accessories</button></a>
+        <a href="products2.php"><button id="boxbutton">Shop Accessories</button></a>
       </div>
       <div id="prodbox5">
         <img src="_images/all_products.jpg" width="265px" />
         <h3>All Products</h3>
-        <a href="products2.html"><button id="boxbutton">Shop All Products</button></a>
+        <a href="products2.php"><button id="boxbutton">Shop All Products</button></a>
       </div>
     </div>
 

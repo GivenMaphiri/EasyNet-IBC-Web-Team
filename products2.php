@@ -1,327 +1,267 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>EasyNet IBC | Products</title>
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="_images/_logos/easynet_icon.png"
-    />
-    <link href="_styles/font-awesome.css" rel="stylesheet" />
-    <link href="_styles/style.css" rel="stylesheet" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <script src="_javascript/products.js" async></script>
-  </head>
-  <body>
-    <header>
-      <div id="left">
-        <a href="index.html"
-          ><img
-            src="_images/_logos/easynet.png"
-            id="logo"
-            width="120px"
-            title="EasyNet Homepage"
-        /></a>
-      </div>
-      <input type="checkbox" id="check" />
-      <div id="middle">
-        <nav>
-          <ul id="nav_content">
-            <li id="nav_link">
-              <a href="index.html" id="nav_text">Home</a>
-            </li>
-            <li id="nav_link">
-              <a href="about.html" id="nav_text">About Us</a>
-            </li>
-            <li id="nav_link">
-              <a href="products.html" id="nav_text" class="active">Products</a>
-              <div class="dropdown">
-                <div class="dropdown-content">
-                  <div class="row">
-                    <h4><a href="products2.html">Hardware</a></h4>
-                    <ul class="mega-link">
-                      <li>Servers</li>
-                      <li>Desktops</li>
-                      <li>Monitors</li>
-                      <li>Fax Machines</li>
-                      <li>Computer Components</li>
-                      <li>Projectors</li>
-                    </ul>
-                  </div>
-                  <div class="row">
-                    <h4><a href="products2.html">Software</a></h4>
-                    <ul class="mega-link">
-                      <li>Microsoft</li>
-                      <li>Symantec</li>
-                      <li>CorelDraw</li>
-                      <li>Adobe</li>
-                    </ul>
-                  </div>
-                  <div class="row">
-                    <h4><a href="products2.html">Accessories</a></h4>
-                    <ul class="mega-link">
-                        <li>Printer Cartridge</li>
-                        <li>Headsets</li>
-                        <li>Controllers</li>
-                    </ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EasyNet IBC | Products</title>
+  <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png" />
+  <link href="_styles/font-awesome.css" rel="stylesheet" />
+  <link href="_styles/style.css" rel="stylesheet" />
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="_javascript/products.js" async></script>
+</head>
+
+<body>
+  <header>
+    <div id="left">
+      <a href="index.php"><img src="_images/_logos/easynet.png" id="logo" width="120px" title="EasyNet Homepage" /></a>
+    </div>
+    <input type="checkbox" id="check" />
+    <div id="middle">
+      <nav>
+        <ul id="nav_content">
+          <li id="nav_link">
+            <a href="index.php" id="nav_text">Home</a>
+          </li>
+          <li id="nav_link">
+            <a href="about.php" id="nav_text">About Us</a>
+          </li>
+          <li id="nav_link">
+            <a href="products.php" id="nav_text" class="active">Products</a>
+            <div class="dropdown">
+              <div class="dropdown-content">
+                <div class="row">
+                  <h4><a href="products2.php">Hardware</a></h4>
+                  <ul class="mega-link">
+                    <li>Servers</li>
+                    <li>Desktops</li>
+                    <li>Monitors</li>
+                    <li>Fax Machines</li>
+                    <li>Computer Components</li>
+                    <li>Projectors</li>
+                  </ul>
                 </div>
                 <div class="row">
-                    <h4><a href="products2.html">Combos</a></h4>
-                    <ul class="mega-link">
-                        <li>Gaming</li>
-                        <li>Keyboard and Mouse</li>
-                        <li>Sound System</li>
-                    </ul>
+                  <h4><a href="products2.php">Software</a></h4>
+                  <ul class="mega-link">
+                    <li>Microsoft</li>
+                    <li>Symantec</li>
+                    <li>CorelDraw</li>
+                    <li>Adobe</li>
+                  </ul>
                 </div>
-                  <div class="row">
-                    <h4><a href="products2.html">All</a></h4>
-                    <ul class="mega-link">
-                      <li>Asus</li>
-                      <li>Acer</li>
-                      <li>Apple</li>
-                      <li>Dell</li>
-                      <li>Hisense</li>
-                      <li>Hp</li>
-                      <li>Lenovo</li>
-                      <li>Microsoft</li>
-                      <li>Samsung</li>
-                    </ul>
-                  </div>
+                <div class="row">
+                  <h4><a href="products2.php">Accessories</a></h4>
+                  <ul class="mega-link">
+                    <li>Printer Cartridge</li>
+                    <li>Headsets</li>
+                    <li>Controllers</li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <h4><a href="products2.php">Combos</a></h4>
+                  <ul class="mega-link">
+                    <li>Gaming</li>
+                    <li>Keyboard and Mouse</li>
+                    <li>Sound System</li>
+                  </ul>
+                </div>
+                <div class="row">
+                  <h4><a href="products2.php">All</a></h4>
+                  <ul class="mega-link">
+                    <li>Asus</li>
+                    <li>Acer</li>
+                    <li>Apple</li>
+                    <li>Dell</li>
+                    <li>Hisense</li>
+                    <li>Hp</li>
+                    <li>Lenovo</li>
+                    <li>Microsoft</li>
+                    <li>Samsung</li>
+                  </ul>
                 </div>
               </div>
-            </li>
-            <li id="nav_link">
-              <a href="client.html" id="nav_text">Partners and Clients</a>
-            </li>
-            <li id="nav_link">
-              <a href="contact.html" id="nav_text">Contact Us</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <div id="right">
-        <p>
-          <a href="register.html" id="loginlinks">Sign Up</a> /
-          <a href="login.html" id="loginlinks">Log In</a>
-        </p>
-        <div id="right-item">
-          <a href="favourites.html"
-            ><img id="icons_heart" src="_images/_icons/heart.png" width="30px"
-          /></a>
-          <div class="icon_cart">
-            <a href="checkout.html"
-              ><img id="icons_bag" src="_images/_icons/bag.png" width="30px"
-            /></a>
-          </div>
-        </div>
-        <label for="check" class="menu">
-          <i class="bx bx-menu" id="menu_icon"></i>
-          <i class="bx bx-x" id="close_icon"></i>
-        </label>
-      </div>
-    </header>
-
-    <main>
-      <p id="prod_back_main">
-        <a href="products.html" id="prod_back">Products</a> &#9664; All Products
-      </p>
-      <div id="all_products_head">
-        <h1>Products</h1>
-        <div id="prod_left">
-          <ul>
-            <li>Sort By:</li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <li>Type:</li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <li>Manufacturer:</li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <li>Price:</li>
-          </ul>
-        </div>
-        <div id="search_bar">
-          <input
-            id="searchbar"
-            type="text"
-            placeholder="Search for products..."
-          />
-          <input id="searchbutton" type="submit" value="Search" />
-        </div>
-      </div>
-
-      <div id="product_mainpage">
-        <div id="prod_right">
-          <div class="prod_display">
-            <div id="prodbox2">
-              <a href="prodinfo.html"
-                ><img
-                  class="prod_image"
-                  src="_images/_products/hardprod.jpg"
-                  width="200px"
-              /></a>
-              <a href="prodinfo.html"
-                ><p class="prod_title">
-                  HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                  Storage Laptop
-                </p></a
-              >
-              <p class="product_price"><b>R 19,999</b></p>
-              <div id="add_heart_buttons">
-                <button id="boxbutton" class="add_to_cart">Add to Cart</button>
-                <button id="heart_button">
-                  <img
-                    id="heart_button_img"
-                    src="_images/_icons/heart.png"
-                    width="18px"
-                  />
-                </button>
-              </div>
             </div>
-            <div id="prodbox2">
-              <a href="prodinfo.html"
-                ><img
-                  class="prod_image"
-                  src="_images/_products/hardprod2.jpg"
-                  width="200px"
-              /></a>
-              <a href="prodinfo.html"
-                ><p class="prod_title">
-                  Lenovo Ideapad 3 Intel® Core™ i5-12450H 8GB RAM 512GB SSD
-                  Laptop
-                </p></a
-              >
-              <p class="product_price"><b>R 9,999</b></p>
-              <div id="add_heart_buttons">
-                <button id="boxbutton" class="add_to_cart">Add to Cart</button>
-                <button id="heart_button">
-                  <img
-                    id="heart_button_img"
-                    src="_images/_icons/heart.png"
-                    width="18px"
-                  />
-                </button>
-              </div>
-            </div>
-            <div id="prodbox2">
-              <a href="prodinfo.html"
-                ><img
-                  class="prod_image"
-                  src="_images/_products/hardprod3.jpg"
-                  width="190px"
-              /></a>
-              <a href="prodinfo.html"
-                ><p class="prod_title">
-                  Apple MacBook Air 13-Inch With M1 Processor 7 Core GPU 256GB
-                  Space Grey
-                </p></a
-              >
-              <p class="product_price"><b>R 18,999</b></p>
-              <div id="add_heart_buttons">
-                <button id="boxbutton" class="add_to_cart">Add to Cart</button>
-                <button id="heart_button">
-                  <img
-                    id="heart_button_img"
-                    src="_images/_icons/heart.png"
-                    width="18px"
-                  />
-                </button>
-              </div>
-            </div>
-            <div id="prodbox2">
-              <a href="prodinfo.html"
-                ><img src="_images/_products/hardprod.jpg" width="200px"
-              /></a>
-              <a href="prodinfo.html"
-                ><p class="prod_title">
-                  HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                  Storage Laptop
-                </p></a
-              >
-              <p class="product_price"><b>R 19,999</b></p>
-              <div id="add_heart_buttons">
-                <a href="products2.html">
-                  <button id="boxbutton">Add to Cart</button></a
-                >
-                <button id="heart_button">
-                  <img
-                    id="heart_button_img"
-                    src="_images/_icons/heart.png"
-                    width="18px"
-                  />
-                </button>
-              </div>
-            </div>
-            <div id="prodbox2">
-              <a href="prodinfo.html"
-                ><img src="_images/_products/hardprod.jpg" width="200px"
-              /></a>
-              <a href="prodinfo.html"
-                ><p>
-                  HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                  Storage Laptop
-                </p></a
-              >
-              <p><b>R 19,999</b></p>
-              <div id="add_heart_buttons">
-                <a href="products2.html">
-                  <button id="boxbutton">Add to Cart</button></a
-                >
-                <button id="heart_button">
-                  <img
-                    id="heart_button_img"
-                    src="_images/_icons/heart.png"
-                    width="18px"
-                  />
-                </button>
-              </div>
-            </div>
-            <div id="prodbox2">
-              <a href="prodinfo.html"
-                ><img src="_images/_products/hardprod.jpg" width="200px"
-              /></a>
-              <a href="prodinfo.html"
-                ><p>
-                  HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                  Storage Laptop
-                </p></a
-              >
-              <p><b>R 19,999</b></p>
-              <div id="add_heart_buttons">
-                <a href="products2.html">
-                  <button id="boxbutton">Add to Cart</button></a
-                >
-                <button id="heart_button">
-                  <img
-                    id="heart_button_img"
-                    src="_images/_icons/heart.png"
-                    width="18px"
-                  />
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
-
-    <footer>
-      <div class="social-media-icons">
-        <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle' > <p>Facebook</p></i>
-        </a>
-        <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'><p>Instagram</p></i>
-        </a>
-        <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'><p>LinkedIn</p></i>
-        </a>
+          </li>
+          <li id="nav_link">
+            <a href="client.php" id="nav_text">Partners and Clients</a>
+          </li>
+          <li id="nav_link">
+            <a href="contact.php" id="nav_text">Contact Us</a>
+          </li>
+        </ul>
+      </nav>
     </div>
-      <hr id="foot_line" />
-      <p id="footer_text">
-        Copyright &copy; 2024 EasyNet In Business Communications
+
+    <div id="right">
+      <p>
+        <a href="register.php" id="loginlinks">Sign Up</a> /
+        <a href="login.php" id="loginlinks">Log In</a>
       </p>
-    </footer>
-  </body>
+      <div id="right-item">
+        <a href="favourites.php"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
+        <div class="icon_cart">
+          <a href="checkout.php"><img id="icons_bag" src="_images/_icons/bag.png" width="30px" /></a>
+        </div>
+      </div>
+      <label for="check" class="menu">
+        <i class="bx bx-menu" id="menu_icon"></i>
+        <i class="bx bx-x" id="close_icon"></i>
+      </label>
+    </div>
+  </header>
+
+  <main>
+    <p id="prod_back_main">
+      <a href="products.php" id="prod_back">Products</a> &#9664; All Products
+    </p>
+    <div id="all_products_head">
+      <h1>Products</h1>
+      <div id="prod_left">
+        <ul>
+          <li>Sort By:</li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <li>Type:</li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <li>Manufacturer:</li>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <li>Price:</li>
+        </ul>
+      </div>
+      <div id="search_bar">
+        <input id="searchbar" type="text" placeholder="Search for products..." />
+        <input id="searchbutton" type="submit" value="Search" />
+      </div>
+    </div>
+
+    <div id="product_mainpage">
+      <div id="prod_right">
+        <div class="prod_display">
+          <div id="prodbox2">
+            <a href="prodinfo.php"><img class="prod_image" src="_images/_products/hardprod.jpg" width="200px" /></a>
+            <a href="prodinfo.php">
+              <p class="prod_title">
+                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
+                Storage Laptop
+              </p>
+            </a>
+            <p class="product_price"><b>R 19,999</b></p>
+            <div id="add_heart_buttons">
+              <button id="boxbutton" class="add_to_cart">Add to Cart</button>
+              <button id="heart_button">
+                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
+              </button>
+            </div>
+          </div>
+          <div id="prodbox2">
+            <a href="prodinfo.php"><img class="prod_image" src="_images/_products/hardprod2.jpg" width="200px" /></a>
+            <a href="prodinfo.php">
+              <p class="prod_title">
+                Lenovo Ideapad 3 Intel® Core™ i5-12450H 8GB RAM 512GB SSD
+                Laptop
+              </p>
+            </a>
+            <p class="product_price"><b>R 9,999</b></p>
+            <div id="add_heart_buttons">
+              <button id="boxbutton" class="add_to_cart">Add to Cart</button>
+              <button id="heart_button">
+                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
+              </button>
+            </div>
+          </div>
+          <div id="prodbox2">
+            <a href="prodinfo.php"><img class="prod_image" src="_images/_products/hardprod3.jpg" width="190px" /></a>
+            <a href="prodinfo.php">
+              <p class="prod_title">
+                Apple MacBook Air 13-Inch With M1 Processor 7 Core GPU 256GB
+                Space Grey
+              </p>
+            </a>
+            <p class="product_price"><b>R 18,999</b></p>
+            <div id="add_heart_buttons">
+              <button id="boxbutton" class="add_to_cart">Add to Cart</button>
+              <button id="heart_button">
+                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
+              </button>
+            </div>
+          </div>
+          <div id="prodbox2">
+            <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
+            <a href="prodinfo.php">
+              <p class="prod_title">
+                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
+                Storage Laptop
+              </p>
+            </a>
+            <p class="product_price"><b>R 19,999</b></p>
+            <div id="add_heart_buttons">
+              <a href="products2.php">
+                <button id="boxbutton">Add to Cart</button></a>
+              <button id="heart_button">
+                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
+              </button>
+            </div>
+          </div>
+          <div id="prodbox2">
+            <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
+            <a href="prodinfo.php">
+              <p>
+                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
+                Storage Laptop
+              </p>
+            </a>
+            <p><b>R 19,999</b></p>
+            <div id="add_heart_buttons">
+              <a href="products2.php">
+                <button id="boxbutton">Add to Cart</button></a>
+              <button id="heart_button">
+                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
+              </button>
+            </div>
+          </div>
+          <div id="prodbox2">
+            <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
+            <a href="prodinfo.php">
+              <p>
+                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
+                Storage Laptop
+              </p>
+            </a>
+            <p><b>R 19,999</b></p>
+            <div id="add_heart_buttons">
+              <a href="products2.php">
+                <button id="boxbutton">Add to Cart</button></a>
+              <button id="heart_button">
+                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="social-media-icons">
+      <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
+          <p>Facebook</p>
+        </i>
+      </a>
+      <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'>
+          <p>Instagram</p>
+        </i>
+      </a>
+      <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'>
+          <p>LinkedIn</p>
+        </i>
+      </a>
+    </div>
+    <hr id="foot_line" />
+    <p id="footer_text">
+      Copyright &copy; 2024 EasyNet In Business Communications
+    </p>
+  </footer>
+</body>
+
 </html>
