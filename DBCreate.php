@@ -78,5 +78,27 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table 'cart': " . $conn->error;
 }
 
+
+$sql = "CREATE TABLE IF NOT EXISTS  orders (
+    order_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_ID INT(11) NOT NULL,
+    prod_ID INT(11) NOT NULL,
+    order_total DECIMAL(10, 2) NOT NULL,
+    placed_on DATETIME NOT NULL DEFAULT CURRENT_TIME,
+    shipping_address VARCHAR(255), 
+    payment_method VARCHAR(255) NOT NULL, 
+    payment_status ENUM('Paid', 'Due', 'Refunded') NOT NULL,
+    status ENUM('Pending', 'In Progress', 'Delivered') NOT NULL,
+    FOREIGN KEY (user_ID) REFERENCES users(user_ID), 
+    FOREIGN KEY (prod_ID) REFERENCES products(prod_ID)
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table 'orders' created successfully<br>";
+} else {
+    echo "Error creating table 'orders': " . $conn->error;
+}
+
+
 // Close connection
 $conn->close();
