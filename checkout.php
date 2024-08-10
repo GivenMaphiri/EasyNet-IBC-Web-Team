@@ -1,3 +1,10 @@
+<?php
+session_start();
+include "DBConn.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -124,49 +131,98 @@
       </div>
       <hr id="checkout_lines">
 
-      <h2>CART</h2>
     </div>
 
     <div class="checkout_boxes">
+      <?php
 
-      <div class="checkbox1">
-        <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
-        <a href="prodinfo.php">
-          <p>
-            HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-            Storage Laptop
-          </p>
-        </a>
-        <p class="prod_prices"><b>R19999.99</b></p>
-        <div id="check_quantity">
-          <input class="cart_quantity" type="number" value="1">
-          <button class="btn_danger" id="rem_button">Remove from Cart</button>
-        </div>
-      </div>
+      $user_ID = 1;
+      $sql = "SELECT * FROM cart WHERE user_ID = ?";
+      $stmt = $conn->prepare($sql);
+      $stmt->bind_param("i", $user_ID);
+      $stmt->execute();
+      $result = $stmt->get_result();
 
-      <div class="checkbox1">
-        <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
-        <a href="prodinfo.php">
-          <p>
-            HP PavilioN 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-            Storage Laptop
-          </p>
-        </a>
-        <p class="prod_prices"><b>R19999.99</b></p>
-        <div id="check_quantity">
-          <input class="cart_quantity" type="number" value="1">
-          <button class="btn_danger" id="rem_button">Remove from Cart</button>
-        </div>
-      </div>
-    </div>
-    <div id="total_price">
-      <h1>Total Price:</h1>
-      <h1 class="cart_total_price">R19999.00</h1>
-    </div>
-    <div class="checkout_button">
-      <button id="rem_button">Checkout</button>
-    </div>
+      $totalPrice = 0;
 
+      if ($result->num_rows > 0) {
+
+
+        while ($row = $result->fetch_assoc()) {
+          $subtotal = $row['prod_price'] * $row['quantity'];
+          $totalPrice += $subtotal;
+          echo "<div id='cart_items'>";
+          echo "<div class='checkbox1'>";
+          echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='200px' /></a>";
+          echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
+          echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
+          echo "<div id='check_quantity'>";
+          echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "'>";
+          echo "<button class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
+          echo "</div>";
+          echo "</div>";
+          echo "</div>";
+        }
+
+
+
+        echo "<div id='total_price'>";
+        echo "<h1>Total Price:</h1>";
+        echo "<h1 class='cart_total_price'>R" . number_format($totalPrice, 2) . "</h1>";
+        echo "</div>";
+      } else {
+        echo "<h1>Your cart is empty.</h1>";
+      }
+
+      $stmt->close();
+      $conn->close();
+      ?>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('.cart_quantity').on('change', function() {
+            var prod_ID = $(this).data('prod-id');
+            var newQuantity = $(this).val();
+            var price = $(this).data('price');
+
+            $.ajax({
+              url: 'update_cart.php',
+              method: 'POST',
+              data: {
+                prod_ID: prod_ID,
+                quantity: newQuantity
+              },
+              success: function(response) {
+                var newTotal = price * newQuantity;
+                var totalCartPrice = 0;
+
+                $('.cart_quantity').each(function() {
+                  var quantity = $(this).val();
+                  var itemPrice = $(this).data('price');
+                  totalCartPrice += quantity * itemPrice;
+                });
+
+                $('.cart_total_price').text('R' + totalCartPrice.toFixed(2));
+              }
+            });
+          });
+        });
+
+        function removeFromCart(prod_ID) {
+          if (confirm('Are you sure you want to remove this item from the cart?')) {
+            $.ajax({
+              url: 'remove_cart.php',
+              method: 'POST',
+              data: {
+                prod_ID: prod_ID
+              },
+              success: function(response) {
+                location.reload();
+              }
+            });
+          }
+        }
+      </script>
 
   </main>
 

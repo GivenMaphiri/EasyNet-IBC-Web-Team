@@ -155,12 +155,13 @@ include "DBConn.php";
 
             while ($row = $result->fetch_assoc()) {
               $prod_id = $row['prod_id'];
+              $prod_img = $row['prod_image'];
               echo "<div id='prodbox2'>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><img class='prod_image' src='_images/_products/" . $row['prod_image'] . "' width='150px'/></a>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . $row['prod_name'] . "</p></a>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
               echo "<div id='add_heart_buttons'>";
-              echo "<button id='boxbutton' class='add_to_cart'>Add to Cart</button>";
+              echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
               echo "<button id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
               echo "</div>";
               echo "</div>";
@@ -174,6 +175,41 @@ include "DBConn.php";
         </div>
       </div>
     </div>
+    <!-- Add this script in the HTML file where the "Add to Cart" button is present -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.add_to_cart').on('click', function(e) {
+          e.preventDefault();
+
+          var prod_ID = $(this).data('prod-id');
+          var prod_name = $(this).data('prod-name');
+          var prod_price = $(this).data('prod-price');
+          var prod_image = $(this).data('prod-image');
+
+          $.ajax({
+            url: 'addtocart.php',
+            method: 'POST',
+            data: {
+              add_to_cart: true,
+              prod_ID: prod_ID,
+              prod_name: prod_name,
+              prod_price: prod_price,
+              prod_image: prod_image
+            },
+            success: function(response) {
+              var result = JSON.parse(response);
+              if (result.status === 'success') {
+                alert('Product added to cart!');
+              } else {
+                alert('There was an issue adding the product to the cart.');
+              }
+            }
+          });
+        });
+      });
+    </script>
+
   </main>
 
   <footer>
