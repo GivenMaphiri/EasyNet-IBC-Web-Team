@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+include "DBConn.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -138,105 +146,31 @@
     <div id="product_mainpage">
       <div id="prod_right">
         <div class="prod_display">
-          <div id="prodbox2">
-            <a href="prodinfo.php"><img class="prod_image" src="_images/_products/hardprod.jpg" width="200px" /></a>
-            <a href="prodinfo.php">
-              <p class="prod_title">
-                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                Storage Laptop
-              </p>
-            </a>
-            <p class="product_price"><b>R 19,999</b></p>
-            <div id="add_heart_buttons">
-              <button id="boxbutton" class="add_to_cart">Add to Cart</button>
-              <button id="heart_button">
-                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
-              </button>
-            </div>
-          </div>
-          <div id="prodbox2">
-            <a href="prodinfo.php"><img class="prod_image" src="_images/_products/hardprod2.jpg" width="200px" /></a>
-            <a href="prodinfo.php">
-              <p class="prod_title">
-                Lenovo Ideapad 3 Intel® Core™ i5-12450H 8GB RAM 512GB SSD
-                Laptop
-              </p>
-            </a>
-            <p class="product_price"><b>R 9,999</b></p>
-            <div id="add_heart_buttons">
-              <button id="boxbutton" class="add_to_cart">Add to Cart</button>
-              <button id="heart_button">
-                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
-              </button>
-            </div>
-          </div>
-          <div id="prodbox2">
-            <a href="prodinfo.php"><img class="prod_image" src="_images/_products/hardprod3.jpg" width="190px" /></a>
-            <a href="prodinfo.php">
-              <p class="prod_title">
-                Apple MacBook Air 13-Inch With M1 Processor 7 Core GPU 256GB
-                Space Grey
-              </p>
-            </a>
-            <p class="product_price"><b>R 18,999</b></p>
-            <div id="add_heart_buttons">
-              <button id="boxbutton" class="add_to_cart">Add to Cart</button>
-              <button id="heart_button">
-                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
-              </button>
-            </div>
-          </div>
-          <div id="prodbox2">
-            <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
-            <a href="prodinfo.php">
-              <p class="prod_title">
-                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                Storage Laptop
-              </p>
-            </a>
-            <p class="product_price"><b>R 19,999</b></p>
-            <div id="add_heart_buttons">
-              <a href="products2.php">
-                <button id="boxbutton">Add to Cart</button></a>
-              <button id="heart_button">
-                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
-              </button>
-            </div>
-          </div>
-          <div id="prodbox2">
-            <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
-            <a href="prodinfo.php">
-              <p>
-                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                Storage Laptop
-              </p>
-            </a>
-            <p><b>R 19,999</b></p>
-            <div id="add_heart_buttons">
-              <a href="products2.php">
-                <button id="boxbutton">Add to Cart</button></a>
-              <button id="heart_button">
-                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
-              </button>
-            </div>
-          </div>
-          <div id="prodbox2">
-            <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="200px" /></a>
-            <a href="prodinfo.php">
-              <p>
-                HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-                Storage Laptop
-              </p>
-            </a>
-            <p><b>R 19,999</b></p>
-            <div id="add_heart_buttons">
-              <a href="products2.php">
-                <button id="boxbutton">Add to Cart</button></a>
-              <button id="heart_button">
-                <img id="heart_button_img" src="_images/_icons/heart.png" width="18px" />
-              </button>
-            </div>
-          </div>
+          <?php
+
+          $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products";
+          $result = $conn->query($sql);
+
+          if ($result->num_rows > 0) {
+
+            while ($row = $result->fetch_assoc()) {
+              $prod_id = $row['prod_id'];
+              echo "<div id='prodbox2'>";
+              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><img class='prod_image' src='_images/_products/" . $row['prod_image'] . "' width='150px'/></a>";
+              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . $row['prod_name'] . "</p></a>";
+              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
+              echo "<div id='add_heart_buttons'>";
+              echo "<button id='boxbutton' class='add_to_cart'>Add to Cart</button>";
+              echo "<button id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
+              echo "</div>";
+              echo "</div>";
+            }
+          } else {
+            echo "<p>No books added yet.</p>";
+          }
+
+          ?>
+
         </div>
       </div>
     </div>

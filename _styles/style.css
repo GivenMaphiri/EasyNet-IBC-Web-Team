@@ -97,7 +97,7 @@ a {
 
 .row .mega-link li {
   padding: 0 10px;
-  color:#5d5e5e;
+  color: #5d5e5e;
   font-weight: lighter;
 }
 
@@ -163,20 +163,18 @@ footer {
   margin-top: 20px;
 }
 
-
-footer #logo{
+footer #logo {
   margin-bottom: 30px;
 }
 
-footer h4{
+footer h4 {
   padding-bottom: 30px;
-  font-size:15px;
+  font-size: 15px;
 }
 
-footer p{
-  font-size:15px;
+footer p {
+  font-size: 15px;
   margin: 0 0 8px 0;
-
 }
 
 #background_home {
@@ -439,6 +437,7 @@ footer p{
   display: flex;
   flex-direction: column;
   justify-self: center;
+  justify-content: space-between;
   align-items: center;
   width: 250px;
   height: 315px;
@@ -448,10 +447,6 @@ footer p{
   border-width: 1px;
   box-shadow: 5px 5px 15px grey;
   transition: all 0.2s ease-in;
-}
-
-#prodbox2 p b {
-  text-align: left;
 }
 
 #prodbox2:hover {
@@ -539,7 +534,6 @@ footer p{
   transform: scale(1.2); /* Scale icon on hover */
 }
 /*---------End-----------*/
-
 
 #loginlinks {
   text-decoration: none;
@@ -629,13 +623,13 @@ footer p{
   background-color: red;
   border-color: red;
   color: white;
-  text-align:left;
+  text-align: left;
 }
 
 #fea-container h7 {
   cursor: pointer;
   color: grey;
-  text-decoration:line-through;
+  text-decoration: line-through;
 }
 
 @media (max-width: 700px) {
@@ -1067,7 +1061,7 @@ footer {
   border-bottom-style: solid;
   border-bottom-color: black;
   border-bottom-width: 1px;
-  height: 60vh;
+  height: 75vh;
   padding-top: 10px;
 }
 
@@ -1660,12 +1654,10 @@ td {
   text-align: center;
   padding: 10px;
   border: 1px solid #ddd;
-  
 }
 
 #client_body_bottom td {
   border-right: 2px solid #333; /* Solid vertical line down the middle */
-  
 }
 
 #client_body_bottom td:last-child {
@@ -1684,7 +1676,6 @@ td {
 #client_body_bottom tr:nth-child(even) td {
   background-color: #ffffff; /* White */
 }
-
 
 .slick-slide {
   display: flex;
