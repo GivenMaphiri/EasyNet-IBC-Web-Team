@@ -31,7 +31,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                 if (password_verify($password, $row['password'])) {
                     $_SESSION['email'] = $email;
                     $_SESSION['user_id'] = $row['user_ID'];
-                    header("Location: userpage.php");
+                    header("Location: index.php");
                     exit();
                 } else {
                     header("Location: login.php?error=Incorrect password");
