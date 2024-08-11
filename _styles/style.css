@@ -975,12 +975,12 @@ footer {
 
 .checkout_boxes {
   display: grid;
-  grid-template-columns: 300px 300px;
-  row-gap: 10px;
-  margin-left: 3%;
-  margin-right: 3%;
-  padding-top: 20px;
-  padding-bottom: 10px;
+  max-width: 1150px;
+  gap: 1rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding-top: 30px;
+  padding-bottom: 20px;
   min-height: 50vh;
 }
 
@@ -988,9 +988,10 @@ footer {
   display: flex;
   flex-direction: column;
   justify-self: center;
+  justify-content: space-between;
   align-items: center;
   width: 250px;
-  height: 315px;
+  height: 275px;
   border-style: solid;
   padding: 10px;
   border-radius: 10px;

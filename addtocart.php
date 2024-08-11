@@ -35,7 +35,7 @@ if (isset($_POST['add_to_cart'])) {
         $cart_incTotal = $cart_excTotal + $cart_VAT;
 
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("iissidddd", $user_ID, $prod_ID, $prod_name, $prod_price, $prod_image, $quantity, $cart_excTotal, $cart_VAT, $cart_incTotal);
+        $stmt->bind_param("iisssdddd", $user_ID, $prod_ID, $prod_name, $prod_price, $prod_image, $quantity, $cart_excTotal, $cart_VAT, $cart_incTotal);
         $stmt->execute();
     }
 

@@ -153,12 +153,12 @@ include "DBConn.php";
           $totalPrice += $subtotal;
           echo "<div id='cart_items'>";
           echo "<div class='checkbox1'>";
-          echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='200px' /></a>";
+          echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
           echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
           echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
           echo "<div id='check_quantity'>";
           echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "'>";
-          echo "<button class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
+          echo "<button id='rem_button' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
           echo "</div>";
           echo "</div>";
           echo "</div>";
@@ -210,6 +210,7 @@ include "DBConn.php";
 
         function removeFromCart(prod_ID) {
           if (confirm('Are you sure you want to remove this item from the cart?')) {
+            // User clicked OK, proceed with the AJAX request
             $.ajax({
               url: 'remove_cart.php',
               method: 'POST',
@@ -217,9 +218,12 @@ include "DBConn.php";
                 prod_ID: prod_ID
               },
               success: function(response) {
-                location.reload();
+                location.reload(); // Reload the page to reflect changes in the cart
               }
             });
+          } else {
+            // User clicked Cancel, do nothing or add any additional handling here if needed
+            console.log('Item not removed from the cart.');
           }
         }
       </script>
