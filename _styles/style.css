@@ -1298,6 +1298,18 @@ footer {
 }
 
 /*----------------*/
+#welcomemess {
+  font-size: 13px;
+}
+
+#logoutlink {
+  color: red;
+  transition: all 0.2s ease-in;
+}
+
+#logoutlink:hover {
+  color: rgb(155, 2, 2);
+}
 
 #contact_headings {
   margin-bottom: 0;

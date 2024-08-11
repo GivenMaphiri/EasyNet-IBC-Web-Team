@@ -4,50 +4,50 @@ include "DBConn.php";
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    function validate($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+  function validate($data)
+  {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
 
-    $email = validate($_POST['email']);
-    $password = validate($_POST['password']);
+  $email = validate($_POST['email']);
+  $password = validate($_POST['password']);
 
-    if (empty($email) || empty($password)) {
-        header("Location: login.php?error=All fields are required");
-        exit();
-    } else {
-        // Adjusted SQL query to match the 'users' table structure
-        $sql = "SELECT * FROM users WHERE email_address='$email'";
+  if (empty($email) || empty($password)) {
+    header("Location: login.php?error=All fields are required");
+    exit();
+  } else {
+    // Adjusted SQL query to match the 'users' table structure
+    $sql = "SELECT * FROM users WHERE email_address='$email'";
 
-        $result = mysqli_query($conn, $sql);
+    $result = mysqli_query($conn, $sql);
 
-        if ($result) {
-            if (mysqli_num_rows($result) === 1) {
-                $row = mysqli_fetch_assoc($result);
+    if ($result) {
+      if (mysqli_num_rows($result) === 1) {
+        $row = mysqli_fetch_assoc($result);
 
-                // Verifying the password hash
-                if (password_verify($password, $row['password'])) {
-                    $_SESSION['email'] = $email;
-                    $_SESSION['user_id'] = $row['user_ID'];
-                    header("Location: index.php");
-                    exit();
-                } else {
-                    header("Location: login.php?error=Incorrect password");
-                    exit();
-                }
-            } else {
-                header("Location: login.php?error=Incorrect email address");
-                exit();
-            }
+        // Verifying the password hash
+        if (password_verify($password, $row['password'])) {
+          $_SESSION['email'] = $email;
+          $_SESSION['user_id'] = $row['user_ID'];
+          header("Location: index.php");
+          exit();
         } else {
-            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-            exit();
+          header("Location: login.php?error=Incorrect password");
+          exit();
         }
+      } else {
+        header("Location: login.php?error=Incorrect email address");
+        exit();
+      }
+    } else {
+      echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+      exit();
     }
-
-} 
+  }
+}
 ?>
 
 <!DOCTYPE html>

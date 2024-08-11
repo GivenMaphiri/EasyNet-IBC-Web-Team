@@ -1,7 +1,11 @@
 <?php
 session_start();
 include "DBConn.php";
-
+if (!isset($_SESSION['user_id'])) {
+  // If the user is not logged in, redirect to the login page or show an appropriate message
+  header("Location: login.php");
+  exit();
+}
 ?>
 
 
@@ -104,10 +108,30 @@ include "DBConn.php";
     </div>
 
     <div id="right">
-      <p>
-        <a href="register.php" id="loginlinks">Sign Up</a> /
-        <a href="login.php" id="loginlinks">Log In</a>
-      </p>
+      <?php
+
+      if (isset($_SESSION['user_id'])) {
+        // The user is logged in, fetch their first name
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT first_name FROM users WHERE user_ID='$user_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result && mysqli_num_rows($result) === 1) {
+          $row = mysqli_fetch_assoc($result);
+          $first_name = htmlspecialchars($row['first_name']);
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+        } else {
+          // Handle the case where the user is not found, if necessary
+          echo "<p>Error: User not found.</p>";
+        }
+      } else {
+        // The user is not logged in, show the Sign Up / Log In links
+        echo '<p>
+      <a href="register.php" id="loginlinks">Sign Up</a> /
+      <a href="login.php" id="loginlinks">Log In</a>
+    </p>';
+      }
+      ?>
       <div id="right-item">
         <a href="favourites.php"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
         <a href="checkout.php"><img id="icons_bag" class="active" src="_images/_icons/bag.png" width="30px"></a>
@@ -136,7 +160,8 @@ include "DBConn.php";
     <div class="checkout_boxes">
       <?php
 
-      $user_ID = 1;
+      $user_ID = $_SESSION['user_id']; // Retrieve the user ID from the session
+
       $sql = "SELECT * FROM cart WHERE user_ID = ?";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("i", $user_ID);
@@ -146,8 +171,6 @@ include "DBConn.php";
       $totalPrice = 0;
 
       if ($result->num_rows > 0) {
-
-
         while ($row = $result->fetch_assoc()) {
           $subtotal = $row['prod_price'] * $row['quantity'];
           $totalPrice += $subtotal;
@@ -164,8 +187,6 @@ include "DBConn.php";
           echo "</div>";
         }
 
-
-
         echo "<div id='total_price'>";
         echo "<h1>Total Price:</h1>";
         echo "<h1 class='cart_total_price'>R" . number_format($totalPrice, 2) . "</h1>";
@@ -177,6 +198,7 @@ include "DBConn.php";
       $stmt->close();
       $conn->close();
       ?>
+
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
         $(document).ready(function() {

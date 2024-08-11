@@ -1,8 +1,16 @@
 <?php
-
 session_start();
 include "DBConn.php";
 
+// Check if the user is logged in
+if (!isset($_SESSION['user_id'])) {
+    // Set a session variable or redirect with a query parameter
+    $_SESSION['login_required'] = true;
+    header("Location: products2.php"); // Redirect to the product page or wherever you want
+    exit();
+}
+
+// Rest of your add to cart code...
 if (isset($_POST['add_to_cart'])) {
     $prod_ID = $_POST['prod_ID'];
     $prod_name = $_POST['prod_name'];
@@ -10,8 +18,7 @@ if (isset($_POST['add_to_cart'])) {
     $prod_image = $_POST['prod_image'];
     $quantity = 1; // Default quantity
 
-    // For this example, we'll use userId = 1
-    $user_ID = 1;
+    $user_ID = $_SESSION['user_id']; // Retrieve the user ID from the session
 
     // Check if the product is already in the cart for this user
     $sql = "SELECT * FROM cart WHERE user_ID = ? AND prod_ID = ?";
@@ -39,7 +46,6 @@ if (isset($_POST['add_to_cart'])) {
         $stmt->execute();
     }
 
-    // Redirect back to the product page or cart view page
     $stmt->close();
     $conn->close();
     exit();
