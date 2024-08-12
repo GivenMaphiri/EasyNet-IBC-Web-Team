@@ -1,3 +1,10 @@
+<?php
+
+session_start();
+include "DBConn.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,53 +39,79 @@
             <div class="dropdown">
               <div class="dropdown-content">
                 <div class="row">
-                  <h4><a href="products2.php">Hardware</a></h4>
+                  <h4><a href="products2.php?category=Hardware">Hardware</a></h4>
                   <ul class="mega-link">
-                    <li>Servers</li>
-                    <li>Desktops</li>
-                    <li>Monitors</li>
-                    <li>Fax Machines</li>
-                    <li>Computer Components</li>
-                    <li>Projectors</li>
+                    <?php
+                    $category = 'Hardware';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">Software</a></h4>
+                  <h4><a href="products2.php?category=Software">Software</a></h4>
                   <ul class="mega-link">
-                    <li>Microsoft</li>
-                    <li>Symantec</li>
-                    <li>CorelDraw</li>
-                    <li>Adobe</li>
+                    <?php
+                    $category = 'Software';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">Accessories</a></h4>
+                  <h4><a href="products2.php?category=Accessories">Accessories</a></h4>
                   <ul class="mega-link">
-                    <li>Printer Cartridge</li>
-                    <li>Headsets</li>
-                    <li>Controllers</li>
+                    <?php
+                    $category = 'Accessories';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
                   <h4><a href="products2.php">Combos</a></h4>
                   <ul class="mega-link">
-                    <li>Gaming</li>
-                    <li>Keyboard and Mouse</li>
-                    <li>Sound System</li>
+                    <?php
+                    $category = 'Combos';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">All</a></h4>
+                  <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
-                    <li>Asus</li>
-                    <li>Acer</li>
-                    <li>Apple</li>
-                    <li>Dell</li>
-                    <li>Hisense</li>
-                    <li>Hp</li>
-                    <li>Lenovo</li>
-                    <li>Microsoft</li>
-                    <li>Samsung</li>
+                    <?php
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
               </div>

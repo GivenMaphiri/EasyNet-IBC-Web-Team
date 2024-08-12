@@ -114,6 +114,7 @@ include "DBConn.php";
                   </ul>
                 </div>
               </div>
+            </div>
           </li>
           <li id="nav_link">
             <a href="client.php" id="nav_text">Partners and Clients</a>
