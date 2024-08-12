@@ -121,10 +121,11 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
   <main>
 
     <?php
+
     if (isset($_GET['prod_id'])) {
       $prod_id = $_GET['prod_id'];
 
-      $sql = "SELECT prod_name FROM products WHERE prod_ID = ?";
+      $sql = "SELECT prod_name, prod_type FROM products WHERE prod_ID = ?";
       $stmt = $conn->prepare($sql);
       $stmt->bind_param("i", $prod_id);
       $stmt->execute();
@@ -132,7 +133,7 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
 
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; <a href='products2.php' id='prod_back'>All Products</a>&#9664; " . $row['prod_name'] . "</p>";
+          echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; <a href='products2.php?category=" . $row['prod_type'] . "' id='prod_back'>" . $row['prod_type'] . " Products</a>&#9664; " . $row['prod_name'] . "</p>";
         }
       } else {
         echo "<p>Product not found.</p>";

@@ -176,8 +176,8 @@ if (!isset($_SESSION['user_id'])) {
           $totalPrice += $subtotal;
           echo "<div id='cart_items'>";
           echo "<div class='checkbox1'>";
-          echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
-          echo "<a href='prodinfo.php?prod_ID=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
+          echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
+          echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
           echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
           echo "<div id='check_quantity'>";
           echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "'>";

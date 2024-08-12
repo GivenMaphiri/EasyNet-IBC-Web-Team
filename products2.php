@@ -143,12 +143,42 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
     </div>
   </header>
 
-  <main>
-    <p id="prod_back_main">
-      <a href="products.php" id="prod_back">Products</a> &#9664; All Products
-    </p>
+  <main><?php
+        // Retrieve the category from the URL parameter, defaulting to 'all' if not set
+        $category = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+        // Map category values to display names
+        $categoryNames = [
+          'Hardware' => 'Hardware',
+          'Software' => 'Software',
+          'Accessories' => 'Accessories',
+          'all' => 'All'
+        ];
+
+        // Determine the display name of the category
+        $displayCategory = isset($categoryNames[$category]) ? $categoryNames[$category] : 'All Products';
+
+        echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; $displayCategory Products</p>";
+        ?>
+
     <div id="all_products_head">
-      <h1>Products</h1>
+      <?php
+      // Retrieve the category from the URL parameter, defaulting to 'all' if not set
+      $category = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+      // Map category values to display names
+      $categoryNames = [
+        'Hardware' => 'Hardware',
+        'Software' => 'Software',
+        'Accessories' => 'Accessories',
+        'all' => 'All'
+      ];
+
+      // Determine the display name of the category
+      $displayCategory = isset($categoryNames[$category]) ? $categoryNames[$category] : 'All Products';
+
+      echo "<h1>$displayCategory Products</h1>";
+      ?>
       <div id="prod_left">
         <ul>
           <li>Sort By:</li>
@@ -171,18 +201,31 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         <div class="prod_display">
           <?php
 
+          // Retrieve the category from the URL parameter, defaulting to 'all' if not set
+          $category = isset($_GET['category']) ? $_GET['category'] : 'all';
+
+          // Base SQL query to select products
           $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products";
-          $result = $conn->query($sql);
+
+          // Modify SQL query based on the selected category
+          if ($category !== 'all') {
+            $sql .= " WHERE prod_type = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("s", $category);
+            $stmt->execute();
+            $result = $stmt->get_result();
+          } else {
+            $result = $conn->query($sql);
+          }
 
           if ($result->num_rows > 0) {
-
             while ($row = $result->fetch_assoc()) {
               $prod_id = $row['prod_id'];
               $prod_img = $row['prod_image'];
               echo "<div id='prodbox2'>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><img class='prod_image' src='_images/_products/" . $row['prod_image'] . "' width='150px'/></a>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . $row['prod_name'] . "</p></a>";
-              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
+              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "?'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
               echo "<div id='add_heart_buttons'>";
               echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
               echo "<button id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
@@ -190,8 +233,16 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
               echo "</div>";
             }
           } else {
-            echo "<p>No books added yet.</p>";
+            echo "<p>No products found in this category.</p>";
           }
+
+          // Close the statement if prepared
+          if (isset($stmt)) {
+            $stmt->close();
+          }
+
+          // Close the database connection
+          $conn->close();
 
           ?>
 

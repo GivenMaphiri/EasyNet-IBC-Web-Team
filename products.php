@@ -1,3 +1,10 @@
+<?php
+session_start();
+include "DBConn.php";
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,57 +38,82 @@
             <div class="dropdown">
               <div class="dropdown-content">
                 <div class="row">
-                  <h4><a href="products2.php">Hardware</a></h4>
+                  <h4><a href="products2.php?category=Hardware">Hardware</a></h4>
                   <ul class="mega-link">
-                    <li>Servers</li>
-                    <li>Desktops</li>
-                    <li>Monitors</li>
-                    <li>Fax Machines</li>
-                    <li>Computer Components</li>
-                    <li>Projectors</li>
+                    <?php
+                    $category = 'Hardware';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">Software</a></h4>
+                  <h4><a href="products2.php?category=Software">Software</a></h4>
                   <ul class="mega-link">
-                    <li>Microsoft</li>
-                    <li>Symantec</li>
-                    <li>CorelDraw</li>
-                    <li>Adobe</li>
+                    <?php
+                    $category = 'Software';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">Accessories</a></h4>
+                  <h4><a href="products2.php?category=Accessories">Accessories</a></h4>
                   <ul class="mega-link">
-                    <li>Printer Cartridge</li>
-                    <li>Headsets</li>
-                    <li>Controllers</li>
+                    <?php
+                    $category = 'Accessories';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
                   <h4><a href="products2.php">Combos</a></h4>
                   <ul class="mega-link">
-                    <li>Gaming</li>
-                    <li>Keyboard and Mouse</li>
-                    <li>Sound System</li>
+                    <?php
+                    $category = 'Combos';
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bind_param("s", $category);
+                    $stmt->execute();
+                    $result = $stmt->get_result();
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">All</a></h4>
+                  <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
-                    <li>Asus</li>
-                    <li>Acer</li>
-                    <li>Apple</li>
-                    <li>Dell</li>
-                    <li>Hisense</li>
-                    <li>Hp</li>
-                    <li>Lenovo</li>
-                    <li>Microsoft</li>
-                    <li>Samsung</li>
+                    <?php
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc()) {
+                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                    }
+                    ?>
                   </ul>
                 </div>
               </div>
-            </div>
           </li>
           <li id="nav_link">
             <a href="client.php" id="nav_text">Partners and Clients</a>
@@ -94,10 +126,30 @@
     </div>
 
     <div id="right">
-      <p>
-        <a href="register.php" id="loginlinks">Sign Up</a> /
-        <a href="login.php" id="loginlinks">Log In</a>
-      </p>
+      <?php
+
+      if (isset($_SESSION['user_id'])) {
+        // The user is logged in, fetch their first name
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT first_name FROM users WHERE user_ID='$user_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result && mysqli_num_rows($result) === 1) {
+          $row = mysqli_fetch_assoc($result);
+          $first_name = htmlspecialchars($row['first_name']);
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+        } else {
+          // Handle the case where the user is not found, if necessary
+          echo "<p>Error: User not found.</p>";
+        }
+      } else {
+        // The user is not logged in, show the Sign Up / Log In links
+        echo '<p>
+      <a href="register.php" id="loginlinks">Sign Up</a> /
+      <a href="login.php" id="loginlinks">Log In</a>
+    </p>';
+      }
+      ?>
       <div id="right-item">
         <a href="favourites.php"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
         <a href="checkout.php"><img id="icons_bag" src="_images/_icons/bag.png" width="30px" /></a>
@@ -125,22 +177,22 @@
       <div id="prodbox1">
         <img src="_images/hardware.png" width="250px" />
         <h3>Hardware</h3>
-        <a href="products2.php"><button id="boxbutton">Shop Hardware</button></a>
+        <a href="products2.php?category=Hardware"><button id="boxbutton">Shop Hardware</button></a>
       </div>
       <div id="prodbox1">
         <img src="_images/adobe.jpg" width="250px" />
         <h3>Software</h3>
-        <a href="products2.php"><button id="boxbutton">Shop Software</button></a>
+        <a href="products2.php?category=Software"><button id="boxbutton">Shop Software</button></a>
       </div>
       <div id="prodbox1">
         <img src="_images/consumables.webp" width="250px" />
         <h3>Accessories</h3>
-        <a href="products2.php"><button id="boxbutton">Shop Accessories</button></a>
+        <a href="products2.php?category=Accessories"><button id="boxbutton">Shop Accessories</button></a>
       </div>
       <div id="prodbox1">
         <img src="_images/all_products.jpg" width="265px" />
         <h3>All Products</h3>
-        <a href="products2.php"><button id="boxbutton">Shop All Products</button></a>
+        <a href="products2.php?category=all"><button id="boxbutton">Shop All Products</button></a>
       </div>
     </div>
 
