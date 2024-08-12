@@ -101,58 +101,9 @@ include "DBConn.php"; // Include your database connection
       </div>
     </div>
   </div>
-
-  <script>
-    // JavaScript to fetch and display messages
-    document.addEventListener('DOMContentLoaded', function() {
-      fetch('_php/get_messages.php')
-      .then(response => response.json())
-      .then(data => {
-          data.messages.forEach(displayMessage);
-      })
-      .catch(error => console.error('Error fetching messages:', error));
-    });
-
-    function displayMessage(message) {
-      const messageList = document.getElementById('messages');
-
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message');
-
-      const senderElement = document.createElement('span');
-      senderElement.classList.add('message-sender');
-      senderElement.textContent = 'Name: ' + message.sender;
-
-      const emailElement = document.createElement('p');
-      emailElement.classList.add('message-email');
-      emailElement.textContent = `Email: ${message.senderEmail}`;
-
-      const contentElement = document.createElement('p');
-      contentElement.classList.add('message-content');
-      contentElement.textContent = 'Message: ' + message.content;
-
-      const actionsElement = document.createElement('div');
-      actionsElement.classList.add('message-actions');
-
-      const deleteButton = document.createElement('button');
-      deleteButton.classList.add('delete-message');
-      deleteButton.textContent = 'Delete';
-
-      deleteButton.addEventListener('click', () => {
-        messageList.removeChild(messageElement);
-        alert('Message deleted (simulated)');
-      });
-
-      actionsElement.appendChild(deleteButton);
-
-      messageElement.appendChild(senderElement);
-      messageElement.appendChild(emailElement);
-      messageElement.appendChild(contentElement);
-      messageElement.appendChild(actionsElement);
-
-      messageList.appendChild(messageElement);
-    }
-  </script>
+  
+   <script src="_javascript/messages.js"></script>
+   </body>
 
 </body>
 </html>
