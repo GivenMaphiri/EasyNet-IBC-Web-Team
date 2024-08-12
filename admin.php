@@ -1,3 +1,12 @@
+<?php
+
+include 'DBConn.php';
+
+session_start();
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,6 +152,12 @@
 
 
         <div class="card-single">
+
+         <!-- counts the number of rows in the orders table and dispalys it as the total number of orders placed.-->
+        <?php
+            $select_orders = mysqli_query($conn, "SELECT * FROM `Orders`") or die('query failed');
+            $number_of_orders = mysqli_num_rows($select_orders);
+          ?>
           <div class="card-flex">
             <div class="card-info">
               <div class="card-head">
@@ -150,7 +165,7 @@
                 <small>Number of orders</small>
               </div>
 
-              <h2>27</h2>
+              <h2><?php echo $number_of_orders; ?></h2>   <!-- the number of orders-->
 
               <small>5% less orders</small>
             </div>

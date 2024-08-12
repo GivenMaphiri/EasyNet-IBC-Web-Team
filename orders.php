@@ -1,3 +1,14 @@
+<?php
+
+include 'DBConn.php';
+
+session_start();
+
+$sql = "SELECT order_ID, order_total, placed_on, payment_status, status FROM Orders";
+$result = $conn->query($sql);
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,6 +131,55 @@
           </button>
         </div>
       </div>
+
+
+
+
+
+      <table>
+      <style>
+        table {
+            border-collapse: collapse;
+            width: 100%; /* Adjust width as needed */
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+        <tr>
+            <th>ID</th>
+            <th>Total</th>
+            <th>Placed on</th>
+            <th>payment status</th>
+            <th>status</th>
+        </tr>
+        <?php
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                echo "<tr>";
+                echo "<td>" . $row["order_ID"] . "</td>";
+                echo "<td>" . $row["order_total"] . "</td>";
+                echo "<td>" . $row["placed_on"] . "</td>";
+                echo "<td>" . $row["payment_status"] . "</td>";
+                echo "<td>" . $row["status"] . "</td>";
+
+                echo "</tr>";
+            }
+        } else {
+            echo "0 results";
+        }
+        $conn->close();
+        ?>
+    </table>
+
 
 
       <!------------- Table start-------------------------------------------------------------------------------->
