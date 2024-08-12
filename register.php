@@ -1,10 +1,46 @@
 <?php
-
 session_start();
 include "DBConn.php";
 
-?>
+if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['phone_number']) && isset($_POST['email']) && isset($_POST['password'])) {
 
+    function validate($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
+    $first_name = validate($_POST['first_name']);
+    $last_name = validate($_POST['last_name']);
+    $phone_number = validate($_POST['phone_number']);
+    $email_address = validate($_POST['email_address']);
+    $password = validate($_POST['password']);
+
+    if (empty($first_name) || empty($last_name) || empty($phone_number) || empty($email) || empty($password)) {
+        header("Location: register.php?error=All fields are required");
+        exit();
+    } else {
+        // Hashing the password using password_hash
+        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+
+        // Set the verification status to "unverified"
+        $verificationStatus = 'unverified';
+
+        $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password, verification_status) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$password', $verificationStatus)";
+        
+       
+       if (mysqli_query($conn, $sql)) {
+           header("Location: index.php");
+           exit();
+        } else {
+           header("Location: register.php?error=Registration failed");
+            exit();
+        }
+    }
+
+} 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -145,7 +181,7 @@ include "DBConn.php";
   <main class="login2">
     <h1 id="register_heading">Sign Up</h1>
 
-    <form action="signup.php" method="post" class="form-box">
+    <form action="register.php" method="post" class="form-box">
       <!-- Personal Info -->
 
       <div id="signup_container">
@@ -154,7 +190,7 @@ include "DBConn.php";
           <h4>First Name</h4>
           <input type="text" name="first_name" placeholder="First Name" class="signup_box" required />
           <h4>Last Name</h4>
-          <input type="text" name="lastname" class="signup_box" placeholder="Last Name" required />
+          <input type="text" name="last_name" class="signup_box" placeholder="Last Name" required />
           <h4>Phone number</h4>
           <input type="text" name="phone_number" placeholder="Phone Number" class="signup_box" required />
         </div>
