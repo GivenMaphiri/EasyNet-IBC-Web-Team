@@ -1,3 +1,8 @@
+<?php
+session_start(); // Start the session
+include "DBConn.php"; // Include your database connection
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,15 +96,14 @@
   <div class="main-content">
     <div class="main-messages">
       <h1>Messages</h1>
-
       <div id="messages">
-
+        <!-- Messages will be dynamically inserted here -->
       </div>
     </div>
   </div>
+  
+   <script src="_javascript/messages.js"></script>
+   </body>
 
-
-  <script src="_javascript/messages.js"></script>
 </body>
-
 </html>
