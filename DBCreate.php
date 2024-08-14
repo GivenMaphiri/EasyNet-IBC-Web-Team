@@ -115,5 +115,22 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating messages table: " . $conn->error;
 }
 
+
+//Creates the message table in the database   /// alternate message db
+
+$sql = "CREATE TABLE messages (
+    message_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    message TEXT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table 'messages' created successfully<br>";
+} else {
+    echo "Error creating messages table: " . $conn->error;
+}
+
 // Close connection 
 $conn->close();

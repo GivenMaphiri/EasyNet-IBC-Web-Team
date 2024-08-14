@@ -15,7 +15,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 } else {
     // Prepare and execute the SQL statement
-    $sql = "INSERT INTO messages (name, email, message_content) VALUES (?, ?, ?)";
+    $sql = "INSERT INTO message (name, email, message_content) VALUES (?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sss", $name, $email, $message);
 
