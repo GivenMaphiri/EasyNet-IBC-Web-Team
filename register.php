@@ -31,7 +31,8 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['p
 
        
        if (mysqli_query($conn, $sql)) {
-           header("Location: index.php");
+           $_SESSION['success'] = "Registration successful!";
+           header("Location: login.php?");
            exit();
         } else {
            header("Location: register.php?error=Registration failed");
