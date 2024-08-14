@@ -206,7 +206,7 @@ include "DBConn.php";
     <div class="contact_form">
       <h1>Contact Us</h1>
 
-      <form id="contactForm" action = "process_Form.php" method = "post">
+      <form id="contactForm" action = "processForm.php" method = "post">
         <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" required>
 
@@ -216,11 +216,13 @@ include "DBConn.php";
         <label for="message">Message:</label>
         <textarea id="message" name="message" required></textarea>
 
-        <button type="submit">Send Message</button>
+        <button type="submit" value="submit" name = "submit">Send Message</button>
       </form>
     </div>
 
-    <script src="_javascript/contact.js"></script>
+   
+ 
+    <!--<script src="_javascript/contact.js"></script>  -->
 
 
 
