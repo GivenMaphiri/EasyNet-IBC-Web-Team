@@ -206,7 +206,7 @@ include "DBConn.php";
     <div class="contact_form">
       <h1>Contact Us</h1>
 
-      <form id="contactForm">
+      <form id="contactForm" action = "process_Form.php" method = "post">
         <label for="name">Your Name:</label>
         <input type="text" id="name" name="name" required>
 

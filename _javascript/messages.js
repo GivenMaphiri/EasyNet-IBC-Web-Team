@@ -1,77 +1,54 @@
-// Handle form submission and send message to the server
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  const name = document.getElementById('name').value;
-  const email = document.getElementById('email').value;
-  const message = document.getElementById('message').value;
-
-  fetch('_php/save_message.php', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ name, email, message })
-  })
-  .then(response => response.json())
-  .then(data => {
-      if (data.success) {
-          alert('Message sent successfully');
-      } else {
-          alert('Failed to send message');
-      }
-  })
-  .catch(error => console.error('Error:', error));
-});
-
-// Fetch and display messages on the admin side
-document.addEventListener('DOMContentLoaded', function() {
-fetch('_php/get_messages.php')
-.then(response => response.json())
-.then(data => {
-    data.messages.forEach(displayMessage);
-})
-.catch(error => console.error('Error fetching messages:', error));
-});
-
-function displayMessage(message) {
 const messageList = document.getElementById('messages');
 
-const messageElement = document.createElement('div');
-messageElement.classList.add('message');
+// Simulate fetching messages from a server (replace with your actual data fetching logic)
+const messages = [
+  { sender: 'John Doe', senderEmail: 'john.doe@example.com', content: 'This is a message from John Doe. I have a question about my recent order #12345.' },
+  { sender: 'Jane Smith', senderEmail: 'jane.smith@example.com', content: 'This is a message from Jane Smith. I would like to request a return for product XYZ (SKU: ABC123) because it arrived damaged.' },
+  { sender: 'David Lee', senderEmail: 'david.lee@example.com', content: 'Hi, I placed an order yesterday but haven\'t received a confirmation email yet. Can you please check on it? Order number: #54321' },
+  { sender: 'Sarah Jones', senderEmail: 'sarah.jones@example.com', content: 'I\'m interested in learning more about your product XYZ. Can you provide any additional information on its features and specifications?' },
+  { sender: 'Michael Brown', senderEmail: 'michael.brown@example.com', content: 'I just subscribed to your newsletter and received a discount code. How do I use it during checkout?' },
+];
 
-const senderElement = document.createElement('span');
-senderElement.classList.add('message-sender');
-senderElement.textContent = 'Name: ' + message.sender;
+// Function to display a single message
+function displayMessage(message) {
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('message');
 
-const emailElement = document.createElement('p');
-emailElement.classList.add('message-email');
-emailElement.textContent = `Email: ${message.senderEmail}`;
+  const senderElement = document.createElement('span');
+  senderElement.classList.add('message-sender');
+  senderElement.textContent = 'Name: ' + message.sender;
 
-const contentElement = document.createElement('p');
-contentElement.classList.add('message-content');
-contentElement.textContent = 'Message: ' + message.content;
+  const emailElement = document.createElement('p');
+  emailElement.classList.add('message-email');
+  emailElement.textContent = `Email: ${message.senderEmail}`;
 
-const actionsElement = document.createElement('div');
-actionsElement.classList.add('message-actions');
+  const contentElement = document.createElement('p');
+  contentElement.classList.add('message-content');
+  contentElement.textContent = 'Message:    ' + message.content;
 
-const deleteButton = document.createElement('button');
-deleteButton.classList.add('delete-message');
-deleteButton.textContent = 'Delete';
+  const actionsElement = document.createElement('div');
+  actionsElement.classList.add('message-actions');
 
-deleteButton.addEventListener('click', () => {
-  messageList.removeChild(messageElement);
-  alert('Message deleted (simulated)');
-});
+  const deleteButton = document.createElement('button');
+  deleteButton.classList.add('delete-message');
+  deleteButton.textContent = 'Delete';
 
-actionsElement.appendChild(deleteButton);
+  // Add event listener for delete button (replace with actual delete functionality)
+  deleteButton.addEventListener('click', () => {
+    // Simulate message deletion
+    messageList.removeChild(messageElement);
+    alert('Message deleted (simulated)');
+  });
 
-messageElement.appendChild(senderElement);
-messageElement.appendChild(emailElement);
-messageElement.appendChild(contentElement);
-messageElement.appendChild(actionsElement);
+  actionsElement.appendChild(deleteButton);
 
-messageList.appendChild(messageElement);
+  messageElement.appendChild(senderElement);
+  messageElement.appendChild(emailElement);
+  messageElement.appendChild(contentElement);
+  messageElement.appendChild(actionsElement);
+
+  messageList.appendChild(messageElement);
 }
 
-
+// Display all messages
+messages.forEach(displayMessage);
