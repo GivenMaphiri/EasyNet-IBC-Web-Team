@@ -31,11 +31,12 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['p
 
        
        if (mysqli_query($conn, $sql)) {
-           $_SESSION['success'] = "Registration successful!";
            header("Location: login.php?");
-           exit();
+           echo "Registration successful";
+          // exit();
         } else {
            header("Location: register.php?error=Registration failed");
+           echo "Something went wrong!";
             exit();
         }
     }
