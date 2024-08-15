@@ -128,10 +128,30 @@ include "DBConn.php";
     </div>
 
     <div id="right">
-      <p>
-        <a href="register.php" id="loginlinks">Sign Up</a> /
-        <a href="login.php" id="loginlinks">Log In</a>
-      </p>
+      <?php
+
+      if (isset($_SESSION['user_id'])) {
+        // The user is logged in, fetch their first name
+        $user_id = $_SESSION['user_id'];
+        $sql = "SELECT first_name FROM users WHERE user_ID='$user_id'";
+        $result = mysqli_query($conn, $sql);
+
+        if ($result && mysqli_num_rows($result) === 1) {
+          $row = mysqli_fetch_assoc($result);
+          $first_name = htmlspecialchars($row['first_name']);
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+        } else {
+          // Handle the case where the user is not found, if necessary
+          echo "<p>Error: User not found.</p>";
+        }
+      } else {
+        // The user is not logged in, show the Sign Up / Log In links
+        echo '<p>
+      <a href="register.php" id="loginlinks">Sign Up</a> /
+      <a href="login.php" id="loginlinks">Log In</a>
+    </p>';
+      }
+      ?>
       <div id="right-item">
         <a href="favourites.php"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
         <a href="checkout.php"><img id="icons_bag" src="_images/_icons/bag.png" width="30px" /></a>
