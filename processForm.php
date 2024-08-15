@@ -16,7 +16,8 @@ if (isset($_POST["submit"])) {
         }
         $sql = "INSERT INTO message (name, email, message) VALUES ('$name','$email' ,'$message')";
         if (mysqli_query($link, $sql)) {
-            echo "Message sent successfully...";
+            header("Location: contact.php");
+            //echo "Message sent successfully...";
         } else {
             echo "something went wrong :(";
         }
