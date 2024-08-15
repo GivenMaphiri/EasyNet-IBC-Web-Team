@@ -14,10 +14,10 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['p
     $first_name = validate($_POST['first_name']);
     $last_name = validate($_POST['last_name']);
     $phone_number = validate($_POST['phone_number']);
-    $email_address = validate($_POST['email_address']);
+    $email_address = validate($_POST['email']);
     $password = validate($_POST['password']);
 
-    if (empty($first_name) || empty($last_name) || empty($phone_number) || empty($email) || empty($password)) {
+    if (empty($first_name) || empty($last_name) || empty($phone_number) || empty($email_address) || empty($password)) {
         header("Location: register.php?error=All fields are required");
         exit();
     } else {
@@ -27,11 +27,12 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['p
         // Set the verification status to "unverified"
         $verificationStatus = 'unverified';
 
-        $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password, verification_status) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$password', $verificationStatus)";
-        
+        $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')";
+
        
        if (mysqli_query($conn, $sql)) {
-           header("Location: index.php");
+           $_SESSION['success'] = "Registration successful!";
+           header("Location: login.php?");
            exit();
         } else {
            header("Location: register.php?error=Registration failed");

@@ -2,6 +2,12 @@
 session_start();
 include "DBConn.php";
 
+//sign up successful 
+if (isset($_SESSION['success'])) {
+  echo $_SESSION['success'];
+  unset($_SESSION['success']);
+}
+
 if (isset($_POST['email']) && isset($_POST['password'])) {
 
   function validate($data)
