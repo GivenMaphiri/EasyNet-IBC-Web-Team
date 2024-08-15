@@ -99,26 +99,9 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table 'orders': " . $conn->error;
 }
 
+//Creates the message table in the database
 
-//Creates the messages table in the database
-$sql = "CREATE TABLE IF NOT EXISTS messages (
-    message_id INT(11) AUTO_INCREMENT PRIMARY KEY,
-    user_id INT(11) NOT NULL,
-    message_content TEXT NOT NULL,
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (user_id) REFERENCES users(user_ID)
-)";
-
-if ($conn->query($sql) === TRUE) {
-    echo "Table 'messages' created successfully<br>";
-} else {
-    echo "Error creating messages table: " . $conn->error;
-}
-
-
-//Creates the message table in the database   /// alternate message db
-
-$sql = "CREATE TABLE message (
+$sql = "CREATE TABLE IF NOT EXISTS message (
     message_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     email VARCHAR(255) NOT NULL,
