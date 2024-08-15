@@ -194,12 +194,15 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
       <div id="login_container">
         <h1 id="login_heading">Login</h1>
         <div>
-          <input id="input-box" type="text" name="email" placeholder="Email" class="signup_box" required />
+          <input id="email" type="email" name="email" placeholder="Email" class="signup_box" required />
         </div>
+        <span id="emailError" class="error"></span>
 
         <div>
-          <input id="input-box" type="password" name="password" placeholder="Password" class="signup_box" required />
+          <input id="password" type="password" name="password" placeholder="Password" class="signup_box" required />
         </div>
+
+        <span id="passwordError" class="error"></span>
 
         <div id="two-col">
           <div id="one">
@@ -214,7 +217,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
       </div>
     </form>
 
-    <script>
+    <Script src="login.js"></Script>
+    <Script src="admin.js"></Script>
+
+    <!-- <script>
       // Get the login button element
       const loginButton = document.getElementById('login_button');
 
@@ -223,7 +229,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         // Redirect to admin.php on click
         window.location.href = "admin.php";
       });
-    </script>
+    </script> -->
 
 
   </main>
