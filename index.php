@@ -355,22 +355,22 @@ include "DBConn.php"; // Include your database connection
       <div id="prodbox5">
         <img src="_images/hardware.png" width="250px" />
         <h3>Hardware</h3>
-        <a href="products2.php"><button id="boxbutton">Shop Hardware</button></a>
+        <a href="products2.php?category=Hardware"><button id="boxbutton">Shop Hardware</button></a>
       </div>
       <div id="prodbox5">
         <img src="_images/adobe.jpg" width="250px" />
         <h3>Software</h3>
-        <a href="products2.php"><button id="boxbutton">Shop Software</button></a>
+        <a href="products2.php?category=Software"><button id="boxbutton">Shop Software</button></a>
       </div>
       <div id="prodbox5">
         <img src="_images/consumables.webp" width="250px" />
         <h3>Accessories</h3>
-        <a href="products2.php"><button id="boxbutton">Shop Accessories</button></a>
+        <a href="products2.php?category=Accessories"><button id="boxbutton">Shop Accessories</button></a>
       </div>
       <div id="prodbox5">
         <img src="_images/all_products.jpg" width="265px" />
         <h3>All Products</h3>
-        <a href="products2.php"><button id="boxbutton">Shop All Products</button></a>
+        <a href="products2.php?category=all"><button id="boxbutton">Shop All Products</button></a>
       </div>
     </div>
 
