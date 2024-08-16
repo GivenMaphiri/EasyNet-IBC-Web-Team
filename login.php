@@ -218,7 +218,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     </form>
 
     <Script src="login.js"></Script>
-    <Script src="admin.js"></Script>
+  
 
     <!-- <script>
       // Get the login button element
