@@ -106,13 +106,11 @@ session_start();
     <header>
       <div class="menu-toggle">
         <label for="sidebar-toggle">
-          <span class="las la-bars"></span>
+         <!-- <span class="las la-bars"></span> -->
         </label>
       </div>
 
       <div class="header-icons">
-        <span class="las la-search"></span>
-        <span class="las la-bookmark"></span>
         <span class="las la-sms"></span>
       </div>
     </header>
@@ -123,15 +121,62 @@ session_start();
           <h1>Analytics Dashboard</h1>
           <small>Monitor Key metrics. Check reporting and reviews insights</small>
         </div>
-        <div class="header-actions">
-          <button>
-            <span class="las la-tools"></span>
-            Settings
-          </button>
-        </div>
       </div>
       <!------------- Cards start-------------------------------------------------------------------------------->
       <div class="cards">
+        
+<!-- User Card-->
+        <div class="card-single">
+
+         <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
+        <?php
+            $select_users = mysqli_query($conn, "SELECT * FROM `users`") or die('query failed');
+            $number_of_users = mysqli_num_rows($select_users);
+          ?>
+          <div class="card-flex">
+            <div class="card-info">
+              <div class="card-head">
+                <span>Users</span>
+                <small>Number of users</small>
+              </div>
+
+              <h2><?php echo $number_of_users; ?></h2>   <!-- the number of users-->
+
+              <!--<small>5% less users</small> -->
+            </div>
+            <div class="card-chart danger">
+              <span class="las la-chart-line"></span>
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Orders Card-->
+        <div class="card-single">
+
+         <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
+        <?php
+            $select_orders = mysqli_query($conn, "SELECT * FROM `Orders`") or die('query failed');
+            $number_of_orders = mysqli_num_rows($select_orders);
+          ?>
+          <div class="card-flex">
+            <div class="card-info">
+              <div class="card-head">
+                <span>Orders</span>
+                <small>Number of Orders placed</small>
+              </div>
+
+              <h2><?php echo $number_of_orders; ?></h2>   <!-- the number of orders placed-->
+
+              <!--<small>5% less users</small> -->
+            </div>
+            <div class="card-chart danger">
+              <span class="las la-chart-line"></span>
+            </div>
+          </div>
+        </div>
+
+<!-- Revenue card-->
         <div class="card-single">
           <div class="card-flex">
             <div class="card-info">
@@ -142,7 +187,7 @@ session_start();
 
               <h2>R 150,000</h2>
 
-              <small>5% more profits</small>
+              <!--<small>5% more profits</small> -->
             </div>
             <div class="card-chart success">
               <span class="las la-chart-line"></span>
@@ -151,31 +196,7 @@ session_start();
         </div>
 
 
-        <div class="card-single">
-
-         <!-- counts the number of rows in the orders table and dispalys it as the total number of orders placed.-->
-        <?php
-            $select_orders = mysqli_query($conn, "SELECT * FROM `Orders`") or die('query failed');
-            $number_of_orders = mysqli_num_rows($select_orders);
-          ?>
-          <div class="card-flex">
-            <div class="card-info">
-              <div class="card-head">
-                <span>Orders</span>
-                <small>Number of orders</small>
-              </div>
-
-              <h2><?php echo $number_of_orders; ?></h2>   <!-- the number of orders-->
-
-              <small>5% less orders</small>
-            </div>
-            <div class="card-chart danger">
-              <span class="las la-chart-line"></span>
-            </div>
-          </div>
-        </div>
-
-
+<!-- Visitors card-->
         <div class="card-single">
           <div class="card-flex">
             <div class="card-info">
@@ -186,7 +207,7 @@ session_start();
 
               <h2>1500</h2>
 
-              <small>3% less visitors</small>
+              <!--<small>3% less visitors</small> -->
             </div>
             <div class="card-chart yellow">
               <span class="las la-chart-line"></span>
