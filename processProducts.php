@@ -22,6 +22,7 @@ if (isset($_POST["create"])) {
     $sql = "INSERT INTO products (prod_name, prod_code, prod_price, prod_description, prod_image, prod_manufacturer, prod_type) VALUES ('$productName', '$productCode', '$productPrice', '$productDescription', '$productImage', '$productManufacturer', '$productType')";
 
     if (mysqli_query($conn, $sql)) {
+        header("Location: ecommerce.php");
         echo "Product added";
     }else {
         die("Something went wrong");
