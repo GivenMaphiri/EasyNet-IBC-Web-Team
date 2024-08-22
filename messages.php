@@ -1,4 +1,9 @@
 <?php
+// Check connection
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
 session_start(); // Start the session
 include "DBConn.php"; // Include your database connection
 ?>
@@ -96,9 +101,32 @@ include "DBConn.php"; // Include your database connection
   <div class="main-content">
     <div class="main-messages">
       <h1>Messages</h1>
-      <div id="messages">
-        <!-- Messages will be dynamically inserted here -->
-      </div>
+
+      <?php
+      
+    // Retrieve messages from the database
+    $sql = "SELECT * FROM message"; 
+    
+    $res = $conn->query($sql);
+
+    if ($res->num_rows > 0) {
+      while($row = $res->fetch_assoc()) {
+        echo "<div class='message'>";
+        echo "<span class='message-sender'><b>Name:</b> " . $row["name"] . "</span>";
+        echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
+        echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
+        echo "<div class='message-actions'>";
+        echo "<button class='delete-message'>Delete</button>";
+        echo "</div>";
+        echo "</div>";
+      }
+    } else {
+      echo "No messages found.";
+    }
+
+    $conn->close();
+  ?>
+
     </div>
   </div>
   
