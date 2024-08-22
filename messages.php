@@ -116,6 +116,8 @@ include "DBConn.php"; // Include your database connection
         echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
         echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
         echo "<div class='message-actions'>";
+        echo "<form method='post' action='delete.php'>";
+        echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
         echo "<button class='delete-message'>Delete</button>";
         echo "</div>";
         echo "</div>";
@@ -123,9 +125,12 @@ include "DBConn.php"; // Include your database connection
     } else {
       echo "No messages found.";
     }
+    
 
     $conn->close();
   ?>
+
+  
 
     </div>
   </div>
