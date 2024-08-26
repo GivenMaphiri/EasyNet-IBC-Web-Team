@@ -189,8 +189,8 @@ main {
 
 .cards {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 3rem;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 1rem;
     margin-top: 2rem;
 }
 
@@ -210,7 +210,7 @@ main {
 
 
 .card-head span {
-    display: block;
+    display: block; 
     text-transform: uppercase;
     color: #8da2fb;
     font-size: .9rem;

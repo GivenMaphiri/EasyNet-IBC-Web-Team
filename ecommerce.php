@@ -1,3 +1,9 @@
+<?php
+session_start();
+include "DBConn.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,48 +101,40 @@
 
   <div class="main-content">
 
-    <header>
-      <div class="menu-toggle">
-        <label for="sidebar-toggle">
-          <span class="las la-bars"></span>
-        </label>
-      </div>
-
-      <div class="header-icons">
-        <span class="las la-search"></span>
-        <span class="las la-bookmark"></span>
-        <span class="las la-sms"></span>
-      </div>
-    </header>
+    
 
 
     <div class="Product">
       <h1>Add New Product</h1>
-      <form id="productForm">
+      <form id="productForm" action="processProducts.php"  method="post">
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
 
+        <label for="productCode">Product Code:</label>
+        <input type="text" id="productCode" name="productCode" required>
+
         <label for="productDescription">Description:</label>
-        <textarea id="productDescription" name="productDescription" required></textarea>
+        <textarea id="productDescription" name="productDescription" placeholder="Product description:"  required></textarea>
+
+        <label for="productPrice">Price:</label>
+        <input type="number" id="productPrice" name="productPrice" min="0.01" step="0.01" placeholder="ZAR" required>
 
         <label for="productImage">Image:</label>
         <input type="file" id="productImage" name="productImage" accept="image/*" required>
 
-        <label for="productPrice">Price:</label>
-        <input type="number" id="productPrice" name="productPrice" min="0.01" step="0.01" required>
+        <label for="productManufacturer">Product Manufacturer:</label>
+        <input type="text" id="productManufacturer" name="productManufacturer" required>
 
-        <label for="productCategory">Category:</label>
-        <select id="productCategory" name="productCategory" required>
+
+        <label for="productType">Product Type:</label>
+        <select id="productType" name="productType" required>
           <option value="">Select Category</option>
-          <option value="clothing">Hardware</option>
-          <option value="electronics">Software</option>
-          <option value="books">Accessories</option>
+          <option value="hardware">Hardware</option>
+          <option value="software">Software</option>
+          <option value="accessories">Accessories</option>
         </select>
 
-        <label for="productStock">Stock:</label>
-        <input type="number" id="productStock" name="productStock" min="0" required>
-
-        <button type="submit">Add Product</button>
+        <button type="submit" name="create" value="Add Product">Add Product</button>
       </form>
     </div>
   </div>
