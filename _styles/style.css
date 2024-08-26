@@ -951,6 +951,15 @@ footer {
   display: flex;
 }
 
+.shipping_heading {
+  margin-top: 20px;
+  padding-bottom: 10px;
+  padding-left: 30px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+
 #Logo_name1 {
   color: rgb(20, 149, 255);
 }
@@ -974,14 +983,21 @@ footer {
 }
 
 .checkout_boxes {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+#cart_items {
   display: grid;
   max-width: 1150px;
   gap: 1rem;
-  margin: 0 auto;
+  margin: 0;
+  margin-left: 3%;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   padding-top: 30px;
   padding-bottom: 20px;
-  min-height: 50vh;
 }
 
 .checkbox1 {
@@ -1039,6 +1055,9 @@ footer {
 
 #total_price {
   padding-left: 3%;
+}
+
+.shipping {
 }
 
 #prod_line {

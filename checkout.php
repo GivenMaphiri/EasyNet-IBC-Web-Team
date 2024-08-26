@@ -183,99 +183,98 @@ if (!isset($_SESSION['user_id'])) {
       <hr id="checkout_lines">
 
     </div>
+    <?php
 
-    <div class="checkout_boxes">
-      <?php
+    $user_ID = $_SESSION['user_id']; // Retrieve the user ID from the session
 
-      $user_ID = $_SESSION['user_id']; // Retrieve the user ID from the session
+    $sql = "SELECT * FROM cart WHERE user_ID = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $user_ID);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
-      $sql = "SELECT * FROM cart WHERE user_ID = ?";
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param("i", $user_ID);
-      $stmt->execute();
-      $result = $stmt->get_result();
+    $totalPrice = 0;
 
-      $totalPrice = 0;
-
-      if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-          $subtotal = $row['prod_price'] * $row['quantity'];
-          $totalPrice += $subtotal;
-          echo "<div id='cart_items'>";
-          echo "<div class='checkbox1'>";
-          echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
-          echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
-          echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
-          echo "<div id='check_quantity'>";
-          echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "'>";
-          echo "<button id='rem_button' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
-          echo "</div>";
-          echo "</div>";
-          echo "</div>";
-        }
-
-        echo "<div id='total_price'>";
-        echo "<h1>Total Price:</h1>";
-        echo "<h1 class='cart_total_price'>R" . number_format($totalPrice, 2) . "</h1>";
+    if ($result->num_rows > 0) {
+      echo "<div id='cart_items'>";
+      while ($row = $result->fetch_assoc()) {
+        $subtotal = $row['prod_price'] * $row['quantity'];
+        $totalPrice += $subtotal;
+        echo "<div class='checkbox1'>";
+        echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
+        echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
+        echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
+        echo "<div id='check_quantity'>";
+        echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "'>";
+        echo "<button id='rem_button' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
         echo "</div>";
-      } else {
-        echo "<h1>Your cart is empty.</h1>";
+        echo "</div>";
       }
+      echo "</div>";
+      echo "<div id='total_price'>";
+      echo "<h1>Total Price:</h1>";
+      echo "<h1 class='cart_total_price'>R" . number_format($totalPrice, 2) . "</h1>";
+      echo "<a href='shipping.php'><button id='checkout_button'>Checkout</button></a>";
+      echo "</div>";
+      echo "</div>";
+    } else {
+      echo "<h1>Your cart is empty.</h1>";
+    }
 
-      $stmt->close();
-      $conn->close();
-      ?>
+    $stmt->close();
+    $conn->close();
+    ?>
 
-      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-      <script>
-        $(document).ready(function() {
-          $('.cart_quantity').on('change', function() {
-            var prod_ID = $(this).data('prod-id');
-            var newQuantity = $(this).val();
-            var price = $(this).data('price');
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.cart_quantity').on('change', function() {
+          var prod_ID = $(this).data('prod-id');
+          var newQuantity = $(this).val();
+          var price = $(this).data('price');
 
-            $.ajax({
-              url: 'update_cart.php',
-              method: 'POST',
-              data: {
-                prod_ID: prod_ID,
-                quantity: newQuantity
-              },
-              success: function(response) {
-                var newTotal = price * newQuantity;
-                var totalCartPrice = 0;
+          $.ajax({
+            url: 'update_cart.php',
+            method: 'POST',
+            data: {
+              prod_ID: prod_ID,
+              quantity: newQuantity
+            },
+            success: function(response) {
+              var newTotal = price * newQuantity;
+              var totalCartPrice = 0;
 
-                $('.cart_quantity').each(function() {
-                  var quantity = $(this).val();
-                  var itemPrice = $(this).data('price');
-                  totalCartPrice += quantity * itemPrice;
-                });
+              $('.cart_quantity').each(function() {
+                var quantity = $(this).val();
+                var itemPrice = $(this).data('price');
+                totalCartPrice += quantity * itemPrice;
+              });
 
-                $('.cart_total_price').text('R' + totalCartPrice.toFixed(2));
-              }
-            });
+              $('.cart_total_price').text('R' + totalCartPrice.toFixed(2));
+            }
           });
         });
+      });
 
-        function removeFromCart(prod_ID) {
-          if (confirm('Are you sure you want to remove this item from the cart?')) {
-            // User clicked OK, proceed with the AJAX request
-            $.ajax({
-              url: 'remove_cart.php',
-              method: 'POST',
-              data: {
-                prod_ID: prod_ID
-              },
-              success: function(response) {
-                location.reload(); // Reload the page to reflect changes in the cart
-              }
-            });
-          } else {
-            // User clicked Cancel, do nothing or add any additional handling here if needed
-            console.log('Item not removed from the cart.');
-          }
+      function removeFromCart(prod_ID) {
+        if (confirm('Are you sure you want to remove this item from the cart?')) {
+          // User clicked OK, proceed with the AJAX request
+          $.ajax({
+            url: 'remove_cart.php',
+            method: 'POST',
+            data: {
+              prod_ID: prod_ID
+            },
+            success: function(response) {
+              location.reload(); // Reload the page to reflect changes in the cart
+            }
+          });
+        } else {
+          // User clicked Cancel, do nothing or add any additional handling here if needed
+          console.log('Item not removed from the cart.');
         }
-      </script>
+      }
+    </script>
 
   </main>
 
