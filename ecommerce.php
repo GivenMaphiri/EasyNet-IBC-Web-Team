@@ -101,12 +101,12 @@ include "DBConn.php";
 
   <div class="main-content">
 
-    
+
 
 
     <div class="Product">
       <h1>Add New Product</h1>
-      <form id="productForm" action="processProducts.php"  method="post">
+      <form id="productForm" action="processProducts.php" method="post" enctype="multipart/form-data">
         <label for="productName">Product Name:</label>
         <input type="text" id="productName" name="productName" required>
 
@@ -114,7 +114,7 @@ include "DBConn.php";
         <input type="text" id="productCode" name="productCode" required>
 
         <label for="productDescription">Description:</label>
-        <textarea id="productDescription" name="productDescription" placeholder="Product description:"  required></textarea>
+        <textarea id="productDescription" name="productDescription" placeholder="Product description:" required></textarea>
 
         <label for="productPrice">Price:</label>
         <input type="number" id="productPrice" name="productPrice" min="0.01" step="0.01" placeholder="ZAR" required>
