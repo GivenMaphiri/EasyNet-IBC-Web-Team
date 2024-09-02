@@ -84,12 +84,13 @@ $sql = "CREATE TABLE IF NOT EXISTS  orders (
     prod_ID INT(11) NOT NULL,
     order_total DECIMAL(10, 2) NOT NULL,
     placed_on DATETIME NOT NULL DEFAULT CURRENT_TIME,
-    shipping_address VARCHAR(255), 
+    shipping_ID INT(11), 
     payment_method VARCHAR(255) NOT NULL, 
     payment_status ENUM('Paid', 'Due', 'Refunded') NOT NULL,
     status ENUM('Pending', 'In Progress', 'Delivered') NOT NULL,
     FOREIGN KEY (user_ID) REFERENCES users(user_ID), 
     FOREIGN KEY (prod_ID) REFERENCES products(prod_ID)
+    FOREIGN KEY (shipping_ID) REFERENCES shipping(shipping_ID)
 )";
 
 if ($conn->query($sql) === TRUE) {
