@@ -13,7 +13,7 @@ session_start();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1" />
-  <title>Admin Dashboard</title>
+  <title>EasyNet| Admin Dashboard</title>
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
   <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png" />
   <link rel="stylesheet" href="_styles/admin_style.css" />

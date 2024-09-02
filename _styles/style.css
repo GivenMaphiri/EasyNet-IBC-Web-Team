@@ -251,7 +251,7 @@ footer p {
 
 #background_partners {
   background-color: rgb(49, 49, 250);
-  background-image: url("../_images/_background/clients1.jpg");
+  background-image: url("../_images/_background/partners&clients1.png");
   background-position: top;
   background-size: cover;
   border-color: rgb(138, 137, 137);
@@ -268,7 +268,7 @@ footer p {
 
 #background_contact {
   background-color: rgb(49, 49, 250);
-  background-image: url("../_images/_background/contactus2.jpg");
+  background-image: url("../_images/_background/quino-al-4SNUcHPiC8c-unsplash.jpg");
   background-position: center;
   background-size: cover;
   border-color: rgb(138, 137, 137);
@@ -278,9 +278,9 @@ footer p {
   border-right-width: 0;
   padding-top: 250px;
   padding-bottom: 260px;
-  color: white;
+  color: black;
   text-align: center;
-  text-shadow: 1px 1px 1px black;
+  /* text-shadow: 1px 1px 1px black;  */
 }
 
 #left {
@@ -1651,6 +1651,8 @@ textarea {
   }
 }
 
+/*---partners and clients page -------------------------------*/
+
 #market_list {
   list-style: none; /* Remove default bullet points */
   text-align: center;
@@ -1702,24 +1704,25 @@ textarea {
 /* CSS Styling for the Partners table */
 
 #partner_info {
-  display: flex;
+  display: inline-flexbox;
   justify-content: center;
   align-items: center;
-  margin: 20px 50px;
+  margin: 20px 50px; 
 }
 
 #partner_table {
   width: 80%;
-  border-collapse: separate;
-  border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0; 
   text-align: center;
-  color: #333;
+  color: #333; 
   margin: 0 auto;
 }
 
 #partner_table th,
 #partner_table td {
   padding: 10px 15px;
+  
 }
 
 #partner_table th {
@@ -1727,24 +1730,24 @@ textarea {
   text-align: center;
   font-size: 1.2em;
   color: #fff;
-  background-color: #5f9ea0; /* Light blue-green colour */
+  background-color: #3e3e3e; /* dark gray colour */
 }
 
 #partner_table td {
-  background-color: #b3bdbe; /* Light grey */
+  background-color: #d3d7d7; /* Light grey */
 }
 
 #partner_table tr:nth-child(even) td {
   background-color: #ffffff; /* White */
 }
 
-#partner_table td {
-  border-right: 2px solid #333; /* Solid vertical line down the middle */
+#partner_table td { 
+ border-right: 2px solid #333; /* Solid vertical line down the middle */
 }
 
 #partner_table td:last-child {
   border-right: none; /* Remove border on the last column */
-}
+ }   
 
 #partner_imgs {
   display: flex;
@@ -1769,6 +1772,10 @@ textarea {
 }
 
 /* CSS Styling for the Client table */
+
+#client_body_bottom {
+  display: inline-flex;
+}
 
 #client_head {
   text-align: center;
@@ -1816,12 +1823,12 @@ td {
 }
 
 th {
-  background-color: #5f9ea0; /* Light blue-green colour */
+  background-color: #3e3e3e; /* Ldark gray colour */
   color: white;
 }
 
 td {
-  background-color: #b3bdbe; /* Light grey */
+  background-color: #d3d7d7; /* Light grey */
 }
 
 #client_body_bottom tr:nth-child(even) td {
