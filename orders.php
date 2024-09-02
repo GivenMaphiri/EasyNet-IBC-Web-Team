@@ -78,7 +78,7 @@ $result = $conn->query($sql);
           </a>
         </li>
         <li>
-          <a href="">
+          <a href="messages.php">
             <span class="las la-envelope"></span>
             Messages
           </a>
@@ -123,12 +123,6 @@ $result = $conn->query($sql);
           <h1>Orders Dashboard</h1>
           <small>keep track of orders as well as there status.</small>
         </div>
-        <div class="header-actions">
-          <button>
-            <span class="las la-tools"></span>
-            Settings
-          </button>
-        </div>
       </div>
 
 
@@ -143,6 +137,8 @@ $result = $conn->query($sql);
     </select>
     <button type="submit">Filter</button>
 </form>
+
+
 
 <!-- Table starts here -->
 
