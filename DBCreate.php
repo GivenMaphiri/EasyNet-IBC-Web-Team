@@ -78,7 +78,7 @@ if ($conn->query($sql) === TRUE) {
 }
 
 
-$sql = "CREATE TABLE IF NOT EXISTS  orders (
+$sql = "CREATE TABLE IF NOT EXISTS orders (
     order_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
     user_ID INT(11) NOT NULL,
     prod_ID INT(11) NOT NULL,
