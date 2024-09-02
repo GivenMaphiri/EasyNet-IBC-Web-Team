@@ -1,11 +1,12 @@
 <?php
 // Check connection
+session_start(); // Start the session
+include "DBConn.php"; // Include your database connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-session_start(); // Start the session
-include "DBConn.php"; // Include your database connection
+
 ?>
 
 <!DOCTYPE html>
