@@ -82,12 +82,6 @@ session_start();
           </a>
         </li>
         <li>
-          <a href="#">
-            <span class="las la-check-circle"></span>
-            Tasks
-          </a>
-        </li>
-        <li>
           <a href="index.php">
             <span class="las la-sign-out-alt"></span>
             Logout
