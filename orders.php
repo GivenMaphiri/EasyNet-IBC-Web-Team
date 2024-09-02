@@ -106,14 +106,13 @@ $result = $conn->query($sql);
     <header>
       <div class="menu-toggle">
         <label for="sidebar-toggle">
-          <span class="las la-bars"></span>
+         <!-- <span class="las la-bars"></span> -->
         </label>
       </div>
 
       <div class="header-icons">
-        <span class="las la-search"></span>
-        <span class="las la-bookmark"></span>
-        <span class="las la-sms"></span>
+        
+        <a href="messages.php"><span class="las la-sms"></span></a>
       </div>
     </header>
 
@@ -133,8 +132,19 @@ $result = $conn->query($sql);
       </div>
 
 
+  <form method="GET" action="">
+    <label for="status">Filter by Status:</label>
+    <select name="status" id="status">
+        <option value="">All</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Pending">Pending</option>
+        <option value="Return">Return</option>
+        <option value="In Progress">In Progress</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
 
-
+<!-- Table starts here -->
 
       <table>
       <style>
