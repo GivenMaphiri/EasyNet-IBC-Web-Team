@@ -82,6 +82,12 @@ session_start();
           </a>
         </li>
         <li>
+          <a href="users.php">
+            <span class="las la-check-circle"></span>
+            Users
+          </a>
+        </li>
+        <li>
           <a href="index.php">
             <span class="las la-sign-out-alt"></span>
             Logout
@@ -105,7 +111,8 @@ session_start();
       </div>
 
       <div class="header-icons">
-        <span class="las la-sms"></span>
+        
+        <a href="messages.php"><span class="las la-sms"></span></a>
       </div>
     </header>
 
