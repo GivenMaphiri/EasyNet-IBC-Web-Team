@@ -132,8 +132,19 @@ $result = $conn->query($sql);
       </div>
 
 
+  <form method="GET" action="">
+    <label for="status">Filter by Status:</label>
+    <select name="status" id="status">
+        <option value="">All</option>
+        <option value="Delivered">Delivered</option>
+        <option value="Pending">Pending</option>
+        <option value="Return">Return</option>
+        <option value="In Progress">In Progress</option>
+    </select>
+    <button type="submit">Filter</button>
+</form>
 
-
+<!-- Table starts here -->
 
       <table>
       <style>
