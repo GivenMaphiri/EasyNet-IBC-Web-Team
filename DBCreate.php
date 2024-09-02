@@ -133,5 +133,22 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table 'shipping': " . $conn->error;
 }
 
+$sql = "CREATE TABLE IF NOT EXISTS favourite (
+    favourite_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_ID INT(11),
+    prod_ID INT(11),
+    prod_name VARCHAR(100),
+    prod_price DECIMAL(10, 2),
+    prod_image VARCHAR(255),
+    FOREIGN KEY (user_ID) REFERENCES users(user_ID),
+    FOREIGN KEY (prod_ID) REFERENCES products(prod_ID)
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table 'favourite' created successfully<br>";
+} else {
+    echo "Error creating table 'cart': " . $conn->error;
+}
+
 // Close connection 
 $conn->close();
