@@ -254,7 +254,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "?'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
               echo "<div id='add_heart_buttons'>";
               echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
-              echo "<button id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
+              echo "<button type='button' class='add_to_favourite' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
               echo "</div>";
               echo "</div>";
             }
@@ -303,6 +303,37 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                 alert('Product added to cart!');
               } else {
                 alert('There was an issue adding the product to the cart.');
+              }
+            }
+          });
+        });
+      });
+
+      $(document).ready(function() {
+        $('.add_to_favourite').on('click', function(e) {
+          e.preventDefault();
+
+          var prod_ID = $(this).data('prod-id');
+          var prod_name = $(this).data('prod-name');
+          var prod_price = $(this).data('prod-price');
+          var prod_image = $(this).data('prod-image');
+
+          $.ajax({
+            url: 'addtofavourite.php',
+            method: 'POST',
+            data: {
+              add_to_cart: true,
+              prod_ID: prod_ID,
+              prod_name: prod_name,
+              prod_price: prod_price,
+              prod_image: prod_image
+            },
+            success: function(response) {
+              var result = JSON.parse(response);
+              if (result.status === 'success') {
+                alert('Product added to favourites!');
+              } else {
+                alert('There was an issue adding the product to favourites.');
               }
             }
           });
