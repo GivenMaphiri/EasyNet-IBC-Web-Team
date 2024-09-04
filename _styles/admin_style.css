@@ -500,6 +500,19 @@ main {
     color: #fff;
   }
 
+  .reply-button {
+    padding: 10px 20px;
+    background-color: #ff6666;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.reply-button:hover {
+    background-color: #218838;
+}
+
  /*-------------------------------End of Messages dashboard----------------------------------------------*/
 
 

@@ -205,17 +205,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
 
       echo "<h1>$displayCategory Products</h1>";
       ?>
-      <div id="prod_left">
-        <ul>
-          <li>Sort By:</li>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <li>Type:</li>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <li>Manufacturer:</li>
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          <li>Price:</li>
-        </ul>
-      </div>
+
       <div id="search_bar">
         <input id="searchbar" type="text" placeholder="Search for products..." />
         <input id="searchbutton" type="submit" value="Search" />
@@ -227,21 +217,30 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         <div class="prod_display">
           <?php
 
+          $items_per_page = 12;
+
+          // Get the current page number from the URL. If not set, default to page 1.
+          $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+          // Calculate the offset for the SQL query
+          $offset = ($page - 1) * $items_per_page;
+
           // Retrieve the category from the URL parameter, defaulting to 'all' if not set
           $category = isset($_GET['category']) ? $_GET['category'] : 'all';
 
-          // Base SQL query to select products
-          $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products";
-
-          // Modify SQL query based on the selected category
+          // Base SQL query to select products with LIMIT and OFFSET for pagination
           if ($category !== 'all') {
-            $sql .= " WHERE prod_type = ?";
+            $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = ? LIMIT ? OFFSET ?";
             $stmt = $conn->prepare($sql);
-            $stmt->bind_param("s", $category);
+            $stmt->bind_param("sii", $category, $items_per_page, $offset);
             $stmt->execute();
             $result = $stmt->get_result();
           } else {
-            $result = $conn->query($sql);
+            $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products LIMIT ? OFFSET ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ii", $items_per_page, $offset);
+            $stmt->execute();
+            $result = $stmt->get_result();
           }
 
           if ($result->num_rows > 0) {
@@ -261,18 +260,46 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           } else {
             echo "<p>No products found in this category.</p>";
           }
-
-          // Close the statement if prepared
-          if (isset($stmt)) {
-            $stmt->close();
-          }
-
-          // Close the database connection
-          $conn->close();
-
           ?>
-
         </div>
+        <?php
+        // Find out the total number of items in the selected category or all items
+        if ($category !== 'all') {
+          $sql_total = "SELECT COUNT(*) FROM products WHERE prod_type = ?";
+          $stmt_total = $conn->prepare($sql_total);
+          $stmt_total->bind_param("s", $category);
+        } else {
+          $sql_total = "SELECT COUNT(*) FROM products";
+          $stmt_total = $conn->prepare($sql_total);
+        }
+
+        // Execute the query to get the total number of items
+        $stmt_total->execute();
+        $result_total = $stmt_total->get_result();
+        $total_items = $result_total->fetch_row()[0];
+
+        // Calculate the total number of pages
+        $total_pages = ceil($total_items / $items_per_page);
+
+        // Display pagination links
+        echo "<div id='pagination'>";
+        for ($i = 1; $i <= $total_pages; $i++) {
+          // Check if the category is not 'all' and include it in the pagination URL
+          if ($category !== 'all') {
+            echo "<a href='products2.php?page=$i&category=$category'>$i</a> ";
+          } else {
+            echo "<a href='products2.php?page=$i'>$i</a> ";
+          }
+        }
+        echo "</div>";
+
+        // Close the statement if prepared
+        $stmt->close();
+        $stmt_total->close();
+
+        // Close the database connection
+        $conn->close();
+        ?>
       </div>
     </div>
     <!-- Add this script in the HTML file where the "Add to Cart" button is present -->
@@ -281,7 +308,6 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
       $(document).ready(function() {
         $('.add_to_cart').on('click', function(e) {
           e.preventDefault();
-
           var prod_ID = $(this).data('prod-id');
           var prod_name = $(this).data('prod-name');
           var prod_price = $(this).data('prod-price');
