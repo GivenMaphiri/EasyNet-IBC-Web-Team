@@ -184,33 +184,33 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Determine the display name of the category
         $displayCategory = isset($categoryNames[$category]) ? $categoryNames[$category] : 'All Products';
 
-        echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; $displayCategory Products</p>";
+        // Check if a search query exists
+        $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+
+        if ($searchQuery) {
+          echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; Search Results for '" . htmlspecialchars($searchQuery) . "'</p>";
+        } else {
+          echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; $displayCategory Products</p>";
+        }
         ?>
 
     <div id="all_products_head">
       <?php
-      // Retrieve the category from the URL parameter, defaulting to 'all' if not set
-      $category = isset($_GET['category']) ? $_GET['category'] : 'all';
-
-      // Map category values to display names
-      $categoryNames = [
-        'Hardware' => 'Hardware',
-        'Software' => 'Software',
-        'Accessories' => 'Accessories',
-        'all' => 'All'
-      ];
-
-      // Determine the display name of the category
-      $displayCategory = isset($categoryNames[$category]) ? $categoryNames[$category] : 'All Products';
-
-      echo "<h1>$displayCategory Products</h1>";
+      if ($searchQuery) {
+        echo "<h1>Search Results for '" . htmlspecialchars($searchQuery) . "'</h1>";
+      } else {
+        echo "<h1>$displayCategory Products</h1>";
+      }
       ?>
 
       <div id="search_bar">
-        <input id="searchbar" type="text" placeholder="Search for products..." />
-        <input id="searchbutton" type="submit" value="Search" />
+        <form method="GET" action="products2.php">
+          <input id="searchbar" type="text" name="search" placeholder="Search for products..." value="<?php echo htmlspecialchars($searchQuery); ?>" />
+          <input id="searchbutton" type="submit" value="Search" />
+        </form>
       </div>
     </div>
+
 
     <div id="product_mainpage">
       <div id="prod_right">
@@ -228,20 +228,43 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           // Retrieve the category from the URL parameter, defaulting to 'all' if not set
           $category = isset($_GET['category']) ? $_GET['category'] : 'all';
 
+          // Get the search query from the URL, if present
+          $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
+
           // Base SQL query to select products with LIMIT and OFFSET for pagination
-          if ($category !== 'all') {
-            $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = ? LIMIT ? OFFSET ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("sii", $category, $items_per_page, $offset);
-            $stmt->execute();
-            $result = $stmt->get_result();
+          if (!empty($searchQuery)) {
+            // If a search query is present, search by product name, manufacturer, or type
+            $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE (prod_name LIKE ? OR prod_manufacturer LIKE ? OR prod_type LIKE ?)";
+
+            // Modify SQL query based on the selected category
+            if ($category !== 'all') {
+              $sql .= " AND prod_type = ? LIMIT ? OFFSET ?";
+              $stmt = $conn->prepare($sql);
+              $searchParam = "%" . $searchQuery . "%";
+              // Corrected bind_param to include the proper number of variables
+              $stmt->bind_param("sssiii", $searchParam, $searchParam, $searchParam, $category, $items_per_page, $offset);
+            } else {
+              $sql .= " LIMIT ? OFFSET ?";
+              $stmt = $conn->prepare($sql);
+              $searchParam = "%" . $searchQuery . "%";
+              // Corrected bind_param to include the proper number of variables
+              $stmt->bind_param("sssii", $searchParam, $searchParam, $searchParam, $items_per_page, $offset);
+            }
           } else {
-            $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products LIMIT ? OFFSET ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ii", $items_per_page, $offset);
-            $stmt->execute();
-            $result = $stmt->get_result();
+            if ($category !== 'all') {
+              $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = ? LIMIT ? OFFSET ?";
+              $stmt = $conn->prepare($sql);
+              $stmt->bind_param("sii", $category, $items_per_page, $offset);
+            } else {
+              $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products LIMIT ? OFFSET ?";
+              $stmt = $conn->prepare($sql);
+              $stmt->bind_param("ii", $items_per_page, $offset);
+            }
           }
+
+          // Execute the query
+          $stmt->execute();
+          $result = $stmt->get_result();
 
           if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -263,14 +286,27 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           ?>
         </div>
         <?php
-        // Find out the total number of items in the selected category or all items
-        if ($category !== 'all') {
-          $sql_total = "SELECT COUNT(*) FROM products WHERE prod_type = ?";
-          $stmt_total = $conn->prepare($sql_total);
-          $stmt_total->bind_param("s", $category);
+        // Count the total number of items that match the search and/or category
+        if (!empty($searchQuery)) {
+          $sql_total = "SELECT COUNT(*) FROM products WHERE (prod_name LIKE ? OR prod_manufacturer LIKE ? OR prod_type LIKE ?)";
+
+          if ($category !== 'all') {
+            $sql_total .= " AND prod_type = ?";
+            $stmt_total = $conn->prepare($sql_total);
+            $stmt_total->bind_param("ssss", $searchParam, $searchParam, $searchParam, $category);
+          } else {
+            $stmt_total = $conn->prepare($sql_total);
+            $stmt_total->bind_param("sss", $searchParam, $searchParam, $searchParam);
+          }
         } else {
-          $sql_total = "SELECT COUNT(*) FROM products";
-          $stmt_total = $conn->prepare($sql_total);
+          if ($category !== 'all') {
+            $sql_total = "SELECT COUNT(*) FROM products WHERE prod_type = ?";
+            $stmt_total = $conn->prepare($sql_total);
+            $stmt_total->bind_param("s", $category);
+          } else {
+            $sql_total = "SELECT COUNT(*) FROM products";
+            $stmt_total = $conn->prepare($sql_total);
+          }
         }
 
         // Execute the query to get the total number of items
@@ -284,12 +320,15 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Display pagination links
         echo "<div id='pagination'>";
         for ($i = 1; $i <= $total_pages; $i++) {
-          // Check if the category is not 'all' and include it in the pagination URL
+          // Create pagination links including the category and search query if present
+          $url = "products2.php?page=$i";
           if ($category !== 'all') {
-            echo "<a href='products2.php?page=$i&category=$category'>$i</a> ";
-          } else {
-            echo "<a href='products2.php?page=$i'>$i</a> ";
+            $url .= "&category=$category";
           }
+          if (!empty($searchQuery)) {
+            $url .= "&search=" . urlencode($searchQuery);
+          }
+          echo "<a href='$url'>$i</a> ";
         }
         echo "</div>";
 
@@ -300,6 +339,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Close the database connection
         $conn->close();
         ?>
+
       </div>
     </div>
     <!-- Add this script in the HTML file where the "Add to Cart" button is present -->

@@ -938,6 +938,7 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   padding-top: 30px;
   padding-bottom: 20px;
+  min-height: 50vh;
 }
 
 /* ------------ Checkout page-----------*/
