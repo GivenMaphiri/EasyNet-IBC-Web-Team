@@ -465,6 +465,7 @@ main {
     padding: 0.5rem 1rem;
     border-radius: 4px;
     background-color: #f5f5f5;
+    border: 2px solid #333;
 }
 
 .message:last-child {
@@ -492,7 +493,7 @@ main {
   }
   
   .message-actions button:hover {
-    background-color: #eee;
+    background-color: #218838;
   }
   
   .delete-message {
@@ -501,12 +502,12 @@ main {
   }
 
   .reply-button {
-    padding: 10px 20px;
-    background-color: #ff6666;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    margin-left: 10px;
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #0ac7f7;
+    margin-left: 10px; 
 }
 
 .reply-button:hover {

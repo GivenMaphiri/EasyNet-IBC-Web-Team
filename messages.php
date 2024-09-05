@@ -121,10 +121,11 @@ if ($conn->connect_error) {
         echo "<form method='post' action='delete.php'>";
         echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
         echo "<button class='delete-message'>Delete</button>";
+        // The reply button for messaging
+        echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
         echo "</form>";
 
-         // The reply button for messaging
-         echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
+         
 
         echo "</div>";
         echo "</div>";
