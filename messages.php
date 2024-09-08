@@ -105,34 +105,32 @@ if ($conn->connect_error) {
       <h1>Messages</h1>
 
       <?php
-      
-    // Retrieve messages from the database
-    $sql = "SELECT * FROM message"; 
-    
-    $res = $conn->query($sql);
+      // Retrieve messages from the database
+      $sql = "SELECT * FROM message"; 
+      $res = $conn->query($sql);
 
-    if ($res->num_rows > 0) {
-      while($row = $res->fetch_assoc()) {
-        echo "<div class='message'>";
-        echo "<span class='message-sender'><b>Name:</b> " . $row["name"] . "</span>";
-        echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
-        echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
-        echo "<div class='message-actions'>";
-        echo "<form method='post' action='delete.php'>";
-        echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
-        echo "<button class='delete-message'>Delete</button>";
-        // The reply button for messaging
-        echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
-        echo "</form>";
-
-         
-
-        echo "</div>";
-        echo "</div>";
+      if ($res->num_rows > 0) {
+        while($row = $res->fetch_assoc()) {
+          echo "<div class='message'>";
+          echo "<span class='message-sender'><b>Name:</b> " . $row["name"] . "</span>";
+          echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
+          echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
+          echo "<div class='message-actions'>";
+          echo "<form method='post' action='delete.php'>";
+          echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
+          echo "<button class='delete-message'>Delete</button>";
+          // The reply button for messaging
+          echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
+          echo "</form>";
+          echo "</div>";
+          echo "</div>";
+        }
+      } else {
+        echo "No messages found.";
       }
-    } else {
-      echo "No messages found.";
-    }
+      ?>
+    </div>
+</div>
     
 
     $conn->close();
