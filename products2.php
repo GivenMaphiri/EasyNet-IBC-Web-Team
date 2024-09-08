@@ -53,7 +53,8 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -69,7 +70,8 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -85,7 +87,8 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -101,7 +104,8 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -113,7 +117,8 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                     $sql = "SELECT DISTINCT prod_manufacturer FROM products";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -187,21 +192,30 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Check if a search query exists
         $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
 
+        // Check if a manufacturer is selected
+        $manufacturer = isset($_GET['manufacturer']) ? $_GET['manufacturer'] : '';
+
         if ($searchQuery) {
           echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; Search Results for '" . htmlspecialchars($searchQuery) . "'</p>";
+        } elseif ($manufacturer) {
+          echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; " . htmlspecialchars($manufacturer) . " Products</p>";
         } else {
           echo "<p id='prod_back_main'><a href='products.php' id='prod_back'>Products</a> &#9664; $displayCategory Products</p>";
         }
         ?>
 
+
     <div id="all_products_head">
       <?php
       if ($searchQuery) {
         echo "<h1>Search Results for '" . htmlspecialchars($searchQuery) . "'</h1>";
+      } elseif ($manufacturer) {
+        echo "<h1>" . htmlspecialchars($manufacturer) . " Products</h1>";
       } else {
         echo "<h1>$displayCategory Products</h1>";
       }
       ?>
+
 
       <div id="search_bar">
         <form method="GET" action="products2.php">
@@ -216,7 +230,6 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
       <div id="prod_right">
         <div class="prod_display">
           <?php
-
           $items_per_page = 12;
 
           // Get the current page number from the URL. If not set, default to page 1.
@@ -231,34 +244,67 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           // Get the search query from the URL, if present
           $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
 
+          // Get the manufacturer from the URL, if present
+          $manufacturer = isset($_GET['manufacturer']) ? $_GET['manufacturer'] : '';
+
           // Base SQL query to select products with LIMIT and OFFSET for pagination
           if (!empty($searchQuery)) {
             // If a search query is present, search by product name, manufacturer, or type
             $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE (prod_name LIKE ? OR prod_manufacturer LIKE ? OR prod_type LIKE ?)";
 
-            // Modify SQL query based on the selected category
+            // Modify SQL query based on the selected category and manufacturer
             if ($category !== 'all') {
-              $sql .= " AND prod_type = ? LIMIT ? OFFSET ?";
-              $stmt = $conn->prepare($sql);
-              $searchParam = "%" . $searchQuery . "%";
-              // Corrected bind_param to include the proper number of variables
-              $stmt->bind_param("sssiii", $searchParam, $searchParam, $searchParam, $category, $items_per_page, $offset);
+              $sql .= " AND prod_type = ?";
+              if (!empty($manufacturer)) {
+                $sql .= " AND prod_manufacturer = ?";
+                $sql .= " LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $searchParam = "%" . $searchQuery . "%";
+                $stmt->bind_param("sssssii", $searchParam, $searchParam, $searchParam, $category, $manufacturer, $items_per_page, $offset);
+              } else {
+                $sql .= " LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $searchParam = "%" . $searchQuery . "%";
+                $stmt->bind_param("sssii", $searchParam, $searchParam, $searchParam, $category, $items_per_page, $offset);
+              }
             } else {
-              $sql .= " LIMIT ? OFFSET ?";
-              $stmt = $conn->prepare($sql);
-              $searchParam = "%" . $searchQuery . "%";
-              // Corrected bind_param to include the proper number of variables
-              $stmt->bind_param("sssii", $searchParam, $searchParam, $searchParam, $items_per_page, $offset);
+              if (!empty($manufacturer)) {
+                $sql .= " AND prod_manufacturer = ?";
+                $sql .= " LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $searchParam = "%" . $searchQuery . "%";
+                $stmt->bind_param("ssssi", $searchParam, $searchParam, $searchParam, $manufacturer, $items_per_page, $offset);
+              } else {
+                $sql .= " LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $searchParam = "%" . $searchQuery . "%";
+                $stmt->bind_param("sssii", $searchParam, $searchParam, $searchParam, $items_per_page, $offset);
+              }
             }
           } else {
+            // If no search query is present, filter by category and manufacturer
             if ($category !== 'all') {
-              $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = ? LIMIT ? OFFSET ?";
-              $stmt = $conn->prepare($sql);
-              $stmt->bind_param("sii", $category, $items_per_page, $offset);
+              $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = ?";
+              if (!empty($manufacturer)) {
+                $sql .= " AND prod_manufacturer = ?";
+                $sql .= " LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ssii", $category, $manufacturer, $items_per_page, $offset);
+              } else {
+                $sql .= " LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sii", $category, $items_per_page, $offset);
+              }
             } else {
-              $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products LIMIT ? OFFSET ?";
-              $stmt = $conn->prepare($sql);
-              $stmt->bind_param("ii", $items_per_page, $offset);
+              if (!empty($manufacturer)) {
+                $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_manufacturer = ? LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("sii", $manufacturer, $items_per_page, $offset);
+              } else {
+                $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products LIMIT ? OFFSET ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ii", $items_per_page, $offset);
+              }
             }
           }
 
@@ -286,26 +332,50 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           ?>
         </div>
         <?php
-        // Count the total number of items that match the search and/or category
+        // Count the total number of items that match the search, category, and manufacturer
         if (!empty($searchQuery)) {
           $sql_total = "SELECT COUNT(*) FROM products WHERE (prod_name LIKE ? OR prod_manufacturer LIKE ? OR prod_type LIKE ?)";
 
           if ($category !== 'all') {
             $sql_total .= " AND prod_type = ?";
-            $stmt_total = $conn->prepare($sql_total);
-            $stmt_total->bind_param("ssss", $searchParam, $searchParam, $searchParam, $category);
+            if (!empty($manufacturer)) {
+              $sql_total .= " AND prod_manufacturer = ?";
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("sssss", $searchParam, $searchParam, $searchParam, $category, $manufacturer);
+            } else {
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("ssss", $searchParam, $searchParam, $searchParam, $category);
+            }
           } else {
-            $stmt_total = $conn->prepare($sql_total);
-            $stmt_total->bind_param("sss", $searchParam, $searchParam, $searchParam);
+            if (!empty($manufacturer)) {
+              $sql_total .= " AND prod_manufacturer = ?";
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("ssss", $searchParam, $searchParam, $searchParam, $manufacturer);
+            } else {
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("sss", $searchParam, $searchParam, $searchParam);
+            }
           }
         } else {
           if ($category !== 'all') {
             $sql_total = "SELECT COUNT(*) FROM products WHERE prod_type = ?";
-            $stmt_total = $conn->prepare($sql_total);
-            $stmt_total->bind_param("s", $category);
+            if (!empty($manufacturer)) {
+              $sql_total .= " AND prod_manufacturer = ?";
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("ss", $category, $manufacturer);
+            } else {
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("s", $category);
+            }
           } else {
-            $sql_total = "SELECT COUNT(*) FROM products";
-            $stmt_total = $conn->prepare($sql_total);
+            if (!empty($manufacturer)) {
+              $sql_total = "SELECT COUNT(*) FROM products WHERE prod_manufacturer = ?";
+              $stmt_total = $conn->prepare($sql_total);
+              $stmt_total->bind_param("s", $manufacturer);
+            } else {
+              $sql_total = "SELECT COUNT(*) FROM products";
+              $stmt_total = $conn->prepare($sql_total);
+            }
           }
         }
 
@@ -320,13 +390,16 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Display pagination links
         echo "<div id='pagination'>";
         for ($i = 1; $i <= $total_pages; $i++) {
-          // Create pagination links including the category and search query if present
+          // Create pagination links including the category, search query, and manufacturer if present
           $url = "products2.php?page=$i";
           if ($category !== 'all') {
             $url .= "&category=$category";
           }
           if (!empty($searchQuery)) {
             $url .= "&search=" . urlencode($searchQuery);
+          }
+          if (!empty($manufacturer)) {
+            $url .= "&manufacturer=" . urlencode($manufacturer);
           }
           echo "<a href='$url'>$i</a> ";
         }
@@ -339,6 +412,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Close the database connection
         $conn->close();
         ?>
+
 
       </div>
     </div>
@@ -375,34 +449,23 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         });
       });
 
-      $(document).ready(function() {
-        $('.add_to_favourite').on('click', function(e) {
-          e.preventDefault();
+      document.querySelectorAll('.add_to_favorites').forEach(button => {
+        button.addEventListener('click', function() {
+          const prodId = this.getAttribute('data-prod-id');
 
-          var prod_ID = $(this).data('prod-id');
-          var prod_name = $(this).data('prod-name');
-          var prod_price = $(this).data('prod-price');
-          var prod_image = $(this).data('prod-image');
-
-          $.ajax({
-            url: 'addtofavourite.php',
-            method: 'POST',
-            data: {
-              add_to_cart: true,
-              prod_ID: prod_ID,
-              prod_name: prod_name,
-              prod_price: prod_price,
-              prod_image: prod_image
-            },
-            success: function(response) {
-              var result = JSON.parse(response);
-              if (result.status === 'success') {
-                alert('Product added to favourites!');
-              } else {
-                alert('There was an issue adding the product to favourites.');
-              }
-            }
-          });
+          fetch('addtofavorite.php', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+              },
+              body: new URLSearchParams({
+                'prod_id': prodId
+              })
+            })
+            .then(response => response.text())
+            .then(data => {
+              alert(data); // Provide user feedback
+            });
         });
       });
     </script>

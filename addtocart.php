@@ -6,7 +6,7 @@ include "DBConn.php";
 if (!isset($_SESSION['user_id'])) {
     // Set a session variable or redirect with a query parameter
     $_SESSION['login_required'] = true;
-    header("Location: products2.php"); // Redirect to the product page or wherever you want
+    header("Location: login.php"); // Redirect to the product page or wherever you want
     exit();
 }
 

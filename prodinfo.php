@@ -251,7 +251,7 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
           if (isset($_GET['prod_id'])) {
             $prod_id = $_GET['prod_id'];
 
-            $sql = "SELECT prod_price FROM products WHERE prod_ID = ?";
+            $sql = "SELECT prod_name, prod_price, prod_image FROM products WHERE prod_ID = ?";
             $stmt = $conn->prepare($sql);
             $stmt->bind_param("i", $prod_id);
             $stmt->execute();
@@ -259,17 +259,21 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
 
             if ($result->num_rows > 0) {
               while ($row = $result->fetch_assoc()) {
-                echo "<h1>R " . $row['prod_price'] . "</h3>";
+                $prod_name = $row['prod_name'];
+                $prod_price = $row['prod_price'];
+                $prod_img = $row['prod_image'];
+                echo "<h1>R " . $row['prod_price'] . "</h1>";
+                echo "<button id='addfavourite'>Add to Favourites</button>";
+                echo "<button type='button' class='add_to_cart' data-prod-id='" . $prod_id . "' data-prod-name='" . $prod_name . "' data-prod-price='" . $prod_price . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
               }
             } else {
               echo "<p>Product not found.</p>";
             }
           }
-
-          echo "<button id='addfavourite'>Add to Favourites</button>";
-          echo "<button id='boxbutton'>Add to Cart</button>";
           ?>
+
         </div>
+
       </div>
 
     </div>
@@ -278,12 +282,11 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
       <h1>Add More to your Order</h1>
       <div id="prod_display2">
         <?php
-
-        $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = 'Accessories'";
+        // SQL query to select 3 random products from the "Accessories" category
+        $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = 'Accessories' ORDER BY RAND() LIMIT 3";
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-
           while ($row = $result->fetch_assoc()) {
             $prod_id = $row['prod_id'];
             echo "<div id='prodbox3'>";
@@ -291,78 +294,112 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
             echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . $row['prod_name'] . "</p></a>";
             echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
             echo "<div id='add_heart_buttons'>";
-            echo "<button id='boxbutton' class='add_to_cart'>Add to Cart</button>";
+            echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='" . $row['prod_image'] . "' id='boxbutton'>Add to Cart</button>";
             echo "</div>";
             echo "</div>";
           }
         } else {
-          echo "<p>No books added yet.</p>";
+          echo "<p>No products found.</p>";
         }
-
         ?>
-        <div id="prodbox3">
-          <a href="prodinfo.php"><img id="hard_img" src="_images/_products/hardprod.jpg" width="150px" /></a>
-          <a href="prodinfo.php">
-            <p>
-              HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-              Storage Laptop
-            </p>
-          </a>
-          <p><b>R 19,999</b></p>
-          <a href="products2.php"><button id="boxbutton">Add to Cart</button></a>
-        </div>
-        <div id="prodbox3">
-          <a href="prodinfo.php"><img id="hard_img" src="_images/_products/hardprod.jpg" /></a>
-          <a href="prodinfo.php">
-            <p>
-              HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-              Storage Laptop
-            </p>
-          </a>
-          <p><b>R 19,999</b></p>
-          <a href="products2.php"><button id="boxbutton">Add to Cart</button></a>
-        </div>
       </div>
     </div>
 
     <div id="add_more">
-      <h1>More products by HP</h1>
+      <?php
+      // Check if prod_id is passed in the URL
+      $prod_manufacturer = '';
+      $products = [];
+
+      // Establish database connection here if not already done
+
+      if (isset($_GET['prod_id'])) {
+        $prod_id = $_GET['prod_id'];
+
+        // First, get the manufacturer of the selected product
+        $sql = "SELECT prod_manufacturer FROM products WHERE prod_id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $prod_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+          $row = $result->fetch_assoc();
+          $prod_manufacturer = $row['prod_manufacturer'];
+
+          // Now, retrieve other products from the same manufacturer (excluding the current product)
+          $sql2 = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_manufacturer = ? AND prod_id != ? LIMIT 3";
+          $stmt2 = $conn->prepare($sql2);
+          $stmt2->bind_param("si", $prod_manufacturer, $prod_id);
+          $stmt2->execute();
+          $result2 = $stmt2->get_result();
+
+          if ($result2->num_rows > 0) {
+            $products = $result2->fetch_all(MYSQLI_ASSOC);
+          }
+        }
+
+        $stmt->close();
+        $stmt2->close();
+      }
+
+      $conn->close();
+      ?>
+
+      <h1>More products by <?php echo htmlspecialchars($prod_manufacturer); ?></h1>
       <div id="prod_display2">
-        <div id="prodbox3">
-          <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="150px" /></a>
-          <a href="prodinfo.php">
-            <p>
-              HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-              Storage Laptop
-            </p>
-          </a>
-          <p><b>R 19,999</b></p>
-          <a href="products2.php"><button id="boxbutton">Add to Cart</button></a>
-        </div>
-        <div id="prodbox3">
-          <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="150px" /></a>
-          <a href="prodinfo.php">
-            <p>
-              HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-              Storage Laptop
-            </p>
-          </a>
-          <p><b>R 19,999</b></p>
-          <a href="products2.php"><button id="boxbutton">Add to Cart</button></a>
-        </div>
-        <div id="prodbox3">
-          <a href="prodinfo.php"><img src="_images/_products/hardprod.jpg" width="150px" /></a>
-          <a href="prodinfo.php">
-            <p>
-              HP Pavilion 15 Intel® Core™ i7-1255U 16GB RAM 512GB SSD
-              Storage Laptop
-            </p>
-          </a>
-          <p><b>R 19,999</b></p>
-          <a href="products2.php"><button id="boxbutton">Add to Cart</button></a>
-        </div>
+        <?php
+        if (!empty($products)) {
+          foreach ($products as $product) {
+            $prod_id = $product['prod_id'];
+            echo "<div id='prodbox3'>";
+            echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><img class='prod_image' src='_images/_products/" . $product['prod_image'] . "' width='150px'/></a>";
+            echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . htmlspecialchars($product['prod_name']) . "</p></a>";
+            echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='product_price'><b>R " . htmlspecialchars($product['prod_price']) . "</b></p></a>";
+            echo "<div id='add_heart_buttons'>";
+            echo "<button type='button' class='add_to_cart' data-prod-id='" . $product['prod_id'] . "' data-prod-name='" . htmlspecialchars($product['prod_name']) . "' data-prod-price='" . htmlspecialchars($product['prod_price']) . "' data-prod-image='" . htmlspecialchars($product['prod_image']) . "' id='boxbutton'>Add to Cart</button>";
+            echo "</div>";
+            echo "</div>";
+          }
+        } else {
+          echo "<p>No other products found from this manufacturer.</p>";
+        }
+        ?>
       </div>
+
     </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.add_to_cart').on('click', function(e) {
+          e.preventDefault();
+          var prod_ID = $(this).data('prod-id');
+          var prod_name = $(this).data('prod-name');
+          var prod_price = $(this).data('prod-price');
+          var prod_image = $(this).data('prod-image');
+
+          $.ajax({
+            url: 'addtocart.php',
+            method: 'POST',
+            data: {
+              add_to_cart: true,
+              prod_ID: prod_ID,
+              prod_name: prod_name,
+              prod_price: prod_price,
+              prod_image: prod_image
+            },
+            success: function(response) {
+              var result = JSON.parse(response);
+              if (result.status === 'success') {
+                alert('Product added to cart!');
+              } else {
+                alert('There was an issue adding the product to the cart.');
+              }
+            }
+          });
+        });
+      });
+    </script>
   </main>
   <footer>
     <div class="social-media-icons">
