@@ -450,7 +450,7 @@ main {
 
  /*-------------------------------start of Messages dashboard----------------------------------------------*/
 
-.main-messages h1 {
+ .main-messages h1 {
     text-align: center;
 }
 
@@ -458,59 +458,54 @@ main {
     border: 1px solid #ccc;
     padding: 1rem;
     margin-bottom: 1rem;
+    padding-bottom: 1rem; /* Add padding to the bottom of the main messages container */
 }
-/* created divs in javascript file*/
+
 .message {
     margin-bottom: 1rem;
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem; /* Increase the padding here */
     border-radius: 4px;
-    background-color: #f5f5f5;
-    border: 2px solid #333;
+    background-color: #d3d9df;
+    overflow: hidden; /* Ensure the content doesn't overflow the container */
 }
 
 .message:last-child {
     border-bottom: none;
-  }
-  
-  .message-sender {
-    font-weight: bold;
-  }
-  
-  .message-content {
-    flex-grow: 1;
-  }
-  
-  .message-actions {
-    display: flex;
-    gap: 0.5rem;
-  }
-  
-  .message-actions button {
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .message-actions button:hover {
-    background-color: #218838;
-  }
-  
-  .delete-message {
-    background-color: #ff6666;
-    color: #fff;
-  }
-
-  .reply-button {
-    padding: 0.25rem 0.5rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #0ac7f7;
-    margin-left: 10px; 
 }
 
-.reply-button:hover {
+.message-sender {
+    font-weight: bold;
+}
+
+.message-content {
+    flex-grow: 1;
+}
+
+.message-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.message-actions form {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap; /* Ensure buttons are wrapped and aligned properly */
+}
+
+.message-actions .delete-message, .message-actions .reply-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ff6666;
+    color: #fff;
+    flex: 1 1 auto; /* Ensure buttons take equal space */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding and width are consistent */
+}
+
+.message-actions .delete-message:hover, .message-actions .reply-button:hover {
     background-color: #218838;
 }
 
