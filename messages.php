@@ -128,13 +128,14 @@ if ($conn->connect_error) {
       } else {
         echo "No messages found.";
       }
+
+      $conn->close();
       ?>
     </div>
 </div>
     
 
-    $conn->close();
-  ?>
+    
 
   
 
