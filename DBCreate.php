@@ -77,6 +77,24 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table 'cart': " . $conn->error;
 }
 
+$sql = "CREATE TABLE IF NOT EXISTS  shipping (
+    shipping_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
+    user_ID INT(11) NOT NULL,
+    shipping_name VARCHAR(255),
+    shipping_street VARCHAR(255),
+    shipping_city VARCHAR(255),
+    shipping_province VARCHAR(255),
+    shipping_zip INT(11),
+    shipping_phone INT(11),
+    FOREIGN KEY (user_ID) REFERENCES users(user_ID)
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table 'shipping' created successfully<br>";
+} else {
+    echo "Error creating table 'shipping': " . $conn->error;
+}
+
 
 $sql = "CREATE TABLE IF NOT EXISTS orders (
     order_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
@@ -115,23 +133,7 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating message table: " . $conn->error;
 }
 
-$sql = "CREATE TABLE IF NOT EXISTS  shipping (
-    shipping_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
-    user_ID INT(11) NOT NULL,
-    shipping_name VARCHAR(255),
-    shipping_street VARCHAR(255),
-    shipping_city VARCHAR(255),
-    shipping_province VARCHAR(255),
-    shipping_zip INT(11),
-    shipping_phone INT(11),
-    FOREIGN KEY (user_ID) REFERENCES users(user_ID)
-)";
 
-if ($conn->query($sql) === TRUE) {
-    echo "Table 'shipping' created successfully<br>";
-} else {
-    echo "Error creating table 'shipping': " . $conn->error;
-}
 
 $sql = "CREATE TABLE IF NOT EXISTS favourite (
     favourite_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
