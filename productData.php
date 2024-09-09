@@ -347,9 +347,7 @@ $sql = "INSERT INTO products (prod_id, prod_name, prod_code, prod_price, prod_de
         (342, 'VERBATIM Optical Desktop Mouse', 'MOVEV49019', 115.80, 'Colour: Black', 'verbatimOptmouseb.jpg', 'Verbatim', 'Hardware'),
         (343, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49042', 200.60, 'Colour: Black', 'verbatimGonanob.jpg', 'Verbatim', 'Hardware'),
         (344, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49043', 200.60, 'Colour: Hot Pink', 'verbatimGonanohp.jpg', 'Verbatim', 'Hardware'),
-        (345, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49044', 200.60, 'Colour: Carribean Blue', 'verbatimGonanocb.jpg', 'Verbatim', 'Hardware'),
-        
-        ";
+        (345, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49044', 200.60, 'Colour: Carribean Blue', 'verbatimGonanocb.jpg', 'Verbatim', 'Hardware')";
   
 // Execute the query
 if ($conn->query($sql) === TRUE) {
