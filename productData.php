@@ -5,14 +5,24 @@ include "DBConn.php";
 /* ===========================
    PRODUCT ORDER LIST:
    ===========================
-   1-9      (PHILLIPS)
-   10-106   (CANON PART 1)
-   107-189  (OKI PART 1)
-   190-212  (LEXMARK PART 1)
-   213-228  (TARGUS)
-   229-239  (LEGION)
-   240-305  (EPSON)
-   306-348  (VERBATIM)
+   1-9      (PHILLIPS) - Jarryd
+   10-106   (CANON PART 1) - Jarryd
+   107-189  (OKI PART 1) - Jarryd
+   190-212  (LEXMARK PART 1) - Jarryd 
+   213-228  (TARGUS) - Jarryd 
+   229-239  (LEGION) - Jarryd 
+   240-305  (EPSON) - Jarryd
+   306-345  (VERBATIM) - Jarryd
+   Microsoft/csp - Jarryd
+   Brother - Mckhyle 
+   UPS - Mckhyle
+   WD Externals - Mckhyle
+   Cloud Storage-  Mckhyle
+   HP - Mckhyle
+   Samsung - Mckhyle
+   Canon cons - Mckhyle
+   Lexmark cons - Mckhyle
+   OKI Cons - Mckhyle
    ===========================
    *NB NULL = EOL/POR
  */
