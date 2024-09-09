@@ -46,7 +46,9 @@ $sql = "CREATE TABLE IF NOT EXISTS products (
     prod_code VARCHAR(20) NOT NULL UNIQUE,
     prod_price DECIMAL(10, 2) NOT NULL,
     prod_description TEXT,
-    prod_image VARCHAR(255)
+    prod_image VARCHAR(255),
+    prod_manufacturer VARCHAR(50),
+    prod_type VARCHAR(50)
 )";
 
 if ($conn->query($sql) === TRUE) {
