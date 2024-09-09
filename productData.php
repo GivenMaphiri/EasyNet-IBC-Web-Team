@@ -1,19 +1,33 @@
 <?php
+<<<<<<< HEAD
 
+=======
+session_start();
+>>>>>>> 5213f1c7e4b29fb82e5464a2fa15d33b1ea36d86
 include "DBConn.php";
 
 // Prepare the SQL query to insert dummy data
 /* ===========================
    PRODUCT ORDER LIST:
    ===========================
-   1-9      (PHILLIPS)
-   10-106   (CANON PART 1)
-   107-189  (OKI PART 1)
-   190-212  (LEXMARK PART 1)
-   213-228  (TARGUS)
-   229-239  (LEGION)
-   240-305  (EPSON)
-   306-348  (VERBATIM)
+   1-9      (PHILLIPS) - Jarryd
+   10-106   (CANON PART 1) - Jarryd
+   107-189  (OKI PART 1) - Jarryd
+   190-212  (LEXMARK PART 1) - Jarryd 
+   213-228  (TARGUS) - Jarryd 
+   229-239  (LEGION) - Jarryd 
+   240-305  (EPSON) - Jarryd
+   306-345  (VERBATIM) - Jarryd
+   Microsoft/csp - Jarryd
+   Brother - Mckhyle 
+   UPS - Mckhyle
+   WD Externals - Mckhyle
+   Cloud Storage-  Mckhyle
+   HP - Mckhyle
+   Samsung - Mckhyle
+   Canon cons - Mckhyle
+   Lexmark cons - Mckhyle
+   OKI Cons - Mckhyle
    ===========================
    *NB NULL = EOL/POR
  */
@@ -28,7 +42,7 @@ $sql = "INSERT INTO products (prod_id, prod_name, prod_code, prod_price, prod_de
         (7, 'Philips Monitor 27 USB-C 65W Monitor', 'MNPH27E1N3300A', 3995.00, '1920 X 1080 FULL HD. IPS. HDMI. Tilt. LowBlue Flicker-Free. Speakers. 3 YR Warranty', 'phillips27monUsbC10180.jpg', 'Phillips', 'Hardware'),
         (8, 'VERBATIM PORTABLE 14 MONITOR', 'MNPH49590', 2660.00, '1920 X 1080 FULL HD. IPS PANEL. USB-C. SLIM PROFILE. AUDIO JACK', 'verbatim14mon.jpg', 'Phillips', 'Hardware'),
         (9, 'VERBATIM PORTABLE 15.6 MONITOR', 'MNPH49592', 3822.00, 'TOUCH SCREEN. 1920 X 1080 FULL HD. IPS PANEL. USB-C. SLIM PROFILE. AUDIO JACK', 'verbatim15.6mon.jpg', 'Phillips', 'Hardware'),    
-        (10, 'Canon PIXMA TS704 A4 Single Function Inkjet Printer - CD/DVD Print', 'PRCATS704', '', 'A4 Printer. 15ipm mono. 10ipm colour. 4800 x 1200 dpi resolution. 350 sheet paper handling. Automatic duplex. USB. Wi-Fi. DIrect CD/DVD Printing. Mobile App and Apple Airprint - MIB. Single Ink Technology. 1pl. 5 ink cartridges. Uses PG-480BK. CL-481BK. CLI-481C. CLI-481M. CLI-481Y or PG-480/CLI-481XL or Multipack', 'canonPixmaTS704.jpg', 'Canon', 'Hardware'),
+        (10, 'Canon PIXMA TS704 A4 Single Function Inkjet Printer - CD/DVD Print', 'PRCATS704', NULL, 'A4 Printer. 15ipm mono. 10ipm colour. 4800 x 1200 dpi resolution. 350 sheet paper handling. Automatic duplex. USB. Wi-Fi. DIrect CD/DVD Printing. Mobile App and Apple Airprint - MIB. Single Ink Technology. 1pl. 5 ink cartridges. Uses PG-480BK. CL-481BK. CLI-481C. CLI-481M. CLI-481Y or PG-480/CLI-481XL or Multipack', 'canonPixmaTS704.jpg', 'Canon', 'Hardware'),
         (11, 'Canon PIXMA iX6840 A3+ Single Function Inkjet Printer', 'PRCAIX6840', 3583.00, 'A3+ Printer. 11.3ipm mono. 8.8ipm colour. 9600 x 2400 dpi resolution. 150 sheet rear tray. Manual duplex. USB. Wi-Fi therefore Apple Airprint. Google Cloud Print. PIXMA Printing Solutions App. Ethernet - Single Ink Technology. 1pl. 5 ink cartridges. Uses PGI-450PGBK. CLI-451BK. CLI-451C. CLI-451M. CLI-451Y or GI-450PGBK XL. CLI-451BK XL. CLI-451C XL. CLI-451M XL. CLI-451Y XL and PGI-455XXL', 'canonPixmaiX6840.jpg', 'Canon', 'Hardware'),
         (12, 'Canon PIXMA TS9540 A3 3-in-1 - Black', 'PRCATS9540BLK', 4152.00, 'A3 Print. Copy. Fax and Scan. Can print A3. but copy A4 or stitch copy A3. 15 ipm mono. 10 ipm colour. 4800 x 1200 print resolution. 2400 x 4800 dpi scan resolution. fastfront. 100 sheet front cassette. 100 sheet rear cassette paper handling. 20 Sheet ADF. duplex. Direct dist print. Nail sticker print. booklet layout copy. 10.8cm TFT colour touch screen. USB. Wi-fi. Ethernet. Wireless and Lan Pictbridge. Memory Card slot. wireless direct. Bluetooth - 5 ink system. Uses PGI-480PGBK. CLI-481BK. CLI-481C. CLI-481M. CLI-481Y. XL', 'canonPixmaTS9540.jpg', 'Canon', 'Hardware'),
         (13, 'Canon PIXMA Pro 200S A4/A3 Printer', 'PRCAPRO200S', 9219.00, 'A3+/14 Professional Printer. 8 ink system. 4800 x 2400 dpi resolution. 150 sheet paper handling. CD/DVD Printing. Manual duplex. USB. Wi-Fi. Ethernet. USB PictBridge. Pixma Cloud Link. Apple Airprint. PIXMA printing solutions App. pro Gallery Print app (i Pad). CLI-65 BK. CLI-65C. CLI-65M. CLI-65Y. CLI-65PC. CLI-65PM. CLI-65GY. CLI-65LGY - Coming in March 2021', 'canonPixmapro200S.jpg', 'Canon', 'Hardware'),
