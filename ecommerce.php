@@ -2,23 +2,26 @@
 session_start();
 include "DBConn.php";
 
+
+$sql = "SELECT prod_ID, prod_name, prod_code, prod_description, prod_price, prod_image, prod_manufacturer, prod_type FROM products";
+$result = $conn->query($sql);
+
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EasyNet Dashboard | Products</title>
-  <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
-  <!-- line awesome cdn link  -->
-  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyNet Dashboard | Products Dashboard</title>
 
-  <!-- custom css file link  -->
-  <link rel="stylesheet" href="_styles/admin_style.css" />
-
+    <!-- line awesome cdn link  -->
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="_styles/admin_style.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    
 </head>
 
 <body>
@@ -100,47 +103,111 @@ include "DBConn.php";
   </div>
   </div>
 
+  <!------------------------------------- main-content -------------------------------------------------------->
+
   <div class="main-content">
 
+  <main>
+
+    <div class="page-header">
+        <div>
+          <h1>Products Dashboard</h1>
+          <small>Keep track of your products.</small>
+        </div>
+      </div>
 
 
+      <div class="container my-5">
+        <h2>Lists Of Products</h2>
+        <a class="btn btn-primary" href="ecommerceAdd.php" role="button">New Product</a>
+        <br>
 
-    <div class="Product">
-      <h1>Add New Product</h1>
-      <form id="productForm" action="processProducts.php" method="post" enctype="multipart/form-data">
-        <label for="productName">Product Name:</label>
-        <input type="text" id="productName" name="productName" required>
+        <style>
+        table {
+            border-collapse: collapse;
+            width: 100%; /* Adjust width as needed */
+            padding: 10px;
+        }
 
-        <label for="productCode">Product Code:</label>
-        <input type="text" id="productCode" name="productCode" required>
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
 
-        <label for="productDescription">Description:</label>
-        <textarea id="productDescription" name="productDescription" placeholder="Product description:" required></textarea>
+        th {
+            background-color: #f2f2f2;
+        }
 
-        <label for="productPrice">Price:</label>
-        <input type="number" id="productPrice" name="productPrice" min="0.01" step="0.01" placeholder="ZAR" required>
+        td {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 110px;
+        }
 
-        <label for="productImage">Image:</label>
-        <input type="file" id="productImage" name="productImage" accept="image/*" required>
+        a{
+          padding-left: 2px;
+        }
+    </style>
 
-        <label for="productManufacturer">Product Manufacturer:</label>
-        <input type="text" id="productManufacturer" name="productManufacturer" required>
+    <br>
+
+        <table class="table">
+            <thead>
+                <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Manufacturer</th>
+                <th>Type</th>
+                <th>Action</th>
+                </tr>
+                
+            </thead>
+
+            <tbody>
+                <?php
+                    if ($result->num_rows > 0) {
+                        // Output data of each row
+                        while($row = $result->fetch_assoc()) {
+                            echo "<tr>";
+                            echo "<td>" . $row["prod_ID"] . "</td>";
+                            echo "<td>" . $row["prod_name"] . "</td>";
+                            echo "<td>" . $row["prod_code"] . "</td>";
+                            echo "<td>" . $row["prod_description"] . "</td>";
+                            echo "<td>R" . $row["prod_price"] . "</td>";
+                            echo "<td>" . $row["prod_image"] . "</td>";
+                            echo "<td>" . $row["prod_manufacturer"] . "</td>";
+                            echo "<td>" . $row["prod_type"] . "</td>";
+
+                            echo "<td>";
+                                echo "<a class='btn btn-primary btn-sm' href='ecommerceAdd.php?prod_ID=$row[prod_ID]'>Edit </a>";
+                                echo "<a class='btn btn-danger btn-sm' href='ecommerceDelete.php?prod_ID=$row[prod_ID]'>Delete </a>";
+                            echo "</td>";
+
+                            echo "</tr>";
+                        }
+                    } else {
+                        echo "0 results";
+                    }
+                    $conn->close();
+                ?>
+            </tbody>
+        </table>
+      </div>
+    </main>
+
+  
+  
 
 
-        <label for="productType">Product Type:</label>
-        <select id="productType" name="productType" required>
-          <option value="">Select Category</option>
-          <option value="hardware">Hardware</option>
-          <option value="software">Software</option>
-          <option value="accessories">Accessories</option>
-        </select>
-
-        <button type="submit" name="create" value="Add Product">Add Product</button>
-      </form>
-    </div>
+    
   </div>
-
+<!-------------------------------------End of main-content -------------------------------------------------------->
 
 </body>
-
 </html>

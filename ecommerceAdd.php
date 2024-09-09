@@ -1,11 +1,6 @@
 <?php
-// Check connection
-session_start(); // Start the session
-include "DBConn.php"; // Include your database connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
-
+session_start();
+include "DBConn.php";
 
 ?>
 
@@ -16,13 +11,18 @@ if ($conn->connect_error) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EasyNet Dashboard Messages</title>
+  <title>EasyNet Dashboard | Add Products</title>
   <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
+  <!-- line awesome cdn link  -->
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
+
+  <!-- custom css file link  -->
   <link rel="stylesheet" href="_styles/admin_style.css" />
+
 </head>
 
 <body>
+
 
   <div class="sidebar">
     <div class="sidebar-brand">
@@ -32,10 +32,10 @@ if ($conn->connect_error) {
           <h1 id="Logo_name2">Net</h1>
         </div>
         <!-- <div class="brand-icons">
-              <span class="las la-bell"></span>
-              <span class="las la-user-circle"></span>
-            </div>
-        -->
+            <span class="las la-bell"></span>
+            <span class="las la-user-circle"></span>
+          </div>
+      -->
       </div>
     </div>
 
@@ -102,50 +102,45 @@ if ($conn->connect_error) {
 
   <div class="main-content">
 
-  <main>
-    <div class="main-messages">
-      <h1>Messages</h1>
 
-      <?php
-      // Retrieve messages from the database
-      $sql = "SELECT * FROM message"; 
-      $res = $conn->query($sql);
 
-      if ($res->num_rows > 0) {
-        while($row = $res->fetch_assoc()) {
-          echo "<div class='message'>";
-          echo "<span class='message-sender'><b>Name:</b> " . $row["name"] . "</span>";
-          echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
-          echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
-          echo "<div class='message-actions'>";
-          echo "<form method='post' action='delete.php'>";
-          echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
-          echo "<button class='delete-message'>Delete</button>";
-          // The reply button for messaging
-          echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
-          echo "</form>";
-          echo "</div>";
-          echo "</div>";
-        }
-      } else {
-        echo "No messages found.";
-      }
 
-      $conn->close();
-      ?>
-    </div>
-</div>
-    
+    <div class="Product">
+      <h1>Add New Product</h1>
+      <form id="productForm" action="processProducts.php" method="post" enctype="multipart/form-data">
+        <label for="productName">Product Name:</label>
+        <input type="text" id="productName" name="productName" required>
 
-    
+        <label for="productCode">Product Code:</label>
+        <input type="text" id="productCode" name="productCode" required>
 
-  
+        <label for="productDescription">Description:</label>
+        <textarea id="productDescription" name="productDescription" placeholder="Product description:" required></textarea>
 
+        <label for="productPrice">Price:</label>
+        <input type="number" id="productPrice" name="productPrice" min="0.01" step="0.01" placeholder="ZAR" required>
+
+        <label for="productImage">Image:</label>
+        <input type="file" id="productImage" name="productImage" accept="image/*" required>
+
+        <label for="productManufacturer">Product Manufacturer:</label>
+        <input type="text" id="productManufacturer" name="productManufacturer" required>
+
+
+        <label for="productType">Product Type:</label>
+        <select id="productType" name="productType" required>
+          <option value="">Select Category</option>
+          <option value="hardware">Hardware</option>
+          <option value="software">Software</option>
+          <option value="accessories">Accessories</option>
+        </select>
+
+        <button type="submit" name="create" value="Add Product">Add Product</button>
+      </form>
     </div>
   </div>
-  
-   <script src="_javascript/messages.js"></script>
-   </body>
+
 
 </body>
+
 </html>
