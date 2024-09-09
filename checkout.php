@@ -175,14 +175,11 @@ if (!isset($_SESSION['user_id'])) {
 
   <main>
 
-    <div class="checkout">
-
-      <div class="checkout_heading">
+      <div id="checkout_heading">
         <h1>Checkout</h1>
       </div>
       <hr id="checkout_lines">
 
-    </div>
     <?php
 
     $user_ID = $_SESSION['user_id']; // Retrieve the user ID from the session
@@ -192,15 +189,15 @@ if (!isset($_SESSION['user_id'])) {
     $stmt->bind_param("i", $user_ID);
     $stmt->execute();
     $result = $stmt->get_result();
-
     $totalPrice = 0;
 
     if ($result->num_rows > 0) {
-      echo "<div id='cart_items'>";
       while ($row = $result->fetch_assoc()) {
-        $subtotal = $row['prod_price'] * $row['quantity'];
+        $netPrice = $row['prod_price'] * $row['quantity'];
+        $vatAmount = $netPrice*0.15;
+        $subtotal = $netPrice + $vatAmount;
         $totalPrice += $subtotal;
-        echo "<div class='checkbox1'>";
+        echo "<div id='products_container'>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
         echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
@@ -211,10 +208,17 @@ if (!isset($_SESSION['user_id'])) {
         echo "</div>";
       }
       echo "</div>";
-      echo "<div id='total_price'>";
+      echo "<div>";
+      echo "</div>";
+      echo "<div id='total_container'>";
+      echo "<h1> Net Price:</h1>";
+      echo "<h1 class='cart_total_price'>R" . number_format($netPrice, 2) . "</h1>";
+      echo "<h1> VAT Amount:</h1>";
+      echo "<h1 class='cart_total_price'>R" . number_format($vatAmount, 2) . "</h1>";
       echo "<h1>Total Price:</h1>";
       echo "<h1 class='cart_total_price'>R" . number_format($totalPrice, 2) . "</h1>";
       echo "<a href='shipping.php'><button id='checkout_button'>Checkout</button></a>";
+      echo "</div>";
       echo "</div>";
       echo "</div>";
     } else {
