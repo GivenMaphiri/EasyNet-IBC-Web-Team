@@ -107,10 +107,12 @@ $result = $conn->query($sql);
 
   <div class="main-content">
 
+  <main>
+
     <div class="page-header">
         <div>
           <h1>Products Dashboard</h1>
-          <small>keep track of your products.</small>
+          <small>Keep track of your products.</small>
         </div>
       </div>
 
@@ -119,10 +121,42 @@ $result = $conn->query($sql);
         <h2>Lists Of Products</h2>
         <a class="btn btn-primary" href="ecommerceAdd.php" role="button">New Product</a>
         <br>
+
+        <style>
+        table {
+            border-collapse: collapse;
+            width: 100%; /* Adjust width as needed */
+            padding: 10px;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 110px;
+        }
+
+        a{
+          padding-left: 2px;
+        }
+    </style>
+
+    <br>
+
         <table class="table">
             <thead>
                 <tr>
-                <th>Prod_ID</th>
+                <th>ID</th>
                 <th>Name</th>
                 <th>Code</th>
                 <th>Description</th>
@@ -165,7 +199,7 @@ $result = $conn->query($sql);
             </tbody>
         </table>
       </div>
-    
+    </main>
 
   
   

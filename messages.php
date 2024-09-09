@@ -101,6 +101,8 @@ if ($conn->connect_error) {
   </div>
 
   <div class="main-content">
+
+  <main>
     <div class="main-messages">
       <h1>Messages</h1>
 
