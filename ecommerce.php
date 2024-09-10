@@ -147,9 +147,21 @@ $result = $conn->query($sql);
         }
 
         a{
-          padding-left: 2px;
+          /* padding-left: 2px; */
         }
     </style>
+
+      <form method="GET" action="">
+          <label for="status">Filter by Status:</label>
+          <select name="status" id="status">
+              <option value="">All</option>
+              <option value="Delivered">Delivered</option>
+              <option value="Pending">Pending</option>
+              <option value="Return">Return</option>
+              <option value="In Progress">In Progress</option>
+          </select>
+          <button type="submit">Filter</button>
+      </form>
 
     <br>
 
@@ -185,8 +197,8 @@ $result = $conn->query($sql);
                             echo "<td>" . $row["prod_type"] . "</td>";
 
                             echo "<td>";
-                                echo "<a class='btn btn-primary btn-sm' href='ecommerceAdd.php?prod_ID=$row[prod_ID]'>Edit </a>";
-                                echo "<a class='btn btn-danger btn-sm' href='ecommerceDelete.php?prod_ID=$row[prod_ID]'>Delete </a>";
+                                echo "<button><a class='btn btn-primary btn-sm' href='ecommerceAdd.php?prod_ID=$row[prod_ID]'>Edit </a></button>";
+                                echo "<button><a class='btn btn-danger btn-sm' href='ecommerceDelete.php?prod_ID=$row[prod_ID]'>Delete </a></button>";
                             echo "</td>";
 
                             echo "</tr>";
