@@ -114,7 +114,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                   <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
                     <?php
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products LIMIT 10";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
                       $manufacturer = htmlspecialchars($row['prod_manufacturer']);
@@ -449,23 +449,34 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         });
       });
 
-      document.querySelectorAll('.add_to_favorites').forEach(button => {
-        button.addEventListener('click', function() {
-          const prodId = this.getAttribute('data-prod-id');
+      // Add to Favourite button click event
+      $(document).on('click', '.add_to_favourite', function() {
+        var prodId = $(this).data('prod-id');
+        var prodName = $(this).data('prod-name');
+        var prodPrice = $(this).data('prod-price');
+        var prodImage = $(this).data('prod-image');
 
-          fetch('addtofavorite.php', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-              },
-              body: new URLSearchParams({
-                'prod_id': prodId
-              })
-            })
-            .then(response => response.text())
-            .then(data => {
-              alert(data); // Provide user feedback
-            });
+        $.ajax({
+          url: 'addtofavourite.php', // Ensure this is the correct path to your PHP file
+          method: 'POST',
+          data: {
+            prod_id: prodId,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            prod_image: prodImage
+          },
+          success: function(response) {
+            alert(response); // Display the server response for debugging
+            if (response == 'success') {
+              alert('Product added to favourites!');
+            } else {
+              alert('Failed to add to favourites.');
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+            alert('Failed to add to favourites.');
+          }
         });
       });
     </script>

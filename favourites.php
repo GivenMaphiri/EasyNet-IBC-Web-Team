@@ -172,57 +172,52 @@ include "DBConn.php";
 
     <div id="fav_boxes">
       <?php
-
-      $user_ID = $_SESSION['user_id']; // Retrieve the user ID from the session
-
-      $sql = "SELECT * FROM favourite WHERE user_ID = ?";
-      $stmt = $conn->prepare($sql);
-      $stmt->bind_param("i", $user_ID);
-      $stmt->execute();
-      $result = $stmt->get_result();
+      $result = $conn->query("SELECT * FROM favourite WHERE user_ID = " . $_SESSION['user_id']);
 
       if ($result->num_rows > 0) {
-        echo "<div id='cart_items'>";
         while ($row = $result->fetch_assoc()) {
-
           echo "<div class='checkbox1'>";
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
           echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
           echo "<div id='check_quantity'>";
-          echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
-          echo "<button id='remove_fav' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
+          echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_ID'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='" . $row['prod_image'] . "' id='boxbutton'>Add to Cart</button>";
+          echo "<button type='button' class='remove_from_favourite' data-prod-id='" . $row['prod_ID'] . "' id='remove_fav' >Remove from Favourites</button>";
           echo "</div>";
           echo "</div>";
         }
       } else {
-        echo "<h1>Favourites page is empty.</h1>";
+        echo "<p>No favourites yet.</p>";
       }
-
-      $stmt->close();
-      $conn->close();
       ?>
+
     </div>
 
     <script>
-      function removeFromCart(prod_ID) {
-        if (confirm('Are you sure you want to remove this item from the cart?')) {
-          // User clicked OK, proceed with the AJAX request
-          $.ajax({
-            url: 'remove_fav.php',
-            method: 'POST',
-            data: {
-              prod_ID: prod_ID
-            },
-            success: function(response) {
-              location.reload(); // Reload the page to reflect changes in the cart
+      // Remove from Favourite button click event
+      $(document).on('click', '.remove_from_favourite', function() {
+        var prodId = $(this).data('prod-id');
+
+        $.ajax({
+          url: 'remove_fav.php', // Ensure this points to your PHP file for removing favourites
+          method: 'POST',
+          data: {
+            prod_id: prodId
+          },
+          success: function(response) {
+            if (response.trim() === 'success') {
+              alert('Product removed from favourites!');
+              location.reload(); // Refresh the page or remove the item from the DOM
+            } else {
+              alert('Failed to remove from favourites.');
             }
-          });
-        } else {
-          // User clicked Cancel, do nothing or add any additional handling here if needed
-          console.log('Item not removed from favourites.');
-        }
-      }
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+            alert('Failed to remove from favourites.');
+          }
+        });
+      });
     </script>
   </main>
   <footer id="contact_footer">

@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
+
+=======
 session_start();
+>>>>>>> 5213f1c7e4b29fb82e5464a2fa15d33b1ea36d86
 include "DBConn.php";
 
 // Prepare the SQL query to insert dummy data
@@ -359,7 +363,7 @@ $sql = "INSERT INTO products (prod_id, prod_name, prod_code, prod_price, prod_de
         (343, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49042', 200.60, 'Colour: Black', 'verbatimGonanob.jpg', 'Verbatim', 'Hardware'),
         (344, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49043', 200.60, 'Colour: Hot Pink', 'verbatimGonanohp.jpg', 'Verbatim', 'Hardware'),
         (345, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49044', 200.60, 'Colour: Carribean Blue', 'verbatimGonanocb.jpg', 'Verbatim', 'Hardware')";
-  
+
 // Execute the query
 if ($conn->query($sql) === TRUE) {
     echo "Products inserted successfully!";
@@ -369,4 +373,3 @@ if ($conn->query($sql) === TRUE) {
 
 // Close the database connection
 $conn->close();
-?>

@@ -2,46 +2,93 @@
 session_start();
 include "DBConn.php";
 
-if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['phone_number']) && isset($_POST['email']) && isset($_POST['password'])) {
+// if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['phone_number']) && isset($_POST['email']) && isset($_POST['password'])) {
 
-    function validate($data){
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
+//     function validate($data){
+//         $data = trim($data);
+//         $data = stripslashes($data);
+//         $data = htmlspecialchars($data);
+//         return $data;
+//     }
 
-    $first_name = validate($_POST['first_name']);
-    $last_name = validate($_POST['last_name']);
-    $phone_number = validate($_POST['phone_number']);
-    $email_address = validate($_POST['email']);
-    $password = validate($_POST['password']);
+//     $first_name = validate($_POST['first_name']);
+//     $last_name = validate($_POST['last_name']);
+//     $phone_number = validate($_POST['phone_number']);
+//     $email_address = validate($_POST['email']);
+//     $password = validate($_POST['password']);
+//     $cpassword = validate($_POST['cpassword']);
 
-    if (empty($first_name) || empty($last_name) || empty($phone_number) || empty($email_address) || empty($password)) {
-        header("Location: register.php?error=All fields are required");
-        exit();
-    } else {
-        // Hashing the password using password_hash
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+//     if (empty($first_name) || empty($last_name) || empty($phone_number) || empty($email_address) || empty($password)|| empty($cpassword)) {
+//         header("Location: register.php?error=All fields are required");
+//         exit();
+//     } else {
+//         // Hashing the password using password_hash
+//         $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+//         $CpasswordHash = password_hash($cpassword, PASSWORD_BCRYPT);
 
-        // Set the verification status to "unverified"
-        $verificationStatus = 'unverified';
+//         // Set the verification status to "unverified"
+//         $verificationStatus = 'unverified';
 
-        $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')";
+      //   $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')";
 
        
-       if (mysqli_query($conn, $sql)) {
-           header("Location: login.php?");
-           echo "Registration successful";
-          // exit();
-        } else {
-           header("Location: register.php?error=Registration failed");
-           echo "Something went wrong!";
-            exit();
-        }
-    }
+      //   //Check for user repeats
+      // if(users($sql)>0){
+      //   $message[] = 'user already exists';
+      // }else{ if($password != $cpassword ){
+      //     $message[] = 'wrong password';
+      //   }}
 
-} 
+//       if (mysqli_query($conn, $sql)) {
+//            header("Location: login.php?");
+//            echo "Registration successful";
+//           // exit();
+//         } else {
+//            header("Location: register.php?error=Registration failed");
+//            echo "Something went wrong!";
+//             exit();
+//             }
+//           }
+
+       if(isset($_POST['submit-btn']))  
+       {
+        $filter_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
+        $first_name = mysqli_real_escape_string($conn, $filter_name);
+
+        $filter_last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+        $last_name= mysqli_real_escape_string($conn, $filter_last_name);
+
+        $filter_phone_number = filter_var($_POST['phone_number'], FILTER_SANITIZE_STRING);
+        $phone_number = mysqli_real_escape_string($conn, $filter_phone_number);
+
+        $filter_email_address = filter_var($_POST['email_address'], FILTER_SANITIZE_STRING);
+        $email_address = mysqli_real_escape_string($conn, $filter_email_address);
+
+        $filter_password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+        $password = mysqli_real_escape_string($conn, $filter_password);
+
+        $filter_cpassword = filter_var($_POST['cpassword'], FILTER_SANITIZE_STRING);
+        $cpassword = mysqli_real_escape_string($conn, $filter_cpassword);
+
+        $select_user = mysqli_query($conn, "SELECT * FROM users WHERE email_address = '$email_address'") or die ('query failed');
+
+         // Hashing the password using password_hash
+        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+        $CpasswordHash = password_hash($cpassword, PASSWORD_BCRYPT);
+       
+        //Check for user repeats
+      if(mysqli_num_rows($select_user)>0){
+        $message[] = 'user already exists';
+      }else{ if($password != $cpassword ){
+          $message[] = 'Passwords are not the same';
+        }else{
+          mysqli_query($conn, "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')")
+          or die('query failed');
+          $message[]='registration successful';
+          header('loactaion:login.php');
+        }}
+       } 
+      //}
 ?>
 
 <!DOCTYPE html>
@@ -187,6 +234,17 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['p
       <!-- Personal Info -->
 
       <div id="signup_container">
+        <?php
+          if (isset($message)){
+            foreach ($message as $message){
+              echo'
+              <div id = "message">
+              <span> '.$message.'</span>
+              <i id = "bi bi-x-circle" onclick="this.parentElement.remove()"></i>
+              </div>';
+            }
+          }
+        ?>
 
         <div id="signup_left">
           <h4>First Name</h4>
@@ -200,13 +258,14 @@ if (isset($_POST['first_name']) && isset($_POST['last_name']) && isset($_POST['p
         <!-- Sign Up -->
         <div id="signup_right">
           <h4> Email address</h4>
-          <input type="email" name="email" placeholder="Email Address" class="signup_box" required />
+          <input type="email" name="email_address" placeholder="Email Address" class="signup_box" required />
           <h4>Password</h4>
           <input type="password" name="password" placeholder="Password" class="signup_box" required />
           <h4>Confirm password</h4>
-          <input type="password" name="confirm_password" placeholder="Confirm Password" class="signup_box" required />
+          <input type="password" name="cpassword" placeholder="Confirm Password" class="signup_box" required />
+          <h4>already have an account? <a href ="login.php">login now </a></h4>
           <div>
-            <button type="submit" class="signup_button">Sign Up</button>
+            <button type="submit" name="submit-btn" class="signup_button">Sign Up</button>
           </div>
         </div>
       </div>
