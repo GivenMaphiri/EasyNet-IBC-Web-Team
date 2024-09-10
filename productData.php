@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
-
-=======
 session_start();
->>>>>>> 5213f1c7e4b29fb82e5464a2fa15d33b1ea36d86
 include "DBConn.php";
 
 // Prepare the SQL query to insert dummy data
