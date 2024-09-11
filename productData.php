@@ -19,15 +19,15 @@ include "DBConn.php";
    UPS - Mckhyle
    WD Externals - Mckhyle
    Cloud Storage-  Mckhyle
-   HP - Mckhyle
    Samsung - Mckhyle
-   Canon cons - Mckhyle
-   Lexmark cons - Mckhyle
-   OKI Cons - Mckhyle
+   HP - Split
+   Canon cons - Split
+   Lexmark cons - Split
+   OKI Cons - Split
    ===========================
    *NB NULL = EOL/POR
  */
-$sql = "INSERT INTO products (prod_id, prod_name, prod_code, prod_price, prod_description, prod_image, prod_manufacturer, prod_type) 
+$sql = "INSERT INTO products (prod_ID, prod_name, prod_code, prod_price, prod_description, prod_image, prod_manufacturer, prod_type) 
         VALUES 
         (1, 'Philips Monitor 21.5 VA Panel', 'MNPH221V8LB', 1590.00, '1920x1080 @ 100hz. VGA. HDMI. Cables incl. LowBlue. Flicker-Free. VESA. 3 Year Warranty', 'phillips21.5monVa.jpg', 'Phillips', 'Hardware'),
         (2, 'Philips Monitor 23.8 IPS Panel', 'MNPH241V8B', 1940.00, '1920x1080 @ 100hz. VGA. HDMI. Cables incl. LowBlue. Flicker-Free. VESA. 3 Year Warranty', 'phillips23.8monIps.jpg', 'Phillips', 'Hardware'),
@@ -37,7 +37,7 @@ $sql = "INSERT INTO products (prod_id, prod_name, prod_code, prod_price, prod_de
         (6, 'Philips Monitor 27 USB-C 65W Monitor', 'MNPH27E1N5600E', 4590.00, '2560 X 1440 QHD. 75hz. IPS. HDMI & DP. HAS. LowBlue Flicker-Free. Speakers. 3 YR Warranty', 'phillips27monUsbC.jpg', 'Phillips', 'Hardware'),
         (7, 'Philips Monitor 27 USB-C 65W Monitor', 'MNPH27E1N3300A', 3995.00, '1920 X 1080 FULL HD. IPS. HDMI. Tilt. LowBlue Flicker-Free. Speakers. 3 YR Warranty', 'phillips27monUsbC10180.jpg', 'Phillips', 'Hardware'),
         (8, 'VERBATIM PORTABLE 14 MONITOR', 'MNPH49590', 2660.00, '1920 X 1080 FULL HD. IPS PANEL. USB-C. SLIM PROFILE. AUDIO JACK', 'verbatim14mon.jpg', 'Phillips', 'Hardware'),
-        (9, 'VERBATIM PORTABLE 15.6 MONITOR', 'MNPH49592', 3822.00, 'TOUCH SCREEN. 1920 X 1080 FULL HD. IPS PANEL. USB-C. SLIM PROFILE. AUDIO JACK', 'verbatim15.6mon.jpg', 'Phillips', 'Hardware'),    
+        (9, 'VERBATIM PORTABLE 15.6 MONITOR', 'MNPH49592', 3822.00, 'TOUCH SCREEN. 1920 X 1080 FULL HD. IPS PANEL. USB-C. SLIM PROFILE. AUDIO JACK', 'verbatim15.6mon.jpg', 'Verbatim', 'Hardware'),    
         (10, 'Canon PIXMA TS704 A4 Single Function Inkjet Printer - CD/DVD Print', 'PRCATS704', NULL, 'A4 Printer. 15ipm mono. 10ipm colour. 4800 x 1200 dpi resolution. 350 sheet paper handling. Automatic duplex. USB. Wi-Fi. DIrect CD/DVD Printing. Mobile App and Apple Airprint - MIB. Single Ink Technology. 1pl. 5 ink cartridges. Uses PG-480BK. CL-481BK. CLI-481C. CLI-481M. CLI-481Y or PG-480/CLI-481XL or Multipack', 'canonPixmaTS704.jpg', 'Canon', 'Hardware'),
         (11, 'Canon PIXMA iX6840 A3+ Single Function Inkjet Printer', 'PRCAIX6840', 3583.00, 'A3+ Printer. 11.3ipm mono. 8.8ipm colour. 9600 x 2400 dpi resolution. 150 sheet rear tray. Manual duplex. USB. Wi-Fi therefore Apple Airprint. Google Cloud Print. PIXMA Printing Solutions App. Ethernet - Single Ink Technology. 1pl. 5 ink cartridges. Uses PGI-450PGBK. CLI-451BK. CLI-451C. CLI-451M. CLI-451Y or GI-450PGBK XL. CLI-451BK XL. CLI-451C XL. CLI-451M XL. CLI-451Y XL and PGI-455XXL', 'canonPixmaiX6840.jpg', 'Canon', 'Hardware'),
         (12, 'Canon PIXMA TS9540 A3 3-in-1 - Black', 'PRCATS9540BLK', 4152.00, 'A3 Print. Copy. Fax and Scan. Can print A3. but copy A4 or stitch copy A3. 15 ipm mono. 10 ipm colour. 4800 x 1200 print resolution. 2400 x 4800 dpi scan resolution. fastfront. 100 sheet front cassette. 100 sheet rear cassette paper handling. 20 Sheet ADF. duplex. Direct dist print. Nail sticker print. booklet layout copy. 10.8cm TFT colour touch screen. USB. Wi-fi. Ethernet. Wireless and Lan Pictbridge. Memory Card slot. wireless direct. Bluetooth - 5 ink system. Uses PGI-480PGBK. CLI-481BK. CLI-481C. CLI-481M. CLI-481Y. XL', 'canonPixmaTS9540.jpg', 'Canon', 'Hardware'),
@@ -358,7 +358,82 @@ $sql = "INSERT INTO products (prod_id, prod_name, prod_code, prod_price, prod_de
         (342, 'VERBATIM Optical Desktop Mouse', 'MOVEV49019', 115.80, 'Colour: Black', 'verbatimOptmouseb.jpg', 'Verbatim', 'Hardware'),
         (343, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49042', 200.60, 'Colour: Black', 'verbatimGonanob.jpg', 'Verbatim', 'Hardware'),
         (344, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49043', 200.60, 'Colour: Hot Pink', 'verbatimGonanohp.jpg', 'Verbatim', 'Hardware'),
-        (345, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49044', 200.60, 'Colour: Carribean Blue', 'verbatimGonanocb.jpg', 'Verbatim', 'Hardware')";
+        (345, 'VERBATIM Go Nano Wireless Mouse', 'MOVEV49044', 200.60, 'Colour: Carribean Blue', 'verbatimGonanocb.jpg', 'Verbatim', 'Hardware'),
+        (346, 'BROTHER DRUM UNIT DR1000', 'CNBRDR1000', 477.50, 'Colour: Black', 'verbatimGonanohp.jpg', 'BROTHER', 'Hardware'),
+        (347, 'BROTHER DRUM UNIT DR2125', 'CNBRDR2125', 1601.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (348, 'BROTHER DRUM UNIT DR2255', 'CNBRDR2255', 1491.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (349, 'BROTHER DRUM UNIT DR2305', 'CNBRDR2305', 1601.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (350, 'BROTHER DRUM UNIT DR3200', 'CNBRDR3215', 2651.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (351, 'BROTHER DRUM UNIT DR3355', 'CNBRDR3355', 2264.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (352, 'BROTHER DRUM UNIT DR3405', 'CNBRDR3405', 2276.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (351, 'BROTHER INK CARTRIDGE LC77LX H/YIELD', 'CNBRLC77LXM', 353.50, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (353, 'BROTHER INK CARTRIDGE LC77LX H/YIELD', 'CNBRLC77LXY', 353.50, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (354, 'BROTHER INK CARTRIDGE LC77LX H/YIELD', 'CNBRLC77XLBK', 585.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (355, 'BROTHER INK CARTRIDGE LC77LX H/YIELD', 'CNBRLC77XLC', 353.50, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (356, 'BROTHER TONER CARTRIDGE TN1000', 'CNBRTN1000', 663.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (357, 'BROTHER TONER CARTRIDGE TN2060', 'CNBRTN2060', 423.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (358, 'BROTHER TONER CARTRIDGE TN2120', 'CNBRTN2150', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (359, 'BROTHER TONER CARTRIDGE TN2280', 'CNBRTN2280', 1055.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (360, 'BROTHER TONER CARTRIDGE TN2355', 'CNBRTN2355', 1055.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (361, 'BROTHER TONER CARTRIDGE TN261', 'CNBRTN261BK', 1215.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (362, 'BROTHER TONER CARTRIDGE TN3170', 'CNBRTN3185', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (363, 'BROTHER TONER CARTRIDGE TN3250', 'CNBRTN3250', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (364, 'BROTHER TONER CARTRIDGE TN3290', 'CNBRTN3290', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (365, 'BROTHER TONER CARTRIDGE TN3350', 'CNBRTN3350', 1703.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (366, 'BROTHER TONER CARTRIDGE TN3370', 'CNBRTN3370', 2098.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (367, 'BROTHER TONER CARTRIDGE TN3437', 'CNBRTN3437', 1998.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (368, 'BROTHER TONER CARTRIDGE TN3467', 'CNBRTN3467', 2331.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (369, 'BROTHER TONER CARTRIDGE TN3487', 'CNBRTN3487', 2220.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (370, 'BROTHER TONER CARTRIDGE TN348 H/YIELD', 'CNBRTN348BK', 1789.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (371, 'BROTHER TONER CARTRIDGE TN369 H/YIELD', 'CNBRTN369BK', 1499.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (372, 'BROTHER TONER CARTRIDGE MFCJ3530/3930/2730 H/YIELD', 'CNBRLC3719XLBK', 477.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (373, 'Brother Drum Unit', 'CNBRDR461CL', 2886.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (374, 'BROTHER DRUM UNIT DR130CL', 'CNBRDR150CL', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (375, 'BROTHER DRUM UNIT DR240BK', 'CNBRDR240BK', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (376, 'BROTHER DRUM UNIT DR240CL', 'CNBRDR240CL', NULL, 'Full Set', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (377, 'BROTHER DRUM UNIT DR240CL', 'CNBRDR240CL-CMY', NULL, 'Colour: Cyan, Yellow, Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (378, 'BROTHER DRUM UNIT DR261CL', 'CNBRDR261CL', 2442.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (379, 'BROTHER DRUM UNIT DR340CL', 'CNBRDR340CL', 2664.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (380, 'BROTHER DRUM UNIT DR361CL', 'CNBRDR361CL', 2331.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (381, 'BROTHER TONER CARTRIDGE TN240', 'CNBRTN240BK', NULL, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (382, 'BROTHER TONER CARTRIDGE TN240', 'CNBRTN240C', NULL, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (383, 'BROTHER TONER CARTRIDGE TN240', 'CNBRTN240M', NULL, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (384, 'BROTHER TONER CARTRIDGE TN240', 'CNBRTN240Y', NULL, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (385, 'BROTHER TONER CARTRIDGE TN265', 'CNBRTN265C', 1436.00, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (386, 'BROTHER TONER CARTRIDGE TN265', 'CNBRTN265M', 1436.00, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (387, 'BROTHER TONER CARTRIDGE TN265', 'CNBRTN265Y', 1436.00, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (388, 'BROTHER TONER CARTRIDGE TN348 H/YIELD', 'CNBRTN348C', 3092.50, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (389, 'BROTHER TONER CARTRIDGE TN348 H/YIELD', 'CNBRTN348M', 3092.50, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (390, 'BROTHER TONER CARTRIDGE TN348 H/YIELD', 'CNBRTN348Y', 3092.50, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (391, 'BROTHER TONER CARTRIDGE TN369 H/YIELD', 'CNBRTN369C', 2686.50, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (392, 'BROTHER TONER CARTRIDGE TN369 H/YIELD', 'CNBRTN369M', 2686.50, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (393, 'BROTHER TONER CARTRIDGE TN369 H/YIELD', 'CNBRTN369Y', 2686.50, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (394, 'BROTHER TONER CARTRIDGE MFCJ3530/3930/2730 H/YIELD', 'CNBRLC3719XLC', 322.00, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (395, 'BROTHER TONER CARTRIDGE MFCJ3530/3930/2730 H/YIELD', 'CNBRLC3719XLM', 322.00, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (396, 'BROTHER TONER CARTRIDGE MFCJ3530/3930/2730 H/YIELD', 'CNBRLC3719XLY', 322.00, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (397, 'BROTHER TONER CARTRIDGE TN469 H/YIELD', 'CNBRTN469BK', 1943.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (398, 'BROTHER TONER CARTRIDGE TN469 H/YIELD', 'CNBRTN469C', 3053.00, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (399, 'BROTHER TONER CARTRIDGE TN469 H/YIELD', 'CNBRTN469M', 3053.00, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (400, 'BROTHER TONER CARTRIDGE TN469 H/YIELD', 'CNBRTN469Y', 3053.00, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (401, 'BROTHER INK CARTRIDGE LC535XL H/YIELD', 'CNBRLC535XLC', 210.00, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (402, 'BROTHER INK CARTRIDGE LC535XL H/YIELD', 'CNBRLC535XLM', 210.00, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (403, 'BROTHER INK CARTRIDGE LC535XL H/YIELD', 'CNBRLC535XLY', 210.00, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (404, 'BROTHER INK CARTRIDGE LC535XL H/YIELD', 'CNBRLC539XLBK', 210.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (405, 'BROTHER INK CARTRIDGE LC565XL H/YIELD', 'CNBRLC565XLC', 276.50, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (406, 'BROTHER INK CARTRIDGE LC565XL H/YIELD', 'CNBRLC565XLM', 276.50, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (407, 'BROTHER INK CARTRIDGE LC565XL H/YIELD', 'CNBRLC565XLY', 276.50, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (408, 'BROTHER INK CARTRIDGE LC569XL H/YIELD', 'CNBRLC569XLBK', 381.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (409, 'BROTHER INK CARTRIDGE LC675XL H/YIELD', 'CNBRLC675XLC', 278.00, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (410, 'BROTHER INK CARTRIDGE LC675XL H/YIELD', 'CNBRLC675XLM', 278.00, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (411, 'BROTHER INK CARTRIDGE LC675XL H/YIELD', 'CNBRLC675XLY', 278.00, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (412, 'BROTHER INK CARTRIDGE LC679XL H/YIELD', 'CNBRLC679XLBK', 381.50, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (413, 'BROTHER INK CARTRIDGE BTD60BK', 'CNBRBTD60BK', 231.00, 'Colour: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (414, 'BROTHER INK CARTRIDGE BT5000C ', 'CNBRBT5000C', 198.00, 'Colour: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (415, 'BROTHER INK CARTRIDGE BT5000M', 'CNBRBT5000M', 198.00, 'Colour: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (416, 'BROTHER INK CARTRIDGE BT5000Y', 'CNBRBT5000Y', 198.00, 'Colour: Yellow', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (417, 'MFC-J3540DW, MFC-J3940DW, MFC-J2340DW', 'CNBRLC472XLBK', 477.50, 'Colour: Ink Cartridge: Black', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories'),
+        (418, 'MFC-J3540DW, MFC-J3940DW, MFC-J2340DW', 'CNBRLC472XLC', 344.50, 'Colour: Ink Cartridge: Cyan', 'verbatimGonanocb.jpg', 'BROTHER', 'Hardware'),
+        (419, 'MFC-J3540DW, MFC-J3940DW, MFC-J2340DW', 'CNBRLC472XLM', 344.50, 'Colour: Ink Cartridge: Magenta', 'verbatimGonanocb.jpg', 'BROTHER', 'Accessories')";
 
 // Execute the query
 if ($conn->query($sql) === TRUE) {
