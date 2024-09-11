@@ -21,6 +21,7 @@ $result = $conn->query($sql);
     <!-- custom css file link  -->
     <link rel="stylesheet" href="_styles/admin_style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
+    <link href="_styles/font-awesome.css" rel="stylesheet" />
     
 </head>
 
@@ -123,33 +124,33 @@ $result = $conn->query($sql);
         <br>
 
         <style>
-        table {
-            border-collapse: collapse;
-            width: 100%; /* Adjust width as needed */
-            padding: 10px;
-        }
+          table {
+              border-collapse: collapse;
+              width: 100%; /* Adjust width as needed */
+              padding: 10px;
+          }
 
-        th, td {
-            border: 1px solid black;
-            padding: 8px;
-            text-align: left;
-        }
+          th, td {
+              border: 1px solid black;
+              padding: 8px;
+              text-align: left;
+          }
 
-        th {
-            background-color: #f2f2f2;
-        }
+          th {
+              background-color: #f2f2f2;
+          }
 
-        td {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          max-width: 110px;
-        }
+          td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 110px;
+          }
 
-        a{
-          /* padding-left: 2px; */
-        }
-    </style>
+          a{
+            /* padding-left: 2px; */
+          }
+        </style>
 
       <form method="GET" action="">
           <label for="status">Filter by Status:</label>
@@ -163,61 +164,54 @@ $result = $conn->query($sql);
           <button type="submit">Filter</button>
       </form>
 
-    <br>
+      <br>
+          <table class="table">
+              <thead>
+                  <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Code</th>
+                  <th>Description</th>
+                  <th>Price</th>
+                  <th>Image</th>
+                  <th>Manufacturer</th>
+                  <th>Type</th>
+                  <th>Action</th>
+                  </tr>
+                  
+              </thead>
 
-        <table class="table">
-            <thead>
-                <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Code</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Image</th>
-                <th>Manufacturer</th>
-                <th>Type</th>
-                <th>Action</th>
-                </tr>
-                
-            </thead>
+              <tbody>
+                  <?php
+                      if ($result->num_rows > 0) {
+                          // Output data of each row
+                          while($row = $result->fetch_assoc()) {
+                              echo "<tr>";
+                              echo "<td>" . $row["prod_ID"] . "</td>";
+                              echo "<td>" . $row["prod_name"] . "</td>";
+                              echo "<td>" . $row["prod_code"] . "</td>";
+                              echo "<td>" . $row["prod_description"] . "</td>";
+                              echo "<td>R" . $row["prod_price"] . "</td>";
+                              echo "<td>" . $row["prod_image"] . "</td>";
+                              echo "<td>" . $row["prod_manufacturer"] . "</td>";
+                              echo "<td>" . $row["prod_type"] . "</td>";
 
-            <tbody>
-                <?php
-                    if ($result->num_rows > 0) {
-                        // Output data of each row
-                        while($row = $result->fetch_assoc()) {
-                            echo "<tr>";
-                            echo "<td>" . $row["prod_ID"] . "</td>";
-                            echo "<td>" . $row["prod_name"] . "</td>";
-                            echo "<td>" . $row["prod_code"] . "</td>";
-                            echo "<td>" . $row["prod_description"] . "</td>";
-                            echo "<td>R" . $row["prod_price"] . "</td>";
-                            echo "<td>" . $row["prod_image"] . "</td>";
-                            echo "<td>" . $row["prod_manufacturer"] . "</td>";
-                            echo "<td>" . $row["prod_type"] . "</td>";
+                              echo "<td>";
+                                  echo "<a href='ecommerceEdit.php'><span class='fa-light fa-pen-to-square'></span></a>";
+                                  echo "<a href='#ecommerceDelete'><span class='fa-solid fa-delete-left'></span></a>";
+                              echo "</td>";
 
-                            echo "<td>";
-                                echo "<button><a class='btn btn-primary btn-sm' href='ecommerceAdd.php?prod_ID=$row[prod_ID]'>Edit </a></button>";
-                                echo "<button><a class='btn btn-danger btn-sm' href='ecommerceDelete.php?prod_ID=$row[prod_ID]'>Delete </a></button>";
-                            echo "</td>";
-
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "0 results";
-                    }
-                    $conn->close();
-                ?>
-            </tbody>
-        </table>
+                              echo "</tr>";
+                          }
+                      } else {
+                          echo "0 results";
+                      }
+                      $conn->close();
+                  ?>
+              </tbody>
+          </table>
       </div>
     </main>
-
-  
-  
-
-
-    
   </div>
 <!-------------------------------------End of main-content -------------------------------------------------------->
 
