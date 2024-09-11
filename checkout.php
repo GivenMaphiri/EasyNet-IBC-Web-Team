@@ -189,14 +189,15 @@ if (!isset($_SESSION['user_id'])) {
     $stmt->bind_param("i", $user_ID);
     $stmt->execute();
     $result = $stmt->get_result();
-    $totalPrice = 0;
+    $subtotal = 0;
+    $totalprice = 0;
+    $cartvat = 0;
 
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
-        $netPrice = $row['prod_price'] * $row['quantity'];
-        $vatAmount = $netPrice*0.15;
-        $subtotal = $netPrice + $vatAmount;
-        $totalPrice += $subtotal;
+        $subtotal += $row['prod_price'] * $row['quantity'];
+        $cartvat += $row['cart_VAT'] * $row['quantity'];
+        $totalprice += $row['cart_incTotal'] * $row['quantity'];
         echo "<div id='products_container'>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
@@ -212,11 +213,11 @@ if (!isset($_SESSION['user_id'])) {
       echo "</div>";
       echo "<div id='total_container'>";
       echo "<h1> Net Price:</h1>";
-      echo "<h1 class='cart_total_price'>R" . number_format($netPrice, 2) . "</h1>";
+      echo "<h1 class='cart_total_price'>R" . number_format($subtotal, 2) . "</h1>";
       echo "<h1> VAT Amount:</h1>";
-      echo "<h1 class='cart_total_price'>R" . number_format($vatAmount, 2) . "</h1>";
+      echo "<h1 class='cart_total_price'>R" . number_format($cartvat, 2) . "</h1>";
       echo "<h1>Total Price:</h1>";
-      echo "<h1 class='cart_total_price'>R" . number_format($totalPrice, 2) . "</h1>";
+      echo "<h1 class='cart_total_price'>R" . number_format($totalprice, 2) . "</h1>";
       echo "<a href='shipping.php'><button id='checkout_button'>Checkout</button></a>";
       echo "</div>";
       echo "</div>";
