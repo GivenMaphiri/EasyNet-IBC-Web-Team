@@ -7,6 +7,9 @@ include "DBConn.php";
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
+
+$sql = "SELECT * FROM users";
+$result = $conn->query($sql);
 ?>
 
 <!DOCTYPE html>
@@ -19,6 +22,7 @@ if ($conn->connect_error) {
     <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <link rel="stylesheet" href="_styles/admin_style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
 </head>
 <body>
 
@@ -96,28 +100,67 @@ if ($conn->connect_error) {
       </ul>
     </div>
   </div>
-  </div>
+</div>
 
   <!-- main-content -->
-  <div class="main-content">
+<div class="main-content">
 
-  <div class="user-card">
-    <img src="user.png" alt="User Avatar">
-    <div class="user-info">
-      <h3 class="user-name">John Doe</h3>
-      <p class="user-email">johndoe@example.com</p>
-      <p class="user-phone">+27 123 456 7890</p>
-      <p class="user-id">123456789</p>
-    </div>
-  </div>
+  <main>
+    <section style="margin: 50px;">
+      <h1>List Of Users</h1>
+      <br>
 
+      <table class="table">
+        <thead>
+          <tr>
+            <th>User_ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <?php
 
+          if ($result->num_rows > 0) {
+            // read data from each row
+            while($row = $result->fetch_assoc()){
 
+              echo "<tr>
+              <td>" . $row["user_ID"] . "</td>
+              <td>" . $row["first_name"] . "</td>
+              <td>" . $row["last_name"] . "</td>
+              <td>" . $row["phone_number"] . "</td>
+              <td>" . $row["email_address"] . "</td>
+              <td>
+                <a class='btn btn-primary btn-sm' href='update'>Update</a>
+                <a class='btn btn-danger btn-sm' href='delete'>Delete</a>
+              </td>
+            </tr>";
+            }
+          }else {
+            echo "0 results";
+          }
 
+          $conn->close();
+          
 
-  
+          ?>
+        </tbody>
+      </table>
+
+    </section>
+  </main>
 </div>
+
+ 
+
+
+
+
   <!-- main-content end -->
     
 </body>
