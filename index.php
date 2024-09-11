@@ -409,11 +409,10 @@ include "DBConn.php"; // Include your database connection
   </body>
 
   <footer>
-  <hr id="foot_line" />
+  <!-- <hr id="foot_line" /> -->
     <div class="content">
       <div class="box">
         <img src="_images/_logos/easynet.png">
-        <a href="contact.php" class="btn"> contact now</a>
       </div>
 
       <div class="box">
@@ -439,11 +438,11 @@ include "DBConn.php"; // Include your database connection
       </div>
 
       <div class="box">
-        <h3>Contact us</h3>
+        <h3><a href="contact.php">Contact Us</a> </h3>
         <p><i class="bx bxs-phone"></i>(012)433 6486</p>
         <p><i class="bx bxs-phone"></i>086 535 7398</p>
-        <p><i class="bx bxs-envelope"></i>sales@easynetbusiness.co.za</p>
-        <p><i class="bx bxs-envelope"></i>dikeledi@easynetbusiness.co.za</p>
+        <p><i class="bx bxs-envelope"></i><a href="mailto:sales@easynetbusiness.co.za">sales@easynetbusiness.co.za</a></p>
+        <p><i class="bx bxs-envelope"></i><a href="mailto:dikeledi@easynetbusiness.co.za">dikeledi@easynetbusiness.co.za</a></p>
         <p><i class="bx bxs-loaction-plus"></i>Brooklyn, Pretoria</p>
         </div>
       </div>
