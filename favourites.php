@@ -2,7 +2,11 @@
 
 session_start();
 include "DBConn.php";
-
+if (!isset($_SESSION['user_id'])) {
+  // If the user is not logged in, redirect to the login page or show an appropriate message
+  header("Location: login.php");
+  exit();
+}
 ?>
 
 <!DOCTYPE html>
