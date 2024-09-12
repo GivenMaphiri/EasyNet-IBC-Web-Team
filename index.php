@@ -409,7 +409,7 @@ include "DBConn.php"; // Include your database connection
   </body>
 
   <footer>
-  <!-- <hr id="foot_line" /> -->
+  <hr id="foot_line" /> 
     <div class="content">
       <div class="box">
         <img src="_images/_logos/easynet.png">
