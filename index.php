@@ -138,7 +138,7 @@ include "DBConn.php"; // Include your database connection
         if ($result && mysqli_num_rows($result) === 1) {
           $row = mysqli_fetch_assoc($result);
           $first_name = htmlspecialchars($row['first_name']);
-          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Manage Account</a></p>";
         } else {
           // Handle the case where the user is not found, if necessary
           echo "<p>Error: User not found.</p>";
@@ -420,7 +420,7 @@ include "DBConn.php"; // Include your database connection
   </body>
 
   <footer>
-  <hr id="foot_line" /> 
+    <hr id="foot_line" />
     <div class="content">
       <div class="box">
         <img src="_images/_logos/easynet.png">

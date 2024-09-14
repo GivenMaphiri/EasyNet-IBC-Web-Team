@@ -129,7 +129,8 @@ a {
 #background_about h1,
 #background_products h1,
 #background_partners h1,
-#background_contact h1 {
+#background_contact h1,
+#background_account h1 {
   font-family: "Cabin", sans-serif;
   font-weight: 700;
   font-size: 60px;
@@ -146,7 +147,8 @@ a {
 #background_about h2,
 #background_products h2,
 #background_partners h2,
-#background_contact h2 {
+#background_contact h2,
+#background_account h2 {
   z-index: -1;
   animation-name: slideUp;
   animation-duration: 0.3s;
@@ -177,7 +179,7 @@ footer {
   width: 100%;
   background-color: #d9d9d9;
   justify-content: right;
-} 
+}
 
 footer .content {
   padding: 5px 0px;
@@ -316,6 +318,23 @@ footer .content .box .icons i {
 #background_about {
   background-color: rgb(49, 49, 250);
   background-image: url("../_images/_background/aboutus1.jpg");
+  background-position: center;
+  background-size: cover;
+  border-color: rgb(138, 137, 137);
+  border-style: solid;
+  border-bottom-width: 0.1px;
+  border-left-width: 0;
+  border-right-width: 0;
+  padding-top: 250px;
+  padding-bottom: 260px;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+#background_account {
+  background-color: rgb(49, 49, 250);
+  background-image: url("../_images/_background/contactus2.jpg");
   background-position: center;
   background-size: cover;
   border-color: rgb(138, 137, 137);
@@ -1023,7 +1042,7 @@ footer .content .box .icons i {
   margin-top: 20px;
   padding-bottom: 10px;
   padding-left: 30px;
-  text-align: right;
+  text-align: left;
   display: flex;
   flex-direction: column;
 }
