@@ -175,10 +175,10 @@ if (!isset($_SESSION['user_id'])) {
 
   <main>
 
-      <div id="checkout_heading">
-        <h1>Checkout</h1>
-      </div>
-      <hr id="checkout_lines">
+    <div id="checkout_heading">
+      <h1>Checkout</h1>
+    </div>
+    <hr id="checkout_lines">
 
     <?php
 

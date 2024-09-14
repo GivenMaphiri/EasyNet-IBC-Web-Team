@@ -177,92 +177,39 @@ include "DBConn.php"; // Include your database connection
     </div>
 
     <div id="feature_box">
-      <h1 id="feature_box_head">Deals</h1>
-      <p>Explore our massive deals on all products</p>
+      <h1 id="feature_box_head">Find Something New</h1>
+      <p>A varied selection of items that you might need</p>
     </div>
 
     <section id="features">
-      <div id="fea-container">
-        <span>SAVE 300</span>
-        <div id="fea">
-          <img src="_images/adobe.jpg" width="200px">
-        </div>
-        <h6>Adobe Acrobat</h6>
-        <h4>Abobe creative suite 4</h4>
-        <h7>800</h7>
-        <h5>R500</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
 
-      <div id="fea-container">
-        <span>SAVE 2000</span>
-        <div id="fea">
-          <img src="_images/macbook_15.webp" width="200px">
-        </div>
-        <h6>Apple</h6>
-        <h4>Macbook 15inch</h4>
-        <h7>27000</h7>
-        <h5>R25000</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
+      <?php
+      // SQL query to select 3 random products from the "Accessories" category
+      $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products ORDER BY RAND() LIMIT 4";
+      $result = $conn->query($sql);
 
-      <div id="fea-container">
-        <span>SAVE 1500</span>
-        <div id="fea">
-          <img src="_images/xbox_seriesS.webp" width="200px">
-        </div>
-        <h6>Xbox</h6>
-        <h4>Xbox Series S</h4>
-        <h7>9000</h7>
-        <h5>R7500</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
-
-      <div id="fea-container">
-        <span>SAVE 1500</span>
-        <div id="fea">
-          <img src="_images/ps5.jpg" width="150px">
-        </div>
-        <h6>Playstation</h6>
-        <h4>Playstation 5 Disc</h4>
-        <h7>1500</h7>
-        <h5>R13500</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
+      if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+          $prod_id = $row['prod_id'];
+          $prod_img = $row['prod_image'];
+          echo "<div id='prodbox2'>";
+          echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><img class='prod_image' src='_images/_products/" . $row['prod_image'] . "' width='150px'/></a>";
+          echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . $row['prod_name'] . "</p></a>";
+          echo "<a href='prodinfo.php?prod_id=" . $prod_id . "?'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
+          echo "<div id='add_heart_buttons'>";
+          echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
+          echo "<button type='button' class='add_to_favourite' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
+          echo "</div>";
+          echo "</div>";
+        }
+      } else {
+        echo "<p>No products found.</p>";
+      }
+      ?>
 
     </section>
+
+
 
     <section id="deals_banner">
       <h4> Combos</h4>
@@ -406,6 +353,70 @@ include "DBConn.php"; // Include your database connection
       </div>
     </section>
     <script src="_javascript/index.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('.add_to_cart').on('click', function(e) {
+          e.preventDefault();
+          var prod_ID = $(this).data('prod-id');
+          var prod_name = $(this).data('prod-name');
+          var prod_price = $(this).data('prod-price');
+          var prod_image = $(this).data('prod-image');
+
+          $.ajax({
+            url: 'addtocart.php',
+            method: 'POST',
+            data: {
+              add_to_cart: true,
+              prod_ID: prod_ID,
+              prod_name: prod_name,
+              prod_price: prod_price,
+              prod_image: prod_image
+            },
+            success: function(response) {
+              var result = JSON.parse(response);
+              if (result.status === 'success') {
+                alert('Product added to cart!');
+              } else {
+                alert('There was an issue adding the product to the cart.');
+              }
+            }
+          });
+        });
+      });
+
+      // Add to Favourite button click event
+      $(document).on('click', '.add_to_favourite', function() {
+        var prodId = $(this).data('prod-id');
+        var prodName = $(this).data('prod-name');
+        var prodPrice = $(this).data('prod-price');
+        var prodImage = $(this).data('prod-image');
+
+        $.ajax({
+          url: 'addtofavourite.php', // Ensure this is the correct path to your PHP file
+          method: 'POST',
+          data: {
+            prod_id: prodId,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            prod_image: prodImage
+          },
+          success: function(response) {
+            alert(response); // Display the server response for debugging
+            if (response == 'success') {
+              alert('Product added to favourites!');
+            } else {
+              alert('Failed to add to favourites.');
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+            alert('Failed to add to favourites.');
+          }
+        });
+      });
+    </script>
   </body>
 
   <footer>
@@ -444,25 +455,25 @@ include "DBConn.php"; // Include your database connection
         <p><i class="bx bxs-envelope"></i><a href="mailto:sales@easynetbusiness.co.za">sales@easynetbusiness.co.za</a></p>
         <p><i class="bx bxs-envelope"></i><a href="mailto:dikeledi@easynetbusiness.co.za">dikeledi@easynetbusiness.co.za</a></p>
         <p><i class="bx bxs-loaction-plus"></i>Brooklyn, Pretoria</p>
-        </div>
       </div>
-          
-      <div class="social-media-icons">
-           <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
-          <p>Facebook</p>
-          </i>
-          </a>
-          <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'>
-          <p>Instagram</p>
-          </i>
-          </a>
-          <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'>
-          <p>LinkedIn</p>
-          </i>
-          </a>
-          </div>
+    </div>
 
-      <div class ="bottom">
+    <div class="social-media-icons">
+      <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
+          <p>Facebook</p>
+        </i>
+      </a>
+      <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'>
+          <p>Instagram</p>
+        </i>
+      </a>
+      <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'>
+          <p>LinkedIn</p>
+        </i>
+      </a>
+    </div>
+
+    <div class="bottom">
       <hr id="foot_line" />
       <p id="footer_text">
         Copyright &copy; 2024 EasyNet In Business Communications
@@ -470,4 +481,5 @@ include "DBConn.php"; // Include your database connection
     </div>
   </footer>
 </body>
+
 </html>

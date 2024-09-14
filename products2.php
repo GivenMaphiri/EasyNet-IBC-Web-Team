@@ -387,10 +387,42 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         // Calculate the total number of pages
         $total_pages = ceil($total_items / $items_per_page);
 
+        // Determine the current page from the query string
+        $current_page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
+
+        // Define the maximum number of pages to display at a time
+        $max_pages_to_show = 10;
+
+        // Determine the range of pages to show
+        $start_page = max(1, $current_page - floor($max_pages_to_show / 2));
+        $end_page = min($total_pages, $start_page + $max_pages_to_show - 1);
+
+        // Adjust the start page if we're close to the end
+        if ($end_page - $start_page < $max_pages_to_show - 1) {
+          $start_page = max(1, $end_page - $max_pages_to_show + 1);
+        }
+
         // Display pagination links
         echo "<div id='pagination'>";
-        for ($i = 1; $i <= $total_pages; $i++) {
-          // Create pagination links including the category, search query, and manufacturer if present
+
+        // "Previous" link
+        if ($current_page > 1) {
+          $prev_page = $current_page - 1;
+          $url = "products2.php?page=$prev_page";
+          if ($category !== 'all') {
+            $url .= "&category=$category";
+          }
+          if (!empty($searchQuery)) {
+            $url .= "&search=" . urlencode($searchQuery);
+          }
+          if (!empty($manufacturer)) {
+            $url .= "&manufacturer=" . urlencode($manufacturer);
+          }
+          echo "<a href='$url'>&laquo; Previous</a> ";
+        }
+
+        // Display the range of pages
+        for ($i = $start_page; $i <= $end_page; $i++) {
           $url = "products2.php?page=$i";
           if ($category !== 'all') {
             $url .= "&category=$category";
@@ -401,9 +433,33 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           if (!empty($manufacturer)) {
             $url .= "&manufacturer=" . urlencode($manufacturer);
           }
-          echo "<a href='$url'>$i</a> ";
+
+          // Highlight the current page
+          if ($i == $current_page) {
+            echo "<strong>$i</strong> ";
+          } else {
+            echo "<a href='$url'>$i</a> ";
+          }
         }
+
+        // "Next" link
+        if ($current_page < $total_pages) {
+          $next_page = $current_page + 1;
+          $url = "products2.php?page=$next_page";
+          if ($category !== 'all') {
+            $url .= "&category=$category";
+          }
+          if (!empty($searchQuery)) {
+            $url .= "&search=" . urlencode($searchQuery);
+          }
+          if (!empty($manufacturer)) {
+            $url .= "&manufacturer=" . urlencode($manufacturer);
+          }
+          echo "<a href='$url'>Next &raquo;</a>";
+        }
+
         echo "</div>";
+
 
         // Close the statement if prepared
         $stmt->close();

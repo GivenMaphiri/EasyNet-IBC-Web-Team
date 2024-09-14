@@ -6,6 +6,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +70,7 @@ if (!isset($_SESSION['user_id'])) {
                     <label for="zip">Zip Code:</label>
                     <input type="text" name="zip" class="ship_zip" pattern="[0-9]+" title="Please enter numbers only" id="ship_text" value="<?php echo htmlspecialchars($zip); ?>" required></input>
                     <label for="phone">Phone Number:</label>
-                    <input type="text" name="phone" class="ship_phone" pattern="[0-9]+" title="Please enter numbers only" id="ship_text" value="0<?php echo htmlspecialchars($phone); ?>" required></input>
+                    <input type="text" name="phone" class="ship_phone" pattern="[0-9]+" title="Please enter numbers only" id="ship_text" value="<?php echo htmlspecialchars($phone); ?>" required></input>
                     <button type="submit" id="save_ship">Save Shipping Information</button>
                 </div>
             </form>
@@ -99,9 +100,6 @@ if (!isset($_SESSION['user_id'])) {
                         $subtotal += $row['prod_price'] * $row['quantity'];
                         $cartvat += $row['cart_VAT'] * $row['quantity'];
                     }
-
-                    $stmt->close();
-                    $conn->close();
                 } else {
                     // If the user is not logged in, set subtotal to 0
                     $subtotal = 0;
@@ -119,14 +117,16 @@ if (!isset($_SESSION['user_id'])) {
                     <p id="order_info">Total Price: R<?php echo number_format($totalprice, 2); ?></p>
                 </div>
 
-                <div id="order_buttons">
-                    <button id="place_order">Place Order</button>
-                    <a id="view_cart_link" href="checkout.php"><button id="view_cart">View Cart</button></a>
-                </div>
+
+                <form action="place_order.php" method="POST">
+                    <div id="order_buttons">
+                        <button type="submit" id="place_order">Place Order</button>
+                        <a id="view_cart_link" href="checkout.php"><button id="view_cart">View Cart</button></a>
+                    </div>
+                </form>
+
             </div>
         </div>
-
-
         <script>
             function validateForm() {
                 let zip = document.querySelector(".ship_zip").value;
@@ -141,11 +141,9 @@ if (!isset($_SESSION['user_id'])) {
                     alert("Phone number must be numbers only.");
                     return false;
                 }
-
                 return true;
             }
         </script>
-
     </div>
 </body>
 
