@@ -175,10 +175,10 @@ if (!isset($_SESSION['user_id'])) {
 
   <main>
 
-      <div id="checkout_heading">
-        <h1>Checkout</h1>
-      </div>
-      <hr id="checkout_lines">
+    <div id="checkout_heading">
+      <h1>Checkout</h1>
+    </div>
+    <hr id="checkout_lines">
 
     <?php
 
@@ -194,9 +194,9 @@ if (!isset($_SESSION['user_id'])) {
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
         $netPrice = $row['prod_price'] * $row['quantity'];
-        $vatAmount = $netPrice*0.15;
+        $vatAmount = $netPrice * 0.15;
         $subtotal = $netPrice + $vatAmount;
-        $totalPrice += $subtotal;
+        $totalPrice += $netPrice;
         echo "<div id='products_container'>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";

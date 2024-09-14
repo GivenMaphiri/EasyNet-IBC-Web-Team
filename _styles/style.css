@@ -107,16 +107,16 @@ a {
 }
 
 /*----message alert------*/
-#message{
+#message {
   text-align: center;
   margin: 0 auto;
-  margin-bottom:2rem;
-  width:59%;
-  padding:.5rem 1.5rem;
+  margin-bottom: 2rem;
+  width: 59%;
+  padding: 0.5rem 1.5rem;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
-  background:#353336;
+  background: #353336;
   color: #fff;
 }
 
@@ -174,11 +174,11 @@ header {
 
 footer {
   display: fixed;
-  width:100%;
+  width: 100%;
   background-color: #d9d9d9;
 }
 
-footer .content{
+footer .content {
   padding: 5px 0px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(10rem, 4fr));
@@ -187,53 +187,51 @@ footer .content{
 }
 
 footer .content .box {
-  text-align:left;
-  padding: .1rem;
+  text-align: left;
+  padding: 0.1rem;
 }
 
-footer .content .box .btn:hover{
+footer .content .box .btn:hover {
   color: #fff;
 }
 
-footer .content .box h3{
+footer .content .box h3 {
   text-tranform: capitalize;
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
-footer .content .box a{
+footer .content .box a {
   font-size: 16px;
-  display:block;
+  display: block;
   color: #000;
   text-decoration: capitalize;
 }
 
-footer .content .box a:hover{
-  color:var(--main-color);
-
+footer .content .box a:hover {
+  color: var(--main-color);
 }
 
-footer .content .box i{
-  margin-right: .5rem;
+footer .content .box i {
+  margin-right: 0.5rem;
 }
 
-footer .content .box p{
-  line-height:1.5;
+footer .content .box p {
+  line-height: 1.5;
 }
 
-footer .content .box .icons{
-  margin-top: .1rem;
+footer .content .box .icons {
+  margin-top: 0.1rem;
 }
 
-footer .content .box .icons i{
+footer .content .box .icons i {
   width: 40px;
   height: 40px;
   line-height: 40px;
   text-align: center;
   border-radius: 50%;
   background-color: var(--pink-opacity);
-  border:1px solid var(--main-color);
+  border: 1px solid var(--main-color);
   color: var(--main-color);
-
 }
 
 #footer_text {
@@ -279,10 +277,6 @@ footer .content .box .icons i{
   transform: scale(1.2); /* Scale icon on hover */
 }
 /*---------End-----------*/
-
-
-
-
 
 #background_home {
   background-color: rgb(49, 49, 250);
@@ -614,7 +608,6 @@ footer .content .box .icons i{
   box-shadow: 0px 0px 3px gray;
 }
 
-
 #loginlinks {
   text-decoration: none;
   color: black;
@@ -677,6 +670,8 @@ footer .content .box .icons i{
 #feature_box {
   text-align: center;
   padding-top: 1px;
+  margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 #feature_box p {
@@ -1025,7 +1020,6 @@ footer .content .box .icons i{
   flex-direction: row;
   justify-content: center;
   gap: 30px;
-  
 }
 
 .shipping_heading {
@@ -1294,8 +1288,9 @@ footer .content .box .icons i{
   border-bottom-style: solid;
   border-bottom-color: black;
   border-bottom-width: 1px;
-  height: 75vh;
+  min-height: 75vh;
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 #prod_info_bottom {
@@ -1500,6 +1495,14 @@ footer .content .box .icons i{
   border-color: rgb(20, 149, 255);
 }
 
+#placed_order {
+  margin-top: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /*---------- Contact Page -------------------*/
 
 /* General styles */
@@ -1562,7 +1565,6 @@ footer .content .box .icons i{
   width: 100%;
   max-width: 600px;
 }
-
 
 .contact_info {
   width: 100%;
