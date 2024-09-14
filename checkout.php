@@ -203,7 +203,7 @@ if (!isset($_SESSION['user_id'])) {
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
         echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
         echo "<div id='check_quantity'>";
-        echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "'>";
+        echo "<input class='cart_quantity' type='number' value='" . $row['quantity'] . "' data-prod-id='" . $row['prod_ID'] . "' data-price='" . $row['prod_price'] . "' data-price-inc='" . $row['cart_incTotal'] . "' data-price-vat='" . $row['cart_VAT'] . "'>";
         echo "<button id='rem_button' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
         echo "</div>";
         echo "</div>";
@@ -215,9 +215,9 @@ if (!isset($_SESSION['user_id'])) {
       echo "<h1> Net Price:</h1>";
       echo "<h1 class='cart_total_price'>R" . number_format($subtotal, 2) . "</h1>";
       echo "<h1> VAT Amount:</h1>";
-      echo "<h1 class='cart_total_price'>R" . number_format($cartvat, 2) . "</h1>";
+      echo "<h1 class='cart_total_price_vat'>R" . number_format($cartvat, 2) . "</h1>";
       echo "<h1>Total Price:</h1>";
-      echo "<h1 class='cart_total_price'>R" . number_format($totalprice, 2) . "</h1>";
+      echo "<h1 class='cart_total_price_inc'>R" . number_format($totalprice, 2) . "</h1>";
       echo "<a href='shipping.php'><button id='checkout_button'>Checkout</button></a>";
       echo "</div>";
       echo "</div>";
@@ -237,6 +237,8 @@ if (!isset($_SESSION['user_id'])) {
           var prod_ID = $(this).data('prod-id');
           var newQuantity = $(this).val();
           var price = $(this).data('price');
+          var priceInc = $(this).data('price-inc');
+          var priceVat = $(this).data('price-vat');
 
           $.ajax({
             url: 'update_cart.php',
@@ -247,15 +249,24 @@ if (!isset($_SESSION['user_id'])) {
             },
             success: function(response) {
               var newTotal = price * newQuantity;
+              var newTotalInc = priceInc * newQuantity;
+              var newTotalVat = priceVat * newQuantity;
               var totalCartPrice = 0;
+              var totalCartPriceInc = 0;
+              var totalCartPriceVat = 0;
 
               $('.cart_quantity').each(function() {
                 var quantity = $(this).val();
                 var itemPrice = $(this).data('price');
+                var itemPriceInc = $(this).data('priceInc');
+                var itemPriceVat = $(this).data('priceVat');
                 totalCartPrice += quantity * itemPrice;
+                totalCartPriceInc += quantity * itemPriceInc;
+                totalCartPriceVat += quantity * itemPriceVat;
               });
-
+              $('.cart_total_price_vat').text('R' + totalCartPriceVat.toFixed(2));
               $('.cart_total_price').text('R' + totalCartPrice.toFixed(2));
+              $('.cart_total_price_inc').text('R' + totalCartPriceInc.toFixed(2));
             }
           });
         });
