@@ -169,6 +169,11 @@ $result = $conn->query($sql);
             border-color: #dc3545;
           }
 
+          .btn-dangers {
+            background-color: #f3810f;
+            border-color: black;
+          }
+
           .btn-sm {
             padding: .25rem .5rem;
             font-size: .875rem;
@@ -179,23 +184,41 @@ $result = $conn->query($sql);
             background-color: #d7dbdd ; /* Adjust the background color as needed */
             cursor: pointer;
           }
+
+          .form-control {
+            width: 500px;
+            /* margin-top: 5px; */
+            margin-left: 500px;
+          }
         </style>
 
-      <!-- <form method="GET" action="">
-          <label for="status">Filter by Status:</label>
-          <select name="status" id="status">
-              <option value="">All</option>
-              <option value="Delivered">Delivered</option>
-              <option value="Pending">Pending</option>
-              <option value="Return">Return</option>
-              <option value="In Progress">In Progress</option>
-          </select>
-          <button type="submit">Filter</button>
-      </form> -->
+        <!-- filter code for the filter feature -->
+        
+            <!-- <form action="" method="GET">
+              <div class="row">
+                
+                <div class="col-md-4">
+                  <select name="prod_type" required class="form-select">
+                    <option value="">Select Product Type</option>
+                    <option value="Hardware" <?= isset($_GET['prod_type']) == true ? ($_GET['prod_type'] == 'Hardware' ? 'selected': '') :'' ?>>Hardware</option>
+                    <option value="Software" <?= isset($_GET['prod_type']) == true ? ($_GET['prod_type'] == 'Software'  ? 'selected': '') :'' ?>>Software</option>
+                    <option value="Accessories" <?= isset($_GET['prod_type']) == true ? ($_GET['prod_type'] == 'Accessories'  ? 'selected': ''):'' ?>>Accessories</option>
+                  </select>
+                </div>
+                <div class="col-md-4">
+                  <button type="submit" class="btn btn-secondary">Filter</button>
+                  <a href="ecommerce.php" class="btn btn-dangers">Reset</a>
+                </div>
+              </div>
+            </form> -->
+          
+      
+        <!-- search form for search feature -->
       <form action="" method="GET">
         <div class="input-group mb-3">
           <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Products">
           <button type="submit" class="btn btn-primary">Search</button>
+          <a href="ecommerce.php" class="btn btn-dangers">Reset</a>
         </div>
       </form>
       
@@ -220,7 +243,18 @@ $result = $conn->query($sql);
               <tbody>
                   <?php
 
-                      // search feature -- searhcing throygh the products name, code and manufacturer
+                      // filter feature ---- 
+                      // if(isset($_GET['prod_type']) &&  $_GET['prod_type'] != '') {
+
+                      //   $prod_type= validate($_GET['prod_type']);
+                      //   $filterquery = "SELECT * FROM products WHERE prod_type= $prod_type";
+                      // } else {
+
+                      //   $filterquery = "SELECT * FROM products WHERE prod_type= $prod_type";
+                      // }
+
+
+                      // search feature -- searhcing through the products name, code and manufacturer
                       if(isset($_GET['search'])) {
                         $filtervalues = $_GET['search'];
                         $searchquery = "SELECT * FROM products WHERE CONCAT(prod_name, prod_code, prod_manufacturer) LIKE '%$filtervalues%' ";

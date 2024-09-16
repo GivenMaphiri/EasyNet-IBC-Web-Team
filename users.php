@@ -106,12 +106,27 @@ $result = $conn->query($sql);
 <div class="main-content">
 
   <main>
+    <style>
+      .btn-dangers {
+            background-color: #f3810f;
+            border-color: black;
+          }
+    </style>
+
     <section style="margin: 50px;">
       <h1>List Of Users</h1>
       <br>
 
+      <form action="" method="GET">
+        <div class="input-group mb-3">
+          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Users">
+          <button type="submit" class="btn btn-primary">Search</button>
+          <a href="users.php" class="btn btn-dangers">Reset</a>
+        </div>
+      </form>
+
       <table class="table table-hover table-bordered">
-        <thead>
+        <thead class="table-dark">
           <tr>
             <th>User_ID</th>
             <th>First Name</th>
@@ -124,6 +139,41 @@ $result = $conn->query($sql);
 
         <tbody>
           <?php
+
+
+
+            // search feature -- searhcing through the users name, number and email
+            if(isset($_GET['search'])) {
+              $filtervalues = $_GET['search'];
+              $searchquery = "SELECT * FROM users WHERE CONCAT(first_name, last_name, phone_number, email_address) LIKE '%$filtervalues%' ";
+
+              $searchquery_run = mysqli_query($conn, $searchquery);
+
+              if(mysqli_num_rows($searchquery_run) > 0) {
+
+                foreach($searchquery_run as $items) {
+                  ?>
+                    <tr>
+                      <td><?= $items['user_ID']; ?></td>
+                      <td><?= $items['first_name']; ?></td>
+                      <td><?= $items['last_name']; ?></td>
+                      <td><?= $items['Phone_number']; ?></td>
+                      <td><?= $items['email_address']; ?></td>
+                      <td><a class='btn btn-dark' href='userDelete.php?id=" .$row["prod_ID"] ."'>Delete</a></td>
+                    </tr>
+                  <?php
+                }
+              } else {
+                ?>
+
+                <tr>
+                  <td colspan="5">No records Found</td>
+                </tr>
+
+                <?php
+              }
+            }
+            
             // Pagination variables
             $records_per_page = 15; // Adjust as needed
             $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
