@@ -232,7 +232,6 @@ include "DBConn.php";
 
       <div class="box">
         <h3>Information</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>About us </a>
         <a href=""> <i class="bx bx-chevron-right"></i>Delivery information </a>
         <a href=""> <i class="bx bx-chevron-right"></i>Privacy policy </a>
       </div>
