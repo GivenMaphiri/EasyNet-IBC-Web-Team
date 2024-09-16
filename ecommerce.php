@@ -124,11 +124,23 @@ $result = $conn->query($sql);
         <br>
 
         <style>
-          table {
+          .table {
+              border: 1px solid #ddd;
+              margin-bottom: 20px;
               border-collapse: collapse;
               width: 100%; /* Adjust width as needed */
               padding: 10px;
+
           }
+
+            .table thead th {
+              background-color: #f2f2f2;
+              font-weight: bold;
+            }
+
+            .table tbody tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
 
           th, td {
               border: 1px solid black;
@@ -149,6 +161,17 @@ $result = $conn->query($sql);
 
           a{
             /* padding-left: 2px; */
+          }
+
+          .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+          }
+
+          .btn-sm {
+            padding: .25rem .5rem;
+            font-size: .875rem;
+            line-height: 1.25;
           }
         </style>
 
@@ -214,8 +237,9 @@ $result = $conn->query($sql);
                               echo "<td>" . $row["prod_type"] . "</td>";
 
                               echo "<td>";
-                                  echo "<a href='ecommerceEdit.php'><span class='fa-light fa-pen-to-square'></span></a>";
-                                  echo "<a href='#ecommerceDelete'><span class='fa-solid fa-delete-left'></span></a>";
+                                // echo "<a href='ecommerceEdit.php?id=" . $row["prod_ID"] . "'><span class='fa-light fa-pen-to-square'></span></a>";
+                                // echo "<a href='ecommerceDelete.php?id=" . $row["prod_ID"] . "'><span class='fa-solid fa-delete-left'></span></a>";
+                                echo "<a class='btn btn-danger btn-sm' href='ecommerceDelete.php?id=" .$row["prod_ID"] ."'>Delete</a>";
                               echo "</td>";
 
                               echo "</tr>";
