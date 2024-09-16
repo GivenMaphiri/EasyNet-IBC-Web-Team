@@ -118,6 +118,24 @@ $result = $conn->query($sql);
 
     <main>
 
+      <style>
+        .table tbody tr:hover {
+              background-color: #d7dbdd ; /* Adjust the background color as needed */
+              cursor: pointer;
+            }
+
+        .form-control {
+          width: 500px;
+          /* margin-top: 5px; */
+          margin-left: 480px;
+        }
+
+        .btn-dangers {
+            background-color: #f3810f;
+            border-color: black;
+          }
+      </style>
+
       <div class="page-header">
         <div>
           <h1>Orders Dashboard</h1>
@@ -126,19 +144,25 @@ $result = $conn->query($sql);
       </div>
 
 
-  <form method="GET" action="">
-    <label for="status">Filter by Status:</label>
-    <select name="status" id="status">
-        <option value="">All</option>
-        <option value="Delivered">Delivered</option>
-        <option value="Pending">Pending</option>
-        <option value="Return">Return</option>
-        <option value="In Progress">In Progress</option>
-    </select>
-    <button type="submit">Filter</button>
-</form>
+      <!-- <form method="GET" action="">
+        <label for="status">Filter by Status:</label>
+        <select name="status" id="status">
+            <option value="">All</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Pending">Pending</option>
+            <option value="Return">Return</option>
+            <option value="In Progress">In Progress</option>
+        </select>
+        <button type="submit">Filter</button>
+      </form> -->
 
-
+      <form action="" method="GET">
+        <div class="input-group mb-3">
+          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Users">
+          <button type="submit" class="btn btn-primary">Search</button>
+          <a href="orders.php" class="btn btn-dangers">Reset</a>
+        </div>
+      </form>
 
 <!-- Table starts here -->
 
@@ -167,6 +191,57 @@ $result = $conn->query($sql);
             <th>status</th>
         </tr>
         <?php
+          // search feature -- searhcing through the users name, number and email
+          if(isset($_GET['search'])) {
+            $filtervalues = $_GET['search'];
+            $searchquery = "SELECT * FROM orders WHERE CONCAT(order_total, payement_status, status) LIKE '%$filtervalues%' ";
+
+            $searchquery_run = mysqli_query($conn, $searchquery);
+
+            if(mysqli_num_rows($searchquery_run) > 0) {
+
+              foreach($searchquery_run as $items) {
+                ?>
+                  <tr>
+                    <td><?= $items['order_ID']; ?></td>
+                    <td><?= $items['order_total']; ?></td>
+                    <td><?= $items['placed_on']; ?></td>
+                    <td><?= $items['payement_status']; ?></td>
+                    <td><?= $items['status']; ?></td>
+                    <td><a class='btn btn-dark' href='ordersDelete.php?id=" .$row["prod_ID"] ."'>Delete</a></td>
+                  </tr>
+                <?php
+              }
+            } else {
+              ?>
+
+              <tr>
+                <td colspan="5">No records Found</td>
+              </tr>
+
+              <?php
+            }
+          }
+
+
+          // Pagination variables
+          $records_per_page = 15; // Adjust as needed
+          $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+          $start_from = ($current_page - 1) * $records_per_page;
+
+          // Fetch total records
+          $total_records = mysqli_num_rows($result);
+
+          // Calculate total pages
+          $total_pages = ceil($total_records / $records_per_page);
+
+          // Modify the query to include LIMIT clause
+          $query = "SELECT * FROM orders ORDER BY order_ID LIMIT $start_from, $records_per_page";
+          $result = mysqli_query($conn, $query);
+
+
+
+
         if ($result->num_rows > 0) {
             // Output data of each row
             while($row = $result->fetch_assoc()) {
@@ -182,6 +257,16 @@ $result = $conn->query($sql);
         } else {
             echo "0 results";
         }
+
+
+        // Pagination links
+        echo "<tr><td colspan='5'>";
+        for ($i = 1; $i <= $total_pages; $i++) {
+            echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
+        }
+        echo "</td></tr>";
+
+
         $conn->close();
         ?>
     </table>
