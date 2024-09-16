@@ -110,7 +110,7 @@ $result = $conn->query($sql);
       <h1>List Of Users</h1>
       <br>
 
-      <table class="table">
+      <table class="table table-hover table-bordered">
         <thead>
           <tr>
             <th>User_ID</th>
@@ -160,7 +160,7 @@ $result = $conn->query($sql);
           }
 
           // Pagination links
-          echo "<tr><td colspan='9'>";
+          echo "<tr><td colspan='6'>";
           for ($i = 1; $i <= $total_pages; $i++) {
               echo "<a href='users.php?page=" . $i . "'>" . $i . "</a> ";
           }

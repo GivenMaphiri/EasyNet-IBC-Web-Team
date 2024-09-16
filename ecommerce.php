@@ -134,12 +134,13 @@ $result = $conn->query($sql);
           }
 
             .table thead th {
-              background-color: #f2f2f2;
+              background-color: #312f2f;
+              color: white;
               font-weight: bold;
             }
 
             .table tbody tr:nth-child(even) {
-                background-color: #f9f9f9;
+                background-color: #ffff;
             }
 
           th, td {
@@ -173,9 +174,14 @@ $result = $conn->query($sql);
             font-size: .875rem;
             line-height: 1.25;
           }
+
+          .table tbody tr:hover {
+            background-color: #d7dbdd ; /* Adjust the background color as needed */
+            cursor: pointer;
+          }
         </style>
 
-      <form method="GET" action="">
+      <!-- <form method="GET" action="">
           <label for="status">Filter by Status:</label>
           <select name="status" id="status">
               <option value="">All</option>
@@ -185,7 +191,14 @@ $result = $conn->query($sql);
               <option value="In Progress">In Progress</option>
           </select>
           <button type="submit">Filter</button>
+      </form> -->
+      <form action="" method="GET">
+        <div class="input-group mb-3">
+          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Products">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
       </form>
+      
 
       <br>
           <table class="table">
@@ -206,6 +219,41 @@ $result = $conn->query($sql);
 
               <tbody>
                   <?php
+
+                      // search feature -- searhcing throygh the products name, code and manufacturer
+                      if(isset($_GET['search'])) {
+                        $filtervalues = $_GET['search'];
+                        $searchquery = "SELECT * FROM products WHERE CONCAT(prod_name, prod_code, prod_manufacturer) LIKE '%$filtervalues%' ";
+
+                        $searchquery_run = mysqli_query($conn, $searchquery);
+
+                        if(mysqli_num_rows($searchquery_run) > 0) {
+
+                          foreach($searchquery_run as $items) {
+                            ?>
+                              <tr>
+                                <td><?= $items['prod_ID']; ?></td>
+                                <td><?= $items['prod_name']; ?></td>
+                                <td><?= $items['prod_code']; ?></td>
+                                <td><?= $items['prod_description']; ?></td>
+                                <td><?= $items['prod_price']; ?></td>
+                                <td><?= $items['prod_image']; ?></td>
+                                <td><?= $items['prod_manufacturer']; ?></td>
+                                <td><?= $items['prod_type']; ?></td>
+                                <td><a class='search-btn' href='ecommerceDelete.php?id=" .$row["prod_ID"] ."'>Delete</a></td>
+                              </tr>
+                            <?php
+                          }
+                        } else {
+                          ?>
+
+                          <tr>
+                            <td colspan="9">No records Found</td>
+                          </tr>
+
+                          <?php
+                        }
+                      }
 
                       // Pagination variables
                       $records_per_page = 15; // Adjust as needed
