@@ -21,8 +21,9 @@ root {
   /*box-sizing: border-box;*/
   font-family: "Poppins", "Helvetica Neue", sans-serif;
   /* outline for testing purposes */
-  /*outline: red dashed 1px;*/
+  /* outline: red dashed 1px;*/
 }
+
 a {
   text-decoration: none;
   color: black;
@@ -1021,7 +1022,12 @@ footer .content .box .icons i {
   font-weight: 200;
 }
 
-#products_container {
+.wrapper{
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.products_container {
   display: grid;
   align-items: center;
   justify-self: center;
@@ -1030,7 +1036,6 @@ footer .content .box .icons i {
 }
 
 #total_container {
-  background: #0dff00;
   position: relative;
   display: flex;
   flex-direction: row;
