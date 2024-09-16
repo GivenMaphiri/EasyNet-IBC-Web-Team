@@ -29,15 +29,15 @@ include "DBConn.php";
 //         // Set the verification status to "unverified"
 //         $verificationStatus = 'unverified';
 
-      //   $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')";
+//   $sql = "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')";
 
-       
-      //   //Check for user repeats
-      // if(users($sql)>0){
-      //   $message[] = 'user already exists';
-      // }else{ if($password != $cpassword ){
-      //     $message[] = 'wrong password';
-      //   }}
+
+//   //Check for user repeats
+// if(users($sql)>0){
+//   $message[] = 'user already exists';
+// }else{ if($password != $cpassword ){
+//     $message[] = 'wrong password';
+//   }}
 
 //       if (mysqli_query($conn, $sql)) {
 //            header("Location: login.php?");
@@ -50,45 +50,46 @@ include "DBConn.php";
 //             }
 //           }
 
-       if(isset($_POST['submit-btn']))  
-       {
-        $filter_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
-        $first_name = mysqli_real_escape_string($conn, $filter_name);
+if (isset($_POST['submit-btn'])) {
+  $filter_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
+  $first_name = mysqli_real_escape_string($conn, $filter_name);
 
-        $filter_last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
-        $last_name= mysqli_real_escape_string($conn, $filter_last_name);
+  $filter_last_name = filter_var($_POST['last_name'], FILTER_SANITIZE_STRING);
+  $last_name = mysqli_real_escape_string($conn, $filter_last_name);
 
-        $filter_phone_number = filter_var($_POST['phone_number'], FILTER_SANITIZE_STRING);
-        $phone_number = mysqli_real_escape_string($conn, $filter_phone_number);
+  $filter_phone_number = filter_var($_POST['phone_number'], FILTER_SANITIZE_STRING);
+  $phone_number = mysqli_real_escape_string($conn, $filter_phone_number);
 
-        $filter_email_address = filter_var($_POST['email_address'], FILTER_SANITIZE_STRING);
-        $email_address = mysqli_real_escape_string($conn, $filter_email_address);
+  $filter_email_address = filter_var($_POST['email_address'], FILTER_SANITIZE_STRING);
+  $email_address = mysqli_real_escape_string($conn, $filter_email_address);
 
-        $filter_password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
-        $password = mysqli_real_escape_string($conn, $filter_password);
+  $filter_password = filter_var($_POST['password'], FILTER_SANITIZE_STRING);
+  $password = mysqli_real_escape_string($conn, $filter_password);
 
-        $filter_cpassword = filter_var($_POST['cpassword'], FILTER_SANITIZE_STRING);
-        $cpassword = mysqli_real_escape_string($conn, $filter_cpassword);
+  $filter_cpassword = filter_var($_POST['cpassword'], FILTER_SANITIZE_STRING);
+  $cpassword = mysqli_real_escape_string($conn, $filter_cpassword);
 
-        $select_user = mysqli_query($conn, "SELECT * FROM users WHERE email_address = '$email_address'") or die ('query failed');
+  $select_user = mysqli_query($conn, "SELECT * FROM users WHERE email_address = '$email_address'") or die('query failed');
 
-         // Hashing the password using password_hash
-        $passwordHash = password_hash($password, PASSWORD_BCRYPT);
-        $CpasswordHash = password_hash($cpassword, PASSWORD_BCRYPT);
-       
-        //Check for user repeats
-      if(mysqli_num_rows($select_user)>0){
-        $message[] = 'user already exists';
-      }else{ if($password != $cpassword ){
-          $message[] = 'Passwords are not the same';
-        }else{
-          mysqli_query($conn, "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')")
-          or die('query failed');
-          $message[]='registration successful';
-          header('loactaion:login.php');
-        }}
-       } 
-      //}
+  // Hashing the password using password_hash
+  $passwordHash = password_hash($password, PASSWORD_BCRYPT);
+  $CpasswordHash = password_hash($cpassword, PASSWORD_BCRYPT);
+
+  //Check for user repeats
+  if (mysqli_num_rows($select_user) > 0) {
+    $message[] = 'user already exists';
+  } else {
+    if ($password != $cpassword) {
+      $message[] = 'Passwords are not the same';
+    } else {
+      mysqli_query($conn, "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')")
+        or die('query failed');
+      $message[] = 'registration successful';
+      header('loactaion:login.php');
+    }
+  }
+}
+//}
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +134,8 @@ include "DBConn.php";
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -149,7 +151,8 @@ include "DBConn.php";
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -165,23 +168,8 @@ include "DBConn.php";
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
-                    }
-                    ?>
-                  </ul>
-                </div>
-                <div class="row">
-                  <h4><a href="products2.php">Combos</a></h4>
-                  <ul class="mega-link">
-                    <?php
-                    $category = 'Combos';
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $category);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -190,10 +178,11 @@ include "DBConn.php";
                   <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
                     <?php
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products LIMIT 10";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -235,15 +224,15 @@ include "DBConn.php";
 
       <div id="signup_container">
         <?php
-          if (isset($message)){
-            foreach ($message as $message){
-              echo'
+        if (isset($message)) {
+          foreach ($message as $message) {
+            echo '
               <div id = "message">
-              <span> '.$message.'</span>
+              <span> ' . $message . '</span>
               <i id = "bi bi-x-circle" onclick="this.parentElement.remove()"></i>
               </div>';
-            }
           }
+        }
         ?>
 
         <div id="signup_left">
@@ -263,7 +252,7 @@ include "DBConn.php";
           <input type="password" name="password" placeholder="Password" class="signup_box" required />
           <h4>Confirm password</h4>
           <input type="password" name="cpassword" placeholder="Confirm Password" class="signup_box" required />
-          <h4>already have an account? <a href ="login.php">login now </a></h4>
+          <h4>already have an account? <a href="login.php">login now </a></h4>
           <div>
             <button type="submit" name="submit-btn" class="signup_button">Sign Up</button>
           </div>

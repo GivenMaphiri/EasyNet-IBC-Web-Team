@@ -53,7 +53,8 @@ if (!isset($_SESSION['user_id'])) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -69,7 +70,8 @@ if (!isset($_SESSION['user_id'])) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -85,23 +87,8 @@ if (!isset($_SESSION['user_id'])) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
-                    }
-                    ?>
-                  </ul>
-                </div>
-                <div class="row">
-                  <h4><a href="products2.php">Combos</a></h4>
-                  <ul class="mega-link">
-                    <?php
-                    $category = 'Combos';
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $category);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -110,10 +97,11 @@ if (!isset($_SESSION['user_id'])) {
                   <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
                     <?php
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products LIMIT 10";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -143,7 +131,7 @@ if (!isset($_SESSION['user_id'])) {
         if ($result && mysqli_num_rows($result) === 1) {
           $row = mysqli_fetch_assoc($result);
           $first_name = htmlspecialchars($row['first_name']);
-          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='manageaccount.php' id='logoutlink'>Manage Account</a></p>";
         } else {
           // Handle the case where the user is not found, if necessary
           echo "<p>Error: User not found.</p>";
@@ -167,8 +155,8 @@ if (!isset($_SESSION['user_id'])) {
     </div>
   </header>
   <main>
-    <div class="checkout">
-      <div class="checkout_heading">
+    <div class="favourites">
+      <div class="favourites_heading">
         <h1>Favourites</h1>
       </div>
       <hr id="checkout_lines" />
@@ -186,7 +174,7 @@ if (!isset($_SESSION['user_id'])) {
           echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
           echo "<div id='check_quantity'>";
           echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_ID'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='" . $row['prod_image'] . "' id='boxbutton'>Add to Cart</button>";
-          echo "<button type='button' class='remove_from_favourite' data-prod-id='" . $row['prod_ID'] . "' id='remove_fav' >Remove from Favourites</button>";
+          echo "<button type='button' class='remove_from_favourite' onclick='removeFromCart(" . $row['prod_ID'] . ")' id='remove_fav' >Remove from Favourites</button>";
           echo "</div>";
           echo "</div>";
         }
@@ -196,32 +184,26 @@ if (!isset($_SESSION['user_id'])) {
       ?>
 
     </div>
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      // Remove from Favourite button click event
-      $(document).on('click', '.remove_from_favourite', function() {
-        var prodId = $(this).data('prod-id');
-
-        $.ajax({
-          url: 'remove_fav.php', // Ensure this points to your PHP file for removing favourites
-          method: 'POST',
-          data: {
-            prod_id: prodId
-          },
-          success: function(response) {
-            if (response.trim() === 'success') {
-              alert('Product removed from favourites!');
-              location.reload(); // Refresh the page or remove the item from the DOM
-            } else {
-              alert('Failed to remove from favourites.');
+      function removeFromCart(prod_ID) {
+        if (confirm('Are you sure you want to remove this item from your favourites?')) {
+          // User clicked OK, proceed with the AJAX request
+          $.ajax({
+            url: 'remove_fav.php',
+            method: 'POST',
+            data: {
+              prod_ID: prod_ID
+            },
+            success: function(response) {
+              location.reload(); // Reload the page to reflect changes in the cart
             }
-          },
-          error: function(xhr, status, error) {
-            console.log(error); // Log any errors to the console
-            alert('Failed to remove from favourites.');
-          }
-        });
-      });
+          });
+        } else {
+          // User clicked Cancel, do nothing or add any additional handling here if needed
+          console.log('Item not removed from the cart.');
+        }
+      }
     </script>
   </main>
   <footer>
