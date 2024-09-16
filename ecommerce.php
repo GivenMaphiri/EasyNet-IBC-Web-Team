@@ -183,6 +183,23 @@ $result = $conn->query($sql);
 
               <tbody>
                   <?php
+
+                      // Pagination variables
+                      $records_per_page = 15; // Adjust as needed
+                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+                      $start_from = ($current_page - 1) * $records_per_page;
+
+                      // Fetch total records
+                      $total_records = mysqli_num_rows($result);
+
+                      // Calculate total pages
+                      $total_pages = ceil($total_records / $records_per_page);
+
+                      // Modify the query to include LIMIT clause
+                      $query = "SELECT * FROM products ORDER BY prod_ID LIMIT $start_from, $records_per_page";
+                      $result = mysqli_query($conn, $query);
+
+
                       if ($result->num_rows > 0) {
                           // Output data of each row
                           while($row = $result->fetch_assoc()) {
@@ -206,6 +223,15 @@ $result = $conn->query($sql);
                       } else {
                           echo "0 results";
                       }
+
+                      // Pagination links
+                      echo "<tr><td colspan='9'>";
+                      for ($i = 1; $i <= $total_pages; $i++) {
+                          echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
+                      }
+                      echo "</td></tr>";
+
+
                       $conn->close();
                   ?>
               </tbody>
