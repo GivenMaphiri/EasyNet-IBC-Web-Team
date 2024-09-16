@@ -27,6 +27,13 @@ if ($resultCart->num_rows > 0) {
         $stmtInsert->execute();
     }
 
+    // 2. Clear the cart after placing the order
+    $clearCartQuery = "DELETE FROM cart WHERE user_ID = ?";
+    $clearCartStmt = $conn->prepare($clearCartQuery);
+    $clearCartStmt->bind_param("i", $user_ID);
+    $clearCartStmt->execute();
+
+
     // After successfully placing the order, redirect to a confirmation page and generate the PDF receipt
     header("Location: ordercomplete.php");
 } else {

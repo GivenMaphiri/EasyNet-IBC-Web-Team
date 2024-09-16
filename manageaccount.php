@@ -138,7 +138,7 @@ include "DBConn.php"; // Include your database connection
                 if ($result && mysqli_num_rows($result) === 1) {
                     $row = mysqli_fetch_assoc($result);
                     $first_name = htmlspecialchars($row['first_name']);
-                    echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Manage Account</a></p>";
+                    echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
                 } else {
                     // Handle the case where the user is not found, if necessary
                     echo "<p>Error: User not found.</p>";
