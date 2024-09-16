@@ -94,23 +94,6 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
                   </ul>
                 </div>
                 <div class="row">
-                  <h4><a href="products2.php">Combos</a></h4>
-                  <ul class="mega-link">
-                    <?php
-                    $category = 'Combos';
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $category);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
-                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
-                    }
-                    ?>
-                  </ul>
-                </div>
-                <div class="row">
                   <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
                     <?php
@@ -148,7 +131,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         if ($result && mysqli_num_rows($result) === 1) {
           $row = mysqli_fetch_assoc($result);
           $first_name = htmlspecialchars($row['first_name']);
-          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='manageaccount.php' id='logoutlink'>Manage Account</a></p>";
         } else {
           // Handle the case where the user is not found, if necessary
           echo "<p>Error: User not found.</p>";
@@ -475,33 +458,33 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
     <!-- Add this script in the HTML file where the "Add to Cart" button is present -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('.add_to_cart').on('click', function(e) {
-          e.preventDefault();
-          var prod_ID = $(this).data('prod-id');
-          var prod_name = $(this).data('prod-name');
-          var prod_price = $(this).data('prod-price');
-          var prod_image = $(this).data('prod-image');
+      $(document).on('click', '.add_to_cart', function() {
+        var prodId = $(this).data('prod-id');
+        var prodName = $(this).data('prod-name');
+        var prodPrice = $(this).data('prod-price');
+        var prodImage = $(this).data('prod-image');
 
-          $.ajax({
-            url: 'addtocart.php',
-            method: 'POST',
-            data: {
-              add_to_cart: true,
-              prod_ID: prod_ID,
-              prod_name: prod_name,
-              prod_price: prod_price,
-              prod_image: prod_image
-            },
-            success: function(response) {
-              var result = JSON.parse(response);
-              if (result.status === 'success') {
-                alert('Product added to cart!');
-              } else {
-                alert('There was an issue adding the product to the cart.');
-              }
+        $.ajax({
+          url: 'addtocart.php', // Ensure this is the correct path to your PHP file
+          method: 'POST',
+          data: {
+            prod_ID: prodId,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            prod_image: prodImage
+          },
+          success: function(response) {
+            alert(response); // Display the server response for debugging
+            if (response == 'success') {
+
+            } else {
+
             }
-          });
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+            alert('Failed to add to favourites.');
+          }
         });
       });
 
@@ -523,15 +506,11 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
           },
           success: function(response) {
             alert(response); // Display the server response for debugging
-            if (response == 'success') {
-              alert('Product added to favourites!');
-            } else {
-              alert('Failed to add to favourites.');
-            }
+            if (response == 'success') {} else {}
           },
           error: function(xhr, status, error) {
             console.log(error); // Log any errors to the console
-            alert('Failed to add to favourites.');
+
           }
         });
       });

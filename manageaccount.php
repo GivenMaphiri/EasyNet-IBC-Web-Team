@@ -28,7 +28,7 @@ include "DBConn.php"; // Include your database connection
             <nav>
                 <ul id="nav_content">
                     <li id="nav_link">
-                        <a href="index.php" id="nav_text" class="active">Home</a>
+                        <a href="index.php" id="nav_text">Home</a>
                     </li>
                     <li id="nav_link">
                         <a href="about.php" id="nav_text">About Us</a>
@@ -48,7 +48,8 @@ include "DBConn.php"; // Include your database connection
                                         $stmt->execute();
                                         $result = $stmt->get_result();
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                                            $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                                            echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                                         }
                                         ?>
                                     </ul>
@@ -64,7 +65,8 @@ include "DBConn.php"; // Include your database connection
                                         $stmt->execute();
                                         $result = $stmt->get_result();
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                                            $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                                            echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                                         }
                                         ?>
                                     </ul>
@@ -80,23 +82,8 @@ include "DBConn.php"; // Include your database connection
                                         $stmt->execute();
                                         $result = $stmt->get_result();
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
-                                        }
-                                        ?>
-                                    </ul>
-                                </div>
-                                <div class="row">
-                                    <h4><a href="products2.php">Combos</a></h4>
-                                    <ul class="mega-link">
-                                        <?php
-                                        $category = 'Combos';
-                                        $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
-                                        $stmt = $conn->prepare($sql);
-                                        $stmt->bind_param("s", $category);
-                                        $stmt->execute();
-                                        $result = $stmt->get_result();
-                                        while ($row = $result->fetch_assoc()) {
-                                            echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                                            $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                                            echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                                         }
                                         ?>
                                     </ul>
@@ -105,10 +92,11 @@ include "DBConn.php"; // Include your database connection
                                     <h4><a href="products2.php?category=all">All</a></h4>
                                     <ul class="mega-link">
                                         <?php
-                                        $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                                        $sql = "SELECT DISTINCT prod_manufacturer FROM products LIMIT 10";
                                         $result = $conn->query($sql);
                                         while ($row = $result->fetch_assoc()) {
-                                            echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                                            $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                                            echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                                         }
                                         ?>
                                     </ul>
@@ -262,15 +250,14 @@ include "DBConn.php"; // Include your database connection
         $result = $stmt->get_result();
 
         if ($result->num_rows > 0) {
-            echo "<table>";
-            echo "<thead><tr><th>Order Number</th><th>Order IDs</th><th>Total Price</th><th>Date & Time Ordered</th></tr></thead>";
+            echo "<table id='order_history'>";
+            echo "<thead><tr id='order_head'><th>Order Number</th><th>Total Price</th><th>Date & Time Ordered</th></tr></thead>";
             echo "<tbody>";
 
             $order_number = 1; // Initialize a new order number
             while ($row = $result->fetch_assoc()) {
-                echo "<tr>";
+                echo "<tr id='order_info'>";
                 echo "<td>" . $order_number++ . "</td>"; // Increment order number for each group
-                echo "<td>" . $row['order_ids'] . "</td>"; // Display grouped order IDs
                 echo "<td>R" . number_format($row['total_price'], 2) . "</td>"; // Total price for the group
                 echo "<td>" . $row['order_datetime'] . "</td>"; // Date and time ordered
                 echo "</tr>";
@@ -288,6 +275,27 @@ include "DBConn.php"; // Include your database connection
 
 
     </main>
+
+    <footer>
+        <div class="social-media-icons">
+            <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
+                    <p>Facebook</p>
+                </i>
+            </a>
+            <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'>
+                    <p>Instagram</p>
+                </i>
+            </a>
+            <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'>
+                    <p>LinkedIn</p>
+                </i>
+            </a>
+        </div>
+        <hr id="foot_line" />
+        <p id="footer_text">
+            Copyright &copy; 2024 EasyNet In Business Communications
+        </p>
+    </footer>
 </body>
 
 </html>

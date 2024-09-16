@@ -92,7 +92,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -108,7 +109,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -124,23 +126,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
-                    }
-                    ?>
-                  </ul>
-                </div>
-                <div class="row">
-                  <h4><a href="products2.php">Combos</a></h4>
-                  <ul class="mega-link">
-                    <?php
-                    $category = 'Combos';
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $category);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -149,10 +136,11 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
                   <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
                     <?php
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products LIMIT 10";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -218,7 +206,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     </form>
 
     <Script src="login.js"></Script>
-  
+
 
     <!-- <script>
       // Get the login button element

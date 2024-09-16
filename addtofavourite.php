@@ -25,13 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $stmt->bind_param("iisss", $user_id, $prod_id, $prod_name, $prod_price, $prod_image);
 
             if ($stmt->execute()) {
-                echo 'success';
+                echo 'Product Added to Favourites!';
             } else {
                 echo 'error';
             }
             $stmt->close();
         } else {
-            echo 'already_exists';
+            echo 'Product Already in Favourites';
         }
         $check_stmt->close();
     } else {

@@ -186,14 +186,13 @@ if (isCartEmpty($user_ID, $conn)) {
                 $cartItemsJson = json_encode($cartItems);
                 ?>
 
+                <div id="order_buttons">
+                    <form action="place_order.php" method="POST">
 
-                <form action="place_order.php" method="POST">
-                    <div id="order_buttons">
                         <button type="submit" onclick="handleOrder()" id="place_order">Place Order</button>
-                        <a id="view_cart_link" href="checkout.php"><button id="view_cart">View Cart</button></a>
-                    </div>
-                </form>
-
+                    </form>
+                    <a id="view_cart_link" href="checkout.php"><button id="view_cart">View Cart</button></a>
+                </div>
             </div>
         </div>
         <script src="https://unpkg.com/jspdf-invoice-template@1.4.0/dist/index.js"></script>
@@ -255,7 +254,7 @@ if (isCartEmpty($user_ID, $conn)) {
             var props = {
                 outputType: jsPDFInvoiceTemplate.OutputType.Save, //Allows for additional configuration prior to writing among others, adds support for different languages and symbols
                 returnJsPDFDocObject: true,
-                fileName: "Invoice: " + shippingInfo.shipping_name,
+                fileName: "Invoice: " + shippingInfo.shipping_name + " " + currentDate,
                 orientationLandscape: false,
                 compress: true,
                 logo: {

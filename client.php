@@ -53,7 +53,8 @@ include "DBConn.php";
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -69,7 +70,8 @@ include "DBConn.php";
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -85,23 +87,8 @@ include "DBConn.php";
                     $stmt->execute();
                     $result = $stmt->get_result();
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
-                    }
-                    ?>
-                  </ul>
-                </div>
-                <div class="row">
-                  <h4><a href="products2.php">Combos</a></h4>
-                  <ul class="mega-link">
-                    <?php
-                    $category = 'Combos';
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products WHERE prod_type = ?";
-                    $stmt = $conn->prepare($sql);
-                    $stmt->bind_param("s", $category);
-                    $stmt->execute();
-                    $result = $stmt->get_result();
-                    while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?category=$category&manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -110,10 +97,11 @@ include "DBConn.php";
                   <h4><a href="products2.php?category=all">All</a></h4>
                   <ul class="mega-link">
                     <?php
-                    $sql = "SELECT DISTINCT prod_manufacturer FROM products";
+                    $sql = "SELECT DISTINCT prod_manufacturer FROM products LIMIT 10";
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc()) {
-                      echo "<li>" . htmlspecialchars($row['prod_manufacturer']) . "</li>";
+                      $manufacturer = htmlspecialchars($row['prod_manufacturer']);
+                      echo "<li><a href='products2.php?manufacturer=" . urlencode($manufacturer) . "'>$manufacturer</a></li>";
                     }
                     ?>
                   </ul>
@@ -143,7 +131,7 @@ include "DBConn.php";
         if ($result && mysqli_num_rows($result) === 1) {
           $row = mysqli_fetch_assoc($result);
           $first_name = htmlspecialchars($row['first_name']);
-          echo "<p id='welcomemess'>Welcome, $first_name! <a href='logout.php' id='logoutlink'>Logout</a></p>";
+          echo "<p id='welcomemess'>Welcome, $first_name! <a href='manageaccount.php' id='logoutlink'>Manage Account</a></p>";
         } else {
           // Handle the case where the user is not found, if necessary
           echo "<p>Error: User not found.</p>";

@@ -1483,7 +1483,7 @@ footer .content .box .icons i {
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 20px;
-  min-height: 50vh;
+  min-height: 60vh;
 }
 
 #check_quantity {
@@ -1554,12 +1554,47 @@ footer .content .box .icons i {
 }
 
 #logoutlink {
-  color: red;
+  color: #00bfff;
   transition: all 0.2s ease-in;
 }
 
 #logoutlink:hover {
-  color: rgb(155, 2, 2);
+  color: #009dd1;
+}
+
+#order_history {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  border-style: solid;
+  border-color: #000000;
+}
+
+#order_history th {
+  border-style: solid;
+  border-color: #000000;
+}
+
+#order_history td {
+  border-style: solid;
+  border-color: #000000;
+}
+
+#order_head th {
+  background-color: white;
+  color: #000;
+}
+
+#order_info td {
+  background-color: rgb(225, 225, 225);
+  color: #000;
+}
+
+.favourites {
+  margin-top: 100px;
+}
+
+.favourites_heading {
+  margin-left: 3%;
 }
 
 #contact_headings {
