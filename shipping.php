@@ -187,10 +187,27 @@ if (isCartEmpty($user_ID, $conn)) {
                 ?>
 
                 <div id="order_buttons">
-                    <form action="place_order.php" method="POST">
+                    <?php // Connect to the database
 
-                        <button type="submit" onclick="handleOrder()" id="place_order">Place Order</button>
-                    </form>
+                    // Assume user is logged in and their ID is stored in the session
+                    $user_ID = $_SESSION['user_id'];
+
+                    // Query to check if the user has shipping information
+                    $sql = "SELECT shipping_id FROM shipping WHERE user_id = '$user_ID'";
+                    $result = mysqli_query($conn, $sql);
+
+                    // If the user has shipping information, allow the "Place Order" button to display
+                    if (mysqli_num_rows($result) > 0) {
+                        // Shipping information exists
+                        echo '<form action="place_order.php" method="POST">
+                                <button type="submit" onclick="handleOrder()" id="place_order">Place Order</button>
+                            </form>';
+                    } else {
+                        // Shipping information does not exist
+                        echo '<p>Please add Shipping Info.</p>';
+                    }
+                    ?>
+
                     <a id="view_cart_link" href="checkout.php"><button id="view_cart">View Cart</button></a>
                 </div>
             </div>
