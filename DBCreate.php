@@ -154,5 +154,19 @@ if ($conn->query($sql) === TRUE) {
     echo "Error creating table 'cart': " . $conn->error;
 }
 
+
+// SQL to create users table
+$sql = "CREATE TABLE IF NOT EXISTS admin (
+    admin_ID INT(11) AUTO_INCREMENT PRIMARY KEY,
+    admin_email VARCHAR(100) NOT NULL UNIQUE,
+    admin_password VARCHAR(255) NOT NULL
+)";
+
+if ($conn->query($sql) === TRUE) {
+    echo "Table 'admin' created successfully<br>";
+} else {
+    echo "Error creating table 'admin': " . $conn->error;
+}
+
 // Close connection 
 $conn->close();

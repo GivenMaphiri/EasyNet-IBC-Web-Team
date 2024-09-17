@@ -38,6 +38,37 @@ $conn->close();
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
+
+    <header>
+        <div id="left">
+        <a href="index.php"><img src="_images/_logos/easynet.png" id="logo" width="120px" title="EasyNet Homepage" /></a>
+        </div>
+        <input type="checkbox" id="check">
+        <div id="middle">
+        <nav>
+            <ul id="nav_content">
+            <li id="nav_link">
+                <a href="index.php" id="nav_text" class="active">Home</a>
+            </li>
+            <li id="nav_link">
+                <a href="about.php" id="nav_text">About Us</a>
+            </li>
+            
+            <li id="nav_link">
+                <a href="client.php" id="nav_text">Partners and Clients</a>
+            </li>
+            <li id="nav_link">
+                <a href="contact.php" id="nav_text">Contact Us</a>
+            </li>
+            </ul>
+        </nav>
+        </div>
+
+        
+
+        </div>
+        <script src="_javascript/index.js"></script>
+    </header>
     
 
 <style>
