@@ -158,7 +158,7 @@ $result = $conn->query($sql);
 
       <form action="" method="GET">
         <div class="input-group mb-3">
-          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Users">
+          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Orders">
           <button type="submit" class="btn btn-primary">Search</button>
           <a href="orders.php" class="btn btn-dangers">Reset</a>
         </div>
@@ -216,9 +216,9 @@ $result = $conn->query($sql);
                       <td><?= $items['order_ID']; ?></td>
                       <td><?= $items['order_total']; ?></td>
                       <td><?= $items['placed_on']; ?></td>
-                      <td><?= $items['payement_status']; ?></td>
+                      <td><?= $items['payment_status']; ?></td>
                       <td><?= $items['status']; ?></td>
-                      <td><a class='btn btn-dark' href='ordersDelete.php?id=" .$row["prod_ID"] ."'>Delete</a></td>
+                      <td><a class='btn btn-dark' href='ordersDelete.php?id=" .$row["order_ID"] ."'>Delete</a></td>
                     </tr>
                   <?php
                 }
