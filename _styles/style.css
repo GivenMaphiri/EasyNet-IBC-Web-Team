@@ -1022,7 +1022,16 @@ footer .content .box .icons i {
   font-weight: 200;
 }
 
-.wrapper{
+#checkout_heading h1 {
+  margin-top: 15vh;
+}
+
+#cart_empty {
+  margin-left: 3%;
+  min-height: 40vh;
+}
+
+.wrapper {
   max-width: 1000px;
   margin: 0 auto;
 }

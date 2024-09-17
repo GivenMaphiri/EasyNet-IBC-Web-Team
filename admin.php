@@ -1,19 +1,17 @@
 <?php
-
+session_start();
 include 'DBConn.php';
 
-session_start();
+
 
 // Check if admin is logged in
-if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) {
+if (!isset($_SESSION['admin_ID'])) {
+  // If not logged in, redirect to login page
   header("Location: login.php");
   exit();
 }
 
 // Admin dashboard content here
-echo "<script>
-    alert('Welcome to the admin Dashboard!');
-</script>";
 
 $sql = "SELECT prod_ID, prod_name, prod_code, prod_description, prod_price, prod_image, prod_manufacturer, prod_type FROM products";
 $result = $conn->query($sql);
@@ -127,12 +125,12 @@ $numhardware = mysqli_num_rows($barquery);
     <header>
       <div class="menu-toggle">
         <label for="sidebar-toggle">
-         <!-- <span class="las la-bars"></span> -->
+          <!-- <span class="las la-bars"></span> -->
         </label>
       </div>
 
       <div class="header-icons">
-        
+
         <a href="messages.php"><span class="las la-sms"></span></a>
       </div>
     </header>
@@ -146,14 +144,14 @@ $numhardware = mysqli_num_rows($barquery);
       </div>
       <!------------- Cards start-------------------------------------------------------------------------------->
       <div class="cards">
-        
-<!-- User Card-->
+
+        <!-- User Card-->
         <div class="card-single">
 
-         <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
-        <?php
-            $select_users = mysqli_query($conn, "SELECT * FROM `users`") or die('query failed');
-            $number_of_users = mysqli_num_rows($select_users);
+          <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
+          <?php
+          $select_users = mysqli_query($conn, "SELECT * FROM `users`") or die('query failed');
+          $number_of_users = mysqli_num_rows($select_users);
           ?>
           <div class="card-flex">
             <div class="card-info">
@@ -162,7 +160,7 @@ $numhardware = mysqli_num_rows($barquery);
                 <small>Number of users</small>
               </div>
 
-              <h2><?php echo $number_of_users; ?></h2>   <!-- the number of users-->
+              <h2><?php echo $number_of_users; ?></h2> <!-- the number of users-->
 
               <!--<small>5% less users</small> -->
             </div>
@@ -176,10 +174,10 @@ $numhardware = mysqli_num_rows($barquery);
         <!-- Orders Card-->
         <div class="card-single">
 
-         <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
-        <?php
-            $select_orders = mysqli_query($conn, "SELECT * FROM `Orders`") or die('query failed');
-            $number_of_orders = mysqli_num_rows($select_orders);
+          <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
+          <?php
+          $select_orders = mysqli_query($conn, "SELECT * FROM `Orders`") or die('query failed');
+          $number_of_orders = mysqli_num_rows($select_orders);
           ?>
           <div class="card-flex">
             <div class="card-info">
@@ -188,7 +186,7 @@ $numhardware = mysqli_num_rows($barquery);
                 <small>Number of Orders placed</small>
               </div>
 
-              <h2><?php echo $number_of_orders; ?></h2>   <!-- the number of orders placed-->
+              <h2><?php echo $number_of_orders; ?></h2> <!-- the number of orders placed-->
 
               <!--<small>5% less users</small> -->
             </div>
@@ -198,7 +196,7 @@ $numhardware = mysqli_num_rows($barquery);
           </div>
         </div>
 
-<!-- Revenue card-->
+        <!-- Revenue card-->
         <!-- <div class="card-single">
           <div class="card-flex">
             <div class="card-info">
@@ -218,12 +216,12 @@ $numhardware = mysqli_num_rows($barquery);
         </div> -->
 
 
-<!-- Products card-->
+        <!-- Products card-->
         <div class="card-single">
 
           <?php
-            $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
-            $number_of_products = mysqli_num_rows($select_products);
+          $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
+          $number_of_products = mysqli_num_rows($select_products);
           ?>
           <div class="card-flex">
             <div class="card-info">
@@ -243,8 +241,8 @@ $numhardware = mysqli_num_rows($barquery);
         </div>
       </div>
 
-       <!------------- chart start-------------------------------------------------------------------------------->
-       <!-- <div style="width: 500px;">
+      <!------------- chart start-------------------------------------------------------------------------------->
+      <!-- <div style="width: 500px;">
           <canvas id="myChart"></canvas>
        </div>
 
@@ -292,187 +290,190 @@ $numhardware = mysqli_num_rows($barquery);
 
       <br>
 
-    <div class="card-single" id="barChart" style="width: 720px;">
-      <canvas id="productTypeChart" ></canvas>
-    </div>
+      <div class="card-single" id="barChart" style="width: 720px;">
+        <canvas id="productTypeChart"></canvas>
+      </div>
 
-    <br>
-    
-    <script>
+      <br>
+
+      <script>
         // Replace with your database connection details
         var conn = new XMLHttpRequest();
         conn.open("GET", "fetch_product_type_data.php", true);
         conn.onreadystatechange = function() {
-            if (conn.readyState == 4 && conn.status == 200) {
-                var data = JSON.parse(conn.responseText);
+          if (conn.readyState == 4 && conn.status == 200) {
+            var data = JSON.parse(conn.responseText);
 
-                var ctx = document.getElementById('productTypeChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Hardware', 'Software', 'Accessories'],
-                        datasets: [{
-                            label: '# of Products for category',
-                            data: data.productCounts,
-                            borderWidth: 1,
-                            backgroundColor: ['rgba(153, 102, 255, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'], // Custom colors for each bar
-                            borderColor: ['rgb(153, 102, 255)', '#36A2EB', 'rgb(75, 192, 192)']
-                        }]
-                    }
-                });
-            }
+            var ctx = document.getElementById('productTypeChart').getContext('2d');
+            new Chart(ctx, {
+              type: 'bar',
+              data: {
+                labels: ['Hardware', 'Software', 'Accessories'],
+                datasets: [{
+                  label: '# of Products for category',
+                  data: data.productCounts,
+                  borderWidth: 1,
+                  backgroundColor: ['rgba(153, 102, 255, 0.2)', 'rgba(54, 162, 235, 0.2)', 'rgba(75, 192, 192, 0.2)'], // Custom colors for each bar
+                  borderColor: ['rgb(153, 102, 255)', '#36A2EB', 'rgb(75, 192, 192)']
+                }]
+              }
+            });
+          }
         };
         conn.send();
-    </script>
+      </script>
 
-     
 
-       <!------------- chart end-------------------------------------------------------------------------------->
 
-       
+      <!------------- chart end-------------------------------------------------------------------------------->
+
+
 
       <!------------- Table start-------------------------------------------------------------------------------->
 
       <style>
-          .table {
-              border: 1px solid #ddd;
-              margin-bottom: 20px;
-              border-collapse: collapse;
-              width: 100%; /* Adjust width as needed */
-              padding: 10px;
+        .table {
+          border: 1px solid #ddd;
+          margin-bottom: 20px;
+          border-collapse: collapse;
+          width: 100%;
+          /* Adjust width as needed */
+          padding: 10px;
 
-          }
+        }
 
-          #barChart {
-            display: flex;
-          }
+        #barChart {
+          display: flex;
+        }
 
-            .table thead th {
-              background-color: #312f2f;
-              color: white;
-              font-weight: bold;
-            }
+        .table thead th {
+          background-color: #312f2f;
+          color: white;
+          font-weight: bold;
+        }
 
-            .table tbody tr:nth-child(even) {
-                background-color: #ffff;
-            }
+        .table tbody tr:nth-child(even) {
+          background-color: #ffff;
+        }
 
-          th, td {
-              border: 1px solid black;
-              padding: 8px;
-              text-align: left;
-          }
+        th,
+        td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: left;
+        }
 
-          th {
-              background-color: #f2f2f2;
-          }
+        th {
+          background-color: #f2f2f2;
+        }
 
-          td {
-            /* overflow: hidden;
+        td {
+          /* overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             max-width: 110px; */
-          }
+        }
 
-          a{
-            /* padding-left: 2px; */
-          }
+        a {
+          /* padding-left: 2px; */
+        }
 
-          .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-          }
+        .btn-danger {
+          background-color: #dc3545;
+          border-color: #dc3545;
+        }
 
-          .btn-dangers {
-            background-color: #f3810f;
-            border-color: black;
-          }
+        .btn-dangers {
+          background-color: #f3810f;
+          border-color: black;
+        }
 
-          .btn-sm {
-            padding: .25rem .5rem;
-            font-size: .875rem;
-            line-height: 1.25;
-          }
+        .btn-sm {
+          padding: .25rem .5rem;
+          font-size: .875rem;
+          line-height: 1.25;
+        }
 
-          .table tbody tr:hover {
-            background-color: #d7dbdd ; /* Adjust the background color as needed */
-            cursor: pointer;
-          }
+        .table tbody tr:hover {
+          background-color: #d7dbdd;
+          /* Adjust the background color as needed */
+          cursor: pointer;
+        }
 
-          .form-control {
-            width: 500px;
-            /* margin-top: 5px; */
-            margin-left: 480px;
-          }
-        </style>
-      <div >
+        .form-control {
+          width: 500px;
+          /* margin-top: 5px; */
+          margin-left: 480px;
+        }
+      </style>
+      <div>
         <div class="recentOrders">
           <div class="cardHeader">
             <h2>Products Overview</h2>
             <a href="ecommerce.php" class="btn">View All</a>
           </div>
           <table class="table">
-              <thead>
-                  <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Code</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Image</th>
-                  <th>Manufacturer</th>
-                  <th>Type</th>
-                  <th>Action</th>
-                  </tr>
-                  
-              </thead>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Code</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th>Manufacturer</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
 
-              <tbody>
-                  <?php
+            </thead>
 
-                      // Pagination variables
-                      $records_per_page = 5; // Adjust as needed
-                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                      $start_from = ($current_page - 1) * $records_per_page;
+            <tbody>
+              <?php
 
-                      // Fetch total records
-                      $total_records = mysqli_num_rows($result);
+              // Pagination variables
+              $records_per_page = 5; // Adjust as needed
+              $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+              $start_from = ($current_page - 1) * $records_per_page;
 
-                      // Calculate total pages
-                      $total_pages = ceil($total_records / $records_per_page);
+              // Fetch total records
+              $total_records = mysqli_num_rows($result);
 
-                      // Modify the query to include LIMIT clause
-                      $query = "SELECT * FROM products ORDER BY prod_ID LIMIT $start_from, $records_per_page";
-                      $result = mysqli_query($conn, $query);
+              // Calculate total pages
+              $total_pages = ceil($total_records / $records_per_page);
 
-
-                      if ($result->num_rows > 0) {
-                          // Output data of each row
-                          while($row = $result->fetch_assoc()) {
-                              echo "<tr>";
-                              echo "<td>" . $row["prod_ID"] . "</td>";
-                              echo "<td>" . $row["prod_name"] . "</td>";
-                              echo "<td>" . $row["prod_code"] . "</td>";
-                              echo "<td>" . $row["prod_description"] . "</td>";
-                              echo "<td>R" . $row["prod_price"] . "</td>";
-                              echo "<td>" . $row["prod_image"] . "</td>";
-                              echo "<td>" . $row["prod_manufacturer"] . "</td>";
-                              echo "<td>" . $row["prod_type"] . "</td>";
-
-                              echo "<td>";
-                                echo "<a class='btn btn-danger btn-sm' href='ecommerceDelete.php?id=" .$row["prod_ID"] ."'>Delete</a>";
-                              echo "</td>";
-
-                              echo "</tr>";
-                          }
-                      } else {
-                          echo "0 results";
-                      }
+              // Modify the query to include LIMIT clause
+              $query = "SELECT * FROM products ORDER BY prod_ID LIMIT $start_from, $records_per_page";
+              $result = mysqli_query($conn, $query);
 
 
-                      $conn->close();
-                  ?>
-              </tbody>
+              if ($result->num_rows > 0) {
+                // Output data of each row
+                while ($row = $result->fetch_assoc()) {
+                  echo "<tr>";
+                  echo "<td>" . $row["prod_ID"] . "</td>";
+                  echo "<td>" . $row["prod_name"] . "</td>";
+                  echo "<td>" . $row["prod_code"] . "</td>";
+                  echo "<td>" . $row["prod_description"] . "</td>";
+                  echo "<td>R" . $row["prod_price"] . "</td>";
+                  echo "<td>" . $row["prod_image"] . "</td>";
+                  echo "<td>" . $row["prod_manufacturer"] . "</td>";
+                  echo "<td>" . $row["prod_type"] . "</td>";
+
+                  echo "<td>";
+                  echo "<a class='btn btn-danger btn-sm' href='ecommerceDelete.php?id=" . $row["prod_ID"] . "'>Delete</a>";
+                  echo "</td>";
+
+                  echo "</tr>";
+                }
+              } else {
+                echo "0 results";
+              }
+
+
+              $conn->close();
+              ?>
+            </tbody>
           </table>
         </div>
         <!-- <div class="recentCustomers">

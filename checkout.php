@@ -211,7 +211,7 @@ if (!isset($_SESSION['user_id'])) {
       echo "</div>";
       echo "</div>";
     } else {
-      echo "<h1>Your cart is empty.</h1>";
+      echo "<h1 id='cart_empty'>Your cart is empty.</h1>";
     }
 
     $stmt->close();
