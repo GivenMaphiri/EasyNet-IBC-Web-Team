@@ -188,7 +188,7 @@ $result = $conn->query($sql);
           .form-control {
             width: 500px;
             /* margin-top: 5px; */
-            margin-left: 500px;
+            margin-left: 480px;
           }
         </style>
 
