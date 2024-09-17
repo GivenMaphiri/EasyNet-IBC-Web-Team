@@ -170,7 +170,7 @@ $result = $conn->query($sql);
                       <td><?= $items['user_ID']; ?></td>
                       <td><?= $items['first_name']; ?></td>
                       <td><?= $items['last_name']; ?></td>
-                      <td><?= $items['Phone_number']; ?></td>
+                      <td><?= $items['phone_number']; ?></td>
                       <td><?= $items['email_address']; ?></td>
                       <td><a class='btn btn-dark' href='userDelete.php?id=" .$row["prod_ID"] ."'>Delete</a></td>
                     </tr>
