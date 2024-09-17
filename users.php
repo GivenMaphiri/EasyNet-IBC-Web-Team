@@ -104,6 +104,19 @@ $result = $conn->query($sql);
 
   <!-- main-content -->
 <div class="main-content">
+  
+    <header>
+      <div class="menu-toggle">
+        <label for="sidebar-toggle">
+         <!-- <span class="las la-bars"></span> -->
+        </label>
+      </div>
+
+      <div class="header-icons">
+        
+        <a href="messages.php"><span class="las la-sms"></span></a>
+      </div>
+    </header>
 
   <main>
     <style>
@@ -173,7 +186,7 @@ $result = $conn->query($sql);
                 <?php
               }
             }
-            
+
             // Pagination variables
             $records_per_page = 15; // Adjust as needed
             $current_page = isset($_GET['page']) ? $_GET['page'] : 1;

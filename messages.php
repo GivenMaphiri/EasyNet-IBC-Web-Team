@@ -101,6 +101,19 @@ if ($conn->connect_error) {
   </div>
 
   <div class="main-content">
+    
+    <header>
+      <div class="menu-toggle">
+        <label for="sidebar-toggle">
+         <!-- <span class="las la-bars"></span> -->
+        </label>
+      </div>
+
+      <div class="header-icons">
+        
+        <a href="messages.php"><span class="las la-sms"></span></a>
+      </div>
+    </header>
 
   <main>
     <div class="main-messages">

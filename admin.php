@@ -4,6 +4,17 @@ include 'DBConn.php';
 
 session_start();
 
+// Check if admin is logged in
+if (!isset($_SESSION['admin_logged_in']) || !$_SESSION['admin_logged_in']) {
+  header("Location: login.php");
+  exit();
+}
+
+// Admin dashboard content here
+echo "<script>
+    alert('Welcome to the admin Dashboard!');
+</script>";
+
 $sql = "SELECT prod_ID, prod_name, prod_code, prod_description, prod_price, prod_image, prod_manufacturer, prod_type FROM products";
 $result = $conn->query($sql);
 

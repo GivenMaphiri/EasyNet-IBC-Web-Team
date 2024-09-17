@@ -161,8 +161,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     <div id="right">
       <p>
         <a href="register.php" id="loginlinks">Sign Up</a> /
-        <a href="login.php" id="loginlinks">Log In</a>
+        <a href="login.php" id="loginlinks">Log In</a>    /
+        
       </p>
+      <a href="loginadmin.php" id="loginlinks">Admin</a>
       <div id="right-item">
         <a href="favourites.php"><img id="icons_heart" src="_images/_icons/heart.png" width="30px" /></a>
         <a href="checkout.php"><img id="icons_bag" src="_images/_icons/bag.png" width="30px" /></a>
