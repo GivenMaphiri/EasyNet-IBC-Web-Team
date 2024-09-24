@@ -39,10 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     if ($stmt->execute()) {
-        echo "Shipping information saved successfully!";
+        // On success, redirect back to the shipping page (or wherever you need)
+        header("Location: shipping.php?message=success");
+        exit(); // Ensure that no more code is executed after the redirect
     } else {
-        echo "Error: " . $conn->error;
+        // On failure, redirect back to the shipping page with an error message
+        header("Location: shipping.php?message=error");
+        exit(); // Ensure that no more code is executed after the redirect
     }
+
 
     $stmt->close();
     $conn->close();

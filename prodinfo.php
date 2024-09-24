@@ -251,7 +251,7 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
                 $prod_price = $row['prod_price'];
                 $prod_img = $row['prod_image'];
                 echo "<h1>R " . $row['prod_price'] . "</h1>";
-                echo "<button id='addfavourite'>Add to Favourites</button>";
+                echo "<button type='button' class='add_to_favourite' data-prod-id='" . $prod_id . "' data-prod-name='" . $prod_name . "' data-prod-price='" . $prod_price . "' data-prod-image='$prod_img' id='addfavourite'>Add to Favourites</button>";
                 echo "<button type='button' class='add_to_cart' data-prod-id='" . $prod_id . "' data-prod-name='" . $prod_name . "' data-prod-price='" . $prod_price . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
               }
             } else {
@@ -358,33 +358,60 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-      $(document).ready(function() {
-        $('.add_to_cart').on('click', function(e) {
-          e.preventDefault();
-          var prod_ID = $(this).data('prod-id');
-          var prod_name = $(this).data('prod-name');
-          var prod_price = $(this).data('prod-price');
-          var prod_image = $(this).data('prod-image');
+      $(document).on('click', '.add_to_cart', function() {
+        var prodId = $(this).data('prod-id');
+        var prodName = $(this).data('prod-name');
+        var prodPrice = $(this).data('prod-price');
+        var prodImage = $(this).data('prod-image');
 
-          $.ajax({
-            url: 'addtocart.php',
-            method: 'POST',
-            data: {
-              add_to_cart: true,
-              prod_ID: prod_ID,
-              prod_name: prod_name,
-              prod_price: prod_price,
-              prod_image: prod_image
-            },
-            success: function(response) {
-              var result = JSON.parse(response);
-              if (result.status === 'success') {
-                alert('Product added to cart!');
-              } else {
-                alert('There was an issue adding the product to the cart.');
-              }
+        $.ajax({
+          url: 'addtocart.php', // Ensure this is the correct path to your PHP file
+          method: 'POST',
+          data: {
+            prod_ID: prodId,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            prod_image: prodImage
+          },
+          success: function(response) {
+            alert(response); // Display the server response for debugging
+            if (response == 'success') {
+
+            } else {
+
             }
-          });
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+            alert('Failed to add to favourites.');
+          }
+        });
+      });
+
+      // Add to Favourite button click event
+      $(document).on('click', '.add_to_favourite', function() {
+        var prodId = $(this).data('prod-id');
+        var prodName = $(this).data('prod-name');
+        var prodPrice = $(this).data('prod-price');
+        var prodImage = $(this).data('prod-image');
+
+        $.ajax({
+          url: 'addtofavourite.php', // Ensure this is the correct path to your PHP file
+          method: 'POST',
+          data: {
+            prod_id: prodId,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            prod_image: prodImage
+          },
+          success: function(response) {
+            alert(response); // Display the server response for debugging
+            if (response == 'success') {} else {}
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+
+          }
         });
       });
     </script>

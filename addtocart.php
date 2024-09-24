@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $check_stmt->close();
     } else {
-        echo 'not_logged_in';
+        echo 'Please logged in to add to cart!';
     }
 } else {
     echo 'invalid_request';

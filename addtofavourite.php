@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
         $check_stmt->close();
     } else {
-        echo 'not_logged_in';
+        echo 'Please log in to add to your favourites';
     }
 } else {
     echo 'invalid_request';
