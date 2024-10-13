@@ -303,7 +303,7 @@ $result = $conn->query($sql);
                       }
 
                       // Pagination variables
-                      $records_per_page = 15; // Adjust as needed
+                      $records_per_page = 14; // Adjust as needed
                       $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
                       $start_from = ($current_page - 1) * $records_per_page;
 
@@ -312,6 +312,11 @@ $result = $conn->query($sql);
 
                       // Calculate total pages
                       $total_pages = ceil($total_records / $records_per_page);
+
+                       // Define the maximum number of pages to display at a time
+                      $max_pages_to_show = 10;
+
+                      
 
                       // Modify the query to include LIMIT clause
                       $query = "SELECT * FROM products ORDER BY prod_ID LIMIT $start_from, $records_per_page";
@@ -344,17 +349,49 @@ $result = $conn->query($sql);
                       }
 
                       // Pagination links
-                      echo "<tr><td colspan='9'>";
-                      for ($i = 1; $i <= $total_pages; $i++) {
-                          echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
-                      }
-                      echo "</td></tr>";
+                      // echo "<tr><td colspan='9'>";
+                      // for ($i = 1; $i <= $total_pages; $i++) {
+                      //     echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
+                      // }
+                      // echo "</td></tr>";
+
+                      
 
 
                       $conn->close();
                   ?>
+
+          <!-- pagination links -->
+                <tr>
+                      <td colspan="9">
+                          <ul class="pagination">
+                              <?php
+                              if ($current_page > 1) {
+                                  echo '<li><a href="ecommerce.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
+                              }
+
+                              $start_page = max(1, $current_page - 5);
+                              $end_page = min($total_pages, $current_page + 5);
+
+                              for ($i = $start_page; $i <= $end_page; $i++) {
+                                  if ($i == $current_page) {
+                                      echo '<li class="active"><a href="ecommerce.php?page=' . $i . '">' . $i . '</a></li>';
+                                  } else {
+                                      echo '<li><a href="ecommerce.php?page=' . $i . '">' . $i . '</a></li>';
+                                  }
+                              }
+
+                              if ($current_page < $total_pages) {
+                                  echo '<li><a href="ecommerce.php?page=' . ($current_page + 1) . '">Next >></a></li>';
+                              }
+                              ?>
+                          </ul>
+                      </td>
+                  </tr>
+          <!-- end of pagination links -->
               </tbody>
           </table>
+          
       </div>
     </main>
   </div>

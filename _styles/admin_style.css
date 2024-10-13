@@ -542,7 +542,33 @@ main {
     margin-bottom: 5px;
   }
 
-  
+    /*-------------------------------Pagination links styling----------------------------------------------*/
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+        padding: 0;
+    }
+    
+    .pagination li {
+        margin: 0 5px;
+    }
+    
+    .pagination a {
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .pagination .active a {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+
+      /*-------------------------------End of pagination  styling----------------------------------------------*/
   
 
   /*-------------------------------End of Users page----------------------------------------------*/
