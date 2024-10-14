@@ -120,11 +120,77 @@ $result = $conn->query($sql);
 
   <main>
     <style>
-      .btn-dangers {
-            background-color: #f3810f;
-            border-color: black;
+        .table {
+            border: 1px solid #ddd;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+            width: 100%; /* Adjust width as needed */
+            padding: 10px;
+
+        }
+
+          .table thead th {
+            background-color: #312f2f;
+            color: white;
+            font-weight: bold;
           }
-    </style>
+
+          .table tbody tr:nth-child(even) {
+              background-color: #ffff;
+          }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        td {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          max-width: 110px;
+        }
+
+        a{
+          /* padding-left: 2px; */
+        }
+
+        .btn-danger {
+          background-color: #dc3545;
+          border-color: #dc3545;
+        }
+
+        .btn-dangers {
+          background-color: #f3810f;
+          border-color: black;
+        }
+
+        .btn-sm {
+          padding: .25rem .5rem;
+          font-size: .875rem;
+          line-height: 1.25;
+        }
+
+        .table tbody tr:hover {
+          background-color: #d7dbdd ; /* Adjust the background color as needed */
+          cursor: pointer;
+        }
+
+        #tr-none{
+          background-color: white;          
+        }
+
+        .form-control {
+          width: 500px;
+          /* margin-top: 5px; */
+          margin-left: 480px;
+        }
+      </style>
 
     <section style="margin: 50px;">
       <h1>List Of Users</h1>
@@ -138,8 +204,8 @@ $result = $conn->query($sql);
         </div>
       </form>
 
-      <table class="table table-hover table-bordered">
-        <thead class="table-dark">
+      <table class="table">
+        <thead>
           <tr>
             <th>User_ID</th>
             <th>First Name</th>
@@ -223,17 +289,46 @@ $result = $conn->query($sql);
           }
 
           // Pagination links
-          echo "<tr><td colspan='6'>";
-          for ($i = 1; $i <= $total_pages; $i++) {
-              echo "<a href='users.php?page=" . $i . "'>" . $i . "</a> ";
-          }
-          echo "</td></tr>";
+          // echo "<tr><td colspan='6'>";
+          // for ($i = 1; $i <= $total_pages; $i++) {
+          //     echo "<a href='users.php?page=" . $i . "'>" . $i . "</a> ";
+          // }
+          // echo "</td></tr>";
 
           $conn->close();
           
 
           ?>
         </tbody>
+
+        <!-- pagination links -->
+        <tr id= "tr-none">
+                      <td colspan="9">
+                          <ul class="pagination">
+                              <?php
+                              if ($current_page > 1) {
+                                  echo '<li><a href="users.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
+                              }
+
+                              $start_page = max(1, $current_page - 5);
+                              $end_page = min($total_pages, $current_page + 5);
+
+                              for ($i = $start_page; $i <= $end_page; $i++) {
+                                  if ($i == $current_page) {
+                                      echo '<li class="active"><a href="users.php?page=' . $i . '">' . $i . '</a></li>';
+                                  } else {
+                                      echo '<li><a href="users.php?page=' . $i . '">' . $i . '</a></li>';
+                                  }
+                              }
+
+                              if ($current_page < $total_pages) {
+                                  echo '<li><a href="users.php?page=' . ($current_page + 1) . '">Next >></a></li>';
+                              }
+                              ?>
+                          </ul>
+                      </td>
+                  </tr>
+          <!-- end of pagination links -->
       </table>
 
     </section>

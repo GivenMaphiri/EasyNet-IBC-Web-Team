@@ -198,6 +198,10 @@ $result = $conn->query($sql);
             cursor: pointer;
           }
 
+          #tr-none{
+            background-color: white;          
+          }
+
           .form-control {
             width: 500px;
             /* margin-top: 5px; */
@@ -362,7 +366,7 @@ $result = $conn->query($sql);
                   ?>
 
           <!-- pagination links -->
-                <tr>
+                <tr id= "tr-none">
                       <td colspan="9">
                           <ul class="pagination">
                               <?php

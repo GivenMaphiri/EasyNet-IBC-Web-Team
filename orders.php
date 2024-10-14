@@ -186,6 +186,10 @@ $result = $conn->query($sql);
         th {
           background-color: #f2f2f2;
         }
+
+        #tr-none{
+            background-color: white;          
+          }
       </style>
       <table class="table">
         <thead>
@@ -270,15 +274,44 @@ $result = $conn->query($sql);
 
 
           // Pagination links
-          echo "<tr><td colspan='5'>";
-          for ($i = 1; $i <= $total_pages; $i++) {
-            echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
-          }
-          echo "</td></tr>";
+          // echo "<tr><td colspan='5'>";
+          // for ($i = 1; $i <= $total_pages; $i++) {
+          //   echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
+          // }
+          // echo "</td></tr>";
 
 
           $conn->close();
           ?>
+
+          <!-- pagination links -->
+          <tr id= "tr-none">
+                      <td colspan="9">
+                          <ul class="pagination">
+                              <?php
+                              if ($current_page > 1) {
+                                  echo '<li><a href="orders.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
+                              }
+
+                              $start_page = max(1, $current_page - 5);
+                              $end_page = min($total_pages, $current_page + 5);
+
+                              for ($i = $start_page; $i <= $end_page; $i++) {
+                                  if ($i == $current_page) {
+                                      echo '<li class="active"><a href="orders.php?page=' . $i . '">' . $i . '</a></li>';
+                                  } else {
+                                      echo '<li><a href="orders.php?page=' . $i . '">' . $i . '</a></li>';
+                                  }
+                              }
+
+                              if ($current_page < $total_pages) {
+                                  echo '<li><a href="orders.php?page=' . ($current_page + 1) . '">Next >></a></li>';
+                              }
+                              ?>
+                          </ul>
+                      </td>
+                  </tr>
+          <!-- end of pagination links -->
         </tbody>
       </table>
 
