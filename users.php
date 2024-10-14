@@ -22,7 +22,7 @@ $result = $conn->query($sql);
     <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <link rel="stylesheet" href="_styles/admin_style.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/> -->
 </head>
 <body>
 
@@ -188,13 +188,21 @@ $result = $conn->query($sql);
         .form-control {
           width: 500px;
           /* margin-top: 5px; */
-          margin-left: 480px;
+          margin-left: 380px;
         }
       </style>
 
-    <section style="margin: 50px;">
-      <h1>List Of Users</h1>
-      <br>
+      <div class="page-header">
+        <div>
+          <h1>User Dashboard</h1>
+          <small>Keep track of all your users.</small>
+        </div>
+      </div>
+
+    <section style="margin: 10px;">
+    <div class="container my-5">
+        <h2>Lists Of Users</h2>
+        <br>
 
       <form action="" method="GET">
         <div class="input-group mb-3">
@@ -203,6 +211,8 @@ $result = $conn->query($sql);
           <a href="users.php" class="btn btn-dangers">Reset</a>
         </div>
       </form>
+
+      <br>
 
       <table class="table">
         <thead>
