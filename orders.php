@@ -4,7 +4,7 @@ include 'DBConn.php';
 
 session_start();
 
-$sql = "SELECT order_ID, order_total, placed_on, payment_status, status FROM Orders";
+$sql = "SELECT order_ID, order_total, placed_on, user_ID, payment_status, status FROM orders";
 $result = $conn->query($sql);
 
 ?>
@@ -157,46 +157,95 @@ $result = $conn->query($sql);
         <button type="submit">Filter</button>
       </form> -->
 
-      <!-- <form action="" method="GET">
+      <form action="" method="GET">
         <div class="input-group mb-3">
-          <input type="text" name="search" value="<?php if (isset($_GET['search'])) {
-                                                    echo $_GET['search'];
-                                                  } ?>" class="form-control" placeholder="Search Orders">
+          <input type="text" name="search" value="<?php if (isset($_GET['search'])) { echo $_GET['search']; } ?>" class="form-control" placeholder="Search Orders">
           <button type="submit" class="btn btn-primary">Search</button>
           <a href="orders.php" class="btn btn-dangers">Reset</a>
         </div>
-      </form> -->
+      </form>
 
       <!-- Table starts here -->
 
       <style>
-        table {
-          border-collapse: collapse;
-          width: 100%;
-          /* Adjust width as needed */
-        }
+          .table {
+              border: 1px solid #ddd;
+              margin-bottom: 20px;
+              border-collapse: collapse;
+              width: 100%; /* Adjust width as needed */
+              padding: 10px;
 
-        th,
-        td {
-          border: 1px solid black;
-          padding: 8px;
-          text-align: left;
-        }
+          }
 
-        th {
-          background-color: #f2f2f2;
-        }
+            .table thead th {
+              background-color: #312f2f;
+              color: white;
+              font-weight: bold;
+            }
 
-        #tr-none{
+            .table tbody tr:nth-child(even) {
+                background-color: #ffff;
+            }
+
+          th, td {
+              border: 1px solid black;
+              padding: 8px;
+              text-align: left;
+          }
+
+          th {
+              background-color: #f2f2f2;
+          }
+
+          td {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            max-width: 110px;
+          }
+
+          a{
+            /* padding-left: 2px; */
+          }
+
+          .btn-danger {
+            background-color: #dc3545;
+            border-color: #dc3545;
+          }
+
+          .btn-dangers {
+            background-color: #f3810f;
+            border-color: black;
+          }
+
+          .btn-sm {
+            padding: .25rem .5rem;
+            font-size: .875rem;
+            line-height: 1.25;
+          }
+
+          .table tbody tr:hover {
+            background-color: #d7dbdd ; /* Adjust the background color as needed */
+            cursor: pointer;
+          }
+
+          #tr-none{
             background-color: white;          
           }
-      </style>
+
+          .form-control {
+            width: 500px;
+            /* margin-top: 5px; */
+            margin-left: 480px;
+          }
+        </style>
       <table class="table">
         <thead>
           <tr>
             <th>ID</th>
             <th>Total</th>
             <th>Placed on</th>
+            <th>user_ID</th>
             <th>payment status</th>
             <th>status</th>
           </tr>
@@ -204,11 +253,13 @@ $result = $conn->query($sql);
 
         <tbody>
 
+          
+
           <?php
           // search feature -- searhcing through the users name, number and email
           if (isset($_GET['search'])) {
             $filtervalues = $_GET['search'];
-            $searchquery = "SELECT * FROM orders WHERE CONCAT(order_total, payement_status, status) LIKE '%$filtervalues%' ";
+            $searchquery = "SELECT * FROM orders WHERE CONCAT(order_total, payement_status, status, user_ID) LIKE '%$filtervalues%' ";
 
             $searchquery_run = mysqli_query($conn, $searchquery);
 
@@ -220,6 +271,7 @@ $result = $conn->query($sql);
                   <td><?= $items['order_ID']; ?></td>
                   <td><?= $items['order_total']; ?></td>
                   <td><?= $items['placed_on']; ?></td>
+                  <td><?= $items['user_ID']; ?></td>
                   <td><?= $items['payment_status']; ?></td>
                   <td><?= $items['status']; ?></td>
                   <td><a class='btn btn-dark' href='ordersDelete.php?id=" .$row["order_ID"] ."'>Delete</a></td>
@@ -230,13 +282,14 @@ $result = $conn->query($sql);
               ?>
 
               <tr>
-                <td colspan="5">No records Found</td>
+                <td colspan="6">No records Found</td>
               </tr>
 
           <?php
             }
           }
 
+          echo "<br>";
 
           // Pagination variables
           $records_per_page = 15; // Adjust as needed
@@ -263,6 +316,7 @@ $result = $conn->query($sql);
               echo "<td>" . $row["order_ID"] . "</td>";
               echo "<td>" . $row["order_total"] . "</td>";
               echo "<td>" . $row["placed_on"] . "</td>";
+              echo "<td>" . $row["user_ID"] . "</td>";
               echo "<td>" . $row["payment_status"] . "</td>";
               echo "<td>" . $row["status"] . "</td>";
 
