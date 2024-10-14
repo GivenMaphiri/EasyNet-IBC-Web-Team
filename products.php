@@ -157,10 +157,6 @@ include "DBConn.php";
     <div id="product_head">
       <h1>Shop our products</h1>
     </div>
-    <div id="search_bar">
-      <input id="searchbar" type="text" placeholder="Search for products...">
-      <input id="searchbutton" type="submit" value="Search">
-    </div>
 
     <div id="homeboxes">
       <div id="prodbox1">
@@ -187,65 +183,65 @@ include "DBConn.php";
 
 
     <footer>
-    <hr id="foot_line" />
-    <div class="content">
-      <div class="box">
-        <img src="_images/_logos/easynet.png">
-      </div>
-
-      <div class="box">
-        <h3>My Account</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>My account </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Order history </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Wishlist </a>
-      </div>
-
-      <div class="box">
-        <h3>Information</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Delivery information </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Privacy policy </a>
-      </div>
-
-      <div class="box">
-        <h3>Categories</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Hardware </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Software </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Accessories</a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Combo</a>
-      </div>
-
-      <div class="box">
-        <h3><a href="contact.php">Contact Us</a> </h3>
-        <p><i class="bx bxs-phone"></i>(012)433 6486</p>
-        <p><i class="bx bxs-phone"></i>086 535 7398</p>
-        <p><i class="bx bxs-envelope"></i><a href="mailto:sales@easynetbusiness.co.za">sales@easynetbusiness.co.za</a></p>
-        <p><i class="bx bxs-envelope"></i><a href="mailto:dikeledi@easynetbusiness.co.za">dikeledi@easynetbusiness.co.za</a></p>
-        <p><i class="bx bxs-loaction-plus"></i>Brooklyn, Pretoria</p>
-      </div>
-    </div>
-
-    <div class="social-media-icons">
-      <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
-          <p>Facebook</p>
-        </i>
-      </a>
-      <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'>
-          <p>Instagram</p>
-        </i>
-      </a>
-      <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'>
-          <p>LinkedIn</p>
-        </i>
-      </a>
-    </div>
-
-    <div class="bottom">
       <hr id="foot_line" />
-      <p id="footer_text">
-        Copyright &copy; 2024 EasyNet In Business Communications
-      </p>
-    </div>
-  </footer>
+      <div class="content">
+        <div class="box">
+          <img src="_images/_logos/easynet.png">
+        </div>
+
+        <div class="box">
+          <h3>My Account</h3>
+          <a href=""> <i class="bx bx-chevron-right"></i>My account </a>
+          <a href=""> <i class="bx bx-chevron-right"></i>Order history </a>
+          <a href=""> <i class="bx bx-chevron-right"></i>Wishlist </a>
+        </div>
+
+        <div class="box">
+          <h3>Information</h3>
+          <a href=""> <i class="bx bx-chevron-right"></i>Delivery information </a>
+          <a href=""> <i class="bx bx-chevron-right"></i>Privacy policy </a>
+        </div>
+
+        <div class="box">
+          <h3>Categories</h3>
+          <a href=""> <i class="bx bx-chevron-right"></i>Hardware </a>
+          <a href=""> <i class="bx bx-chevron-right"></i>Software </a>
+          <a href=""> <i class="bx bx-chevron-right"></i>Accessories</a>
+          <a href=""> <i class="bx bx-chevron-right"></i>Combo</a>
+        </div>
+
+        <div class="box">
+          <h3><a href="contact.php">Contact Us</a> </h3>
+          <p><i class="bx bxs-phone"></i>(012)433 6486</p>
+          <p><i class="bx bxs-phone"></i>086 535 7398</p>
+          <p><i class="bx bxs-envelope"></i><a href="mailto:sales@easynetbusiness.co.za">sales@easynetbusiness.co.za</a></p>
+          <p><i class="bx bxs-envelope"></i><a href="mailto:dikeledi@easynetbusiness.co.za">dikeledi@easynetbusiness.co.za</a></p>
+          <p><i class="bx bxs-loaction-plus"></i>Brooklyn, Pretoria</p>
+        </div>
+      </div>
+
+      <div class="social-media-icons">
+        <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
+            <p>Facebook</p>
+          </i>
+        </a>
+        <a href="https://www.innnstagram.com/" target="_blank"> <i class='bx bxl-instagram'>
+            <p>Instagram</p>
+          </i>
+        </a>
+        <a href="https://www.linkkkedin.com/feed/?trk=guest_homepage-basic_google-one-tap-submit" target="_blank"><i class='bx bxl-linkedin-square'>
+            <p>LinkedIn</p>
+          </i>
+        </a>
+      </div>
+
+      <div class="bottom">
+        <hr id="foot_line" />
+        <p id="footer_text">
+          Copyright &copy; 2024 EasyNet In Business Communications
+        </p>
+      </div>
+    </footer>
 </body>
 
 </html>
