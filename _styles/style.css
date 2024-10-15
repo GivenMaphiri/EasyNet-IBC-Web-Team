@@ -928,6 +928,24 @@ footer .content .box .icons i {
   border-bottom-color: rgb(20, 149, 255);
 }
 
+#sort_by {
+  cursor: pointer;
+  border-top-style: none;
+  border-left-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  background-color: white;
+  border-bottom-color: white;
+  border-bottom-width: 2px;
+  padding-bottom: 4px;
+  margin-right: 0;
+  transition: all 0.3s ease-in;
+}
+
+#sort_by:hover {
+  border-bottom-color: rgb(20, 149, 255);
+}
+
 #searchbutton {
   cursor: pointer;
   margin: 0;

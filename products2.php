@@ -200,8 +200,16 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
       ?>
 
 
+
       <div id="search_bar">
-        <form method="GET" action="products2.php">
+        <form method="GET" action="products2.php" id="search_form">
+          <select name="sort_by" id="sort_by">
+            <option value="">Sort By</option>
+            <option value="price_asc" <?php if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price_asc') echo 'selected'; ?>>Price: Low to High</option>
+            <option value="price_desc" <?php if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'price_desc') echo 'selected'; ?>>Price: High to Low</option>
+            <option value="name_asc" <?php if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'name_asc') echo 'selected'; ?>>Alphabetical: A-Z</option>
+            <option value="name_desc" <?php if (isset($_GET['sort_by']) && $_GET['sort_by'] == 'name_desc') echo 'selected'; ?>>Alphabetical: Z-A</option>
+          </select>
           <input id="searchbar" type="text" name="search" placeholder="Search for products..." value="<?php echo htmlspecialchars($searchQuery); ?>" />
           <input id="searchbutton" type="submit" value="Search" />
         </form>
@@ -214,21 +222,31 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
         <div class="prod_display">
           <?php
           $items_per_page = 12;
-
-          // Get the current page number from the URL. If not set, default to page 1.
           $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-
-          // Calculate the offset for the SQL query
           $offset = ($page - 1) * $items_per_page;
-
-          // Retrieve the category from the URL parameter, defaulting to 'all' if not set
           $category = isset($_GET['category']) ? $_GET['category'] : 'all';
-
-          // Get the search query from the URL, if present
           $searchQuery = isset($_GET['search']) ? $_GET['search'] : '';
-
-          // Get the manufacturer from the URL, if present
           $manufacturer = isset($_GET['manufacturer']) ? $_GET['manufacturer'] : '';
+          $sort_by = isset($_GET['sort_by']) ? $_GET['sort_by'] : '';
+
+          // Determine the sort order based on the selected option
+          switch ($sort_by) {
+            case 'price_asc':
+              $order_by = 'prod_price ASC';
+              break;
+            case 'price_desc':
+              $order_by = 'prod_price DESC';
+              break;
+            case 'name_asc':
+              $order_by = 'prod_name ASC';
+              break;
+            case 'name_desc':
+              $order_by = 'prod_name DESC';
+              break;
+            default:
+              $order_by = 'prod_name ASC';  // Default sorting by name A-Z
+              break;
+          }
 
           // Base SQL query to select products with LIMIT and OFFSET for pagination
           if (!empty($searchQuery)) {
@@ -240,12 +258,12 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
               $sql .= " AND prod_type = ?";
               if (!empty($manufacturer)) {
                 $sql .= " AND prod_manufacturer = ?";
-                $sql .= " LIMIT ? OFFSET ?";
+                $sql .= " ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $searchParam = "%" . $searchQuery . "%";
                 $stmt->bind_param("sssssii", $searchParam, $searchParam, $searchParam, $category, $manufacturer, $items_per_page, $offset);
               } else {
-                $sql .= " LIMIT ? OFFSET ?";
+                $sql .= " ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $searchParam = "%" . $searchQuery . "%";
                 $stmt->bind_param("sssii", $searchParam, $searchParam, $searchParam, $category, $items_per_page, $offset);
@@ -253,12 +271,12 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
             } else {
               if (!empty($manufacturer)) {
                 $sql .= " AND prod_manufacturer = ?";
-                $sql .= " LIMIT ? OFFSET ?";
+                $sql .= " ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $searchParam = "%" . $searchQuery . "%";
                 $stmt->bind_param("ssssi", $searchParam, $searchParam, $searchParam, $manufacturer, $items_per_page, $offset);
               } else {
-                $sql .= " LIMIT ? OFFSET ?";
+                $sql .= " ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $searchParam = "%" . $searchQuery . "%";
                 $stmt->bind_param("sssii", $searchParam, $searchParam, $searchParam, $items_per_page, $offset);
@@ -270,21 +288,21 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
               $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_type = ?";
               if (!empty($manufacturer)) {
                 $sql .= " AND prod_manufacturer = ?";
-                $sql .= " LIMIT ? OFFSET ?";
+                $sql .= " ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("ssii", $category, $manufacturer, $items_per_page, $offset);
               } else {
-                $sql .= " LIMIT ? OFFSET ?";
+                $sql .= " ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("sii", $category, $items_per_page, $offset);
               }
             } else {
               if (!empty($manufacturer)) {
-                $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_manufacturer = ? LIMIT ? OFFSET ?";
+                $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products WHERE prod_manufacturer = ? ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("sii", $manufacturer, $items_per_page, $offset);
               } else {
-                $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products LIMIT ? OFFSET ?";
+                $sql = "SELECT prod_id, prod_name, prod_price, prod_image FROM products ORDER BY $order_by LIMIT ? OFFSET ?";
                 $stmt = $conn->prepare($sql);
                 $stmt->bind_param("ii", $items_per_page, $offset);
               }
@@ -302,7 +320,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
               echo "<div id='prodbox2'>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><img class='prod_image' src='_images/_products/" . $row['prod_image'] . "' width='150px'/></a>";
               echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='prod_title'>" . $row['prod_name'] . "</p></a>";
-              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "?'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
+              echo "<a href='prodinfo.php?prod_id=" . $prod_id . "'><p class='product_price'><b>R " . $row['prod_price'] . "</b></p></a>";
               echo "<div id='add_heart_buttons'>";
               echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='boxbutton'>Add to Cart</button>";
               echo "<button type='button' class='add_to_favourite' data-prod-id='" . $row['prod_id'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='$prod_img' id='heart_button'><img id='heart_button_img' src='_images/_icons/heart.png' width='18px' /></button>";
@@ -313,6 +331,7 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
             echo "<p>No products found in this category.</p>";
           }
           ?>
+
         </div>
         <?php
         // Count the total number of items that match the search, category, and manufacturer
