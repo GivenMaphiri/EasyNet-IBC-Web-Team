@@ -22,6 +22,9 @@ $result = $conn->query($sql);
     <link rel="stylesheet" href="_styles/admin_style.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
     <link href="_styles/font-awesome.css" rel="stylesheet" />
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="_lib/datatables/dataTables.css"> 
     
 </head>
 
@@ -228,20 +231,21 @@ $result = $conn->query($sql);
                 </div>
               </div>
             </form> -->
-          
+          <br>
       
         <!-- search form for search feature -->
       <form action="" method="GET">
         <div class="input-group mb-3">
-          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Products">
-          <button type="submit" class="btn btn-primary">Search</button>
+          <!-- <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Products">
+          <button type="submit" class="btn btn-primary">Search</button> -->
           <a href="ecommerce.php" class="btn btn-dangers">Reset</a>
         </div>
       </form>
       
+      
 
       <br>
-          <table class="table">
+          <table id="prodTable" class="table">
               <thead>
                   <tr>
                   <th>ID</th>
@@ -366,7 +370,7 @@ $result = $conn->query($sql);
                   ?>
 
           <!-- pagination links -->
-                <tr id= "tr-none">
+                <!-- <tr id= "tr-none">
                       <td colspan="9">
                           <ul class="pagination">
                               <?php
@@ -391,10 +395,22 @@ $result = $conn->query($sql);
                               ?>
                           </ul>
                       </td>
-                  </tr>
+                  </tr> -->
           <!-- end of pagination links -->
               </tbody>
           </table>
+
+          <!-- JQuery -->
+          <script src="_lib/jquery/jquery-3.7.1.min.js"></script>
+
+          <!-- DataTables -->
+          <script src="_lib/datatables/dataTables.js"></script>
+
+          <script>
+              $(document).ready( function () {
+                  $('#prodTable').DataTable();
+              } );
+          </script>
           
       </div>
     </main>

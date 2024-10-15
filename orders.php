@@ -20,6 +20,10 @@ $result = $conn->query($sql);
   <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
   <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png" />
   <link rel="stylesheet" href="_styles/admin_style.css" />
+
+ <!-- DataTables -->
+ <link rel="stylesheet" href="_lib/datatables/dataTables.css"> 
+  
 </head>
 
 <body>
@@ -159,8 +163,8 @@ $result = $conn->query($sql);
 
       <form action="" method="GET">
         <div class="input-group mb-3">
-          <input type="text" name="search" value="<?php if (isset($_GET['search'])) { echo $_GET['search']; } ?>" class="form-control" placeholder="Search Orders">
-          <button type="submit" class="btn btn-primary">Search</button>
+          <!-- <input type="text" name="search" value="<?php if (isset($_GET['search'])) { echo $_GET['search']; } ?>" class="form-control" placeholder="Search Orders">
+          <button type="submit" class="btn btn-primary">Search</button> -->
           <a href="orders.php" class="btn btn-dangers">Reset</a>
         </div>
       </form>
@@ -239,7 +243,7 @@ $result = $conn->query($sql);
             margin-left: 480px;
           }
         </style>
-      <table class="table">
+      <table id="orderTable" class="table">
         <thead>
           <tr>
             <th>ID</th>
@@ -326,20 +330,11 @@ $result = $conn->query($sql);
             echo "0 results";
           }
 
-
-          // Pagination links
-          // echo "<tr><td colspan='5'>";
-          // for ($i = 1; $i <= $total_pages; $i++) {
-          //   echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
-          // }
-          // echo "</td></tr>";
-
-
           $conn->close();
           ?>
 
           <!-- pagination links -->
-          <tr id= "tr-none">
+          <!-- <tr id= "tr-none">
                       <td colspan="9">
                           <ul class="pagination">
                               <?php
@@ -364,25 +359,41 @@ $result = $conn->query($sql);
                               ?>
                           </ul>
                       </td>
-                  </tr>
+                  </tr> -->
           <!-- end of pagination links -->
         </tbody>
+        
       </table>
 
 
 
       <!------------- Table start-------------------------------------------------------------------------------->
+
+        <!-- JQuery -->
+        <script src="_lib/jquery/jquery-3.7.1.min.js"></script>
+
+        <!-- DataTables -->
+        <script src="_lib/datatables/dataTables.js"></script>
+
+        <script>
+            $(document).ready( function () {
+                $('#orderTable').DataTable();
+            } );
+        </script>
+      
      
 
 
 
   </div>
 
+
   <!------------- Table End-------------------------------------------------------------------------------->
   </main>
   </div>
   <!-- main-content end -->
 
+  
 
 
 

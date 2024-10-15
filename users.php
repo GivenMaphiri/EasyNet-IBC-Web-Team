@@ -22,7 +22,10 @@ $result = $conn->query($sql);
     <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <link rel="stylesheet" href="_styles/admin_style.css" />
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/> -->
+     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"/>  -->
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="_lib/datatables/dataTables.css"> 
 </head>
 <body>
 
@@ -206,15 +209,15 @@ $result = $conn->query($sql);
 
       <form action="" method="GET">
         <div class="input-group mb-3">
-          <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Users">
-          <button type="submit" class="btn btn-primary">Search</button>
+          <!-- <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Users">
+          <button type="submit" class="btn btn-primary">Search</button> -->
           <a href="users.php" class="btn btn-dangers">Reset</a>
         </div>
       </form>
 
       <br>
 
-      <table class="table">
+      <table id="userTable" class="table">
         <thead>
           <tr>
             <th>User_ID</th>
@@ -340,6 +343,18 @@ $result = $conn->query($sql);
                   </tr>
           <!-- end of pagination links -->
       </table>
+
+      <!-- JQuery -->
+    <script src="_lib/jquery/jquery-3.7.1.min.js"></script>
+
+      <!-- DataTables -->
+      <script src="_lib/datatables/dataTables.js"></script>
+
+      <script>
+          $(document).ready( function () {
+              $('#userTable').DataTable();
+          } );
+      </script>
 
     </section>
   </main>

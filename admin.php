@@ -296,7 +296,7 @@ $numhardware = mysqli_num_rows($barquery);
       <br>
 
       <script>
-        // Replace with your database connection details
+        // Chart.js database connection
         var conn = new XMLHttpRequest();
         conn.open("GET", "fetch_product_type_data.php", true);
         conn.onreadystatechange = function() {
