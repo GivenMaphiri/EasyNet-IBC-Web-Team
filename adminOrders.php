@@ -56,9 +56,7 @@ $result = $conn->query($sql);
               text-align: left;
           }
 
-          td {
-            text-align: left;
-          }
+        
 </style>
 
     <table id="prodTable" class="display">
