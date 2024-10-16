@@ -172,7 +172,7 @@ if (!isset($_SESSION['user_id'])) {
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
           echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";
-          echo "<div id='check_quantity'>";
+          echo "<div id='fave_buttons'>";
           echo "<button type='button' class='add_to_cart' data-prod-id='" . $row['prod_ID'] . "' data-prod-name='" . $row['prod_name'] . "' data-prod-price='" . $row['prod_price'] . "' data-prod-image='" . $row['prod_image'] . "' id='boxbutton'>Add to Cart</button>";
           echo "<button type='button' class='remove_from_favourite' onclick='removeFromCart(" . $row['prod_ID'] . ")' id='remove_fav' >Remove from Favourites</button>";
           echo "</div>";

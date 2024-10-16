@@ -200,88 +200,11 @@ include "DBConn.php"; // Include your database connection
 
 
     <section id="deals_banner">
-      <h4> Combos</h4>
-      <h2>Explore our - <span> EXCLUSIVE COMBO </span> - deals</h2>
-      <button>Explore More</button>
+      <h4>Products</h4>
+      <h2>Explore our - <span> WIDE RANGE </span> - of products</h2>
+      <a href="products2.php?category=all"><button>Explore More</button></a>
     </section>
 
-    <div id="feature_box">
-      <h1 id="feature_box_head">Featured Items</h1>
-      <p>View our most purchased items</p>
-    </div>
-    <section id="features">
-      <div id="fea-container">
-        <div id="fea">
-          <img src="_images/microsoft_365.webp" width="200px">
-        </div>
-        <h6>Microsoft</h6>
-        <h4>Microsoft 365</h4>
-        <h5>R1 200</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-          <img src="_images/_icons/empty-rating.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
-
-      <div id="fea-container">
-        <div id="fea">
-          <img src="_images/macbook_13.webp" width="200px">
-        </div>
-        <h6>Apple</h6>
-        <h4>Apple MacBook Air 13-Inch With M1 Processor</h4>
-        <h5>R15 999</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-          <img src="_images/_icons/empty-rating.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
-
-      <div id="fea-container">
-        <div id="fea">
-          <img src="_images/ipad_13inch.webp" width="200px">
-        </div>
-        <h6>Apple</h6>
-        <h4>Apple iPad Pro 13inch M4 WiFi 256GB Standard Glass Space Black</h4>
-        <h5>R15 999</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
-
-      <div id="fea-container">
-        <div id="fea">
-          <img src="_images/playstation_controller.webp" width="250px">
-        </div>
-        <h6>PlayStation</h6>
-        <h4>Playstation 5 DualSense EDGE Wireless Controller</h4>
-        <h5>R4 599</h5>
-        <div id="star">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/full-filled-rating.png" width="15px">
-          <img src="_images/_icons/half-filled-rating-star.png" width="15px">
-        </div>
-        <a href="products2.php">
-          <button id="boxbutton-home">Add to Cart</button></a>
-      </div>
-    </section>
 
     <div id="home_box">
       <h1 id="home_box_head">Shop our products</h1>
