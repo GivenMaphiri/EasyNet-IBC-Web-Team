@@ -455,7 +455,7 @@ main {
 }
 
 .main-messages #messages {
-    border: 1px solid #ccc;
+    border: 4px solid #ece6e6;
     padding: 1rem;
     margin-bottom: 1rem;
     padding-bottom: 1rem; /* Add padding to the bottom of the main messages container */
@@ -498,15 +498,32 @@ main {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #ff6666;
+    background-color: #000000;
     color: #fff;
     flex: 1 1 auto; /* Ensure buttons take equal space */
     text-align: center;
     box-sizing: border-box; /* Ensure padding and width are consistent */
 }
 
-.message-actions .delete-message:hover, .message-actions .reply-button:hover {
-    background-color: #218838;
+ .message-actions .reply-button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #6781f3;
+    color: #fff;
+    flex: 1 1 auto; /* Ensure buttons take equal space */
+    text-align: center;
+    box-sizing: border-box; /* Ensure padding and width are consistent */
+}
+
+.message-actions .delete-message:hover {
+    background-color: #ff0000;
+}
+
+.message-actions .reply-button:hover {
+    background-color: #305eae;
+
 }
 
  /*-------------------------------End of Messages dashboard----------------------------------------------*/

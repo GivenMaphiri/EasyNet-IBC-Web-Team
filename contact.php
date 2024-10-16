@@ -222,13 +222,17 @@ include "DBConn.php";
         <input type="email" id="email" name="email" required>
 
         <label for="message">Message:</label>
-        <textarea id="message" name="message" required></textarea>
+        <textarea id="message_us" name="message" required></textarea>
 
-        <button type="submit" value="submit" name="submit">Send Message</button>
+        <button onclick="showAlert()" type="submit" value="submit" name="submit">Send Message</button>
       </form>
     </div>
 
-
+    <script>
+      function showAlert() {
+        alert("Message sent!");
+      }
+    </script>
 
     <!--<script src="_javascript/contact.js"></script>  -->
 
