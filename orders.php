@@ -139,40 +139,8 @@ $result = $conn->query($sql);
           background-color: #f3810f;
           border-color: black;
         }
-      </style>
 
-      <div class="page-header">
-        <div>
-          <h1>Orders Dashboard</h1>
-          <small>keep track of orders as well as there status.</small>
-        </div>
-      </div>
-
-
-      <!-- <form method="GET" action="">
-        <label for="status">Filter by Status:</label>
-        <select name="status" id="status">
-            <option value="">All</option>
-            <option value="Delivered">Delivered</option>
-            <option value="Pending">Pending</option>
-            <option value="Return">Return</option>
-            <option value="In Progress">In Progress</option>
-        </select>
-        <button type="submit">Filter</button>
-      </form> -->
-
-      <form action="" method="GET">
-        <div class="input-group mb-3">
-          <!-- <input type="text" name="search" value="<?php if (isset($_GET['search'])) { echo $_GET['search']; } ?>" class="form-control" placeholder="Search Orders">
-          <button type="submit" class="btn btn-primary">Search</button> -->
-          <a href="orders.php" class="btn btn-dangers">Reset</a>
-        </div>
-      </form>
-
-      <!-- Table starts here -->
-
-      <style>
-          .table {
+        .table {
               border: 1px solid #ddd;
               margin-bottom: 20px;
               border-collapse: collapse;
@@ -242,7 +210,20 @@ $result = $conn->query($sql);
             /* margin-top: 5px; */
             margin-left: 480px;
           }
-        </style>
+      </style>
+
+      <div class="page-header">
+        <div>
+          <h1>Orders Dashboard</h1>
+          <small>keep track of orders as well as there status.</small>
+        </div>
+      </div>
+
+
+      
+
+      <!-- Table starts here -->
+       
       <table id="orderTable" class="table">
         <thead>
           <tr>
@@ -257,61 +238,7 @@ $result = $conn->query($sql);
 
         <tbody>
 
-          
-
           <?php
-          // search feature -- searhcing through the users name, number and email
-          if (isset($_GET['search'])) {
-            $filtervalues = $_GET['search'];
-            $searchquery = "SELECT * FROM orders WHERE CONCAT(order_total, payement_status, status, user_ID) LIKE '%$filtervalues%' ";
-
-            $searchquery_run = mysqli_query($conn, $searchquery);
-
-            if (mysqli_num_rows($searchquery_run) > 0) {
-
-              foreach ($searchquery_run as $items) {
-          ?>
-                <tr>
-                  <td><?= $items['order_ID']; ?></td>
-                  <td><?= $items['order_total']; ?></td>
-                  <td><?= $items['placed_on']; ?></td>
-                  <td><?= $items['user_ID']; ?></td>
-                  <td><?= $items['payment_status']; ?></td>
-                  <td><?= $items['status']; ?></td>
-                  <td><a class='btn btn-dark' href='ordersDelete.php?id=" .$row["order_ID"] ."'>Delete</a></td>
-                </tr>
-              <?php
-              }
-            } else {
-              ?>
-
-              <tr>
-                <td colspan="6">No records Found</td>
-              </tr>
-
-          <?php
-            }
-          }
-
-          echo "<br>";
-
-          // Pagination variables
-          $records_per_page = 15; // Adjust as needed
-          $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-          $start_from = ($current_page - 1) * $records_per_page;
-
-          // Fetch total records
-          $total_records = mysqli_num_rows($result);
-
-          // Calculate total pages
-          $total_pages = ceil($total_records / $records_per_page);
-
-          // Modify the query to include LIMIT clause
-          $query = "SELECT * FROM orders ORDER BY order_ID LIMIT $start_from, $records_per_page";
-          $result = mysqli_query($conn, $query);
-
-
-
 
           if ($result->num_rows > 0) {
             // Output data of each row
@@ -338,24 +265,24 @@ $result = $conn->query($sql);
                       <td colspan="9">
                           <ul class="pagination">
                               <?php
-                              if ($current_page > 1) {
-                                  echo '<li><a href="orders.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
-                              }
+                              // if ($current_page > 1) {
+                              //     echo '<li><a href="orders.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
+                              // }
 
-                              $start_page = max(1, $current_page - 5);
-                              $end_page = min($total_pages, $current_page + 5);
+                              // $start_page = max(1, $current_page - 5);
+                              // $end_page = min($total_pages, $current_page + 5);
 
-                              for ($i = $start_page; $i <= $end_page; $i++) {
-                                  if ($i == $current_page) {
-                                      echo '<li class="active"><a href="orders.php?page=' . $i . '">' . $i . '</a></li>';
-                                  } else {
-                                      echo '<li><a href="orders.php?page=' . $i . '">' . $i . '</a></li>';
-                                  }
-                              }
+                              // for ($i = $start_page; $i <= $end_page; $i++) {
+                              //     if ($i == $current_page) {
+                              //         echo '<li class="active"><a href="orders.php?page=' . $i . '">' . $i . '</a></li>';
+                              //     } else {
+                              //         echo '<li><a href="orders.php?page=' . $i . '">' . $i . '</a></li>';
+                              //     }
+                              // }
 
-                              if ($current_page < $total_pages) {
-                                  echo '<li><a href="orders.php?page=' . ($current_page + 1) . '">Next >></a></li>';
-                              }
+                              // if ($current_page < $total_pages) {
+                              //     echo '<li><a href="orders.php?page=' . ($current_page + 1) . '">Next >></a></li>';
+                              // }
                               ?>
                           </ul>
                       </td>

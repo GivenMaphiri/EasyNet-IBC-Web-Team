@@ -212,35 +212,7 @@ $result = $conn->query($sql);
           }
         </style>
 
-        <!-- filter code for the filter feature -->
-        
-            <!-- <form action="" method="GET">
-              <div class="row">
-                
-                <div class="col-md-4">
-                  <select name="prod_type" required class="form-select">
-                    <option value="">Select Product Type</option>
-                    <option value="Hardware" <?= isset($_GET['prod_type']) == true ? ($_GET['prod_type'] == 'Hardware' ? 'selected': '') :'' ?>>Hardware</option>
-                    <option value="Software" <?= isset($_GET['prod_type']) == true ? ($_GET['prod_type'] == 'Software'  ? 'selected': '') :'' ?>>Software</option>
-                    <option value="Accessories" <?= isset($_GET['prod_type']) == true ? ($_GET['prod_type'] == 'Accessories'  ? 'selected': ''):'' ?>>Accessories</option>
-                  </select>
-                </div>
-                <div class="col-md-4">
-                  <button type="submit" class="btn btn-secondary">Filter</button>
-                  <a href="ecommerce.php" class="btn btn-dangers">Reset</a>
-                </div>
-              </div>
-            </form> -->
           <br>
-      
-        <!-- search form for search feature -->
-      <form action="" method="GET">
-        <div class="input-group mb-3">
-          <!-- <input type="text" name="search" value="<?php if(isset($_GET['search'])){echo $_GET['search'];} ?>" class="form-control" placeholder="Search Products">
-          <button type="submit" class="btn btn-primary">Search</button> -->
-          <a href="ecommerce.php" class="btn btn-dangers">Reset</a>
-        </div>
-      </form>
       
       
 
@@ -248,87 +220,21 @@ $result = $conn->query($sql);
           <table id="prodTable" class="table">
               <thead>
                   <tr>
-                  <th>ID</th>
-                  <th>Name</th>
-                  <th>Code</th>
-                  <th>Description</th>
-                  <th>Price</th>
-                  <th>Image</th>
-                  <th>Manufacturer</th>
-                  <th>Type</th>
-                  <th>Action</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th>Manufacturer</th>
+                    <th>Type</th>
+                    <th>Action</th>
                   </tr>
                   
               </thead>
 
               <tbody>
                   <?php
-
-                      // filter feature ---- 
-                      // if(isset($_GET['prod_type']) &&  $_GET['prod_type'] != '') {
-
-                      //   $prod_type= validate($_GET['prod_type']);
-                      //   $filterquery = "SELECT * FROM products WHERE prod_type= $prod_type";
-                      // } else {
-
-                      //   $filterquery = "SELECT * FROM products WHERE prod_type= $prod_type";
-                      // }
-
-
-                      // search feature -- searhcing through the products name, code and manufacturer
-                      if(isset($_GET['search'])) {
-                        $filtervalues = $_GET['search'];
-                        $searchquery = "SELECT * FROM products WHERE CONCAT(prod_name, prod_code, prod_manufacturer) LIKE '%$filtervalues%' ";
-
-                        $searchquery_run = mysqli_query($conn, $searchquery);
-
-                        if(mysqli_num_rows($searchquery_run) > 0) {
-
-                          foreach($searchquery_run as $items) {
-                            ?>
-                              <tr>
-                                <td><?= $items['prod_ID']; ?></td>
-                                <td><?= $items['prod_name']; ?></td>
-                                <td><?= $items['prod_code']; ?></td>
-                                <td><?= $items['prod_description']; ?></td>
-                                <td><?= $items['prod_price']; ?></td>
-                                <td><?= $items['prod_image']; ?></td>
-                                <td><?= $items['prod_manufacturer']; ?></td>
-                                <td><?= $items['prod_type']; ?></td>
-                                <td><a class='search-btn' href='ecommerceDelete.php?id=" .$row["prod_ID"] ."'>Delete</a></td>
-                              </tr>
-                            <?php
-                          }
-                        } else {
-                          ?>
-
-                          <tr>
-                            <td colspan="9">No records Found</td>
-                          </tr>
-
-                          <?php
-                        }
-                      }
-
-                      // Pagination variables
-                      $records_per_page = 14; // Adjust as needed
-                      $current_page = isset($_GET['page']) ? $_GET['page'] : 1;
-                      $start_from = ($current_page - 1) * $records_per_page;
-
-                      // Fetch total records
-                      $total_records = mysqli_num_rows($result);
-
-                      // Calculate total pages
-                      $total_pages = ceil($total_records / $records_per_page);
-
-                       // Define the maximum number of pages to display at a time
-                      $max_pages_to_show = 10;
-
-                      
-
-                      // Modify the query to include LIMIT clause
-                      $query = "SELECT * FROM products ORDER BY prod_ID LIMIT $start_from, $records_per_page";
-                      $result = mysqli_query($conn, $query);
 
 
                       if ($result->num_rows > 0) {
@@ -356,15 +262,7 @@ $result = $conn->query($sql);
                           echo "0 results";
                       }
 
-                      // Pagination links
-                      // echo "<tr><td colspan='9'>";
-                      // for ($i = 1; $i <= $total_pages; $i++) {
-                      //     echo "<a href='ecommerce.php?page=" . $i . "'>" . $i . "</a> ";
-                      // }
-                      // echo "</td></tr>";
-
                       
-
 
                       $conn->close();
                   ?>
@@ -374,24 +272,24 @@ $result = $conn->query($sql);
                       <td colspan="9">
                           <ul class="pagination">
                               <?php
-                              if ($current_page > 1) {
-                                  echo '<li><a href="ecommerce.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
-                              }
+                              // if ($current_page > 1) {
+                              //     echo '<li><a href="ecommerce.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
+                              // }
 
-                              $start_page = max(1, $current_page - 5);
-                              $end_page = min($total_pages, $current_page + 5);
+                              // $start_page = max(1, $current_page - 5);
+                              // $end_page = min($total_pages, $current_page + 5);
 
-                              for ($i = $start_page; $i <= $end_page; $i++) {
-                                  if ($i == $current_page) {
-                                      echo '<li class="active"><a href="ecommerce.php?page=' . $i . '">' . $i . '</a></li>';
-                                  } else {
-                                      echo '<li><a href="ecommerce.php?page=' . $i . '">' . $i . '</a></li>';
-                                  }
-                              }
+                              // for ($i = $start_page; $i <= $end_page; $i++) {
+                              //     if ($i == $current_page) {
+                              //         echo '<li class="active"><a href="ecommerce.php?page=' . $i . '">' . $i . '</a></li>';
+                              //     } else {
+                              //         echo '<li><a href="ecommerce.php?page=' . $i . '">' . $i . '</a></li>';
+                              //     }
+                              // }
 
-                              if ($current_page < $total_pages) {
-                                  echo '<li><a href="ecommerce.php?page=' . ($current_page + 1) . '">Next >></a></li>';
-                              }
+                              // if ($current_page < $total_pages) {
+                              //     echo '<li><a href="ecommerce.php?page=' . ($current_page + 1) . '">Next >></a></li>';
+                              // }
                               ?>
                           </ul>
                       </td>
