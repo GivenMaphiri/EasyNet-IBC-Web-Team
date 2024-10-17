@@ -168,7 +168,7 @@ if (!isset($_SESSION['user_id'])) {
 
       if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
-          echo "<div class='checkbox1'>";
+          echo "<div id='prodbox5'>";
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
           echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";

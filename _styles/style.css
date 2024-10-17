@@ -1063,6 +1063,41 @@ footer .content .box .icons i {
   min-height: 40vh;
 }
 
+
+#cart_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+}
+
+#cartboxes {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 250px;
+  height: 315px;
+  border-style: transparent;
+  padding: 10px;
+  border-radius: 5px;
+  border-width: 1px;
+  box-shadow: 5px 5px 15px grey;
+  transition: all 0.2s ease-in;
+}
+
+#total_container {
+  display:grid;
+  margin-top: 20px; /* Space above the total container */
+  padding: 5px; /* Padding inside the total container */
+  background-color: #e0e0e0; /* Light background for visibility */
+  border-radius: 5px; /* Rounded corners */
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); /* Responsive grid */
+}
+
+#total_container p{
+display:flex;}
+
+
 .wrapper {
   max-width: 1000px;
   margin: 0 auto;
