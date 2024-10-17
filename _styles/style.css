@@ -1065,8 +1065,8 @@ footer .content .box .icons i {
 
 
 #cart_container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  display: flex;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 #cartboxes {
@@ -1086,16 +1086,17 @@ footer .content .box .icons i {
 }
 
 #total_container {
-  display:grid;
-  margin-top: 20px; /* Space above the total container */
-  padding: 5px; /* Padding inside the total container */
-  background-color: #e0e0e0; /* Light background for visibility */
-  border-radius: 5px; /* Rounded corners */
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); /* Responsive grid */
+  display:flex;
+  margin-top: 20px;
+  padding: 5px; 
+  background-color: #e0e0e0; 
+  border-radius: 5px;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); 
 }
 
 #total_container p{
-display:flex;}
+display:flex;
+}
 
 
 .wrapper {

@@ -196,6 +196,7 @@ if (!isset($_SESSION['user_id'])) {
         echo "<button id='rem_button' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
         echo "</div>";
         echo "</div>";
+        echo "</div>";
       } 
       echo "<div id='total_container'>";
       echo "<p> Net Price:</p>";
