@@ -108,6 +108,20 @@ a {
 }
 
 /*----message alert------*/
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  background-color: #353336;
+  color: white;
+  text-align: center;
+  padding: 15px ;
+  border-radius: 5px;
+}
+
 #message {
   text-align: center;
   margin: 0 auto;
