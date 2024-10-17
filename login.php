@@ -16,7 +16,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
   $password = validate($_POST['password']);
 
   if (empty($email) || empty($password)) {
-    $error_message = "All fields are required";
+    header("Location: login.php?error=All fields are required");
+    exit();
     } else {
     // Adjusted SQL query to match the 'users' table structure
     $sql = "SELECT * FROM users WHERE email_address='$email'";
@@ -31,19 +32,28 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
         if (password_verify($password, $row['password'])) {
           $_SESSION['email'] = $email;
           $_SESSION['user_id'] = $row['user_ID'];
+          unset($_SESSION['error_message']); // Clear error message on successful login
           header("Location: index.php");
           exit();
         } else {
           $error_message = "Incorrect password";
+          $_SESSION['error_message'] = $error_message; // Store error message in session
         }
       } else {
         $error_message = "Incorrect email address or password";
+        $_SESSION['error_message'] = $error_message; // Store error message in session
       }
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
       exit();
     }
   }
+}
+
+// Check if there's an error message in the session
+if (isset($_SESSION['error_message'])) {
+  $error_message = $_SESSION['error_message'];
+  unset($_SESSION['error_message']); // Clear the error message after displaying it
 }
 ?>
 
@@ -183,8 +193,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
       <div id="login_container">
       
       <div class="notification" id="notification">
-    <?php if (isset($error_message)) echo $error_message; ?>
-        </div>
+        <?php if (!empty($error_message)) echo $error_message; ?>
+      </div>
 
         <script>
             // Show the notification if there's an error message

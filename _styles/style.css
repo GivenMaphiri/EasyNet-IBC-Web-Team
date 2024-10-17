@@ -113,9 +113,9 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: #353336;
   margin: 0 auto;
   margin-bottom: 1rem;
-  background-color: #353336;
   color: white;
   text-align: center;
   padding: 15px ;
