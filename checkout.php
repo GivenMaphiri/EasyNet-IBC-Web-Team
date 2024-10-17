@@ -186,7 +186,7 @@ if (!isset($_SESSION['user_id'])) {
         $subtotal += $row['prod_price'] * $row['quantity'];
         $cartvat += $row['cart_VAT'] * $row['quantity'];
         $totalprice += $row['cart_incTotal'] * $row['quantity'];
-        echo "<div id='products_container'>";
+        echo "<div class='products_container'>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
         echo "<p class='prod_prices'><b>R" . number_format($row['prod_price'], 2) . "</b></p>";

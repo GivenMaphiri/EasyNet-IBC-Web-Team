@@ -198,13 +198,18 @@ include "DBConn.php"; // Include your database connection
             }
 
             if ($stmt->execute()) {
-                echo "Account information updated successfully.";
+                // Redirect to the home page with a success message
+                echo "<script>
+                alert('Your account information has been updated successfully.');
+                window.location.href = 'manageaccount.php';
+              </script>";
             } else {
                 echo "Error updating account information.";
             }
         }
 
         ?>
+
         <div id="shipping_con">
             <form method="post">
                 <div id="shipping_info">

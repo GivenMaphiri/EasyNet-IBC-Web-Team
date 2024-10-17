@@ -16,9 +16,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
   $password = validate($_POST['password']);
 
   if (empty($email) || empty($password)) {
-    header("Location: login.php?error=All fields are required");
-    exit();
-  } else {
+    $error_message = "All fields are required";
+    } else {
     // Adjusted SQL query to match the 'users' table structure
     $sql = "SELECT * FROM users WHERE email_address='$email'";
 
@@ -35,12 +34,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
           header("Location: index.php");
           exit();
         } else {
-          header("Location: login.php?error=Incorrect password");
-          exit();
+          $error_message = "Incorrect password";
         }
       } else {
-        header("Location: login.php?error=Incorrect email address");
-        exit();
+        $error_message = "Incorrect email address or password";
       }
     } else {
       echo "Error: " . $sql . "<br>" . mysqli_error($conn);
@@ -180,10 +177,31 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     /*--------Login box---------*/
     <form action="login.php" method="post" class="form-box">
 
+
+
       <!-- Replace "login.php" with your backend script -->
       <div id="login_container">
+      
+      <div class="notification" id="notification">
+    <?php if (isset($error_message)) echo $error_message; ?>
+        </div>
+
+        <script>
+            // Show the notification if there's an error message
+            window.onload = function() {
+                var notification = document.getElementById('notification');
+                if (notification.innerHTML) {
+                    notification.style.display = 'block';
+                    setTimeout(function() {
+                        notification.style.display = 'none';
+                    }, 6000); // Hide after 5 seconds
+                }
+            };
+        </script>
+
         <h1 id="login_heading">Login</h1>
         <div>
+
           <input id="email" type="email" name="email" placeholder="Email" class="signup_box" required />
         </div>
         <span id="emailError" class="error"></span>

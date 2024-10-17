@@ -108,6 +108,20 @@ a {
 }
 
 /*----message alert------*/
+
+.notification {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  background-color: #353336;
+  color: white;
+  text-align: center;
+  padding: 15px ;
+  border-radius: 5px;
+}
+
 #message {
   text-align: center;
   margin: 0 auto;
@@ -1063,11 +1077,14 @@ footer .content .box .icons i {
 }
 
 #total_container {
-  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   gap: 30px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 20px;
 }
 
 .shipping_heading {
@@ -1126,7 +1143,7 @@ footer .content .box .icons i {
   justify-content: space-between;
   align-items: center;
   width: 250px;
-  height: 275px;
+  min-height: 275px;
   border-style: solid;
   padding: 10px;
   border-radius: 10px;
@@ -1515,6 +1532,7 @@ footer .content .box .icons i {
   margin-left: 3%;
   margin-right: 3%;
   margin-top: 20px;
+  margin-bottom: 20px;
   min-height: 60vh;
 }
 
@@ -2148,12 +2166,22 @@ td {
   font-weight: 100;
   margin-bottom: -10px;
 }
+#signup_right h4 a {
+  color: rgb(70, 178, 255);
+}
 
 #signup_right {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
+}
+
+#fave_buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .signup_box {

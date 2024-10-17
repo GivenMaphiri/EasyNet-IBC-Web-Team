@@ -252,7 +252,7 @@ if (isset($_POST['submit-btn'])) {
           <input type="password" name="password" placeholder="Password" class="signup_box" required />
           <h4>Confirm password</h4>
           <input type="password" name="cpassword" placeholder="Confirm Password" class="signup_box" required />
-          <h4>already have an account? <a href="login.php">login now </a></h4>
+          <h4>Already have an account? <a href="login.php">Login now</a></h4>
           <div>
             <button type="submit" name="submit-btn" class="signup_button">Sign Up</button>
           </div>
