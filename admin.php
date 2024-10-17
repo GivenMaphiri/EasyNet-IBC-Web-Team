@@ -145,7 +145,7 @@ $numhardware = mysqli_num_rows($barquery);
       <div class="cards">
 
         <!-- User Card-->
-        <div class="card-single">
+        <a href="users.php"><div class="card-single">
 
           <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
           <?php
@@ -168,10 +168,11 @@ $numhardware = mysqli_num_rows($barquery);
             </div>
           </div>
         </div>
+        </a>
 
 
         <!-- Orders Card-->
-        <div class="card-single">
+        <a href="orders.php"> <div class="card-single">
 
           <!-- counts the number of rows in the users table and dispalys it as the total number of orders placed.-->
           <?php
@@ -194,7 +195,7 @@ $numhardware = mysqli_num_rows($barquery);
             </div>
           </div>
         </div>
-
+        </a>
         <!-- Revenue card-->
         <!-- <div class="card-single">
           <div class="card-flex">
@@ -216,7 +217,7 @@ $numhardware = mysqli_num_rows($barquery);
 
 
         <!-- Products card-->
-        <div class="card-single">
+        <a href="ecommerce.php"><div class="card-single" >
 
           <?php
           $select_products = mysqli_query($conn, "SELECT * FROM `products`") or die('query failed');
@@ -224,7 +225,7 @@ $numhardware = mysqli_num_rows($barquery);
           ?>
           <div class="card-flex">
             <div class="card-info">
-              <div class="card-head">
+              <div class="card-head" >
                 <span>Inventory</span>
                 <small>Number of products available</small>
               </div>
@@ -238,6 +239,7 @@ $numhardware = mysqli_num_rows($barquery);
             </div>
           </div>
         </div>
+        </a>
       </div>
 
       <!------------- chart start-------------------------------------------------------------------------------->
@@ -325,7 +327,6 @@ $numhardware = mysqli_num_rows($barquery);
 
 
       <!------------- chart end-------------------------------------------------------------------------------->
-
 
 
       <!------------- Table start-------------------------------------------------------------------------------->
