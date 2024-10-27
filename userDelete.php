@@ -42,10 +42,10 @@ mysqli_stmt_close($stmt_shipping_count);
 // Display confirmation message if dependencies found
 if ($cart_count > 0 || $favourite_count > 0 || $orders_count > 0 || $shipping_count > 0) {
     echo "This user has associated records in other tables. Deleting this user will also delete these records as well as any associated orders. Are you sure you want to proceed?
-    <form action='userDelete.php' method='post'>
+    <form style='border: 1px solid #ccc; padding: 10px;' action='userDelete.php' method='post'>
         <input type='hidden' name='userId' value='$userID'>
-        <button type='submit'>Confirm Delete</button>
-        <a href='users.php'>Cancel</a>
+        <button type='submit' style='background-color: #f44336; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;'>Confirm Delete</button>
+        <a href='users.php' style='background-color: #ddd; color: black; padding: 10px 20px; border: none; border-radius: 4px; text-decoration: none; display: inline-block;'>Cancel</a>
     </form>";
 } else {
     // Proceed with deletion
