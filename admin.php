@@ -153,7 +153,7 @@ $numhardware = mysqli_num_rows($barquery);
           $number_of_users = mysqli_num_rows($select_users);
           ?>
           <div class="card-flex">
-            <div class="card-info">
+            <div href="users.php" class="card-info">
               <div class="card-head">
                 <span>Users</span>
                 <small>Number of users</small>
@@ -179,7 +179,7 @@ $numhardware = mysqli_num_rows($barquery);
           $number_of_orders = mysqli_num_rows($select_orders);
           ?>
           <div class="card-flex">
-            <div class="card-info">
+            <div href="orders.php" class="card-info">
               <div class="card-head">
                 <span>Orders</span>
                 <small>Number of Orders placed</small>
@@ -223,7 +223,7 @@ $numhardware = mysqli_num_rows($barquery);
           $number_of_products = mysqli_num_rows($select_products);
           ?>
           <div class="card-flex">
-            <div class="card-info">
+            <div href="ecommerce.php" class="card-info">
               <div class="card-head">
                 <span>Inventory</span>
                 <small>Number of products available</small>

@@ -546,23 +546,16 @@ if (isset($_SESSION['login_required']) && $_SESSION['login_required'] === true) 
 
       <div class="box">
         <h3>My Account</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>My account </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Order history </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Wishlist </a>
-      </div>
-
-      <div class="box">
-        <h3>Information</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Delivery information </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Privacy policy </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>My account </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Order history </a>
+        <a href="favourites.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Wishlist </a>
       </div>
 
       <div class="box">
         <h3>Categories</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Hardware </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Software </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Accessories</a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Combo</a>
+        <a href="products2.php?category=Hardware" id="footer_links"> <i class="bx bx-chevron-right"></i>Hardware </a>
+        <a href="products2.php?category=Software" id="footer_links"> <i class="bx bx-chevron-right"></i>Software </a>
+        <a href="products2.php?category=Accessories" id="footer_links"> <i class="bx bx-chevron-right"></i>Accessories</a>
       </div>
 
       <div class="box">

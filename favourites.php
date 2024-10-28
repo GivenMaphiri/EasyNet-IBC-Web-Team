@@ -186,6 +186,36 @@ if (!isset($_SESSION['user_id'])) {
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+      $(document).on('click', '.add_to_cart', function() {
+        var prodId = $(this).data('prod-id');
+        var prodName = $(this).data('prod-name');
+        var prodPrice = $(this).data('prod-price');
+        var prodImage = $(this).data('prod-image');
+
+        $.ajax({
+          url: 'addtocart.php', // Ensure this is the correct path to your PHP file
+          method: 'POST',
+          data: {
+            prod_ID: prodId,
+            prod_name: prodName,
+            prod_price: prodPrice,
+            prod_image: prodImage
+          },
+          success: function(response) {
+            alert(response); // Display the server response for debugging
+            if (response == 'success') {
+
+            } else {
+
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log(error); // Log any errors to the console
+            alert('Failed to add to favourites.');
+          }
+        });
+      });
+
       function removeFromCart(prod_ID) {
         if (confirm('Are you sure you want to remove this item from your favourites?')) {
           // User clicked OK, proceed with the AJAX request
@@ -215,23 +245,16 @@ if (!isset($_SESSION['user_id'])) {
 
       <div class="box">
         <h3>My Account</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>My account </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Order history </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Wishlist </a>
-      </div>
-
-      <div class="box">
-        <h3>Information</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Delivery information </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Privacy policy </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>My account </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Order history </a>
+        <a href="favourites.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Wishlist </a>
       </div>
 
       <div class="box">
         <h3>Categories</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Hardware </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Software </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Accessories</a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Combo</a>
+        <a href="products2.php?category=Hardware" id="footer_links"> <i class="bx bx-chevron-right"></i>Hardware </a>
+        <a href="products2.php?category=Software" id="footer_links"> <i class="bx bx-chevron-right"></i>Software </a>
+        <a href="products2.php?category=Accessories" id="footer_links"> <i class="bx bx-chevron-right"></i>Accessories</a>
       </div>
 
       <div class="box">

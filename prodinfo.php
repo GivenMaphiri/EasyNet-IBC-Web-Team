@@ -417,6 +417,36 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
     </script>
   </main>
   <footer>
+    <hr id="foot_line" />
+    <div class="content">
+      <div class="box">
+        <img src="_images/_logos/easynet.png">
+      </div>
+
+      <div class="box">
+        <h3>My Account</h3>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>My account </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Order history </a>
+        <a href="favourites.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Wishlist </a>
+      </div>
+
+      <div class="box">
+        <h3>Categories</h3>
+        <a href="products2.php?category=Hardware" id="footer_links"> <i class="bx bx-chevron-right"></i>Hardware </a>
+        <a href="products2.php?category=Software" id="footer_links"> <i class="bx bx-chevron-right"></i>Software </a>
+        <a href="products2.php?category=Accessories" id="footer_links"> <i class="bx bx-chevron-right"></i>Accessories</a>
+      </div>
+
+      <div class="box">
+        <h3><a href="contact.php">Contact Us</a> </h3>
+        <p><i class="bx bxs-phone"></i>(012)433 6486</p>
+        <p><i class="bx bxs-phone"></i>086 535 7398</p>
+        <p><i class="bx bxs-envelope"></i><a href="mailto:sales@easynetbusiness.co.za">sales@easynetbusiness.co.za</a></p>
+        <p><i class="bx bxs-envelope"></i><a href="mailto:dikeledi@easynetbusiness.co.za">dikeledi@easynetbusiness.co.za</a></p>
+        <p><i class="bx bxs-loaction-plus"></i>Brooklyn, Pretoria</p>
+      </div>
+    </div>
+
     <div class="social-media-icons">
       <a href="https://www.facccebook.com/" target="_blank"> <i class='bx bxl-facebook-circle'>
           <p>Facebook</p>
@@ -431,10 +461,13 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
         </i>
       </a>
     </div>
-    <hr id="foot_line" />
-    <p id="footer_text">
-      Copyright &copy; 2024 EasyNet In Business Communications
-    </p>
+
+    <div class="bottom">
+      <hr id="foot_line" />
+      <p id="footer_text">
+        Copyright &copy; 2024 EasyNet In Business Communications
+      </p>
+    </div>
   </footer>
 </body>
 

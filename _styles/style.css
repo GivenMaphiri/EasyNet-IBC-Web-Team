@@ -118,7 +118,7 @@ a {
   margin-bottom: 1rem;
   color: white;
   text-align: center;
-  padding: 15px ;
+  padding: 15px;
   border-radius: 5px;
 }
 
@@ -607,7 +607,7 @@ footer .content .box .icons i {
   justify-self: center;
   align-items: center;
   width: 250px;
-  height: 315px;
+  min-height: 315px;
   border-style: transparent;
   padding: 25px 15px;
   box-shadow: 5px 5px 15px grey;
@@ -1063,10 +1063,23 @@ footer .content .box .icons i {
   min-height: 40vh;
 }
 
-
 #cart_container {
-  display: flex;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  display: grid;
+  max-width: 1150px;
+  gap: 1rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding-top: 30px;
+  padding-bottom: 20px;
+  min-height: 50vh;
+}
+
+#footer_links {
+  transition: all 0.3s ease-in;
+}
+
+#footer_links:hover {
+  color: rgb(67, 171, 255);
 }
 
 #cartboxes {
@@ -1086,18 +1099,17 @@ footer .content .box .icons i {
 }
 
 #total_container {
-  display:flex;
+  display: flex;
   margin-top: 20px;
-  padding: 5px; 
-  background-color: #e0e0e0; 
+  padding: 5px;
+  background-color: #e0e0e0;
   border-radius: 5px;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); 
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
-#total_container p{
-display:flex;
+#total_container p {
+  display: flex;
 }
-
 
 .wrapper {
   max-width: 1000px;

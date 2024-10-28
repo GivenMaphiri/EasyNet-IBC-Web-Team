@@ -182,6 +182,7 @@ if (!isset($_SESSION['user_id'])) {
     $cartvat = 0;
 
     if ($result->num_rows > 0) {
+
       while ($row = $result->fetch_assoc()) {
         $subtotal += $row['prod_price'] * $row['quantity'];
         $cartvat += $row['cart_VAT'] * $row['quantity'];
@@ -197,7 +198,7 @@ if (!isset($_SESSION['user_id'])) {
         echo "</div>";
         echo "</div>";
         echo "</div>";
-      } 
+      }
       echo "<div id='total_container'>";
       echo "<p> Net Price:</p>";
       echo "<p class='cart_total_price'>R" . number_format($subtotal, 2) . "</p>";
@@ -207,9 +208,6 @@ if (!isset($_SESSION['user_id'])) {
       echo "<p class='cart_total_price_inc'>R" . number_format($totalprice, 2) . "</p>";
       echo "<a href='shipping.php'><button id='checkout_button'>Checkout</button></a>";
       echo "</div>";
-
-
-   
     } else {
       echo "<h1 id='cart_empty'>Your cart is empty.</h1>";
     }
@@ -292,23 +290,16 @@ if (!isset($_SESSION['user_id'])) {
 
       <div class="box">
         <h3>My Account</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>My account </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Order history </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Wishlist </a>
-      </div>
-
-      <div class="box">
-        <h3>Information</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Delivery information </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Privacy policy </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>My account </a>
+        <a href="manageaccount.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Order history </a>
+        <a href="favourites.php" id="footer_links"> <i class="bx bx-chevron-right"></i>Wishlist </a>
       </div>
 
       <div class="box">
         <h3>Categories</h3>
-        <a href=""> <i class="bx bx-chevron-right"></i>Hardware </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Software </a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Accessories</a>
-        <a href=""> <i class="bx bx-chevron-right"></i>Combo</a>
+        <a href="products2.php?category=Hardware" id="footer_links"> <i class="bx bx-chevron-right"></i>Hardware </a>
+        <a href="products2.php?category=Software" id="footer_links"> <i class="bx bx-chevron-right"></i>Software </a>
+        <a href="products2.php?category=Accessories" id="footer_links"> <i class="bx bx-chevron-right"></i>Accessories</a>
       </div>
 
       <div class="box">
