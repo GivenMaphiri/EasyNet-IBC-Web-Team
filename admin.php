@@ -224,13 +224,8 @@ $numhardware = mysqli_num_rows($barquery);
           $number_of_products = mysqli_num_rows($select_products);
           ?>
           <div class="card-flex">
-<<<<<<< HEAD
-            <div href="ecommerce.php" class="card-info">
-              <div class="card-head">
-=======
             <div class="card-info">
               <div class="card-head" >
->>>>>>> aa3e76060d986b9401c4401dba3aa77651a1a006
                 <span>Inventory</span>
                 <small>Number of products available</small>
               </div>
