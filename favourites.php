@@ -167,6 +167,7 @@ if (!isset($_SESSION['user_id'])) {
       $result = $conn->query("SELECT * FROM favourite WHERE user_ID = " . $_SESSION['user_id']);
 
       if ($result->num_rows > 0) {
+
         while ($row = $result->fetch_assoc()) {
           echo "<div id='prodbox5'>";
           echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
@@ -181,9 +182,11 @@ if (!isset($_SESSION['user_id'])) {
       } else {
         echo "<p>No favourites yet.</p>";
       }
-      ?>
 
+      ?>
     </div>
+
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).on('click', '.add_to_cart', function() {

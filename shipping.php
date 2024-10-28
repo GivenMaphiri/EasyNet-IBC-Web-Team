@@ -199,7 +199,7 @@ if (isCartEmpty($user_ID, $conn)) {
                     // If the user has shipping information, allow the "Place Order" button to display
                     if (mysqli_num_rows($result) > 0) {
                         // Shipping information exists
-                        echo '<form action="place_order.php" method="POST">
+                        echo '<form class="place_order_form" action="place_order.php" method="POST">
                                 <button type="submit" onclick="handleOrder()" id="place_order">Place Order</button>
                             </form>';
                     } else {

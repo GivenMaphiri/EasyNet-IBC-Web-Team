@@ -1297,6 +1297,21 @@ footer .content .box .icons i {
   background-color: rgb(67, 171, 255);
 }
 
+#save_acc {
+  cursor: pointer;
+  height: 30px;
+  width: 230px;
+  border-style: none;
+  border-radius: 5px;
+  background-color: rgb(20, 149, 255);
+  color: white;
+  transition: all 0.2s ease-in;
+}
+
+#save_acc:hover {
+  background-color: rgb(67, 171, 255);
+}
+
 #order_summary {
   display: flex;
   flex-direction: column;
@@ -1323,6 +1338,13 @@ footer .content .box .icons i {
 
 #order_line {
   margin-top: 10px;
+}
+
+.place_order_form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #place_order {
@@ -1495,10 +1517,10 @@ footer .content .box .icons i {
 #prodbox3 {
   display: flex;
   flex-direction: column;
-  justify-self: center;
+  justify-content: space-between;
   align-items: center;
   width: 250px;
-  height: 275px;
+  min-height: 275px;
   border-style: solid;
   padding: 10px;
   border-radius: 10px;
@@ -1577,11 +1599,14 @@ footer .content .box .icons i {
 }
 
 #fav_boxes {
-  margin-left: 3%;
-  margin-right: 3%;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  min-height: 60vh;
+  display: grid;
+  max-width: 1150px;
+  gap: 1rem;
+  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  padding-top: 30px;
+  padding-bottom: 20px;
+  min-height: 50vh;
 }
 
 #check_quantity {

@@ -182,12 +182,12 @@ if (!isset($_SESSION['user_id'])) {
     $cartvat = 0;
 
     if ($result->num_rows > 0) {
-
+      echo "<div id='cart_container'>";
       while ($row = $result->fetch_assoc()) {
         $subtotal += $row['prod_price'] * $row['quantity'];
         $cartvat += $row['cart_VAT'] * $row['quantity'];
         $totalprice += $row['cart_incTotal'] * $row['quantity'];
-        echo "<div id='cart_container'>";
+
         echo "<div id='cartboxes'>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><img src='_images/_products/" . $row['prod_image'] . "' width='150px' /></a>";
         echo "<a href='prodinfo.php?prod_id=" . $row['prod_ID'] . "'><p>" . $row['prod_name'] . "</p></a>";
@@ -197,8 +197,8 @@ if (!isset($_SESSION['user_id'])) {
         echo "<button id='rem_button' class='btn_danger' onclick='removeFromCart(" . $row['prod_ID'] . ")'>Remove from Cart</button>";
         echo "</div>";
         echo "</div>";
-        echo "</div>";
       }
+      echo "</div>";
       echo "<div id='total_container'>";
       echo "<p> Net Price:</p>";
       echo "<p class='cart_total_price'>R" . number_format($subtotal, 2) . "</p>";
