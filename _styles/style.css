@@ -572,7 +572,7 @@ footer .content .box .icons i {
   justify-content: space-between;
   align-items: center;
   width: 250px;
-  height: 315px;
+  min-height: 315px;
   border-style: transparent;
   padding: 10px;
   border-radius: 5px;

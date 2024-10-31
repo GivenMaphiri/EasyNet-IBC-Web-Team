@@ -224,7 +224,8 @@ if (!isset($_SESSION['user_id'])) {
                     <input type="text" name="lastname" class="acc_lastname" id="ship_text" value="<?php echo htmlspecialchars($user['last_name']); ?>" required>
 
                     <label for="phone">Phone Number:</label>
-                    <input type="text" name="phone" class="acc_phone" pattern="[0-9]+" title="Please enter numbers only" id="ship_text" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required>
+                    <input type="text" name="phone" class="acc_phone" pattern="[0-9]+" minlength="10" title="Please enter at least 10 numbers" id="ship_text" value="<?php echo htmlspecialchars($user['phone_number']); ?>" required>
+
 
                     <label for="email">Email:</label>
                     <input type="email" name="email" class="acc_email" id="ship_text" value="<?php echo htmlspecialchars($user['email_address']); ?>" required>
