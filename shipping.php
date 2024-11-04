@@ -91,7 +91,7 @@ if (isCartEmpty($user_ID, $conn)) {
                     <label for="zip">Zip Code:</label>
                     <input type="text" name="zip" class="ship_zip" pattern="[0-9]+" title="Please enter numbers only" id="ship_text" value="<?php echo htmlspecialchars($zip); ?>" required></input>
                     <label for="phone">Phone Number:</label>
-                    <input type="text" name="phone" class="ship_phone" pattern="[0-9]+" title="Please enter numbers only" id="ship_text" value="<?php echo htmlspecialchars($phone); ?>" required></input>
+                    <input type="text" name="phone" class="ship_phone" pattern="[0-9]+" minlength="10" title="Please enter at least 10 numbers" id="ship_text" value="<?php echo htmlspecialchars($phone); ?>" required></input>
                     <button type="submit" id="save_ship">Save Shipping Information</button>
                 </div>
             </form>
