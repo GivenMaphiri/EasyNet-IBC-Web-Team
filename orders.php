@@ -89,8 +89,8 @@ $result = $conn->query($sql);
         </li>
         <li>
           <a href="users.php">
-            <span class="las la-check-circle"></span>
-            Users
+            <span class="las la-users"></span>
+            Clients
           </a>
         </li>
         <li>
