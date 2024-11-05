@@ -2,9 +2,6 @@
 // Check connection
 session_start(); // Start the session
 include "DBConn.php"; // Include your database connection
-if ($conn->connect_error) {
-  die("Connection failed: " . $conn->connect_error);
-}
 
 // Fetch admin email
 $sql = "SELECT admin_email FROM admin";
@@ -16,6 +13,13 @@ if (mysqli_num_rows($result) > 0) {
 } else {
   $adminEmail = "No admin email found.";
 }
+
+
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
+}
+
+
 
 ?>
 
@@ -131,7 +135,7 @@ if (mysqli_num_rows($result) > 0) {
 
       <?php
       // Retrieve messages from the database
-      $sql = "SELECT * FROM message"; 
+      $sql = "SELECT * FROM message ORDER BY timestamp DESC"; 
       $res = $conn->query($sql);
 
       if ($res->num_rows > 0) {
@@ -148,6 +152,7 @@ if (mysqli_num_rows($result) > 0) {
           echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
           echo "</form>";
           echo "</div>";
+          echo "<span class='message-timestamp'><b>Time: </b> " . $row["timestamp"] . "</span>";
           echo "</div>";
         }
       } else {

@@ -526,6 +526,11 @@ main {
 
 }
 
+.message-timestamp {
+    color: rgb(4, 93, 171);
+    float: right; /* Aligns the element to the right */
+  }
+
  /*-------------------------------End of Messages dashboard----------------------------------------------*/
 
 
