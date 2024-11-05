@@ -2,6 +2,8 @@
 session_start();
 include "DBConn.php";
 
+
+
 if (isset($_POST['submit-btn-2'])) {
   $filter_name = filter_var($_POST['first_name'], FILTER_SANITIZE_STRING);
   $first_name = mysqli_real_escape_string($conn, $filter_name);
@@ -81,14 +83,14 @@ if (isset($_POST['submit-btn-2'])) {
       </div>
     </div>
 
-    <div class="sidebar-main">
+    <!-- <div class="sidebar-main">
       <div class="sidebar-user">
         <div class="menu-head">
           <span>Admin</span>
         </div>
         <span>admin@gmail.com</span>
       </div>
-    </div>
+    </div> -->
 
     <div class="sidebar-menu">
       <div class="menu-head">

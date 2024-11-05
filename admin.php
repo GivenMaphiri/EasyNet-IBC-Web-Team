@@ -20,6 +20,17 @@ $result = $conn->query($sql);
 $barquery = mysqli_query($conn, "SELECT * FROM `products` Where prod_type = 'Hardware' ") or die('query failed');
 $numhardware = mysqli_num_rows($barquery);
 
+// Fetch admin email
+$sql = "SELECT admin_email FROM admin";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $adminEmail = $row['admin_email'];
+} else {
+  $adminEmail = "No admin email found.";
+}
+
 
 ?>
 
@@ -60,7 +71,7 @@ $numhardware = mysqli_num_rows($barquery);
         <div class="menu-head">
           <span>Admin</span>
         </div>
-        <span>admin@gmail.com</span>
+        <span><?php echo $adminEmail; ?></span>
       </div>
     </div>
 

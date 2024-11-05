@@ -6,6 +6,16 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
+// Fetch admin email
+$sql = "SELECT admin_email FROM admin";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $adminEmail = $row['admin_email'];
+} else {
+  $adminEmail = "No admin email found.";
+}
 
 ?>
 
@@ -44,7 +54,7 @@ if ($conn->connect_error) {
         <div class="menu-head">
           <span>Admin</span>
         </div>
-        <span>admin@gmail.com</span>
+        <span><?php echo $adminEmail; ?></span>
       </div>
     </div>
 

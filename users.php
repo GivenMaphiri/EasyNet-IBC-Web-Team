@@ -3,6 +3,17 @@
 session_start();
 include "DBConn.php";
 
+// Fetch admin email
+$sql = "SELECT admin_email FROM admin";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $adminEmail = $row['admin_email'];
+} else {
+  $adminEmail = "No admin email found.";
+}
+
 
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
@@ -10,6 +21,9 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM users";
 $result = $conn->query($sql);
+
+
+
 ?>
 
 <!DOCTYPE html>
@@ -36,11 +50,6 @@ $result = $conn->query($sql);
           <h1 id="Logo_name1">Easy</h1>
           <h1 id="Logo_name2">Net</h1>
         </div>
-        <!-- <div class="brand-icons">
-            <span class="las la-bell"></span>
-            <span class="las la-user-circle"></span>
-          </div>
-      -->
       </div>
     </div>
 
@@ -49,7 +58,7 @@ $result = $conn->query($sql);
         <div class="menu-head">
           <span>Admin</span>
         </div>
-        <span>admin@gmail.com</span>
+        <span><?php echo $adminEmail; ?></span>
       </div>
     </div>
 

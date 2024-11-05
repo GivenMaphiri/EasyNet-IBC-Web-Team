@@ -2,9 +2,22 @@
 session_start();
 include "DBConn.php";
 
+// Fetch admin email
+$sql = "SELECT admin_email FROM admin";
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+  $row = mysqli_fetch_assoc($result);
+  $adminEmail = $row['admin_email'];
+} else {
+  $adminEmail = "No admin email found.";
+}
+
 
 $sql = "SELECT prod_ID, prod_name, prod_code, prod_description, prod_price, prod_image, prod_manufacturer, prod_type FROM products";
 $result = $conn->query($sql);
+
+
 
 ?>
 
@@ -51,7 +64,7 @@ $result = $conn->query($sql);
         <div class="menu-head">
           <span>Admin</span>
         </div>
-        <span>admin@gmail.com</span>
+        <span><?php echo $adminEmail; ?></span>
       </div>
     </div>
 
