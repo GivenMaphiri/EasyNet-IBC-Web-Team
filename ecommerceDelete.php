@@ -34,7 +34,7 @@ mysqli_stmt_close($stmt_orders_count);
 // Display confirmation message if dependencies found
 if ($cart_count > 0 || $favourite_count > 0 || $orders_count > 0) {
     echo "This product has associated records in other tables. Deleting this product will also delete these records. Are you sure you want to proceed?
-    <form action='productDelete.php' method='post'>
+    <form action='ecommerceDelete' method='post'>
         <input type='hidden' name='productId' value='$productId'>
         <button type='submit'>Confirm Delete</button>
         <a href='ecommerce.php'>Cancel</a>

@@ -123,23 +123,7 @@ $result = $conn->query($sql);
     <main>
 
       <style>
-        .table tbody tr:hover {
-          background-color: #d7dbdd;
-          /* Adjust the background color as needed */
-          cursor: pointer;
-        }
-
-        .form-control {
-          width: 500px;
-          /* margin-top: 5px; */
-          margin-left: 480px;
-        }
-
-        .btn-dangers {
-          background-color: #f3810f;
-          border-color: black;
-        }
-
+        
         .table {
               border: 1px solid #ddd;
               margin-bottom: 20px;
@@ -149,7 +133,7 @@ $result = $conn->query($sql);
 
           }
 
-            .table thead th {
+          .table thead th {
               background-color: #312f2f;
               color: white;
               font-weight: bold;
@@ -159,7 +143,7 @@ $result = $conn->query($sql);
                 background-color: #ffff;
             }
 
-          th, td {
+            th, td {
               border: 1px solid black;
               padding: 8px;
               text-align: left;
@@ -172,44 +156,11 @@ $result = $conn->query($sql);
           td {
             overflow: hidden;
             text-overflow: ellipsis;
-            white-space: nowrap;
+            white-space: wrap;
             max-width: 110px;
           }
 
-          a{
-            /* padding-left: 2px; */
-          }
-
-          .btn-danger {
-            background-color: #dc3545;
-            border-color: #dc3545;
-          }
-
-          .btn-dangers {
-            background-color: #f3810f;
-            border-color: black;
-          }
-
-          .btn-sm {
-            padding: .25rem .5rem;
-            font-size: .875rem;
-            line-height: 1.25;
-          }
-
-          .table tbody tr:hover {
-            background-color: #d7dbdd ; /* Adjust the background color as needed */
-            cursor: pointer;
-          }
-
-          #tr-none{
-            background-color: white;          
-          }
-
-          .form-control {
-            width: 500px;
-            /* margin-top: 5px; */
-            margin-left: 480px;
-          }
+        
       </style>
 
       <div class="page-header">
@@ -230,9 +181,10 @@ $result = $conn->query($sql);
             <th>ID</th>
             <th>Total</th>
             <th>Placed on</th>
-            <th>user_ID</th>
-            <th>payment status</th>
-            <th>status</th>
+            <th>User_ID</th>
+            <th>Payment status</th>
+            <th>Status</th>
+            <th>Action</th>
           </tr>
         </thead>
 
@@ -250,6 +202,17 @@ $result = $conn->query($sql);
               echo "<td>" . $row["user_ID"] . "</td>";
               echo "<td>" . $row["payment_status"] . "</td>";
               echo "<td>" . $row["status"] . "</td>";
+        echo "<td>";
+        echo '<form method="post" action="update_order_status.php">';
+                echo '<input type="hidden" name="order_id" value="' . $row["order_ID"] . '">';
+                echo '<select name="status">';
+                echo '<option value="Pending" ' . ($row["status"] == "Pending" ? "selected" : "") . '>Pending</option>';
+                echo '<option value="In Progress" ' . ($row["status"] == "In Progress" ? "selected" : "") . '>In Progress</option>';
+                echo '<option value="Delivered" ' . ($row["status"] == "Delivered" ? "selected" : "") . '>Delivered</option>';
+                echo '</select>';
+                echo '<button class="btn btn-danger btn-sm" type="submit">Update</button>';
+        echo '</form>';
+        echo "</td>";
 
               echo "</tr>";
             }
