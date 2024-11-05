@@ -37,7 +37,9 @@ if (isset($_POST['submit-btn-2'])) {
       mysqli_query($conn, "INSERT INTO users (first_name, last_name, phone_number, email_address, password) VALUES ('$first_name', '$last_name', '$phone_number', '$email_address', '$passwordHash')")
         or die('query failed');
       $message[] = 'registration successful';
-      header('loactaion:login.php');
+      // **Trigger confirmation alert after successful registration**
+      echo '<script>alert("Client Added succesfully!")</script>';
+      header('loactaion:users.php');
     }
   }
 }
@@ -190,14 +192,12 @@ if (isset($_POST['submit-btn-2'])) {
         </div>
     </main>
 
-</body>
-</html>
 
-    <!-- <script>
+    <script>
       function showAlert() {
         alert("Client Added succesfully!");
       }
-    </script> -->
+    </script> 
 
   </div>
 
