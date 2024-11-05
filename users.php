@@ -18,7 +18,7 @@ $result = $conn->query($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EasyNet Dashboard | Users</title>
+    <title>EasyNet Dashboard | Clients</title>
     <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png">
     <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css" />
     <link rel="stylesheet" href="_styles/admin_style.css" />
@@ -197,21 +197,22 @@ $result = $conn->query($sql);
 
       <div class="page-header">
         <div>
-          <h1>User Dashboard</h1>
-          <small>Keep track of all your users.</small>
+          <h1>Client Dashboard</h1>
+          <small>Keep track of all your clients.</small>
         </div>
       </div>
 
     <section style="margin: 10px;">
     <div class="container my-5">
-        <h2>Lists Of Users</h2>
+        <h2>Lists Of Clients</h2>
+        <a class="btn btn-primary" href="clientAdd.php" role="button">New Client</a>
         <br>
 
 
       <table id="userTable" class="table">
         <thead>
           <tr>
-            <th>User_ID</th>
+            <th>Client_ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Phone</th>
@@ -234,7 +235,7 @@ $result = $conn->query($sql);
               <td>" . $row["phone_number"] . "</td>
               <td>" . $row["email_address"] . "</td>
               <td>
-                
+                <a class='btn btn-secondary btn-sm' href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Email</a>
                 <a class='btn btn-danger btn-sm' href='userDelete.php?id=" .$row["user_ID"] ."'>Delete</a>
               </td>
             </tr>";
@@ -249,34 +250,6 @@ $result = $conn->query($sql);
           ?>
         </tbody>
 
-        <!-- pagination links -->
-        <!-- <tr id= "tr-none">
-                      <td colspan="9">
-                          <ul class="pagination">
-                              <?php
-                              // if ($current_page > 1) {
-                              //     echo '<li><a href="users.php?page=' . ($current_page - 1) . '"> << Previous</a></li>';
-                              // }
-
-                              // $start_page = max(1, $current_page - 5);
-                              // $end_page = min($total_pages, $current_page + 5);
-
-                              // for ($i = $start_page; $i <= $end_page; $i++) {
-                              //     if ($i == $current_page) {
-                              //         echo '<li class="active"><a href="users.php?page=' . $i . '">' . $i . '</a></li>';
-                              //     } else {
-                              //         echo '<li><a href="users.php?page=' . $i . '">' . $i . '</a></li>';
-                              //     }
-                              // }
-
-                              // if ($current_page < $total_pages) {
-                              //     echo '<li><a href="users.php?page=' . ($current_page + 1) . '">Next >></a></li>';
-                              // }
-                              ?>
-                          </ul>
-                      </td>
-                  </tr> -->
-          <!-- end of pagination links -->
       </table>
 
       <!-- JQuery -->
@@ -293,13 +266,9 @@ $result = $conn->query($sql);
 
     </section>
   </main>
+
+
 </div>
-
- 
-
-
-
-
   <!-- main-content end -->
     
 </body>
