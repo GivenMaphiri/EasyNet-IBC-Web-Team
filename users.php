@@ -244,7 +244,7 @@ $result = $conn->query($sql);
               <td>" . $row["phone_number"] . "</td>
               <td>" . $row["email_address"] . "</td>
               <td>
-                <a class='btn btn-secondary btn-sm' href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Email</a>
+                <a class='btn btn-secondary btn-sm' href='mailto:" . $row["email_address"] . "?subject=Client Registration Confirmation' class='reply-button'>Email</a>
                 <a class='btn btn-danger btn-sm' href='userDelete.php?id=" .$row["user_ID"] ."'>Delete</a>
               </td>
             </tr>";

@@ -531,6 +531,40 @@ main {
     float: right; /* Aligns the element to the right */
   }
 
+  /* Styling for the filter button container */
+.message-filter {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: flex-start;
+}
+
+/* Filter buttons styling */
+.filter-button {
+    padding: 10px 20px;
+    border: 1px solid #007bff; /* Blue border */
+    border-radius: 5px;
+    color: #007bff;
+    background-color: #f8f9fa; /* Light background */
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+/* Active filter button styling (optional) */
+.filter-button-active {
+    background-color: #007bff;
+    color: white;
+}
+
+
  /*-------------------------------End of Messages dashboard----------------------------------------------*/
 
 
