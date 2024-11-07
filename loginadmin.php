@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <a href="index.php" id="nav_text">Home</a>
                     </li>
                     <li id="nav_link">
-                        <a href="about.php" id="nav_text" class="active">About Us</a>
+                        <a href="about.php" id="nav_text">About Us</a>
                     </li>
                     <li id="nav_link">
                         <a href="products.php" id="nav_text">Products</a>
@@ -186,6 +186,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             padding: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            background-color: white;
 
         }
 
@@ -201,6 +202,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             border: 1px solid #ccc;
             border-radius: 3px;
             box-sizing: border-box;
+            margin-bottom: 10px;
         }
 
         button[type="submit"] {
@@ -227,20 +229,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             width: 200px;
             margin-left: 40vw;
         }
-    </style>
 
-    <div id="ad_login">
-        <h1>Admin Login</h1>
-        <form action="loginadmin.php" method="POST">
-            <label for="admin_email">Email:</label>
-            <input type="email" id="admin_email" name="admin_email" required>
-            <br>
-            <label for="admin_password">Password:</label>
-            <input type="password" id="admin_password" name="admin_password" required>
-            <br>
-            <button type="submit">Login</button>
-        </form>
+        h1 {
+            margin-bottom: 10px;
+        }
+    </style>
+    <div class="loginad">
+        <div id="ad_login">
+            <h1>Admin Login</h1>
+            <form action="loginadmin.php" method="POST">
+                <label for="admin_email">Email:</label>
+                <input type="email" id="admin_email" name="admin_email" required>
+                <br>
+                <label for="admin_password">Password:</label>
+                <input type="password" id="admin_password" name="admin_password" required>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
     </div>
+
 
 
 </body>
