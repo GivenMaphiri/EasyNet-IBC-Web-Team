@@ -149,48 +149,50 @@ if (isset($_POST['submit-btn-2'])) {
     
 
     <main>
-        <div class="container my-5">
-            <h2>Add New Client</h2>
-            <form action="clientAdd.php" method="post" class="form-box">
-      <!-- Personal Info -->
+        <div class="Clients">
+            <h1>Add New Client</h1>
 
-      <div id="signup_container">
-        <?php
-        if (isset($message)) {
-          foreach ($message as $message) {
-            echo '
-              <div id = "message">
-              <span> ' . $message . '</span>
-              <i id = "bi bi-x-circle" onclick="this.parentElement.remove()"></i>
-              </div>';
-          }
-        }
-        ?>
+            <form action="clientAdd.php" method="post" id=clientForm class="signup_box">
+              <!-- Personal Info -->
 
-        <div id="signup_left">
-          <h4>First Name</h4>
-          <input type="text" name="first_name" placeholder="First Name" class="signup_box" required />
-          <h4>Last Name</h4>
-          <input type="text" name="last_name" class="signup_box" placeholder="Last Name" required />
-          <h4>Phone number</h4>
-          <input type="text" name="phone_number" placeholder="Phone Number" class="signup_box" required />
-        </div>
+              <div id="signup_container">
+                <?php
+                if (isset($message)) {
+                  foreach ($message as $message) {
+                    echo '
+                      <div id = "message">
+                      <span> ' . $message . '</span>
+                      <i id = "bi bi-x-circle" onclick="this.parentElement.remove()"></i>
+                      </div>';
+                  }
+                }
+                ?>
 
-        <!-- Sign Up -->
-        <div id="signup_right">
-          <h4> Email address</h4>
-          <input type="email" name="email_address" placeholder="Email Address" class="signup_box" required />
-          <h4>Password</h4>
-          <input type="password" name="password" placeholder="Password" class="signup_box" required />
-          <h4>Confirm password</h4>
-          <input type="password" name="cpassword" placeholder="Confirm Password" class="signup_box" required />
-          <div>
-            <br>
-            <button type="submit" name="submit-btn-2" class="signup_button">Sign Up</button>
-          </div>
-        </div>
-      </div>
-    </form>
+        
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name" placeholder="Name" class="signup_box" required />
+
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" class="signup_box" placeholder="Surname" required />
+
+                <label for="phone_number">Phone No.:</label>
+                <input type="tel" name="phone_number" placeholder="Cell number" class="signup_box" required />
+            
+                <label for="email_address">Email Address:</label>
+                <input type="email" name="email_address" placeholder="Email" class="signup_box" required />
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" placeholder="Password" class="signup_box" required />
+                
+                <label for="cpassword">Confirm Password:</label>
+                <input type="password" name="cpassword" placeholder="Confirm Password" class="signup_box" required />
+                <div>
+                  <br>
+                  <button type="submit" name="submit-btn-2" class="signup_button">Add Client</button>
+                </div>
+        
+              </div>
+            </form>
         </div>
     </main>
 

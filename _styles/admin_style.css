@@ -465,13 +465,14 @@ main {
     margin-bottom: 1rem;
     padding: 1rem 1rem; /* Increase the padding here */
     border-radius: 4px;
-    background-color: #d3d9df;
+    background-color: #dce4eb;
     overflow: hidden; /* Ensure the content doesn't overflow the container */
+    border: 1px solid #080707;
 }
 
-.message:last-child {
+/* .message:last-child {
     border-bottom: none;
-}
+} */
 
 .message-sender {
     font-weight: bold;
@@ -564,6 +565,10 @@ main {
     color: white;
 }
 
+.mark-replied-button{
+    cursor: pointer;
+}
+
 
  /*-------------------------------End of Messages dashboard----------------------------------------------*/
 
@@ -600,32 +605,62 @@ main {
 
     /*-------------------------------Pagination links styling----------------------------------------------*/
 
-    .pagination {
-        display: flex;
-        /* justify-content: center; */
-        list-style: none;
-        padding: 0;
-    }
-    
-    .pagination li {
-        margin: 0 5px;
-    }
-    
-    .pagination a {
-        padding: 5px 10px;
-        border: 1px solid #ccc;
-        text-decoration: none;
-        color: #333;
-    }
-    
-    .pagination .active a {
-        background-color: #007bff;
-        color: #fff;
-    }
+.pagination {
+    display: flex;
+    /* justify-content: center; */
+    list-style: none;
+    padding: 0;
+}
+
+.pagination li {
+    margin: 0 5px;
+}
+
+.pagination a {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #333;
+}
+
+.pagination .active a {
+    background-color: #007bff;
+    color: #fff;
+}
 
 
-      /*-------------------------------End of pagination  styling----------------------------------------------*/
-  
+    /*-------------------------------End of pagination  styling----------------------------------------------*/
+
+ /*-------------------------------Start of AddClients page  styling----------------------------------------------*/
+.Clients{
+    margin: 2rem;
+}
+
+.Clients h1 {
+    text-align: center;
+}
+    
+#clientForm label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+    
+    
+#clientForm input, textarea, select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+}
+    
+#clientForm button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
 
       
   /*-------------------------------End of Users page----------------------------------------------*/
