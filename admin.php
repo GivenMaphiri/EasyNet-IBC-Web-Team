@@ -254,51 +254,7 @@ if (mysqli_num_rows($result) > 0) {
       </div>
 
       <!------------- chart start-------------------------------------------------------------------------------->
-      <!-- <div style="width: 500px;">
-          <canvas id="myChart"></canvas>
-       </div>
-
-
-       <script>
-        const ctx = document.getElementById('myChart');
-
-        new Chart(ctx, {
-          type: 'bar',
-          data: {
-            labels: ['Hardware', 'Software', 'Accessories'],
-            datasets: [{
-              label: '# of Products for category',
-              data: [12, 19, 3, 5, 2, 3],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          }
-        });
-
-
-        const config = {
-          type: 'bar',
-          data: data,
-          options: {
-            scales: {
-              y: {
-                beginAtZero: true
-              }
-            }
-          },
-        };
-
-        var myChart = new Chart(
-          document.getElementById('myChart'),
-          config
-        );
-      </script> -->
+     
 
       <br>
 
@@ -497,6 +453,8 @@ if (mysqli_num_rows($result) > 0) {
 
 
       <!------------- Table End-------------------------------------------------------------------------------->
+
+      
     </main>
   </div>
   <!-- main-content end -->
