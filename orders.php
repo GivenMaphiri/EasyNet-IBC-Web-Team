@@ -4,6 +4,13 @@ include 'DBConn.php';
 
 session_start();
 
+// Check if admin is logged in
+if (!isset($_SESSION['admin_ID'])) {
+  // If not logged in, redirect to login page
+  header("Location: login.php");
+  exit();
+}
+
 // Fetch admin email
 $sql = "SELECT admin_email FROM admin";
 $result = mysqli_query($conn, $sql);

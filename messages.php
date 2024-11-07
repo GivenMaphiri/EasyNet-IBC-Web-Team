@@ -3,6 +3,12 @@
 session_start(); // Start the session
 include "DBConn.php"; // Include your database connection
 
+// Check if admin is logged in
+if (!isset($_SESSION['admin_ID'])) {
+  // If not logged in, redirect to login page
+  header("Location: login.php");
+  exit();
+}
 
 // Fetch admin email
 $sql = "SELECT admin_email FROM admin";
