@@ -35,9 +35,9 @@ $result = $conn->query($sql);
   <link rel="shortcut icon" type="image/png" href="_images/_logos/easynet_icon.png" />
   <link rel="stylesheet" href="_styles/admin_style.css" />
 
- <!-- DataTables -->
- <link rel="stylesheet" href="_lib/datatables/dataTables.css"> 
-  
+  <!-- DataTables -->
+  <link rel="stylesheet" href="_lib/datatables/dataTables.css">
+
 </head>
 
 <body>
@@ -137,58 +137,57 @@ $result = $conn->query($sql);
     <main>
 
       <style>
-        
         .table {
-              border: 1px solid #ddd;
-              margin-bottom: 20px;
-              border-collapse: collapse;
-              width: 100%; /* Adjust width as needed */
-              padding: 10px;
+          border: 1px solid #ddd;
+          margin-bottom: 20px;
+          border-collapse: collapse;
+          width: 100%;
+          /* Adjust width as needed */
+          padding: 10px;
 
-          }
+        }
 
-          .table thead th {
-              background-color: #312f2f;
-              color: white;
-              font-weight: bold;
-            }
+        .table thead th {
+          background-color: #312f2f;
+          color: white;
+          font-weight: bold;
+        }
 
-            .table tbody tr:nth-child(even) {
-                background-color: #ffff;
-            }
+        .table tbody tr:nth-child(even) {
+          background-color: #ffff;
+        }
 
-            th, td {
-              border: 1px solid black;
-              padding: 8px;
-              text-align: left;
-          }
+        th,
+        td {
+          border: 1px solid black;
+          padding: 8px;
+          text-align: left;
+        }
 
-          th {
-              background-color: #f2f2f2;
-          }
+        th {
+          background-color: #f2f2f2;
+        }
 
-          td {
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: wrap;
-            max-width: 110px;
-          }
-
-        
+        td {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: wrap;
+          max-width: 110px;
+        }
       </style>
 
       <div class="page-header">
         <div>
           <h1>Orders Dashboard</h1>
-          <small>keep track of orders as well as there status.</small>
+          <small>Keep track of orders as well as their status.</small>
         </div>
       </div>
 
 
-      
+
 
       <!-- Table starts here -->
-       
+
       <table id="orderTable" class="table">
         <thead>
           <tr>
@@ -216,17 +215,17 @@ $result = $conn->query($sql);
               echo "<td>" . $row["user_ID"] . "</td>";
               echo "<td>" . $row["payment_status"] . "</td>";
               echo "<td>" . $row["status"] . "</td>";
-        echo "<td>";
-        echo '<form method="post" action="update_order_status.php">';
-                echo '<input type="hidden" name="order_id" value="' . $row["order_ID"] . '">';
-                echo '<select name="status">';
-                echo '<option value="Pending" ' . ($row["status"] == "Pending" ? "selected" : "") . '>Pending</option>';
-                echo '<option value="In Progress" ' . ($row["status"] == "In Progress" ? "selected" : "") . '>In Progress</option>';
-                echo '<option value="Delivered" ' . ($row["status"] == "Delivered" ? "selected" : "") . '>Delivered</option>';
-                echo '</select>';
-                echo '<button class="btn btn-danger btn-sm" type="submit">Update</button>';
-        echo '</form>';
-        echo "</td>";
+              echo "<td>";
+              echo '<form method="post" action="update_order_status.php">';
+              echo '<input type="hidden" name="order_id" value="' . $row["order_ID"] . '">';
+              echo '<select name="status">';
+              echo '<option value="Pending" ' . ($row["status"] == "Pending" ? "selected" : "") . '>Pending</option>';
+              echo '<option value="In Progress" ' . ($row["status"] == "In Progress" ? "selected" : "") . '>In Progress</option>';
+              echo '<option value="Delivered" ' . ($row["status"] == "Delivered" ? "selected" : "") . '>Delivered</option>';
+              echo '</select>';
+              echo '<button class="btn btn-danger btn-sm" type="submit">Update</button>';
+              echo '</form>';
+              echo "</td>";
 
               echo "</tr>";
             }
@@ -266,26 +265,26 @@ $result = $conn->query($sql);
                   </tr> -->
           <!-- end of pagination links -->
         </tbody>
-        
+
       </table>
 
 
 
       <!------------- Table start-------------------------------------------------------------------------------->
 
-        <!-- JQuery -->
-        <script src="_lib/jquery/jquery-3.7.1.min.js"></script>
+      <!-- JQuery -->
+      <script src="_lib/jquery/jquery-3.7.1.min.js"></script>
 
-        <!-- DataTables -->
-        <script src="_lib/datatables/dataTables.js"></script>
+      <!-- DataTables -->
+      <script src="_lib/datatables/dataTables.js"></script>
 
-        <script>
-            $(document).ready( function () {
-                $('#orderTable').DataTable();
-            } );
-        </script>
-      
-     
+      <script>
+        $(document).ready(function() {
+          $('#orderTable').DataTable();
+        });
+      </script>
+
+
 
 
 
@@ -297,7 +296,7 @@ $result = $conn->query($sql);
   </div>
   <!-- main-content end -->
 
-  
+
 
 
 
