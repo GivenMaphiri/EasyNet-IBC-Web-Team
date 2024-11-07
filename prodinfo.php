@@ -153,8 +153,8 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
       </label>
     </div>
   </header>
+  
   <main>
-
     <?php
 
     if (isset($_GET['prod_id'])) {
@@ -225,10 +225,13 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
                     echo "<li>" . trim($feature) . "</li>";
                   }
                   echo "</ul>";
+                  
                 }
               } else {
                 echo "<p>Product not found.</p>";
               }
+
+            
             }
             ?>
           </div>
@@ -257,13 +260,29 @@ if (!isset($_GET['prod_id']) || empty($_GET['prod_id'])) {
             } else {
               echo "<p>Product not found.</p>";
             }
+
+              echo "</br>";
+              echo "<div id='warrenty'>";
+              echo "<h3>Warrenty Policy</h3>";
+              echo "<p>Thank you for shopping with us! We strive to provide you with the highest quality products and exceptional customer service. Below are the details of our warranty and return policy for all products:</p>";
+              echo "</br>";
+              echo "<ul>";
+              echo "<li><b> 3-Year Onsite Warranty</b>: All products come with a comprehensive 3-year onsite warranty, covering any manufacturing defects during normal use. Our dedicated support team is here to assist you with any issues that may arise.</li>";
+              echo "<li><b>7-Day Return Policy</b>: If you are not completely satisfied with your purchase, you have 7 days from the date of delivery to return the product. You can opt for a replacement, ensuring you receive the best product for your needs.</li>";
+              echo "<li><b>Replacement Process</b>: Should you choose a replacement, please note that it may take 7-14 days for processing and shipment. We appreciate your patience as we work to fulfill your request.</li>";
+              echo "<li><b>Return Conditions</b>: To initiate a return, items must be unused and in their original packaging. Please ensure that all accessories, documentation, and packaging materials are included prior to collection.</li>";
+              echo "<li><b>Shipping Time</b>: Once your return is processed, please allow 3-4 weeks for shipping, depending on stock availability. We will keep you updated throughout the process.</li>";
+              echo "</ul>";
+              echo "</br>";
+              echo "<p>If you have any questions, please feel free to enquire via our Contact Us page.</p>";
+              echo "</div>";
           }
           ?>
 
         </div>
 
       </div>
-
+         
     </div>
 
     <div id="add_more">

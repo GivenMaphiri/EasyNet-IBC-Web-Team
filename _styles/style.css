@@ -118,7 +118,7 @@ a {
   margin-bottom: 1rem;
   color: white;
   text-align: center;
-  padding: 15px;
+  padding: 15px ;
   border-radius: 5px;
 }
 
@@ -572,7 +572,7 @@ footer .content .box .icons i {
   justify-content: space-between;
   align-items: center;
   width: 250px;
-  min-height: 315px;
+  height: 315px;
   border-style: transparent;
   padding: 10px;
   border-radius: 5px;
@@ -607,7 +607,7 @@ footer .content .box .icons i {
   justify-self: center;
   align-items: center;
   width: 250px;
-  min-height: 315px;
+  height: 315px;
   border-style: transparent;
   padding: 25px 15px;
   box-shadow: 5px 5px 15px grey;
@@ -1063,23 +1063,12 @@ footer .content .box .icons i {
   min-height: 40vh;
 }
 
+
 #cart_container {
   display: grid;
-  max-width: 1150px;
-  gap: 1rem;
-  margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  padding-top: 30px;
-  padding-bottom: 20px;
-  min-height: 50vh;
-}
-
-#footer_links {
-  transition: all 0.3s ease-in;
-}
-
-#footer_links:hover {
-  color: rgb(67, 171, 255);
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  width: 200px;
+  
 }
 
 #cartboxes {
@@ -1099,17 +1088,18 @@ footer .content .box .icons i {
 }
 
 #total_container {
-  display: flex;
+  display:flex;
   margin-top: 20px;
-  padding: 5px;
-  background-color: #e0e0e0;
+  padding: 5px; 
+  background-color: #e0e0e0; 
   border-radius: 5px;
   grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
 }
 
-#total_container p {
-  display: flex;
+#total_container p{
+display:flex;
 }
+
 
 .wrapper {
   max-width: 1000px;
@@ -1297,21 +1287,6 @@ footer .content .box .icons i {
   background-color: rgb(67, 171, 255);
 }
 
-#save_acc {
-  cursor: pointer;
-  height: 30px;
-  width: 230px;
-  border-style: none;
-  border-radius: 5px;
-  background-color: rgb(20, 149, 255);
-  color: white;
-  transition: all 0.2s ease-in;
-}
-
-#save_acc:hover {
-  background-color: rgb(67, 171, 255);
-}
-
 #order_summary {
   display: flex;
   flex-direction: column;
@@ -1338,13 +1313,6 @@ footer .content .box .icons i {
 
 #order_line {
   margin-top: 10px;
-}
-
-.place_order_form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 #place_order {
@@ -1400,6 +1368,24 @@ footer .content .box .icons i {
 #pagination a.active {
   font-weight: bold;
   color: red;
+}
+
+div.warrenty {
+  color: grey;
+}
+
+#warrenty{
+  width: 500px;
+  height: 350px;
+  display: inline-block;
+  font-size: 0.6rem;
+  font-style: italic;
+  color: grey;
+  text-align: left;
+}
+
+#warrenty ul{
+  list-style:circle;
 }
 
 #prod_line {
@@ -1474,6 +1460,8 @@ footer .content .box .icons i {
   margin-top: 50px;
 }
 
+
+
 /* ------------ Favourite page-----------*/
 
 #addfavourite {
@@ -1517,10 +1505,10 @@ footer .content .box .icons i {
 #prodbox3 {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-self: center;
   align-items: center;
   width: 250px;
-  min-height: 275px;
+  height: 275px;
   border-style: solid;
   padding: 10px;
   border-radius: 10px;
@@ -1599,14 +1587,11 @@ footer .content .box .icons i {
 }
 
 #fav_boxes {
-  display: grid;
-  max-width: 1150px;
-  gap: 1rem;
-  margin: 0 auto;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  padding-top: 30px;
-  padding-bottom: 20px;
-  min-height: 50vh;
+  margin-left: 3%;
+  margin-right: 3%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  min-height: 60vh;
 }
 
 #check_quantity {
