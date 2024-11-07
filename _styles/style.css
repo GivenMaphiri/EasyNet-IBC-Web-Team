@@ -2296,6 +2296,14 @@ td {
   position: absolute;
 }
 
+.loginad {
+  height: 100%;
+  width: 100%;
+  background-image: url("../_images/image3.jpg");
+  background-size: cover;
+  position: absolute;
+}
+
 .login2 {
   height: 137%;
 }
