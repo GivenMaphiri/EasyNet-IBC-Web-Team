@@ -96,8 +96,8 @@ if (mysqli_num_rows($result) > 0) {
         </li>
         <li>
           <a href="users.php">
-            <span class="las la-check-circle"></span>
-            Users
+            <span class="las la-users"></span>
+            Clients
           </a>
         </li>
         <li>
