@@ -153,38 +153,38 @@ $res = $conn->query($sql);
             </div>
 
             <?php
-            if ($res->num_rows > 0) {
-                while($row = $res->fetch_assoc()) {
-                    echo "<div class='message'>";
-                    echo "<span class='message-sender'><b>Name:</b> " . $row["name"] . "</span>";
-                    echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
-                    echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
-                    echo "<div class='message-actions'>";
-                    echo "<form method='post' action='reply.php'>";
-                    echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
-                    echo "<button class='delete-message'>Delete</button>";
+if ($res->num_rows > 0) {
+    while ($row = $res->fetch_assoc()) {
+        echo "<div class='message'>";
+        echo "<span class='message-sender'><b>Name:</b> " . $row["name"] . "</span>";
+        echo "<p class='message-email'><b>Email:</b> " . $row["email"] . "</p>";
+        echo "<p class='message-content'><b>Message:</b> " . $row["message"] . "</p>";
+        
+        echo "<div class='message-actions'>";
+        echo "<form method='post' action='delete.php' style='display:inline;'>";
+        echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
+        echo "<button class='delete-message'>Delete</button>";
+        echo "</form>";
+        
+        // Display Reply or Replied button
+        if ($row["replied"] == 1) {
+            echo "<button class='replied-button' disabled>Replied</button>";
+        } else {
+            echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
+            echo "<form method='post' action='mark_as_replied.php' style='display:inline;'>";
+            echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
+            echo "<button type='submit' class='mark-replied-button'>Mark as Replied</button>";
+            echo "</form>";
+        }
 
-                    // Reply button changes to 'Replied' if already replied
-                    if ($row["replied"] == 1) {
-                      echo "<button class='replied-button' disabled>Replied</button>";
-                  } else {
-                      echo "<a href='mailto:" . $row["email"] . "?subject=Thank you%20for%20reaching%20out!' class='reply-button'>Reply</a>";
-                      echo "<form method='post' action='mark_as_replied.php' style='display:inline;'>";
-                      echo "<input type='hidden' name='messageId' value='" . $row["message_id"] . "'>";
-                      echo "<button type='submit' class='mark-replied-button'>Mark as Replied</button>";
-                      echo "</form>";
-                  }
-
-                    echo "</form>";
-                    echo "</div>";
-                    echo "<span class='message-timestamp'><b>Time: </b> " . $row["timestamp"] . "</span>";
-                    echo "</div>";
-                }
-            } else {
-                echo "No messages found.";
-            }
-
-            $conn->close();
+        echo "</div>"; // Close message-actions
+        echo "<span class='message-timestamp'><b>Time: </b> " . $row["timestamp"] . "</span>";
+        echo "</div>";
+    }
+} else {
+    echo "No messages found.";
+}
+        $conn->close();
             ?>
         </div>
     </main>

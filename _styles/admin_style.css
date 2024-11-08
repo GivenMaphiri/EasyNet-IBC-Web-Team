@@ -450,7 +450,8 @@ main {
 
  /*-------------------------------start of Messages dashboard----------------------------------------------*/
 
- .main-messages h1 {
+/* Container for the main messages */
+.main-messages h1 {
     text-align: center;
 }
 
@@ -461,18 +462,15 @@ main {
     padding-bottom: 1rem; /* Add padding to the bottom of the main messages container */
 }
 
+/* Styling for each message */
 .message {
     margin-bottom: 1rem;
-    padding: 1rem 1rem; /* Increase the padding here */
+    padding: 1rem 1rem;
     border-radius: 4px;
     background-color: #dce4eb;
-    overflow: hidden; /* Ensure the content doesn't overflow the container */
+    overflow: hidden;
     border: 1px solid #080707;
 }
-
-/* .message:last-child {
-    border-bottom: none;
-} */
 
 .message-sender {
     font-weight: bold;
@@ -482,6 +480,7 @@ main {
     flex-grow: 1;
 }
 
+/* Styling for action buttons (Delete, Reply, Mark as Replied) */
 .message-actions {
     display: flex;
     gap: 0.5rem;
@@ -494,45 +493,57 @@ main {
     flex-wrap: wrap; /* Ensure buttons are wrapped and aligned properly */
 }
 
-.message-actions .delete-message, .message-actions .reply-button {
-    padding: 0.5rem 1rem;
+/* Common button styling */
+.message-actions .delete-message,
+.message-actions .reply-button,
+.message-actions .mark-replied-button {
+    padding: 8px 16px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #000000;
     color: #fff;
-    flex: 1 1 auto; /* Ensure buttons take equal space */
+    font-weight: bold;
+    flex: 1 1 1 auto;
     text-align: center;
-    box-sizing: border-box; /* Ensure padding and width are consistent */
+    box-sizing: border-box;
+    transition: background-color 0.3s ease;
 }
 
- .message-actions .reply-button {
-    padding: 0.5rem 1rem;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+/* Specific styles for each button */
+.message-actions .delete-message {
+    background-color: #000;
+}
+
+.message-actions .reply-button {
     background-color: #6781f3;
-    color: #fff;
-    flex: 1 1 auto; /* Ensure buttons take equal space */
-    text-align: center;
-    box-sizing: border-box; /* Ensure padding and width are consistent */
 }
 
+.message-actions .mark-replied-button {
+    background-color: #ccc;
+    color: #000;
+    border: 1px solid #bbb;
+}
+
+/* Hover effects */
 .message-actions .delete-message:hover {
     background-color: #ff0000;
 }
 
 .message-actions .reply-button:hover {
     background-color: #305eae;
-
 }
 
+.message-actions .mark-replied-button:hover {
+    background-color: #bbb;
+}
+
+/* Styling for the timestamp */
 .message-timestamp {
     color: rgb(4, 93, 171);
-    float: right; /* Aligns the element to the right */
-  }
+    float: right;
+}
 
-  /* Styling for the filter button container */
+/* Styling for the filter buttons */
 .message-filter {
     display: flex;
     gap: 10px;
@@ -540,14 +551,12 @@ main {
     justify-content: flex-start;
 }
 
-/* Filter buttons styling */
 .filter-button {
     padding: 10px 20px;
-    border: 1px solid #007bff; /* Blue border */
+    border: 1px solid #007bff;
     border-radius: 5px;
     color: #007bff;
-    background-color: #f8f9fa; /* Light background */
-    text-decoration: none;
+    background-color: #f8f9fa;
     font-weight: bold;
     transition: all 0.3s ease;
 }
@@ -556,19 +565,14 @@ main {
     background-color: #007bff;
     color: white;
     cursor: pointer;
-    transform: translateY(-2px); /* Slight lift effect on hover */
+    transform: translateY(-2px);
 }
 
-/* Active filter button styling (optional) */
+/* Active filter button styling */
 .filter-button-active {
     background-color: #007bff;
     color: white;
 }
-
-.mark-replied-button{
-    cursor: pointer;
-}
-
 
  /*-------------------------------End of Messages dashboard----------------------------------------------*/
 
